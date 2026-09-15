@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rameshwar Jewellers Sirsa | Gold, Diamond & Silver Jewellery</title>
+    <meta name="description" content="Rameshwar Dass Jagdish Chander Jewellers, Sirsa. A Century of Craftsmanship. Explore elegant Gold, Diamond and Silver jewellery at our showroom in Noharia Bazar.">
+    
+    <!-- Open Graph for Social Sharing -->
+    <meta property="og:title" content="Rameshwar Jewellers | Timeless by Tradition">
+    <meta property="og:description" content="Explore elegant Gold, Diamond and Silver jewellery at our premium showroom in Sirsa, Haryana.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.instagram.com/rameshwarjewellers01/">
+    
+    <!-- Fonts: Playfair Display (Serif) for luxury headings, Lato (Sans) for clean body text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- JSON-LD Local Business Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "JewelryStore",
+      "name": "Rameshwar Dass Jagdish Chander Jewellers",
+      "image": "assets/showroom-exterior.jpg",
+      "@id": "",
+      "url": "https://www.instagram.com/rameshwarjewellers01/",
+      "telephone": "+919050321976",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Khai Wali Gali, Noharia Bazar, Shri Gaushala Mohalla",
+        "addressLocality": "Sirsa",
+        "addressRegion": "Haryana",
+        "postalCode": "125055",
+        "addressCountry": "IN"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.6",
+        "reviewCount": "688"
+      }
+    }
+    </script>
+
+    <style>
+        /* --- DESIGN TOKENS --- */
+        :root {
+            /* Color Palette */
+            --clr-black: #121212;
+            --clr-dark: #1C1C1C;
+            --clr-white: #FFFFFF;
+            --clr-ivory: #FAFAF7;
+            --clr-champagne: #F5EFEB;
+            --clr-gold: #C5A059;
+            --clr-gold-hover: #DBC38B;
+            --clr-text-main: #222222;
+            --clr-text-muted: #555555;
+            --clr-gray-light: #EAEAEA;
+
+            /* Typography */
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Lato', sans-serif;
+
+            /* Spacing & Layout */
+            --section-padding: 100px 0;
+            --border-radius: 2px;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* --- RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--clr-text-main);
+            background-color: var(--clr-ivory);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, .brand-name {
+            font-family: var(--font-serif);
+            font-weight: 400;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            width: 90%;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-padding { padding: var(--section-padding); }
+        .bg-light { background-color: var(--clr-white); }
+        .bg-champagne { background-color: var(--clr-champagne); }
+        .bg-dark { background-color: var(--clr-dark); }
+        .bg-black { background-color: var(--clr-black); }
+        .text-gold { color: var(--clr-gold); }
+        .text-white { color: var(--clr-white); }
+        .text-center { text-align: center; }
+        .text-muted { color: var(--clr-text-muted); }
+        .mt-1 { margin-top: 1rem; } .mt-2 { margin-top: 2rem; } 
+        .mt-3 { margin-top: 3rem; } .mt-4 { margin-top: 4rem; }
+        .mb-1 { margin-bottom: 1rem; } .mb-2 { margin-bottom: 2rem; } 
+        .mb-4 { margin-bottom: 4rem; }
+        .p-4 { padding: 4rem; }
+
+        /* --- TYPOGRAPHY --- */
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--clr-black);
+            margin-bottom: 1.5rem;
+        }
+
+        .section-subtitle {
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.85rem;
+            color: var(--clr-gold);
+            margin-bottom: 1rem;
+        }
+
+        .editorial-text {
+            font-size: 1.1rem;
+            color: var(--clr-text-muted);
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .btn-solid-gold {
+            background-color: var(--clr-gold);
+            color: var(--clr-white);
+        }
+        .btn-solid-gold:hover { background-color: var(--clr-gold-hover); }
+
+        .btn-outline-gold {
+            border-color: var(--clr-gold);
+            color: var(--clr-gold);
+        }
+        .btn-outline-gold:hover {
+            background-color: var(--clr-gold);
+            color: var(--clr-white);
+        }
+
+        .btn-outline-light {
+            border-color: var(--clr-white);
+            color: var(--clr-white);
+        }
+        .btn-outline-light:hover {
+            background-color: var(--clr-white);
+            color: var(--clr-black);
+        }
+
+        .btn-solid-dark {
+            background-color: var(--clr-black);
+            color: var(--clr-white);
+        }
+        .btn-solid-dark:hover { background-color: var(--clr-text-muted); }
+
+        .btn-outline-dark {
+            border-color: var(--clr-black);
+            color: var(--clr-black);
+        }
+        .btn-outline-dark:hover {
+            background-color: var(--clr-black);
+            color: var(--clr-white);
+        }
+
+        .btn-link {
+            color: var(--clr-black);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            border-bottom: 1px solid var(--clr-gold);
+            padding-bottom: 4px;
+        }
+        .btn-link:hover { color: var(--clr-gold); }
+
+        /* --- NAVIGATION --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 0;
+            background-color: rgba(250, 250, 247, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--clr-gray-light);
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 12px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1;
+        }
+
+        .brand-name {
+            font-size: 1.5rem;
+            letter-spacing: 4px;
+            color: var(--clr-black);
+        }
+        .brand-sub {
+            font-size: 0.7rem;
+            letter-spacing: 6px;
+            color: var(--clr-gold);
+            font-family: var(--font-sans);
+            margin-top: 4px;
+        }
+
+        .nav-links a {
+            margin: 0 1.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--clr-text-main);
+        }
+        .nav-links a:hover { color: var(--clr-gold); }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--clr-black);
+            cursor: pointer;
+        }
+
+        /* --- HERO --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            background-color: var(--clr-black);
+            background-image: url('assets/showroom-interior-marble.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(18,18,18,0.8));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            color: var(--clr-white);
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+            color: var(--clr-gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            font-style: italic;
+            font-family: var(--font-serif);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-cta a {
+            margin: 0 10px;
+        }
+
+        /* --- TRUST BAR --- */
+        .trust-bar {
+            padding: 60px 0;
+            border-bottom: 1px solid var(--clr-gray-light);
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .trust-icon {
+            font-size: 2rem;
+            color: var(--clr-gold);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .trust-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .trust-item p {
+            font-size: 0.9rem;
+            color: var(--clr-text-muted);
+        }
+
+        /* --- SPLIT LAYOUT (About & Location) --- */
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .luxury-img {
+            border-radius: var(--border-radius);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            background-color: var(--clr-gray-light);
+        }
+
+        /* --- COLLECTIONS --- */
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .collection-card {
+            display: block;
+            position: relative;
+            overflow: hidden;
+            background: var(--clr-champagne);
+            border-radius: var(--border-radius);
+        }
+
+        .card-img-wrapper {
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            background-color: #E0DCD3;
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .collection-card:hover .card-img-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: var(--clr-white);
+            text-align: left;
+        }
+
+        .card-content h3 { font-size: 1.3rem; margin-bottom: 4px; }
+        .card-content p {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--clr-gold);
+        }
+
+        /* --- MASONRY GALLERY --- */
+        .masonry-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 300px;
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            background-color: var(--clr-gray-light);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img { transform: scale(1.03); }
+        .item-large { grid-row: span 2; }
+        .item-wide { grid-column: span 2; }
+
+        /* --- REVIEWS --- */
+        #reviews .section-title { color: var(--clr-white); }
+
+        .google-rating .rating-number {
+            font-size: 5rem;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .google-rating .stars {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .review-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .review-card {
+            background-color: rgba(255,255,255,0.05);
+            padding: 40px 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--border-radius);
+            text-align: left;
+        }
+
+        .review-stars { margin-bottom: 15px; font-size: 1.2rem; }
+        .review-body {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            color: #CCC;
+        }
+        .review-author {
+            font-family: var(--font-serif);
+            color: var(--clr-white);
+            font-weight: 600;
+        }
+
+        /* --- LOCATION --- */
+        .contact-link {
+            font-size: 1.2rem;
+            color: var(--clr-black);
+            font-family: var(--font-serif);
+        }
+        .contact-link:hover { color: var(--clr-gold); }
+
+        .info-block {
+            margin-bottom: 2rem;
+            border-left: 2px solid var(--clr-gold);
+            padding-left: 15px;
+        }
+
+        .info-block h5 {
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--clr-text-muted);
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+        }
+
+        .map-wrapper {
+            height: 100%;
+            min-height: 450px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* --- INSTAGRAM --- */
+        .instagram-handle {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            color: var(--clr-black);
+        }
+        .instagram-handle:hover { color: var(--clr-gold); }
+
+        .insta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 2rem;
+        }
+
+        .insta-item {
+            aspect-ratio: 1/1;
+            background-color: #E0E0E0; /* Placeholder gray */
+            border-radius: var(--border-radius);
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            padding: 80px 0 30px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer h4 {
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--clr-gold);
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a {
+            display: block;
+            color: #AAA;
+            margin-bottom: 10px;
+        }
+        .footer-links a:hover { color: var(--clr-white); }
+        .footer-contact p { color: #AAA; }
+        .text-gray { color: #AAA; }
+
+        .footer-bottom {
+            text-align: center;
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 1024px) {
+            .trust-grid, .collection-grid, .insta-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .review-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.8rem; }
+            .split-layout, .footer-grid, .masonry-gallery {
+                grid-template-columns: 1fr;
+            }
+            .item-large, .item-wide {
+                grid-row: auto; grid-column: auto;
+            }
+            .nav-links {
+                display: none; /* Hide on mobile by default */
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--clr-white);
+                flex-direction: column;
+                text-align: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { margin: 15px 0; }
+            .mobile-menu-toggle { display: block; }
+            .hidden-mobile { display: none; }
+            .p-4 { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <header id="main-nav" class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="brand-logo">
+                <span class="brand-name">RAMESHWAR</span>
+                <span class="brand-sub">JEWELLERS</span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="#about">Our Heritage</a>
+                <a href="#collections">Collections</a>
+                <a href="#showroom">The Showroom</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#location">Visit Us</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="tel:+919050321976" class="btn btn-outline-gold hidden-mobile">Call Us</a>
+                <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <p class="hero-subtitle">A Century of Craftsmanship</p>
+                <h1 class="hero-title">Timeless Jewellery.<br>Crafted for Generations.</h1>
+                <p class="hero-description">Gold • Diamond • Silver</p>
+                <div class="hero-cta">
+                    <a href="#collections" class="btn btn-solid-gold">Explore Collections</a>
+                    <a href="#location" class="btn btn-outline-light">Visit Our Showroom</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRUST HIGHLIGHTS -->
+        <section class="trust-bar bg-champagne">
+            <div class="container trust-grid">
+                <div class="trust-item">
+                    <span class="trust-icon"><i class="fa-solid fa-gem"></i></span>
+                    <h3>Diamond</h3>
+                    <p>Brilliance perfectly set</p>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-icon"><i class="fa-solid fa-ring"></i></span>
+                    <h3>Gold</h3>
+                    <p>Traditional Indian craftsmanship</p>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-icon"><i class="fa-solid fa-coins"></i></span>
+                    <h3>Silver</h3>
+                    <p>Elegant and timeless</p>
+                </div>
+                <div class="trust-item">
+                    <span class="trust-icon"><i class="fa-solid fa-scale-balanced"></i></span>
+                    <h3>Trusted</h3>
+                    <p>Generations of honesty</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT THE BRAND -->
+        <section id="about" class="section-padding about-section">
+            <div class="container split-layout">
+                <div class="about-image-wrapper">
+                    <!-- Placeholder: Add actual image path in src -->
+                    <img src="assets/showroom-exterior.jpg" alt="Rameshwar Dass Jagdish Chander Exterior" class="luxury-img">
+                </div>
+                <div class="about-text">
+                    <h4 class="section-subtitle">Our Heritage</h4>
+                    <h2 class="section-title">Timeless by Tradition.</h2>
+                    <p class="editorial-text">
+                        Welcome to Rameshwar Dass Jagdish Chander Jewellers. Situated in the heart of Sirsa, we have built our legacy on the foundations of trust, honesty, and unparalleled craftsmanship.
+                    </p>
+                    <p class="editorial-text">
+                        For decades, we have been the destination for families seeking the purest Gold, brilliant Diamonds, and elegant Silver. Whether you are seeking a traditional masterpiece or a modern statement, our showroom offers an experience defined by quality and enduring relationships.
+                    </p>
+                    <a href="#location" class="btn btn-link">Get Directions <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- COLLECTIONS -->
+        <section id="collections" class="section-padding bg-light">
+            <div class="container text-center">
+                <h4 class="section-subtitle">The Collections</h4>
+                <h2 class="section-title">Masterpieces of Elegance</h2>
+                
+                <div class="collection-grid mt-4">
+                    <a href="#location" class="collection-card">
+                        <div class="card-img-wrapper">
+                            <img src="assets/placeholder-ladies-set.jpg" alt="Ladies Set" loading="lazy">
+                        </div>
+                        <div class="card-content">
+                            <h3>Ladies Sets</h3>
+                            <p>Discover</p>
+                        </div>
+                    </a>
+                    <a href="#location" class="collection-card">
+                        <div class="card-img-wrapper">
+                            <img src="assets/placeholder-diamond-rings.jpg" alt="Rings" loading="lazy">
+                        </div>
+                        <div class="card-content">
+                            <h3>Rings</h3>
+                            <p>Discover</p>
+                        </div>
+                    </a>
+                    <a href="#location" class="collection-card">
+                        <div class="card-img-wrapper">
+                            <img src="assets/placeholder-gents-chain.jpg" alt="Gents Collection" loading="lazy">
+                        </div>
+                        <div class="card-content">
+                            <h3>Gents Collection</h3>
+                            <p>Discover</p>
+                        </div>
+                    </a>
+                    <a href="#location" class="collection-card">
+                        <div class="card-img-wrapper">
+                            <img src="assets/placeholder-silver-items.jpg" alt="Silver Items" loading="lazy">
+                        </div>
+                        <div class="card-content">
+                            <h3>Silver Items</h3>
+                            <p>Discover</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SHOWROOM GALLERY -->
+        <section id="showroom" class="section-padding">
+            <div class="container">
+                <div class="text-center mb-4">
+                    <h4 class="section-subtitle">Our Space</h4>
+                    <h2 class="section-title">Experience Rameshwar Jewellers</h2>
+                </div>
+                <div class="masonry-gallery">
+                    <div class="gallery-item item-large">
+                        <img src="assets/showroom-interior-counter.jpg" alt="Showroom Counter" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/showroom-exterior-diamonds.jpg" alt="Rameshwar Diamonds Facade" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="assets/showroom-logo-wall.jpg" alt="RDJC Logo Wall" loading="lazy">
+                    </div>
+                    <div class="gallery-item item-wide">
+                        <img src="assets/showroom-interior-wide.jpg" alt="Showroom Interior" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GOOGLE REVIEWS -->
+        <section id="reviews" class="section-padding bg-dark text-white">
+            <div class="container text-center">
+                <div class="google-rating">
+                    <h2 class="rating-number">4.6</h2>
+                    <div class="stars text-gold">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="rating-text">Based on approximately 688 Google Reviews</p>
+                </div>
+
+                <div class="review-cards mt-4">
+                    <div class="review-card">
+                        <div class="review-stars text-gold">★★★★★</div>
+                        <p class="review-body">"For the last 20 years I keep coming to Rameshwar Dass Shop for purchasing gold and silver articles. Reason is - Trust, honesty, satisfaction and good behaviour. They stand up to the mark they have set up. Purity of gold and silver ornaments is very high. They deliver what they promise."</p>
+                        <p class="review-author">— Samta Soni</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-stars text-gold">★★★★★</div>
+                        <p class="review-body">"Awesome. Stunning jewellery designs and very affordable price, I love it."</p>
+                        <p class="review-author">— Ramta & Verified Customers</p>
+                    </div>
+                    <div class="review-card">
+                        <div class="review-stars text-gold">★★★★★</div>
+                        <p class="review-body">"Good experience, staff is very polite with customer."</p>
+                        <p class="review-author">— Local Guide</p>
+                    </div>
+                </div>
+                
+                <a href="https://maps.google.com/?q=Rameshwar+Dass+Jagdish+Chander+Sirsa" target="_blank" class="btn btn-outline-gold mt-3">Read More Reviews on Google</a>
+            </div>
+        </section>
+
+        <!-- LOCATION & CONTACT -->
+        <section id="location" class="section-padding">
+            <div class="container split-layout">
+                <div class="contact-info bg-champagne p-4">
+                    <h4 class="section-subtitle">Visit Us</h4>
+                    <h2 class="section-title mb-2">Find Your Timeless Piece.</h2>
+                    
+                    <div class="info-block">
+                        <h5>Address</h5>
+                        <p>Rameshwar Dass Jagdish Chander Jewellers<br>
+                        G2JJ+RP3, Khai Wali Gali, Noharia Bazar,<br>
+                        Shri Gaushala Mohalla, Sirsa,<br>
+                        Haryana 125055, India</p>
+                    </div>
+                    
+                    <div class="info-block">
+                        <h5>Contact</h5>
+                        <p><a href="tel:01666221976" class="contact-link">0166 622 1976</a></p>
+                        <p><a href="tel:+919050321976" class="contact-link">+91 90503 21976</a></p>
+                    </div>
+
+                    <div class="action-buttons mt-3">
+                        <a href="https://maps.google.com/?q=Rameshwar+Dass+Jagdish+Chander+Sirsa" target="_blank" class="btn btn-solid-dark">Get Directions</a>
+                        <a href="https://wa.me/919050321976" target="_blank" class="btn btn-outline-dark"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    </div>
+                </div>
+                
+                <div class="map-wrapper">
+                    <!-- Standard Google Maps Embed matching the exact location -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3464.0957930103723!2d75.0256756!3d29.5304206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39114dad8221fe27%3A0x8e833fbb17f30a44!2sRameshwar%20Dass%20Jagdish%20Chander!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- INSTAGRAM -->
+        <section class="section-padding bg-light text-center">
+            <div class="container">
+                <i class="fab fa-instagram text-gold mb-1" style="font-size: 2rem;"></i>
+                <h4 class="section-subtitle">Follow Our Journey</h4>
+                <a href="https://www.instagram.com/rameshwarjewellers01/" target="_blank" class="instagram-handle">@rameshwarjewellers01</a>
+                <p class="mt-1 mb-4 text-muted">A Century of Craftsmanship.</p>
+                
+                <div class="insta-grid">
+                    <div class="insta-item bg-gray"></div>
+                    <div class="insta-item bg-gray"></div>
+                    <div class="insta-item bg-gray"></div>
+                    <div class="insta-item bg-gray"></div>
+                </div>
+                <a href="https://www.instagram.com/rameshwarjewellers01/" target="_blank" class="btn btn-outline-dark mt-3">Follow on Instagram</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer bg-black text-white">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <h3 class="brand-name text-white">RAMESHWAR</h3>
+                <p class="brand-sub text-gold">JEWELLERS</p>
+                <p class="mt-2 text-gray">Gold • Diamond • Silver</p>
+                <p class="text-gray">Timeless by tradition.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <a href="#about">Our Heritage</a>
+                <a href="#collections">Collections</a>
+                <a href="#showroom">The Showroom</a>
+                <a href="#reviews">Reviews</a>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>Noharia Bazar, Sirsa<br>Haryana 125055, India</p>
+                <p class="mt-1">0166 622 1976</p>
+                <p>+91 90503 21976</p>
+            </div>
+        </div>
+        <div class="container footer-bottom">
+            <p>&copy; 2024 Rameshwar Dass Jagdish Chander Jewellers. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE SCRIPTS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Sticky Header scroll effect
+            const header = document.getElementById('main-nav');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // 2. Mobile Menu Toggle
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (menuToggle && navLinks) {
+                menuToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    
+                    const icon = menuToggle.querySelector('i');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+
+            // 3. Close mobile menu on link click
+            const mobileLinks = navLinks.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        navLinks.classList.remove('active');
+                        const icon = menuToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
