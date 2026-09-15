@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vikas High School Sirsa | Quality Education in Sirsa, Haryana</title>
+    <meta name="description" content="Vikas High School, Sirsa, established in 1992, provides co-educational schooling from Class 1 to Class 10 in a welcoming, modern learning environment.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS VARIABLES & THEME --- */
+        :root {
+            --primary: #0f2c59;      /* Deep Navy Blue */
+            --primary-light: #1a427d;
+            --secondary: #f0f4f8;    /* Soft Sky Blue/Gray */
+            --accent: #d89216;       /* Warm Amber/Gold */
+            --accent-hover: #b87a10;
+            --text-main: #333333;
+            --text-light: #666666;
+            --bg-light: #ffffff;
+            --bg-offwhite: #f8f9fa;
+            --border-color: #e2e8f0;
+            
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            --transition: all 0.3s ease;
+            --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 30px rgba(0,0,0,0.08);
+            --border-radius: 8px;
+        }
+
+        /* --- RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            background-color: var(--bg-light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--primary);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: var(--border-radius);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+            box-shadow: 0 4px 15px rgba(216, 146, 22, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(216, 146, 22, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* --- NAVIGATION --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            padding: 20px 0;
+        }
+
+        .navbar.scrolled {
+            padding: 12px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--accent);
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--primary);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 80px; /* offset for nav */
+            background-color: var(--primary);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('unnamed (3).jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.4;
+            transform: scale(1.05);
+            animation: heroZoom 20s infinite alternate linear;
+        }
+
+        @keyframes heroZoom {
+            from { transform: scale(1.05); }
+            to { transform: scale(1.15); }
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(15, 44, 89, 0.8), rgba(15, 44, 89, 0.95));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* --- QUICK FACTS --- */
+        .quick-facts {
+            background-color: var(--bg-light);
+            margin-top: -60px;
+            position: relative;
+            z-index: 20;
+            padding: 0 20px;
+        }
+
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            padding: 40px;
+        }
+
+        .fact-card {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .fact-card:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 20%;
+            height: 60%;
+            width: 1px;
+            background-color: var(--border-color);
+        }
+
+        .fact-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .fact-number {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .fact-text {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about-section {
+            background-color: var(--bg-offwhite);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-content h3 {
+            font-size: 1.2rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            color: var(--text-light);
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.03);
+        }
+
+        .experience-badge {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            background-color: var(--primary);
+            color: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            border-bottom: 4px solid var(--accent);
+        }
+
+        .experience-badge h4 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+
+        /* --- ACADEMICS & FACILITIES --- */
+        .academics-section {
+            background-color: var(--bg-light);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: left;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md);
+            border-color: transparent;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover i {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* --- SCHOOL LIFE / GALLERY --- */
+        .gallery-section {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .gallery-section .section-title h2,
+        .gallery-section .section-title p {
+            color: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            height: 500px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            opacity: 0;
+            transition: var(--transition);
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-overlay h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .gallery-item-small-group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .gallery-item-small {
+            flex: 1;
+            background-color: var(--primary-light);
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .gallery-item-small i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .gallery-item-small h3 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .gallery-item-small p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        /* --- REVIEWS --- */
+        .reviews-section {
+            background-color: var(--bg-offwhite);
+            text-align: center;
+        }
+
+        .review-card {
+            background: white;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            position: relative;
+        }
+
+        .stars {
+            color: #FFD700;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            letter-spacing: 5px;
+        }
+
+        .review-text {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: var(--text-main);
+            margin-bottom: 30px;
+            line-height: 1.4;
+            font-family: var(--font-heading);
+        }
+
+        .google-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        .google-badge i {
+            color: #4285F4;
+            font-size: 1.5rem;
+        }
+
+        /* --- LOCATION / CONTACT --- */
+        .contact-section {
+            background-color: var(--bg-light);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .contact-info {
+            padding: 50px;
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .contact-info h2 {
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .info-item i {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-top: 5px;
+        }
+
+        .info-item h4 {
+            color: white;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .info-item p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-btns {
+            display: flex;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .contact-btns .btn {
+            flex: 1;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #081629;
+            color: white;
+            padding: 80px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 50px;
+        }
+
+        .footer-about .logo {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 400px;
+        }
+
+        .footer-links h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul li a {
+            color: rgba(255, 255, 255, 0.6);
+            transition: var(--transition);
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* --- ANIMATIONS --- */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3.5rem; }
+            .facts-grid { grid-template-columns: repeat(2, 1fr); gap: 0; }
+            .fact-card { border-bottom: 1px solid var(--border-color); }
+            .fact-card:nth-child(even)::after { display: none; }
+            .fact-card:nth-child(odd)::after { right: 0; top: 10%; height: 80%; }
+            .fact-card:nth-last-child(-n+2) { border-bottom: none; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .experience-badge { bottom: 20px; left: 20px; }
+            .gallery-grid { grid-template-columns: 1fr; height: auto; }
+            .gallery-item { height: 400px; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: white;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: var(--transition);
+                gap: 40px;
+            }
+            .nav-links.active { left: 0; }
+            .nav-links .btn { display: none; }
+            .mobile-menu-btn { display: block; }
+            
+            .hero h1 { font-size: 2.8rem; }
+            .hero p { font-size: 1.1rem; }
+            .hero-btns { flex-direction: column; }
+            
+            .cards-grid { grid-template-columns: 1fr; }
+            
+            .contact-btns { flex-direction: column; }
+            
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+            
+            .section-padding { padding: 60px 0; }
+            .section-title { margin-bottom: 40px; }
+        }
+        
+        @media (max-width: 480px) {
+            .facts-grid { grid-template-columns: 1fr; }
+            .fact-card::after { display: none !important; }
+            .fact-card { border-bottom: 1px solid var(--border-color) !important; }
+            .fact-card:last-child { border-bottom: none !important; }
+            .review-text { font-size: 1.2rem; }
+            .review-card { padding: 30px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-graduation-cap"></i>
+                Vikas High School
+            </a>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="#" class="active">Home</a>
+                <a href="#about">About</a>
+                <a href="#academics">Academics</a>
+                <a href="#campus">Campus</a>
+                <a href="#contact">Contact</a>
+                <a href="#contact" class="btn btn-primary" style="display: none;">Enquire Now</a>
+            </div>
+
+            <a href="#contact" class="btn btn-primary" id="desktopBtn">Enquire Now</a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content fade-up">
+            <div class="hero-badge">Established 1992</div>
+            <h1>Learning Today.<br>Building Tomorrow.</h1>
+            <p>Welcome to Vikas High School, Sirsa. A dedicated co-educational institution providing quality education and fostering growth from Class 1 to 10.</p>
+            <div class="hero-btns">
+                <a href="#about" class="btn btn-primary">Discover Our School</a>
+                <a href="#contact" class="btn btn-outline" style="border-color: white; color: white;">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- QUICK FACTS -->
+    <section class="quick-facts container fade-up delay-1">
+        <div class="facts-grid">
+            <div class="fact-card">
+                <i class="fa-solid fa-landmark fact-icon"></i>
+                <div class="fact-number" data-target="1992">1992</div>
+                <div class="fact-text">Year Established</div>
+            </div>
+            <div class="fact-card">
+                <i class="fa-solid fa-users fact-icon"></i>
+                <div class="fact-number">Co-Ed</div>
+                <div class="fact-text">School Community</div>
+            </div>
+            <div class="fact-card">
+                <i class="fa-solid fa-chalkboard-user fact-icon"></i>
+                <div class="fact-number" data-target="13">13</div>
+                <div class="fact-text">Dedicated Teachers</div>
+            </div>
+            <div class="fact-card">
+                <i class="fa-solid fa-book-open fact-icon"></i>
+                <div class="fact-number">600+</div>
+                <div class="fact-text">Library Books</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about-section section-padding">
+        <div class="container about-grid">
+            <div class="about-content fade-up">
+                <h3>About Our School</h3>
+                <h2>Nurturing Minds in the Heart of Sirsa</h2>
+                <p>Located in Agrasain Colony, Vikas High School has been a cornerstone of quality education in Sirsa since its establishment in 1992. As a private, unaided institution, we are committed to maintaining high standards of learning and student development.</p>
+                <p>We provide a comprehensive educational journey from Pre-primary through Class 10. Our curriculum is delivered in Hindi medium, and we proudly prepare our senior students for the State Board examinations, ensuring they build a strong academic foundation for their future endeavors.</p>
+                <br>
+                <a href="#academics" class="btn btn-primary">Explore Academics</a>
+            </div>
+            <div class="about-image fade-up delay-1">
+                <!-- Using the provided building photograph -->
+                <img src="unnamed (3).jpg" alt="Vikas High School Building exterior showing the main campus">
+                <div class="experience-badge">
+                    <h4>30+</h4>
+                    <p>Years of<br>Excellence</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACADEMICS & FACILITIES -->
+    <section id="academics" class="academics-section section-padding">
+        <div class="container">
+            <div class="section-title fade-up">
+                <h2>Academics & Learning Environment</h2>
+                <p>We provide a structured and supportive environment designed to help every student achieve their full potential.</p>
+            </div>
+            
+            <div class="cards-grid">
+                <!-- Academic Card 1 -->
+                <div class="feature-card fade-up">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <h3>Class 1 to 10</h3>
+                    <p>Comprehensive primary and secondary education, guiding students through their crucial developmental years.</p>
+                </div>
+                
+                <!-- Academic Card 2 -->
+                <div class="feature-card fade-up delay-1">
+                    <i class="fa-solid fa-child-reaching"></i>
+                    <h3>Pre-Primary Section</h3>
+                    <p>A dedicated pre-primary program available to build strong foundational skills for our youngest learners.</p>
+                </div>
+
+                <!-- Academic Card 3 -->
+                <div class="feature-card fade-up delay-2">
+                    <i class="fa-solid fa-certificate"></i>
+                    <h3>State Board Curriculum</h3>
+                    <p>Rigorous academic preparation following the State Board syllabus for Class 10 examinations in Hindi medium.</p>
+                </div>
+
+                <!-- Facility Card 1 -->
+                <div class="feature-card fade-up">
+                    <i class="fa-solid fa-book-journal-whills"></i>
+                    <h3>Accessible Library</h3>
+                    <p>A well-maintained library housing approximately 600 books to encourage reading habits and continuous learning beyond textbooks.</p>
+                </div>
+
+                <!-- Facility Card 2 -->
+                <div class="feature-card fade-up delay-1">
+                    <i class="fa-solid fa-computer"></i>
+                    <h3>Computer Resources</h3>
+                    <p>Equipped with essential computer systems to ensure students develop necessary digital literacy skills.</p>
+                </div>
+
+                <!-- Facility Card 3 -->
+                <div class="feature-card fade-up delay-2">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <h3>Reliable Infrastructure</h3>
+                    <p>A secure urban campus with uninterrupted electricity and dedicated facilities maintained by our private management.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAMPUS / SCHOOL LIFE -->
+    <section id="campus" class="gallery-section section-padding">
+        <div class="container">
+            <div class="section-title fade-up">
+                <h2>Campus View</h2>
+                <p>A glimpse into the environment where our students learn, grow, and build their futures.</p>
+            </div>
+            
+            <div class="gallery-grid">
+                <!-- Main Campus Photo -->
+                <div class="gallery-item fade-up">
+                    <img src="unnamed (3).jpg" alt="Vikas High School Main Building">
+                    <div class="gallery-overlay">
+                        <h3>Main School Building</h3>
+                    </div>
+                </div>
+                
+                <!-- Stylized Info Blocks replacing missing photos to maintain premium look -->
+                <div class="gallery-item-small-group fade-up delay-1">
+                    <div class="gallery-item-small">
+                        <i class="fa-solid fa-palette"></i>
+                        <h3>Cultural & Co-curricular</h3>
+                        <p>Fostering creativity and confidence through school events and participation.</p>
+                    </div>
+                    <div class="gallery-item-small" style="background-color: var(--primary);">
+                        <i class="fa-solid fa-people-group"></i>
+                        <h3>Welcoming Community</h3>
+                        <p>A safe, inclusive urban school environment for all students.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="reviews-section section-padding">
+        <div class="container">
+            <div class="review-card fade-up">
+                <div class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                </div>
+                <p class="review-text">"See what parents, students, and visitors have to say about their experience with Vikas High School."</p>
+                <div class="google-badge">
+                    <i class="fa-brands fa-google"></i>
+                    <span>Public Reviews on Google</span>
+                </div>
+                <br><br>
+                <!-- Links to Google Maps search based on the provided location data -->
+                <a href="https://www.google.com/maps/search/Vikas+High+School,+Agrasain+Colony,+Sirsa" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View Google Reviews</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION & CONTACT -->
+    <section id="contact" class="contact-section section-padding">
+        <div class="container">
+            <div class="section-title fade-up">
+                <h2>Get in Touch</h2>
+                <p>Take the next step in your child's learning journey. Contact us or visit our campus today.</p>
+            </div>
+
+            <div class="contact-grid fade-up delay-1">
+                <div class="contact-info">
+                    <h2>Contact Information</h2>
+                    
+                    <div class="info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <div>
+                            <h4>Visit Us</h4>
+                            <p>Vikas High School<br>Agrasain Colony, Sirsa<br>Haryana 125055, India</p>
+                            <p style="font-size: 0.85rem; margin-top: 5px; opacity: 0.8;">Plus Code: G2HQ+8F4</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <div>
+                            <h4>Call Us</h4>
+                            <p>094161 86814</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fa-solid fa-clock"></i>
+                        <div>
+                            <h4>School Type</h4>
+                            <p>Co-educational Higher Secondary School<br>Private Unaided</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-btns">
+                        <a href="tel:09416186814" class="btn btn-primary"><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> Call School</a>
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=Vikas+High+School,+Agrasain+Colony,+Sirsa,+Haryana+125055" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="border-color: white; color: white;"><i class="fa-solid fa-directions" style="margin-right: 8px;"></i> Get Directions</a>
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <!-- Generic embed using address since specific coordinate pb string isn't provided. This is robust. -->
+                    <iframe 
+                        src="https://maps.google.com/maps?q=Vikas%20High%20School,%20Agrasain%20Colony,%20Sirsa,%20Haryana%20125055&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Vikas High School Location Map">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <a href="#" class="logo">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        Vikas High School
+                    </a>
+                    <p>Established in 1992, providing quality co-educational schooling from Class 1 to Class 10 in a welcoming learning environment in Sirsa.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#academics">Academics</a></li>
+                        <li><a href="#campus">Campus Life</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>Agrasain Colony, Sirsa</li>
+                        <li>Haryana 125055</li>
+                        <li><br>Phone: 094161 86814</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> Vikas High School, Sirsa. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Sticky Navbar ---
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // --- Mobile Menu Toggle ---
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            });
+
+            // Close mobile menu when a link is clicked
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.querySelector('i').classList.remove('fa-xmark');
+                    mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                });
+            });
+
+            // --- Scroll Animations (Intersection Observer) ---
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        
+                        // Counter animation for stats if it has the data-target attribute
+                        const counter = entry.target.querySelector('.fact-number[data-target]');
+                        if (counter && !counter.classList.contains('counted')) {
+                            animateCounter(counter);
+                        }
+                        
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-up').forEach(el => {
+                observer.observe(el);
+            });
+
+            // --- Counter Animation Function ---
+            function animateCounter(element) {
+                element.classList.add('counted');
+                const target = parseInt(element.getAttribute('data-target'));
+                const duration = 2000; // 2 seconds
+                const stepTime = Math.abs(Math.floor(duration / target));
+                let current = 0;
+                
+                // Adjust step for large numbers (like 1992) to make animation faster
+                const increment = target > 100 ? Math.ceil(target / 50) : 1;
+
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        element.innerText = target;
+                        clearInterval(timer);
+                    } else {
+                        element.innerText = current;
+                    }
+                }, stepTime);
+            }
+        });
+    </script>
+</body>
+</html>
