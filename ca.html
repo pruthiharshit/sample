@@ -149,6 +149,7 @@
 
         .btn-primary:hover {
             background-color: var(--accent-hover);
+            color: var(--bg-white);
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(197, 160, 89, 0.4);
         }
@@ -270,14 +271,15 @@
             gap: 35px;
         }
 
-        .nav-links a {
+        /* Fixed specific color and text styling for navigation */
+        .nav-links a:not(.btn) {
             font-weight: 500;
             font-size: 0.95rem;
             color: var(--primary);
             position: relative;
         }
 
-        .nav-links a::after {
+        .nav-links a:not(.btn)::after {
             content: '';
             position: absolute;
             width: 0;
@@ -288,9 +290,14 @@
             transition: var(--transition);
         }
 
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
+        .nav-links a:not(.btn):hover::after,
+        .nav-links a.active:not(.btn)::after {
             width: 100%;
+        }
+        
+        /* Explicitly force CTA button text to be white in Navbar */
+        .nav-links a.btn-primary {
+            color: var(--bg-white) !important;
         }
 
         .mobile-menu-btn {
@@ -379,6 +386,7 @@
             position: relative;
         }
 
+        /* Fixed hero image container to prevent collapsing if image fails to load */
         .hero-image {
             position: relative;
             z-index: 2;
@@ -386,14 +394,26 @@
             box-shadow: var(--shadow-lg);
             overflow: hidden;
             border: 8px solid var(--bg-white);
+            background-color: #E2E8F0; /* Fallback background color */
+            min-height: 480px; /* Prevents visual collapse if img URL is broken */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .hero-image img {
             width: 100%;
+            height: 100%;
+            min-height: 480px; /* Ensures layout remains consistent */
             display: block;
             object-fit: cover;
-            /* Adjusting positioning for the provided image */
             object-position: top center; 
+            /* Styling for alt text when image fails to load */
+            color: var(--text-light);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            text-align: center;
+            padding: 20px;
         }
 
         .experience-card {
@@ -667,7 +687,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('image_568714.jpg'); /* LinkedIn Banner reference as subtle texture */
+            background-image: url('image_568714.jpg');
             background-size: cover;
             background-position: center;
             opacity: 0.05;
@@ -923,6 +943,7 @@
             .hero { padding: 40px 0 80px; text-align: center; }
             .hero-container { flex-direction: column; gap: 60px; }
             .hero-content, .hero-image-wrapper { width: 100%; padding: 0; }
+            .hero-image, .hero-image img { min-height: 380px; }
             .hero p { margin: 0 auto 30px; }
             .hero-btns { justify-content: center; }
             
@@ -988,6 +1009,7 @@
                 <a href="#about">About</a>
                 <a href="#services">Services</a>
                 <a href="#contact">Contact</a>
+                <!-- The .btn-primary overrides have been fixed to ensure white text -->
                 <a href="#contact" class="btn btn-primary">Book Consultation</a>
             </div>
 
@@ -1013,8 +1035,8 @@
             </div>
             
             <div class="hero-image-wrapper reveal delay-2">
+                <!-- Added fallback styling here to prevent collapsed view if image breaks -->
                 <div class="hero-image">
-                    <!-- Photo of CA Ishu Bansal as requested -->
                     <img src="1702644932190.jfif" alt="CA Ishu Bansal - Chartered Accountant, Author & Speaker">
                 </div>
                 <div class="experience-card">
@@ -1051,7 +1073,6 @@
         <div class="container about-grid">
             <div class="about-image reveal">
                 <div class="about-doc-backdrop"></div>
-                <!-- Using the file cover image as an authentic backing/inset -->
                 <img src="unnamed.jpg" alt="Ishu Bansal & Associates Office File" class="about-img-main" style="opacity: 0.9;">
             </div>
             
