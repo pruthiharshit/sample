@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CA Ishu Bansal | Chartered Accountant | Subsidies & Finance Consulting</title>
+    <meta name="description" content="Ishu Bansal & Associates - Empowering manufacturers to save crores through government-approved subsidies, loans, and finance consulting in Sirsa.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS VARIABLES & THEME --- */
+        :root {
+            /* CA Professional Color Palette */
+            --primary: #0A192F;      /* Deep Oxford Blue */
+            --primary-light: #172A45;
+            --accent: #C5A059;       /* Professional Gold/Bronze */
+            --accent-hover: #A88644;
+            --text-dark: #1E293B;
+            --text-light: #64748B;
+            --bg-light: #F8FAFC;
+            --bg-white: #FFFFFF;
+            --border-color: #E2E8F0;
+            --ca-blue: #003865;      /* ICAI Blue */
+            --ca-green: #00883E;     /* ICAI Green */
+            
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+            
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --border-radius: 4px;
+        }
+
+        /* --- RESET & BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            line-height: 1.7;
+            background-color: var(--bg-white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-header .subtitle {
+            color: var(--accent);
+            font-family: var(--font-body);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .section-header h2 {
+            font-size: 2.75rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--bg-white);
+            box-shadow: 0 4px 14px rgba(197, 160, 89, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(197, 160, 89, 0.4);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--bg-white);
+        }
+
+        /* --- TOP BAR --- */
+        .top-bar {
+            background-color: var(--primary);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 10px 0;
+            font-size: 0.85rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar-info {
+            display: flex;
+            gap: 25px;
+        }
+
+        .top-bar-info span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .top-bar-info i {
+            color: var(--accent);
+        }
+
+        .top-bar-social a {
+            color: rgba(255, 255, 255, 0.8);
+            margin-left: 15px;
+            font-size: 1rem;
+        }
+
+        .top-bar-social a:hover {
+            color: var(--accent);
+        }
+
+        /* --- NAVIGATION --- */
+        .navbar {
+            background-color: var(--bg-white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-sm);
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .ca-logo {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .ca-logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.1;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-sub {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            margin-top: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            background-color: var(--bg-light);
+            overflow: hidden;
+            padding: 80px 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 45%;
+            height: 100%;
+            background-color: var(--primary);
+            z-index: 0;
+            border-bottom-left-radius: 150px;
+        }
+
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content {
+            width: 50%;
+            padding-right: 40px;
+        }
+        
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: rgba(197, 160, 89, 0.1);
+            color: var(--accent-hover);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            line-height: 1.15;
+            margin-bottom: 25px;
+            color: var(--primary);
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            max-width: 90%;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+        }
+
+        .hero-image-wrapper {
+            width: 45%;
+            position: relative;
+        }
+
+        .hero-image {
+            position: relative;
+            z-index: 2;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            border: 8px solid var(--bg-white);
+        }
+
+        .hero-image img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            /* Adjusting positioning for the provided image */
+            object-position: top center; 
+        }
+
+        .experience-card {
+            position: absolute;
+            bottom: -30px;
+            left: -40px;
+            background-color: var(--bg-white);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-left: 4px solid var(--accent);
+        }
+
+        .exp-number {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .exp-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-light);
+            text-transform: uppercase;
+            line-height: 1.3;
+        }
+
+        /* --- TRUST / STATS SECTION --- */
+        .trust-section {
+            background-color: var(--primary);
+            padding: 60px 0;
+            color: var(--bg-white);
+            margin-top: 40px;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            text-align: center;
+        }
+
+        .trust-item {
+            position: relative;
+        }
+
+        .trust-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1px;
+            height: 60px;
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        .trust-item i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .trust-item h3 {
+            font-family: var(--font-body);
+            color: var(--bg-white);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .trust-item p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about {
+            background-color: var(--bg-white);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* Using the unnamed.jpg as a stylistic authentic document backing */
+        .about-doc-backdrop {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            background-image: url('unnamed.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            border-radius: var(--border-radius);
+            z-index: 0;
+        }
+        
+        .about-img-main {
+            position: relative;
+            z-index: 1;
+            border: 1px solid var(--border-color);
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .about-features {
+            margin-top: 30px;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .about-feature i {
+            color: var(--accent);
+            font-size: 1.25rem;
+            margin-top: 4px;
+        }
+
+        .about-feature h4 {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .about-feature p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+        }
+
+        /* --- EXPERTISE / SERVICES --- */
+        .services {
+            background-color: var(--bg-light);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--bg-white);
+            padding: 40px 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(197, 160, 89, 0.1);
+            color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .service-icon {
+            background-color: var(--accent);
+            color: var(--bg-white);
+        }
+
+        .service-card h3 {
+            font-size: 1.35rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .service-link i {
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-link i {
+            transform: translateX(5px);
+            color: var(--accent);
+        }
+
+        /* --- CTA SECTION --- */
+        .cta-section {
+            background-color: var(--primary);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('image_568714.jpg'); /* LinkedIn Banner reference as subtle texture */
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05;
+            z-index: 0;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            color: var(--bg-white);
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-content p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact {
+            background-color: var(--bg-white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 50px;
+            background-color: var(--bg-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-info {
+            background-color: var(--primary);
+            color: var(--bg-white);
+            padding: 50px 40px;
+            position: relative;
+        }
+        
+        .contact-info::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background-image: url('unnamed.jpg');
+            background-size: cover;
+            opacity: 0.1;
+            border-top-left-radius: 100%;
+        }
+
+        .contact-info h3 {
+            color: var(--bg-white);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .contact-info > p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 40px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .info-icon {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(197, 160, 89, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .info-content h4 {
+            color: var(--bg-white);
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .info-content p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.5;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #050d1a;
+            color: rgba(255, 255, 255, 0.7);
+            padding: 80px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 60px;
+        }
+
+        .footer-brand {
+            max-width: 400px;
+        }
+
+        .footer-brand .brand-name {
+            color: var(--bg-white);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .footer-brand p {
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: var(--bg-white);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            color: var(--bg-white);
+            font-family: var(--font-body);
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+        
+        .footer-links h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .footer-links ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        /* --- ANIMATIONS --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3rem; }
+            .hero::before { width: 40%; }
+            .experience-card { left: -20px; }
+            .trust-grid { gap: 20px; }
+            .about-grid, .contact-grid { gap: 40px; }
+            .services-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar { display: none; }
+            
+            .nav-links {
+                position: fixed;
+                top: 75px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 75px);
+                background-color: var(--bg-white);
+                flex-direction: column;
+                justify-content: center;
+                transition: 0.4s ease;
+            }
+            .nav-links.active { left: 0; }
+            .nav-links .btn { margin-top: 20px; }
+            .mobile-menu-btn { display: block; }
+            
+            .hero::before { display: none; }
+            .hero { padding: 40px 0 80px; text-align: center; }
+            .hero-container { flex-direction: column; gap: 60px; }
+            .hero-content, .hero-image-wrapper { width: 100%; padding: 0; }
+            .hero p { margin: 0 auto 30px; }
+            .hero-btns { justify-content: center; }
+            
+            .trust-grid { grid-template-columns: 1fr; gap: 40px; }
+            .trust-item:not(:last-child)::after {
+                width: 60px; height: 1px; top: auto; bottom: -20px; right: 50%; transform: translateX(50%);
+            }
+            
+            .about-grid, .contact-grid { grid-template-columns: 1fr; }
+            .about-image { margin-bottom: 30px; order: -1; }
+            
+            .services-grid { grid-template-columns: 1fr; }
+            
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.4rem; }
+            .experience-card { position: relative; bottom: 0; left: 0; margin-top: -30px; margin-left: 20px; margin-right: 20px; }
+            .contact-info { padding: 40px 25px; }
+            .section-header h2 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP CONTACT BAR -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="top-bar-info">
+                <span><i class="fa-solid fa-phone"></i> 01666-230440</span>
+                <span><i class="fa-solid fa-mobile-screen-button"></i> 098121-00440</span>
+                <span><i class="fa-solid fa-location-dot"></i> Sirsa, Haryana</span>
+            </div>
+            <div class="top-bar-social">
+                <a href="https://www.linkedin.com/in/ca-ishu-bansal-2183962a5/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="brand">
+                <div class="ca-logo">
+                    <!-- Stylized SVG recreating the ICAI CA Logo essence -->
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <text x="15" y="70" font-family="'Arial', sans-serif" font-size="55" font-weight="900" fill="#003865" letter-spacing="-2">CA</text>
+                        <path d="M 68 70 L 78 45 L 95 25 L 75 80 Z" fill="#00883E" />
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <span class="brand-name">Ishu Bansal <span style="color: var(--accent);">&</span> Associates</span>
+                    <span class="brand-sub">Chartered Accountants</span>
+                </div>
+            </a>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="#" class="active">Home</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+                <a href="#contact" class="btn btn-primary">Book Consultation</a>
+            </div>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content reveal">
+                <div class="hero-badge">
+                    <i class="fa-solid fa-award"></i> Ex-Chairman NIRC of ICAI (Sirsa)
+                </div>
+                <h1>Empowering Manufacturers to <span>Save Crores</span></h1>
+                <p>Expert consulting for government-approved subsidies, loans, and comprehensive financial structuring by CA Ishu Bansal.</p>
+                <div class="hero-btns">
+                    <a href="#services" class="btn btn-primary">Explore Services</a>
+                    <a href="#contact" class="btn btn-outline">Contact Office</a>
+                </div>
+            </div>
+            
+            <div class="hero-image-wrapper reveal delay-2">
+                <div class="hero-image">
+                    <!-- Photo of CA Ishu Bansal as requested -->
+                    <img src="1702644932190.jfif" alt="CA Ishu Bansal - Chartered Accountant, Author & Speaker">
+                </div>
+                <div class="experience-card">
+                    <div class="exp-number">18+</div>
+                    <div class="exp-text">Years of<br>Excellence<br>(Since 2006)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST / STATS SECTION -->
+    <section class="trust-section reveal">
+        <div class="container trust-grid">
+            <div class="trust-item">
+                <i class="fa-solid fa-file-invoice-dollar"></i>
+                <h3>Government Subsidies</h3>
+                <p>Securing maximum eligible approvals.</p>
+            </div>
+            <div class="trust-item">
+                <i class="fa-solid fa-microphone-lines"></i>
+                <h3>Author & Speaker</h3>
+                <p>Educating business owners on finance.</p>
+            </div>
+            <div class="trust-item">
+                <i class="fa-solid fa-building-columns"></i>
+                <h3>Loans & Finance</h3>
+                <p>Strategic consulting for growth capital.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about section-padding">
+        <div class="container about-grid">
+            <div class="about-image reveal">
+                <div class="about-doc-backdrop"></div>
+                <!-- Using the file cover image as an authentic backing/inset -->
+                <img src="unnamed.jpg" alt="Ishu Bansal & Associates Office File" class="about-img-main" style="opacity: 0.9;">
+            </div>
+            
+            <div class="about-content reveal delay-1">
+                <div class="section-header" style="text-align: left; margin-bottom: 30px;">
+                    <span class="subtitle">About The Firm</span>
+                    <h2 style="margin-bottom: 0;">CA Ishu Bansal</h2>
+                    <style>.about-content .section-header h2::after { left: 0; transform: none; }</style>
+                </div>
+                <p>Established in 2006, <strong>Ishu Bansal & Associates</strong> is a premier Chartered Accountancy firm located in Sirsa, Haryana. We specialize in transforming the financial trajectory of manufacturing businesses.</p>
+                <p>As a seasoned Chartered Accountant, Author, and active Speaker, CA Ishu Bansal is dedicated to educating and empowering business owners to optimize their financial strategies, primarily through navigating complex government subsidy frameworks.</p>
+                
+                <div class="about-features">
+                    <div class="about-feature">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <div>
+                            <h4>Professional Credentials</h4>
+                            <p>Qualified from The Institute of Chartered Accountants of India (2005).</p>
+                        </div>
+                    </div>
+                    <div class="about-feature">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <div>
+                            <h4>Leadership</h4>
+                            <p>Proud Ex-Chairman of the Sirsa Branch of NIRC of ICAI.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="services section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="subtitle">Areas of Expertise</span>
+                <h2>Professional Services</h2>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card reveal">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                    </div>
+                    <h3>Government Subsidies</h3>
+                    <p>Comprehensive guidance to help manufacturers identify, apply for, and secure crores in government-approved subsidies, ensuring regulatory compliance and maximized returns.</p>
+                    <a href="#contact" class="service-link">Consult Now <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card reveal delay-1">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3>Loans & Finance Consulting</h3>
+                    <p>Strategic structuring of debt and capital requirements. We assist business owners in securing favorable loan terms and optimizing their financial architecture for scalable growth.</p>
+                    <a href="#contact" class="service-link">Consult Now <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card reveal delay-2">
+                    <div class="service-icon">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <h3>Seminars & Education</h3>
+                    <p>As an author and speaker, CA Ishu Bansal conducts high-impact sessions for industry leaders, decoding complex financial policies into actionable business strategies.</p>
+                    <a href="#contact" class="service-link">Book a Session <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section reveal">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Are you ready to SAVE CRORES?</h2>
+                <p>Join the numerous manufacturers who have successfully optimized their capital through government-approved subsidies.</p>
+                <a href="#contact" class="btn btn-primary" style="background-color: var(--bg-white); color: var(--primary);">Schedule a Meeting Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact section-padding">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="subtitle">Get In Touch</span>
+                <h2>Office Information</h2>
+            </div>
+            
+            <div class="contact-grid reveal delay-1">
+                <div class="contact-info">
+                    <h3>Ishu Bansal & Associates</h3>
+                    <p>Chartered Accountants</p>
+                    
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div class="info-content">
+                            <h4>Office Address</h4>
+                            <p>DSS 153, Opp. Town Park,<br>Near Lal Batti Chowk,<br>SIRSA - 125055 (Haryana)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+                        <div class="info-content">
+                            <h4>Mobile</h4>
+                            <p>098121-00440</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                        <div class="info-content">
+                            <h4>Phone</h4>
+                            <p>01666-230440</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="map-container">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=DSS%20153,%20Opp.%20Town%20Park,%20Near%20Lal%20Batti%20Chowk,%20Sirsa,%20Haryana%20125055&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Ishu Bansal & Associates Location">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="ca-logo" style="margin-bottom: 15px; width: 40px; height: 40px; filter: grayscale(1) brightness(2);">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <text x="15" y="70" font-family="'Arial', sans-serif" font-size="55" font-weight="900" fill="#003865" letter-spacing="-2">CA</text>
+                            <path d="M 68 70 L 78 45 L 95 25 L 75 80 Z" fill="#00883E" />
+                        </svg>
+                    </div>
+                    <span class="brand-name" style="font-family: var(--font-heading); font-size: 1.5rem;">Ishu Bansal & Associates</span>
+                    <p>Empowering manufacturers through expert financial consulting, government subsidies, and strategic loan structuring.</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/ca-ishu-bansal-2183962a5/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#navbar"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; color: var(--accent); margin-right: 5px;"></i> Home</a></li>
+                        <li><a href="#about"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; color: var(--accent); margin-right: 5px;"></i> About Us</a></li>
+                        <li><a href="#services"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; color: var(--accent); margin-right: 5px;"></i> Services</a></li>
+                        <li><a href="#contact"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; color: var(--accent); margin-right: 5px;"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; color: var(--accent); margin-right: 5px;"></i> Government Subsidies</a></li>
+                        <li><a href="#services"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; color: var(--accent); margin-right: 5px;"></i> Loans & Finance</a></li>
+                        <li><a href="#services"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; color: var(--accent); margin-right: 5px;"></i> Business Consulting</a></li>
+                        <li><a href="#services"><i class="fa-solid fa-chevron-right" style="font-size: 0.7rem; color: var(--accent); margin-right: 5px;"></i> Speaking & Seminars</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> Ishu Bansal & Associates. All Rights Reserved.</p>
+                <p>Chartered Accountants - Sirsa, Haryana</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            const icon = mobileMenuBtn.querySelector('i');
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            });
+
+            // Close mobile menu on link click
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                });
+            });
+
+            // Sticky Navbar Box Shadow on Scroll
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 10) {
+                    navbar.style.boxShadow = '0 4px 20px -5px rgba(0, 0, 0, 0.1)';
+                } else {
+                    navbar.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.05)';
+                }
+            });
+
+            // Scroll Reveal Animation (Intersection Observer)
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                });
+            }, revealOptions);
+
+            revealElements.forEach(el => {
+                revealOnScroll.observe(el);
+            });
+            
+            // Trigger animation for elements immediately in viewport on load
+            setTimeout(() => {
+                revealElements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight) {
+                        el.classList.add('active');
+                    }
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>
