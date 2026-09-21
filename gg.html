@@ -17,7 +17,7 @@
     <style>
         /* --- DESIGN SYSTEM & VARIABLES --- */
         :root {
-            --primary-dark: #0A1E17;     /* Deep Emerald/Forest Green (Inspired by the necklace box) */
+            --primary-dark: #0A1E17;     /* Deep Emerald/Forest Green */
             --primary: #123528;          
             --gold: #D4AF37;             /* Classic Gold */
             --gold-light: #F3E5AB;       
@@ -125,7 +125,7 @@
             border: 1px solid transparent;
             cursor: pointer;
             transition: var(--transition);
-            border-radius: 0; /* Sharp edges for luxury feel */
+            border-radius: 0;
         }
 
         .btn-primary {
@@ -279,7 +279,6 @@
             overflow: hidden;
         }
 
-        /* Abstract elegant background pattern/gradient */
         .hero::before {
             content: '';
             position: absolute;
@@ -334,14 +333,22 @@
             width: 45%;
             height: 600px;
             position: relative;
+            background-color: rgba(212, 175, 55, 0.05); /* Fallback */
+            border-radius: 4px 4px 100px 4px;
         }
 
         .hero-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 4px 4px 100px 4px; /* Elegant asymmetrical border */
+            border-radius: 4px 4px 100px 4px;
             box-shadow: -15px 15px 0 rgba(212, 175, 55, 0.2);
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
 
         /* --- ABOUT HIGHLIGHT --- */
@@ -435,6 +442,7 @@
             overflow: hidden;
             aspect-ratio: 1 / 1;
             margin-bottom: 20px;
+            background-color: rgba(212, 175, 55, 0.05); /* Fallback */
         }
 
         .product-img img {
@@ -442,6 +450,12 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.7s ease;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
 
         .product-card:hover .product-img img {
@@ -629,7 +643,7 @@
         @media (max-width: 768px) {
             .nav-links {
                 position: fixed;
-                top: 80px; /* Below header */
+                top: 80px; 
                 left: -100%;
                 width: 100%;
                 height: calc(100vh - 80px);
@@ -707,8 +721,8 @@
                 <a href="https://wa.me/919992401317" target="_blank" class="btn btn-outline" style="border-color: var(--gold); color: var(--gold);">WhatsApp Us</a>
             </div>
             <div class="hero-image reveal delay-2">
-                <!-- Using the Bridal Choker Set as the main hero visual -->
-                <img src="SaveInta.com_769251979_17979628317098712_3247914319720995944_n.jpg" alt="Royal Bridal Choker Set by Gehna Gatta">
+                <!-- Using jw4.jpg as requested for the top page -->
+                <img src="jw4.jpg" alt="Exquisite Jewellery Collection by Gehna Gatta">
             </div>
         </div>
     </section>
@@ -766,11 +780,11 @@
 
             <div class="product-grid">
                 
-                <!-- Product 1: Bridal Set -->
+                <!-- Product 1 -->
                 <div class="product-card reveal">
                     <div class="wholesale-badge">Wholesale</div>
                     <div class="product-img">
-                        <img src="jw1.jpg" alt="Royal Antique Bridal Choker Set with Pearl Detailing">
+                        <img src="jw1.jpg" alt="Signature Bridal Set">
                     </div>
                     <div class="product-info">
                         <span class="product-category">Bridal & Festival</span>
@@ -779,11 +793,11 @@
                     </div>
                 </div>
 
-                <!-- Product 2: Antique Jhumkas -->
+                <!-- Product 2 -->
                 <div class="product-card reveal delay-1">
                     <div class="wholesale-badge">Wholesale</div>
                     <div class="product-img">
-                        <img src="jw2.jpg" alt="Antique Gold Jhumka Earrings with Pearl Drops">
+                        <img src="jw2.jpg" alt="Antique Gold Jhumkas">
                     </div>
                     <div class="product-info">
                         <span class="product-category">Earrings</span>
@@ -792,15 +806,15 @@
                     </div>
                 </div>
 
-                <!-- Product 3: Silver Bracelet -->
+                <!-- Product 3 -->
                 <div class="product-card reveal delay-2">
                     <div class="wholesale-badge">92.5 Silver</div>
                     <div class="product-img">
-                        <img src="jw3.jpg" alt="Pure 92.5 Silver Charm Bracelet with Purple Beads">
+                        <img src="jw3.jpg" alt="Sterling Silver Collection">
                     </div>
                     <div class="product-info">
                         <span class="product-category">Silver Collection</span>
-                        <h3>Sterling Silver Charm Bracelet</h3>
+                        <h3>Sterling Silver Bracelet</h3>
                         <p class="product-price">Enquire for Wholesale Price</p>
                     </div>
                 </div>
@@ -862,9 +876,9 @@
                 </div>
                 
                 <div class="map-wrapper reveal delay-1">
-                    <!-- Embedded map pointing to the Surkhab Chowk, Sirsa location -->
+                    <!-- Fixed Google Maps Embed using query parameter (q) which is reliable and does not require pb strings or API keys -->
                     <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13890.311394156685!2d75.02677!3d29.532764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39114dc0f0ec59df%3A0x5b247e6524853abb!8m2!3d29.532764!4d75.035511!15sCg9HZWhuYSBHYXR0YSBTaXJzYZIBEGpld2Vscnlfc3RvcmU!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                        src="https://maps.google.com/maps?q=Gehna%20Gatta,%20Hisar%20Rd,%20Surkhab%20Chownk,%20Sirsa,%20Haryana%20125055&t=&z=15&ie=UTF8&iwloc=&output=embed" 
                         allowfullscreen="" 
                         loading="lazy" 
                         referrerpolicy="no-referrer-when-downgrade"
