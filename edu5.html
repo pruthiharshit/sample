@@ -344,12 +344,19 @@
             position: relative;
         }
 
+        /* Added fallback styling in case the image doesn't load immediately */
         .hero-image img {
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-lg);
             border: 8px solid white;
             position: relative;
             z-index: 2;
+            background-color: #e9ecef;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
         }
 
         .hero-shape {
@@ -463,10 +470,18 @@
             flex: 1;
         }
 
+        /* Added fallback styling */
         .results-image img {
             border-radius: var(--border-radius);
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             border: 4px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.05);
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.5);
+            text-align: center;
         }
 
         .results-text {
@@ -551,14 +566,28 @@
             height: 350px;
             overflow: hidden;
             background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
+        /* Enhanced fallback styling to prevent collapsed/ugly broken images */
         .community-img-wrapper img {
             width: 100%;
             height: 100%;
+            min-height: 350px;
             object-fit: cover;
             object-position: top;
             transition: transform 0.5s ease;
+            background-color: #f1f5f9;
+            color: var(--text-muted);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
         }
         
         .community-card:hover .community-img-wrapper img {
@@ -823,7 +852,7 @@
             <div class="hero-image fade-up delay-1">
                 <div class="hero-shape"></div>
                 <!-- Using the storefront image -->
-                <img src="mc2.png" alt="M Craze Career Institute Campus in Sirsa">
+                <img src="mc.png" alt="M Craze Career Institute Campus in Sirsa">
             </div>
         </div>
     </section>
@@ -929,8 +958,8 @@
                 </div>
                 
                 <div class="results-image">
-                    <!-- Using the results poster image -->
-                    <img src="mc.png" alt="M Craze Career Institute Class 12th Star Performers">
+                    <!-- Changed to mc2.png as requested -->
+                    <img src="mc2.png" alt="M Craze Career Institute Class 12th Star Performers">
                 </div>
             </div>
         </div>
@@ -953,7 +982,7 @@
                         <a href="https://www.instagram.com/m.crazecareerinstitute/" target="_blank" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem;">Follow</a>
                     </div>
                     <div class="community-img-wrapper">
-                        <!-- Instagram profile screenshot -->
+                        <!-- Instagram profile screenshot with fallback styling for broken links -->
                         <img src="image_3020a0.jpg" alt="M Craze Career Institute Instagram Profile">
                     </div>
                 </div>
@@ -965,7 +994,7 @@
                         <a href="https://www.google.com/maps/place/M+Craze+Career+Institute+-+BEST+Institute+For+JEE%2FNEET/@29.5367604,75.0447412,17z" target="_blank" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem;">View</a>
                     </div>
                     <div class="community-img-wrapper">
-                        <!-- Google Maps screenshot -->
+                        <!-- Google Maps screenshot with fallback styling for broken links -->
                         <img src="image_30341e.jpg" alt="M Craze Career Institute on Google Maps">
                     </div>
                 </div>
@@ -997,7 +1026,8 @@
                     <div class="info-item">
                         <i class="fa-solid fa-phone"></i>
                         <div class="info-content">
-                            <h4>Helpline Numbers</h4>
+                            <!-- Changed text from Helpline Numbers to Contact Numbers as requested -->
+                            <h4>Contact Numbers</h4>
                             <p>+91 92546-20820<br>+91 92555-20820<br>+91 77678-00001</p>
                         </div>
                     </div>
