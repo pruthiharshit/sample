@@ -21,7 +21,7 @@
             --primary-light: #203a43;
             --accent-red: #d32f2f;        /* Matches M.Craze Logo Red */
             --accent-red-hover: #b71c1c;
-            --accent-blue: #1976d2;       /* For subject blocks in the board */
+            --accent-blue: #1976d2;       
             --bg-light: #f8f9fa;
             --bg-white: #ffffff;
             --text-dark: #333333;
@@ -122,7 +122,9 @@
         }
 
         .btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             padding: 14px 28px;
             border-radius: var(--border-radius);
             font-family: var(--font-heading);
@@ -279,31 +281,71 @@
             border: none;
         }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO SECTION (Centered with Background Image) --- */
         .hero {
-            background: linear-gradient(to right, rgba(248, 249, 250, 1) 0%, rgba(248, 249, 250, 0.8) 100%);
-            padding: 60px 0;
             position: relative;
+            background-image: url('mc.png'); /* Institute image as background */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 120px 0;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
             overflow: hidden;
         }
 
+        /* Dark overlay to ensure text readability over the image */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 32, 39, 0.85);
+            z-index: 1;
+        }
+
         .hero-container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-            gap: 40px;
         }
 
         .hero-content {
-            flex: 1;
-            max-width: 600px;
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.2);
+            font-weight: 600;
+            font-family: var(--font-heading);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 25px;
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            color: var(--primary-blue);
+            font-size: 4rem;
+            line-height: 1.15;
+            margin-bottom: 25px;
+            color: white;
         }
 
         .hero-content h1 span {
@@ -311,64 +353,53 @@
         }
 
         .hero-content p {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            margin-bottom: 30px;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            max-width: 700px;
         }
 
         .hero-features {
             display: flex;
-            gap: 20px;
-            margin-bottom: 40px;
+            gap: 25px;
+            margin-bottom: 45px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .feature-item {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             font-family: var(--font-heading);
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--primary-blue);
+            font-weight: 500;
+            font-size: 1rem;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
         }
 
         .feature-item i {
             color: var(--accent-red);
-            background: rgba(211, 47, 47, 0.1);
-            padding: 8px;
-            border-radius: 50%;
+            font-size: 1.2rem;
         }
 
-        .hero-image {
-            flex: 1;
-            position: relative;
-        }
-
-        /* Added fallback styling in case the image doesn't load immediately */
-        .hero-image img {
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-lg);
-            border: 8px solid white;
-            position: relative;
-            z-index: 2;
-            background-color: #e9ecef;
-            min-height: 400px;
+        .hero-btns {
             display: flex;
-            align-items: center;
+            gap: 20px;
             justify-content: center;
-            color: var(--text-muted);
         }
 
-        .hero-shape {
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            width: 100%;
-            height: 100%;
-            background-color: var(--accent-red);
-            border-radius: var(--border-radius);
-            z-index: 1;
-            opacity: 0.1;
+        .hero-btns .btn-outline {
+            border-color: white;
+            color: white;
+        }
+        
+        .hero-btns .btn-outline:hover {
+            background-color: white;
+            color: var(--primary-blue);
         }
 
         /* --- COURSES SECTION --- */
@@ -470,18 +501,12 @@
             flex: 1;
         }
 
-        /* Added fallback styling */
         .results-image img {
             border-radius: var(--border-radius);
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             border: 4px solid rgba(255, 255, 255, 0.1);
             background-color: rgba(255, 255, 255, 0.05);
             min-height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: rgba(255, 255, 255, 0.5);
-            text-align: center;
         }
 
         .results-text {
@@ -543,6 +568,8 @@
             overflow: hidden;
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
         }
         
         .community-card-header {
@@ -551,6 +578,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            background-color: var(--bg-white);
         }
 
         .community-card-header h3 {
@@ -561,37 +589,54 @@
             gap: 10px;
         }
         
-        .community-img-wrapper {
+        .preview-window {
             width: 100%;
-            height: 350px;
-            overflow: hidden;
-            background: #e9ecef;
+            height: 380px;
+            position: relative;
             display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fa;
+        }
+
+        /* Stylish Instagram Placeholder (Since real iframes get blocked) */
+        .ig-placeholder {
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
         }
 
-        /* Enhanced fallback styling to prevent collapsed/ugly broken images */
-        .community-img-wrapper img {
+        .ig-placeholder i {
+            font-size: 4.5rem;
+            background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .ig-placeholder h4 {
+            font-size: 1.3rem;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        .ig-placeholder p {
+            color: var(--text-muted);
+            max-width: 280px;
+            margin-bottom: 25px;
+        }
+
+        /* Google Maps iframe wrapper */
+        .map-preview iframe {
             width: 100%;
             height: 100%;
-            min-height: 350px;
-            object-fit: cover;
-            object-position: top;
-            transition: transform 0.5s ease;
-            background-color: #f1f5f9;
-            color: var(--text-muted);
-            font-family: var(--font-body);
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .community-card:hover .community-img-wrapper img {
-            transform: scale(1.02);
+            border: none;
         }
 
         /* --- CONTACT SECTION --- */
@@ -648,13 +693,13 @@
             line-height: 1.5;
         }
 
-        .map-container {
+        .contact-map-container {
             width: 100%;
             height: 100%;
             min-height: 400px;
         }
 
-        .map-container iframe {
+        .contact-map-container iframe {
             width: 100%;
             height: 100%;
             border: none;
@@ -743,10 +788,7 @@
 
         /* --- RESPONSIVE --- */
         @media (max-width: 1024px) {
-            .hero-container { flex-direction: column; text-align: center; }
-            .hero-content { max-width: 100%; }
-            .hero-features { justify-content: center; flex-wrap: wrap; }
-            .hero-shape { display: none; }
+            .hero-content h1 { font-size: 3.2rem; }
             .results-container { flex-direction: column; }
             .community-grid { grid-template-columns: 1fr; }
             .contact-grid { grid-template-columns: 1fr; }
@@ -773,7 +815,11 @@
             .nav-links .btn { display: none; }
             .mobile-menu-btn { display: block; }
             
+            .hero { padding: 80px 0; }
             .hero-content h1 { font-size: 2.5rem; }
+            .hero-features { flex-direction: column; align-items: center; gap: 15px; }
+            .hero-btns { flex-direction: column; width: 100%; max-width: 300px; margin: 0 auto; gap: 15px; }
+            
             .courses-grid { grid-template-columns: 1fr; }
             .achievement-list { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; }
@@ -824,13 +870,12 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION (Centered with Background Image) -->
     <section class="hero">
         <div class="container hero-container">
             <div class="hero-content fade-up">
-                <div class="section-header" style="text-align: left; margin-bottom: 20px;">
-                    <span class="badge">Institute for Preparation of NEET | IIT-JEE | Foundation</span>
-                </div>
+                <span class="hero-badge">Institute for Preparation of NEET | IIT-JEE | Foundation</span>
+                
                 <h1>The Way To Your <span>Ultimate Career</span></h1>
                 <p>Expert guidance and comprehensive study methodology for cracking IIT-JEE, NEET, and excelling in Board Examinations.</p>
                 
@@ -841,18 +886,15 @@
                     <div class="feature-item">
                         <i class="fa-solid fa-book-open"></i> Proven Results
                     </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-bullseye"></i> Goal Oriented
+                    </div>
                 </div>
 
                 <div class="hero-btns">
                     <a href="#courses" class="btn btn-primary">Explore Courses</a>
-                    <a href="#contact" class="btn btn-outline" style="margin-left: 15px;">Contact Us</a>
+                    <a href="#contact" class="btn btn-outline">Contact Us</a>
                 </div>
-            </div>
-            
-            <div class="hero-image fade-up delay-1">
-                <div class="hero-shape"></div>
-                <!-- Using the storefront image -->
-                <img src="mc.png" alt="M Craze Career Institute Campus in Sirsa">
             </div>
         </div>
     </section>
@@ -958,14 +1000,14 @@
                 </div>
                 
                 <div class="results-image">
-                    <!-- Changed to mc2.png as requested -->
+                    <!-- Correctly referencing mc2.png as per user instruction -->
                     <img src="mc2.png" alt="M Craze Career Institute Class 12th Star Performers">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- DIGITAL PRESENCE / COMMUNITY SECTION -->
+    <!-- DIGITAL PRESENCE / COMMUNITY SECTION (Showcasing real mini previews) -->
     <section id="community" class="community-section section-padding">
         <div class="container">
             <div class="section-header fade-up">
@@ -975,27 +1017,37 @@
             </div>
             
             <div class="community-grid">
-                <!-- Instagram Card -->
+                <!-- Instagram Card (Elegant Styled Preview since actual iframes get blocked) -->
                 <div class="community-card fade-up">
                     <div class="community-card-header">
                         <h3><i class="fa-brands fa-instagram" style="color: #E1306C;"></i> Instagram Updates</h3>
-                        <a href="https://www.instagram.com/m.crazecareerinstitute/" target="_blank" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem;">Follow</a>
+                        <a href="https://www.instagram.com/m.crazecareerinstitute/" target="_blank" class="btn btn-outline" style="padding: 6px 16px; font-size: 0.85rem;">Follow</a>
                     </div>
-                    <div class="community-img-wrapper">
-                        <!-- Instagram profile screenshot with fallback styling for broken links -->
-                        <img src="image_3020a0.jpg" alt="M Craze Career Institute Instagram Profile">
+                    <div class="preview-window ig-placeholder">
+                        <i class="fa-brands fa-instagram"></i>
+                        <h4>@m.crazecareerinstitute</h4>
+                        <p>Join our growing community of achievers. See latest announcements, student highlights, and daily inspiration directly on our feed.</p>
+                        <a href="https://www.instagram.com/m.crazecareerinstitute/" target="_blank" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.85rem; border-radius: 50px;">
+                            View Profile
+                        </a>
                     </div>
                 </div>
 
-                <!-- Google Maps Card -->
+                <!-- Google Maps Card (Live Embedded Iframe) -->
                 <div class="community-card fade-up delay-1">
                     <div class="community-card-header">
                         <h3><i class="fa-brands fa-google" style="color: #4285F4;"></i> Google Reviews & Location</h3>
-                        <a href="https://www.google.com/maps/place/M+Craze+Career+Institute+-+BEST+Institute+For+JEE%2FNEET/@29.5367604,75.0447412,17z" target="_blank" class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem;">View</a>
+                        <a href="https://www.google.com/maps/place/M+Craze+Career+Institute+-+BEST+Institute+For+JEE%2FNEET/@29.5367604,75.0447412,17z" target="_blank" class="btn btn-outline" style="padding: 6px 16px; font-size: 0.85rem;">View</a>
                     </div>
-                    <div class="community-img-wrapper">
-                        <!-- Google Maps screenshot with fallback styling for broken links -->
-                        <img src="image_30341e.jpg" alt="M Craze Career Institute on Google Maps">
+                    <div class="preview-window map-preview">
+                        <!-- Valid Google Maps Embed string pointing to Sirsa -->
+                        <iframe 
+                            src="https://maps.google.com/maps?q=M%20Craze%20Career%20Institute,%20Bank%20colony,%20Hisar%20Rd,%20Sirsa,%20Haryana%20125055&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="M Craze Career Institute Live Map Preview">
+                        </iframe>
                     </div>
                 </div>
             </div>
@@ -1026,7 +1078,7 @@
                     <div class="info-item">
                         <i class="fa-solid fa-phone"></i>
                         <div class="info-content">
-                            <!-- Changed text from Helpline Numbers to Contact Numbers as requested -->
+                            <!-- Fixed to Contact Numbers as requested -->
                             <h4>Contact Numbers</h4>
                             <p>+91 92546-20820<br>+91 92555-20820<br>+91 77678-00001</p>
                         </div>
@@ -1045,7 +1097,7 @@
                     </div>
                 </div>
                 
-                <div class="map-container">
+                <div class="contact-map-container">
                     <!-- Embedded Google Map using coordinates/address for Sirsa Bank Colony location -->
                     <iframe 
                         src="https://maps.google.com/maps?q=M%20Craze%20Career%20Institute,%20Bank%20colony,%20Hisar%20Rd,%20Sirsa,%20Haryana%20125055&t=&z=15&ie=UTF8&iwloc=&output=embed" 
@@ -1067,7 +1119,7 @@
                     <div class="logo-main" style="font-family: var(--font-heading); font-size: 1.8rem; font-weight: 800; letter-spacing: -0.5px;">M.<span>Craze</span></div>
                     <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">The premier institute for JEE, NEET, and Foundation preparation in Sirsa, guiding students to their ultimate career goals.</p>
                     <div class="top-bar-social" style="margin-top: 20px;">
-                        <a href="https://www.instagram.com/m.crazecareerinstitute/" style="margin-left: 0; margin-right: 15px;"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.instagram.com/m.crazecareerinstitute/" target="_blank" style="margin-left: 0; margin-right: 15px;"><i class="fa-brands fa-instagram"></i></a>
                         <a href="#" style="margin-right: 15px;"><i class="fa-brands fa-facebook-f"></i></a>
                         <a href="#"><i class="fa-brands fa-youtube"></i></a>
                     </div>
