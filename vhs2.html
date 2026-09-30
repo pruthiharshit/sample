@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vikas High School | Premium Education in Sirsa</title>
+    <meta name="description" content="Vikas High School, Sirsa. Established in 1992, providing quality co-educational learning from Pre-Primary to Class 10.">
+    
+    <!-- Fonts: Inter for that clean, modern tech-like aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- DESIGN SYSTEM (Inspired by Premium Tech Brands) --- */
+        :root {
+            --bg-main: #ffffff;
+            --bg-alt: #f5f5f7;
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --accent: #0066cc;
+            --accent-hover: #0077ed;
+            --border: #d2d2d7;
+            
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            
+            --transition-smooth: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+            --transition-fast: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-spacer {
+            padding: 120px 0;
+        }
+
+        .bg-alt {
+            background-color: var(--bg-alt);
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .text-center { text-align: center; }
+        
+        .eyebrow {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-align: center;
+            transition: var(--transition-fast);
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .btn-dark {
+            background-color: var(--text-primary);
+            color: var(--bg-main);
+        }
+
+        .btn-dark:hover {
+            background-color: #000000;
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-primary);
+            border-color: var(--text-primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--text-primary);
+            color: var(--bg-main);
+        }
+
+        /* --- NAVIGATION --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transition-fast);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            opacity: 0.8;
+            transition: var(--transition-fast);
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        /* --- HERO SECTION (3D Vibe) --- */
+        .hero {
+            padding-top: 150px;
+            padding-bottom: 80px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.05;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .hero h1 span {
+            display: block;
+            font-weight: 400;
+            color: var(--text-secondary);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-3d-showcase {
+            margin-top: 60px;
+            width: 100%;
+            max-width: 1000px;
+            perspective: 2000px; /* Crucial for 3D effect */
+        }
+
+        /* The 3D Interactive Card */
+        .tilt-card {
+            width: 100%;
+            border-radius: 24px;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15), 0 0 40px rgba(0,0,0,0.05);
+            background: white;
+            will-change: transform;
+            cursor: default;
+        }
+
+        .tilt-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 24px;
+            /* Inner 3D pop effect */
+            transform: translateZ(30px);
+        }
+
+        /* Continuous gentle floating animation when not hovered */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* --- STATS SECTION --- */
+        .stats {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-box h3 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.05em;
+            margin-bottom: 5px;
+        }
+
+        .stat-box p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* --- SPLIT SHOWCASE (About & Academics) --- */
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .showcase-grid.reverse {
+            direction: rtl;
+        }
+        .showcase-grid.reverse > * {
+            direction: ltr;
+        }
+
+        .showcase-text h2 {
+            font-size: 3rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .showcase-text p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
+        .feature-item i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        /* 3D Image Wrapper for Sections */
+        .img-3d-wrapper {
+            perspective: 1500px;
+        }
+
+        .img-3d-inner {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
+            transform: rotateY(-5deg) rotateX(5deg); /* Default isometric stance */
+            transition: var(--transition-smooth);
+        }
+
+        .showcase-grid.reverse .img-3d-inner {
+            transform: rotateY(5deg) rotateX(5deg);
+        }
+
+        .img-3d-wrapper:hover .img-3d-inner {
+            transform: rotateY(0) rotateX(0) scale(1.02);
+            box-shadow: 0 35px 60px rgba(0,0,0,0.15);
+        }
+
+        .img-3d-inner img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+
+        /* --- FACILITIES GRID --- */
+        .facilities-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .facilities-header h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .fac-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .fac-card {
+            background: var(--bg-main);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            transition: var(--transition-smooth);
+            border: 1px solid rgba(0,0,0,0.02);
+            transform-style: preserve-3d;
+        }
+
+        .fac-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .fac-icon {
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: 24px;
+            transform: translateZ(20px); /* 3D pop on hover if applied */
+        }
+
+        .fac-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .fac-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* --- CONTACT & MAP --- */
+        .contact-box {
+            background: var(--text-primary);
+            color: var(--bg-main);
+            border-radius: 32px;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .contact-info {
+            padding: 60px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-info h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+        }
+
+        .c-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .c-item i {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-top: 5px;
+        }
+
+        .c-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .c-item p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .map-wrapper {
+            flex: 1;
+            min-height: 400px;
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(0.2) contrast(1.2); /* Stylized map */
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 60px 0;
+            background: var(--bg-alt);
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* --- ANIMATIONS (Scroll Reveal) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3.5rem; }
+            .showcase-grid { grid-template-columns: 1fr; gap: 40px; }
+            .showcase-grid.reverse { direction: ltr; }
+            .img-3d-inner { transform: none; }
+            .fac-grid { grid-template-columns: repeat(2, 1fr); }
+            .contact-box { flex-direction: column; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: rgba(255,255,255,0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 40px 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                transform: translateY(-150%);
+                transition: var(--transition-smooth);
+                z-index: 999;
+            }
+            .nav-links.active { transform: translateY(0); }
+            .menu-toggle { display: block; }
+            
+            .hero { padding-top: 120px; }
+            .hero h1 { font-size: 2.8rem; }
+            .hero h1 span { font-size: 1.8rem; }
+            
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 40px 20px; }
+            .fac-grid { grid-template-columns: 1fr; }
+            
+            .contact-info { padding: 40px 20px; }
+            .contact-info h2 { font-size: 2.2rem; }
+            .section-spacer { padding: 80px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-graduation-cap"></i> Vikas High School
+            </a>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="#about">About</a>
+                <a href="#academics">Academics</a>
+                <a href="#facilities">Facilities</a>
+                <a href="#contact">Contact</a>
+                <a href="#contact" class="btn btn-dark" style="color: white;">Admissions Open</a>
+            </div>
+
+            <button class="menu-toggle" id="menuBtn" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero container">
+        <div class="reveal">
+            <h1>
+                <span>The all-new standard in education.</span>
+                Vikas High School
+            </h1>
+            <p>Empowering minds and shaping the future in Sirsa since 1992. Experience a co-educational environment designed for ultimate growth.</p>
+            <div class="hero-btns">
+                <a href="#about" class="btn btn-dark">Discover More</a>
+                <a href="#contact" class="btn btn-outline">Visit Campus</a>
+            </div>
+        </div>
+
+        <!-- 3D Interactive Showcase Image -->
+        <div class="hero-3d-showcase reveal delay-1">
+            <div class="tilt-card floating" id="hero3D">
+                <!-- High-quality stock placeholder for premium feel -->
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2000&auto=format&fit=crop" alt="Vikas High School Campus Life">
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats bg-alt">
+        <div class="container stats-grid reveal">
+            <div class="stat-box">
+                <h3>1992</h3>
+                <p>Established</p>
+            </div>
+            <div class="stat-box">
+                <h3>1–10</h3>
+                <p>Classes</p>
+            </div>
+            <div class="stat-box">
+                <h3>13</h3>
+                <p>Expert Teachers</p>
+            </div>
+            <div class="stat-box">
+                <h3>600+</h3>
+                <p>Library Books</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SHOWCASE -->
+    <section id="about" class="section-spacer container">
+        <div class="showcase-grid">
+            <div class="showcase-text reveal">
+                <span class="eyebrow">Heritage & Excellence</span>
+                <h2>A legacy of learning,<br>reimagined.</h2>
+                <p>Located in the heart of Agrasain Colony, Sirsa, Vikas High School has been a cornerstone of quality education for over three decades. As a private, unaided institution, we operate with a singular focus: student success.</p>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <i class="fa-solid fa-check-circle"></i> Co-educational Environment
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-check-circle"></i> State Board Curriculum
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-check-circle"></i> Hindi Medium Instruction
+                    </div>
+                </div>
+            </div>
+            <div class="img-3d-wrapper reveal delay-1">
+                <div class="img-3d-inner">
+                    <!-- Second high-quality stock photo styled cleanly -->
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1200&auto=format&fit=crop" alt="Students engaged in modern learning">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACADEMICS SHOWCASE (Reversed) -->
+    <section id="academics" class="section-spacer bg-alt">
+        <div class="container showcase-grid reverse">
+            <div class="showcase-text reveal">
+                <span class="eyebrow">Academic Structure</span>
+                <h2>From early curiosity<br>to board readiness.</h2>
+                <p>Our academic journey is designed to support students at every critical stage. Starting with a nurturing Pre-Primary section, we guide students all the way through Class 10 Board examinations.</p>
+                <p>With an exceptional student-to-teacher ratio driven by our 13 dedicated educators, every child receives the attention required to build a strong foundational intellect.</p>
+            </div>
+            <div class="img-3d-wrapper reveal delay-1">
+                <div class="img-3d-inner">
+                    <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?q=80&w=1200&auto=format&fit=crop" alt="Academic Excellence">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FACILITIES -->
+    <section id="facilities" class="section-spacer container">
+        <div class="facilities-header reveal">
+            <span class="eyebrow">Infrastructure</span>
+            <h2>Designed for discovery.</h2>
+            <p style="color: var(--text-secondary); font-size: 1.1rem;">Everything a student needs to excel, housed within a secure, modern urban campus.</p>
+        </div>
+        
+        <div class="fac-grid">
+            <div class="fac-card reveal">
+                <i class="fa-solid fa-book-open fac-icon"></i>
+                <h3>Library Hub</h3>
+                <p>Access to over 600 books curated to expand horizons beyond standard textbooks.</p>
+            </div>
+            <div class="fac-card reveal delay-1">
+                <i class="fa-solid fa-laptop-code fac-icon"></i>
+                <h3>Digital Resources</h3>
+                <p>Equipped with essential computer systems ensuring fundamental digital literacy.</p>
+            </div>
+            <div class="fac-card reveal delay-2">
+                <i class="fa-solid fa-shield-halved fac-icon"></i>
+                <h3>Secure Campus</h3>
+                <p>A safe, well-maintained urban facility with continuous electricity and clean water.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT / MAP -->
+    <section id="contact" class="section-spacer container">
+        <div class="contact-box reveal">
+            <div class="contact-info">
+                <span class="eyebrow" style="color: #86868b;">Get in touch</span>
+                <h2>Visit Vikas.</h2>
+                
+                <div class="c-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <h4>Campus Location</h4>
+                        <p>Agrasain Colony, Sirsa<br>Haryana 125055, India</p>
+                    </div>
+                </div>
+                
+                <div class="c-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <h4>Admissions & Enquiries</h4>
+                        <p>094161 86814</p>
+                    </div>
+                </div>
+
+                <div class="c-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <h4>Information</h4>
+                        <p>Admissions Open for Academic Year</p>
+                    </div>
+                </div>
+            </div>
+            <div class="map-wrapper">
+                <iframe 
+                    src="https://maps.google.com/maps?q=Vikas%20High%20School,%20Agrasain%20Colony,%20Sirsa,%20Haryana%20125055&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Vikas High School Map">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <a href="#" class="footer-logo">
+                <i class="fa-solid fa-graduation-cap"></i> Vikas High School
+            </a>
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#academics">Academics</a>
+                <a href="#facilities">Facilities</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p class="copyright">&copy; <script>document.write(new Date().getFullYear())</script> Vikas High School, Sirsa. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- Mobile Menu Toggle ---
+            const menuBtn = document.getElementById('menuBtn');
+            const navLinks = document.getElementById('navLinks');
+            const icon = menuBtn.querySelector('i');
+            
+            menuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                });
+            });
+
+            // --- 3D Hover Effect for Hero Image ---
+            // Only apply on non-touch devices for better performance
+            if (window.matchMedia("(hover: hover)").matches) {
+                const card = document.getElementById('hero3D');
+                
+                card.addEventListener('mousemove', (e) => {
+                    // Pause floating animation during hover interaction
+                    card.classList.remove('floating');
+                    
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    // Calculate rotation (max 8 degrees for elegant feel)
+                    const rotateX = ((y - centerY) / centerY) * -8;
+                    const rotateY = ((x - centerX) / centerX) * 8;
+                    
+                    card.style.transform = `perspective(2000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    // Reset transform smoothly
+                    card.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+                    card.style.transform = `perspective(2000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
+                    
+                    // Resume floating animation after reset
+                    setTimeout(() => {
+                        card.style.transition = 'transform 0.1s ease-out';
+                        card.classList.add('floating');
+                    }, 500);
+                });
+            }
+
+            // --- Scroll Reveal Animation ---
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Run once
+                    }
+                });
+            }, revealOptions);
+
+            revealElements.forEach(el => {
+                revealOnScroll.observe(el);
+            });
+            
+            // Trigger immediately for elements initially in view
+            setTimeout(() => {
+                revealElements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight) {
+                        el.classList.add('active');
+                    }
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>
