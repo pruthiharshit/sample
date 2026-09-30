@@ -6,48 +6,37 @@
     <title>Vikas High School | Premium Education in Sirsa</title>
     <meta name="description" content="Vikas High School, Sirsa. Established in 1992, providing quality co-educational learning from Pre-Primary to Class 10.">
     
-    <!-- Premium Fonts: Playfair Display for established academic feel, Inter for clean modern UI -->
+    <!-- Clean, modern tech aesthetic font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- PREMIUM DESIGN SYSTEM --- */
+        /* --- PREMIUM BRIGHT DESIGN SYSTEM --- */
         :root {
-            /* Colors */
-            --primary-dark: #0f172a; /* Deep Slate / Navy */
-            --primary-light: #1e293b;
-            --accent-blue: #2563eb; /* Vibrant Royal Blue */
-            --accent-blue-hover: #1d4ed8;
-            --accent-gold: #d4af37; /* Premium Gold for accents */
-            
+            /* Clean White & Crisp Blue Theme */
             --bg-main: #ffffff;
-            --bg-alt: #f8fafc; /* Very light slate */
+            --bg-alt: #f8fafc;
+            --bg-glass: rgba(255, 255, 255, 0.85);
             
-            --text-main: #334155;
-            --text-light: #64748B;
+            --text-primary: #0f172a; /* Slate 900 */
+            --text-secondary: #475569; /* Slate 600 */
             --text-inverse: #ffffff;
+            
+            --accent: #2563eb; /* Vibrant Trustworthy Blue */
+            --accent-hover: #1d4ed8;
+            --accent-light: #eff6ff;
             
             --border: #e2e8f0;
             
-            /* Typography */
-            --font-sans: 'Inter', sans-serif;
-            --font-serif: 'Playfair Display', serif;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             
-            /* Effects */
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
-            --shadow-glow: 0 0 30px rgba(37, 99, 235, 0.3);
-            
-            /* Glassmorphism */
-            --glass-bg: rgba(255, 255, 255, 0.85);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --glass-blur: blur(16px);
+            --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-fast: all 0.3s ease;
+            --shadow-float: 0 20px 40px -10px rgba(37, 99, 235, 0.15);
         }
 
         * {
@@ -55,6 +44,7 @@
             padding: 0;
             box-sizing: border-box;
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         html {
@@ -62,9 +52,9 @@
         }
 
         body {
-            font-family: var(--font-sans);
-            color: var(--text-main);
+            font-family: var(--font-main);
             background-color: var(--bg-main);
+            color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
         }
@@ -80,57 +70,37 @@
             display: block;
         }
 
-        /* --- LAYOUT UTILITIES --- */
+        /* --- LAYOUT --- */
         .container {
-            max-width: 1240px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        .section-padding {
+        .section-spacer {
             padding: 120px 0;
         }
 
+        .text-center { text-align: center; }
+
         /* --- TYPOGRAPHY --- */
         h1, h2, h3, h4 {
-            color: var(--primary-dark);
-            line-height: 1.2;
-        }
-
-        .heading-serif {
-            font-family: var(--font-serif);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--text-primary);
         }
 
         .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
             font-size: 0.85rem;
             font-weight: 700;
-            color: var(--accent-blue);
+            color: var(--accent);
             text-transform: uppercase;
             letter-spacing: 0.15em;
-            margin-bottom: 20px;
-        }
-
-        .eyebrow::before {
-            content: '';
-            width: 30px;
-            height: 2px;
-            background-color: var(--accent-gold);
-        }
-
-        .section-title {
-            font-size: 3.2rem;
-            margin-bottom: 24px;
-            letter-spacing: -0.02em;
-        }
-
-        .section-desc {
-            font-size: 1.15rem;
-            color: var(--text-light);
-            max-width: 700px;
-            margin-bottom: 50px;
+            margin-bottom: 16px;
+            display: inline-block;
+            background: var(--accent-light);
+            padding: 6px 16px;
+            border-radius: 50px;
         }
 
         /* --- BUTTONS --- */
@@ -138,53 +108,37 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             padding: 14px 32px;
             border-radius: 50px;
             font-size: 1rem;
             font-weight: 600;
-            transition: var(--transition);
+            transition: var(--transition-fast);
             cursor: pointer;
-            border: 2px solid transparent;
-            text-align: center;
+            border: 1px solid transparent;
         }
 
         .btn-primary {
-            background-color: var(--accent-blue);
-            color: var(--text-inverse);
+            background-color: var(--accent);
+            color: var(--text-inverse) !important;
             box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
         }
 
         .btn-primary:hover {
-            background-color: var(--accent-blue-hover);
-            transform: translateY(-3px);
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
             box-shadow: 0 12px 25px rgba(37, 99, 235, 0.35);
-            color: var(--text-inverse);
-        }
-
-        .btn-glass {
-            background-color: rgba(255, 255, 255, 0.1);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: var(--text-inverse);
-        }
-
-        .btn-glass:hover {
-            background-color: rgba(255, 255, 255, 0.25);
-            transform: translateY(-3px);
-            color: var(--text-inverse);
         }
 
         .btn-outline {
             background-color: transparent;
-            border-color: var(--primary-dark);
-            color: var(--primary-dark);
+            color: var(--text-primary);
+            border-color: var(--border);
         }
 
         .btn-outline:hover {
-            background-color: var(--primary-dark);
-            color: var(--text-inverse);
+            border-color: var(--text-primary);
+            background-color: var(--bg-alt);
         }
 
         /* --- NAVIGATION --- */
@@ -192,17 +146,12 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
+            background: var(--bg-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            transition: var(--transition);
-        }
-
-        .navbar.scrolled {
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transition-fast);
         }
 
         .nav-container {
@@ -213,30 +162,18 @@
         }
 
         .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
             display: flex;
             align-items: center;
             gap: 12px;
+            color: var(--text-primary);
         }
         
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--accent-blue), var(--primary-dark));
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
-        }
-
-        .logo-text {
-            font-family: var(--font-serif);
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary-dark);
-            letter-spacing: -0.02em;
+        .logo i {
+            color: var(--accent);
+            font-size: 1.6rem;
         }
 
         .nav-links {
@@ -248,28 +185,12 @@
         .nav-links a:not(.btn) {
             font-size: 0.95rem;
             font-weight: 500;
-            color: var(--text-main);
-            transition: var(--transition);
-            position: relative;
+            color: var(--text-secondary);
+            transition: var(--transition-fast);
         }
 
-        .nav-links a:not(.btn)::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -6px;
-            left: 0;
-            background-color: var(--accent-blue);
-            transition: var(--transition);
-        }
-
-        .nav-links a:not(.btn):hover::after {
-            width: 100%;
-        }
-        
         .nav-links a:not(.btn):hover {
-            color: var(--accent-blue);
+            color: var(--accent);
         }
 
         .menu-toggle {
@@ -278,116 +199,95 @@
             background: none;
             border: none;
             cursor: pointer;
-            color: var(--primary-dark);
+            color: var(--text-primary);
         }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO SECTION (Bright & 3D) --- */
         .hero {
             position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-top: 80px;
+            padding-top: 160px;
+            padding-bottom: 80px;
+            background: radial-gradient(circle at top, var(--accent-light) 0%, var(--bg-main) 70%);
             overflow: hidden;
-        }
-
-        /* Background Image Behind Text */
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://raw.githubusercontent.com/pruthiharshit/sample/main/vhsh.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Parallax effect */
-            z-index: -2;
-            /* Subtle scale animation */
-            animation: slowZoom 20s infinite alternate ease-in-out;
-        }
-
-        @keyframes slowZoom {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-        }
-
-        /* Professional Dark Gradient Overlay for readability */
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                135deg,
-                rgba(15, 23, 42, 0.95) 0%,
-                rgba(15, 23, 42, 0.75) 50%,
-                rgba(37, 99, 235, 0.6) 100%
-            );
-            z-index: -1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .hero-content {
             text-align: center;
-            color: var(--text-inverse);
             max-width: 900px;
-            position: relative;
-            z-index: 1;
-            padding: 0 20px;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            padding: 8px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent-gold);
-            margin-bottom: 30px;
+            margin-bottom: 60px;
+            z-index: 2;
         }
 
         .hero h1 {
             font-size: 4.5rem;
             line-height: 1.1;
             margin-bottom: 24px;
-            color: var(--text-inverse);
-            text-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .hero h1 span {
-            color: var(--accent-blue);
-            background: linear-gradient(to right, #60a5fa, #3b82f6);
+            background: linear-gradient(135deg, var(--text-primary) 0%, #475569 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero p {
             font-size: 1.25rem;
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 700px;
+            color: var(--text-secondary);
+            max-width: 650px;
             margin: 0 auto 40px;
-            font-weight: 300;
+            font-weight: 400;
         }
 
         .hero-btns {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             justify-content: center;
         }
 
-        /* --- FLOATING STATS CARDS --- */
-        .stats-wrapper {
-            position: relative;
-            z-index: 10;
-            margin-top: -80px; /* Pulls up over hero */
-            padding-bottom: 80px;
+        /* 3D Hero Image Showcase */
+        .hero-3d-wrapper {
+            perspective: 2000px;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            z-index: 2;
+        }
+
+        .hero-3d-card {
+            width: 100%;
+            border-radius: 24px;
+            background: var(--bg-main);
+            padding: 15px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.1), 0 0 40px rgba(37, 99, 235, 0.1);
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease-out;
+            will-change: transform;
+            border: 1px solid var(--border);
+        }
+
+        .hero-3d-card img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 16px;
+            transform: translateZ(30px); /* Pops the image out of the frame */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        /* Continuous gentle floating animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* --- BENTO STATS --- */
+        .stats-section {
+            background-color: var(--bg-main);
+            padding-top: 40px;
         }
 
         .stats-grid {
@@ -397,46 +297,41 @@
         }
 
         .stat-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
+            background: var(--bg-alt);
             border-radius: 20px;
-            padding: 35px 20px;
+            padding: 30px 20px;
             text-align: center;
-            box-shadow: var(--shadow-lg);
-            border: 1px solid rgba(255,255,255,0.5);
-            transition: var(--transition);
+            border: 1px solid var(--border);
+            transition: var(--transition-fast);
         }
 
         .stat-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-glow);
-            border-color: var(--accent-blue);
+            transform: translateY(-5px);
+            background: var(--bg-main);
+            box-shadow: var(--shadow-float);
+            border-color: var(--accent);
         }
 
         .stat-card h3 {
-            font-family: var(--font-serif);
-            font-size: 3rem;
-            color: var(--primary-dark);
+            font-size: 2.5rem;
+            color: var(--accent);
             margin-bottom: 5px;
-            line-height: 1;
         }
 
         .stat-card p {
             font-size: 0.9rem;
             font-weight: 600;
-            color: var(--text-light);
+            color: var(--text-secondary);
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.05em;
         }
 
-        /* --- ABOUT & ACADEMICS (Premium Split Layout) --- */
-        .split-section {
+        /* --- SPLIT SHOWCASE (Academics & Info) --- */
+        .showcase-section {
             background-color: var(--bg-main);
-            overflow: hidden;
         }
 
-        .split-grid {
+        .showcase-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 80px;
@@ -444,205 +339,126 @@
             margin-bottom: 120px;
         }
 
-        .split-grid.reverse {
+        .showcase-grid.reverse {
             direction: rtl;
         }
-        
-        .split-grid.reverse > * {
+        .showcase-grid.reverse > * {
             direction: ltr;
         }
 
+        .showcase-text h2 {
+            font-size: 3rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .showcase-text p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
         .feature-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .feature-item {
             display: flex;
             align-items: center;
-            gap: 15px;
-            font-weight: 600;
-            color: var(--primary-dark);
+            gap: 16px;
             font-size: 1.05rem;
+            font-weight: 500;
+            color: var(--text-primary);
         }
 
         .feature-item i {
-            color: var(--accent-blue);
+            color: var(--accent);
+            font-size: 1.2rem;
             background: var(--accent-light);
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            font-size: 1.2rem;
-            box-shadow: var(--shadow-sm);
         }
 
-        /* Premium Image Wrapper */
-        .img-premium-wrapper {
-            position: relative;
-            border-radius: 24px;
-            z-index: 1;
+        /* 3D Image Wrappers for split sections */
+        .img-3d-wrapper {
+            perspective: 1500px;
         }
 
-        .img-premium-wrapper::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            width: 100%;
-            height: 100%;
-            border: 2px solid var(--accent-blue);
-            border-radius: 24px;
-            z-index: -1;
-            transition: var(--transition);
-        }
-
-        .split-grid.reverse .img-premium-wrapper::before {
-            left: 20px;
-        }
-
-        .img-premium-wrapper:hover::before {
-            top: -10px;
-            left: -10px;
-        }
-        
-        .split-grid.reverse .img-premium-wrapper:hover::before {
-            left: 10px;
-        }
-
-        .img-premium-inner {
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            position: relative;
-            background: var(--bg-alt);
-        }
-
-        .img-premium-inner img {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-
-        .img-premium-inner:hover img {
-            transform: scale(1.05);
-        }
-
-        /* --- BENTO FACILITIES SECTION --- */
-        .facilities {
-            background-color: var(--bg-alt);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .bento-card {
+        .img-3d-inner {
             background: var(--bg-main);
-            padding: 40px 30px;
+            padding: 15px;
             border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            border: 1px solid rgba(0,0,0,0.04);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
+            border: 1px solid var(--border);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.05);
+            transform: rotateY(-8deg) rotateX(5deg);
+            transition: var(--transition-smooth);
+            transform-style: preserve-3d;
         }
 
-        .bento-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-md);
-            border-color: var(--accent-blue);
+        .showcase-grid.reverse .img-3d-inner {
+            transform: rotateY(8deg) rotateX(5deg);
         }
 
-        .bento-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: -1;
-            transform: translate(30%, -30%);
-            transition: var(--transition);
+        .img-3d-wrapper:hover .img-3d-inner {
+            transform: rotateY(0) rotateX(0) scale(1.02);
+            box-shadow: var(--shadow-float);
+            border-color: var(--accent);
         }
 
-        .bento-card:hover::after {
-            transform: translate(10%, -10%) scale(1.5);
+        .img-3d-inner img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            border-radius: 16px;
+            transform: translateZ(20px);
         }
 
-        .bento-icon {
-            font-size: 2.5rem;
-            color: var(--accent-blue);
-            margin-bottom: 24px;
-        }
-
-        .bento-card h3 {
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
-            margin-bottom: 12px;
-        }
-
-        .bento-card p {
-            color: var(--text-light);
-            font-size: 1rem;
-        }
-
-        /* --- CONTACT & MAP SECTION --- */
+        /* --- CONTACT & MAP --- */
         .contact-section {
-            background-color: var(--bg-main);
+            background-color: var(--bg-alt);
         }
 
         .contact-box {
-            background: var(--primary-dark);
+            background: var(--text-primary); /* Slate 900 */
+            color: var(--text-inverse);
             border-radius: 32px;
             overflow: hidden;
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            box-shadow: var(--shadow-lg);
-            position: relative;
-        }
-
-        /* Abstract shapes in contact bg */
-        .contact-box::before {
-            content: '';
-            position: absolute;
-            bottom: -50%;
-            left: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
+            display: flex;
+            box-shadow: 0 30px 60px rgba(15, 23, 42, 0.2);
         }
 
         .contact-info {
             padding: 80px 60px;
-            color: var(--text-inverse);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
             z-index: 2;
         }
 
-        .contact-info h2 {
-            color: var(--text-inverse);
-            font-size: 3rem;
-            margin-bottom: 10px;
+        /* Decorative background glow in contact box */
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, transparent 70%);
+            z-index: -1;
         }
 
-        .contact-info > p {
-            color: #94a3b8;
+        .contact-info h2 {
+            font-size: 3rem;
             margin-bottom: 40px;
-            font-size: 1.1rem;
+            color: var(--text-inverse);
         }
 
         .c-item {
@@ -654,97 +470,82 @@
 
         .c-item i {
             font-size: 1.5rem;
-            color: var(--accent-blue);
+            color: var(--accent);
             margin-top: 5px;
-            width: 25px;
-            text-align: center;
         }
 
         .c-item h4 {
-            color: var(--text-inverse);
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             margin-bottom: 5px;
-            font-family: var(--font-serif);
+            color: var(--text-inverse);
         }
 
         .c-item p {
-            color: #cbd5e1;
+            color: #94a3b8; /* Slate 400 */
             font-size: 1rem;
         }
 
         .map-wrapper {
-            width: 100%;
-            height: 100%;
-            min-height: 450px;
+            flex: 1;
+            min-height: 400px;
         }
 
         .map-wrapper iframe {
             width: 100%;
             height: 100%;
             border: none;
-            /* Styling map to match dark theme */
+            /* Filter to make map fit the dark slate theme */
             filter: grayscale(0.2) contrast(1.1) brightness(0.9);
         }
 
         /* --- FOOTER --- */
         footer {
-            background-color: var(--primary-dark);
-            color: #94a3b8;
-            padding: 80px 0 40px;
+            padding: 60px 0;
+            background: var(--bg-main);
+            border-top: 1px solid var(--border);
             text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
         }
 
         .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            font-family: var(--font-serif);
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-inverse);
-            margin-bottom: 20px;
-        }
-        
-        .footer-logo i {
-            color: var(--accent-blue);
+            gap: 10px;
+            color: var(--text-primary);
         }
 
-        .footer-desc {
-            max-width: 500px;
-            margin: 0 auto 40px;
-            font-size: 1rem;
-            line-height: 1.7;
-        }
+        .footer-logo i { color: var(--accent); }
 
         .footer-links {
             display: flex;
             justify-content: center;
             gap: 30px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .footer-links a {
-            color: #cbd5e1;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
             font-weight: 500;
             transition: var(--transition-fast);
         }
 
         .footer-links a:hover {
-            color: var(--accent-blue);
+            color: var(--accent);
         }
 
         .copyright {
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
         }
 
         /* --- ANIMATIONS (Scroll Reveal) --- */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
         .reveal.active {
             opacity: 1;
@@ -752,14 +553,14 @@
         }
         .delay-1 { transition-delay: 0.1s; }
         .delay-2 { transition-delay: 0.2s; }
-        .delay-3 { transition-delay: 0.3s; }
 
-        /* --- RESPONSIVE DESIGN --- */
+        /* --- RESPONSIVE --- */
         @media (max-width: 1024px) {
-            .hero h1 { font-size: 4rem; }
-            .split-grid { gap: 40px; margin-bottom: 80px; }
-            .bento-grid { grid-template-columns: repeat(2, 1fr); }
-            .contact-box { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 3.8rem; }
+            .hero-3d-card img { height: 400px; }
+            .showcase-grid { gap: 40px; }
+            .img-3d-inner { transform: none; }
+            .contact-box { flex-direction: column; }
             .map-wrapper { height: 400px; }
         }
 
@@ -769,63 +570,51 @@
                 top: 80px;
                 left: 0;
                 width: 100%;
-                background: rgba(255, 255, 255, 0.98);
+                background: var(--bg-glass);
                 backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
                 flex-direction: column;
                 padding: 40px 0;
-                box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
                 transform: translateY(-150%);
-                transition: var(--transition);
+                transition: var(--transition-smooth);
                 z-index: 999;
                 border-bottom: 1px solid var(--border);
             }
             .nav-links.active { transform: translateY(0); }
             .menu-toggle { display: block; }
             
-            .hero { padding-top: 120px; }
-            .hero h1 { font-size: 3rem; }
-            .hero p { font-size: 1.1rem; }
+            .hero { padding-top: 140px; }
+            .hero h1 { font-size: 2.8rem; }
             .hero-btns { flex-direction: column; width: 100%; max-width: 300px; margin: 0 auto; }
+            .hero-3d-card img { height: 250px; }
             
-            .stats-wrapper { margin-top: -40px; padding: 0 20px 60px; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
             
-            .split-grid, .split-grid.reverse { grid-template-columns: 1fr; direction: ltr; gap: 40px; }
-            .split-grid.reverse > * { direction: ltr; }
-            .img-premium-wrapper::before { display: none; }
-            
-            .bento-grid { grid-template-columns: 1fr; }
-            .feature-list { grid-template-columns: 1fr; }
+            .showcase-grid, .showcase-grid.reverse { grid-template-columns: 1fr; direction: ltr; gap: 40px; }
+            .showcase-grid.reverse > * { direction: ltr; }
             
             .contact-info { padding: 50px 30px; }
-            .contact-info h2 { font-size: 2.5rem; }
-            .section-padding { padding: 80px 0; }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 { font-size: 2.5rem; }
-            .stat-card h3 { font-size: 2rem; }
-            .section-title { font-size: 2.5rem; }
-            .contact-box { border-radius: 20px; }
-            .contact-info { padding: 40px 20px; }
+            .contact-info h2 { font-size: 2.2rem; }
+            
+            .section-spacer { padding: 80px 0; }
         }
     </style>
 </head>
 <body>
 
     <!-- NAVIGATION -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar">
         <div class="container nav-container">
             <a href="#" class="logo">
-                <div class="logo-icon"><i class="fa-solid fa-graduation-cap" style="color: white; font-size: 1.2rem;"></i></div>
-                <div class="logo-text">Vikas High School</div>
+                <i class="fa-solid fa-graduation-cap"></i> Vikas High School
             </a>
             
             <div class="nav-links" id="navLinks">
-                <a href="#about">About Us</a>
+                <a href="#about">About</a>
                 <a href="#academics">Academics</a>
-                <a href="#facilities">Facilities</a>
                 <a href="#contact">Contact</a>
+                <!-- Button explicitly styled to pop correctly -->
                 <a href="#contact" class="btn btn-primary">Admissions Open</a>
             </div>
 
@@ -835,29 +624,30 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION (Background Image behind text) -->
+    <!-- HERO SECTION (Bright, Clean, 3D Interactive) -->
     <section class="hero">
-        <!-- School Building Image as Background -->
-        <div class="hero-bg"></div>
-        <!-- Dark Overlay for Premium Readability -->
-        <div class="hero-overlay"></div>
-        
-        <div class="hero-content reveal">
-            <div class="hero-badge">
-                <i class="fa-solid fa-star" style="margin-right: 5px;"></i> Established 1992
-            </div>
-            <h1 class="heading-serif">The Way To Your <br><span>Ultimate Career</span></h1>
-            <p>Expert guidance and comprehensive study methodology for excelling in Board Examinations. Experience a co-educational environment designed for growth.</p>
+        <div class="container hero-content reveal">
+            <span class="eyebrow">The all-new standard in education.</span>
+            <h1>Vikas High School</h1>
+            <p>Empowering minds and shaping the future in Sirsa since 1992. Experience a co-educational environment designed for ultimate growth.</p>
             <div class="hero-btns">
                 <a href="#about" class="btn btn-primary">Discover More</a>
-                <a href="#contact" class="btn btn-glass">Visit Campus</a>
+                <a href="#contact" class="btn btn-outline">Visit Campus</a>
+            </div>
+        </div>
+
+        <!-- 3D Interactive Framed Image -->
+        <div class="container hero-3d-wrapper reveal delay-1">
+            <div class="hero-3d-card floating" id="hero3D">
+                <!-- User's provided school building image -->
+                <img src="https://raw.githubusercontent.com/pruthiharshit/sample/main/vhsh.png" alt="Vikas High School Campus Building">
             </div>
         </div>
     </section>
 
-    <!-- FLOATING STATS GRID -->
-    <div class="container stats-wrapper reveal delay-1">
-        <div class="stats-grid">
+    <!-- STATS BENTO GRID -->
+    <section class="stats-section">
+        <div class="container stats-grid reveal delay-2">
             <div class="stat-card">
                 <h3>1992</h3>
                 <p>Established</p>
@@ -868,26 +658,24 @@
             </div>
             <div class="stat-card">
                 <h3>13</h3>
-                <p>Expert Faculty</p>
+                <p>Expert Teachers</p>
             </div>
             <div class="stat-card">
                 <h3>600+</h3>
                 <p>Library Books</p>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- ABOUT SHOWCASE (Premium Split Layout) -->
-    <section id="about" class="section-padding split-section">
+    <!-- ABOUT SHOWCASE -->
+    <section id="about" class="section-spacer showcase-section">
         <div class="container">
-            
-            <!-- Row 1: Heritage -->
-            <div class="split-grid">
-                <div class="split-text reveal">
+            <!-- Row 1 -->
+            <div class="showcase-grid">
+                <div class="showcase-text reveal">
                     <span class="eyebrow">Heritage & Excellence</span>
-                    <h2 class="section-title heading-serif">Building strong foundations for tomorrow.</h2>
-                    <p class="section-desc">Located in the vibrant Agrasain Colony of Sirsa, Vikas High School has been a cornerstone of quality education for over three decades. As a private, unaided institution, we operate with a singular focus: student success and holistic development.</p>
-                    
+                    <h2>A legacy of learning,<br>reimagined.</h2>
+                    <p>Located in the heart of Agrasain Colony, Sirsa, Vikas High School has been a cornerstone of quality education for over three decades. As a private, unaided institution, we operate with a singular focus: student success.</p>
                     <div class="feature-list">
                         <div class="feature-item">
                             <i class="fa-solid fa-check"></i> Co-educational Environment
@@ -903,106 +691,63 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="img-premium-wrapper reveal delay-1">
-                    <div class="img-premium-inner">
-                        <!-- Using the provided building image for context -->
-                        <img src="https://raw.githubusercontent.com/pruthiharshit/sample/main/vhsh.png" alt="Vikas High School Campus">
+                <div class="img-3d-wrapper reveal delay-1">
+                    <div class="img-3d-inner">
+                        <!-- Reusing the building image or a placeholder to balance if only 2 images provided -->
+                        <img src="https://raw.githubusercontent.com/pruthiharshit/sample/main/vhsh.png" alt="Vikas High School Environment" style="filter: brightness(1.05);">
                     </div>
                 </div>
             </div>
 
-            <!-- Row 2: Academics (Reversed layout) -->
-            <div id="academics" class="split-grid reverse" style="margin-bottom: 0;">
-                <div class="split-text reveal">
+            <!-- Row 2: Academics (Reversed) -->
+            <div id="academics" class="showcase-grid reverse" style="margin-top: 120px; margin-bottom: 0;">
+                <div class="showcase-text reveal">
                     <span class="eyebrow">Academic Structure</span>
-                    <h2 class="section-title heading-serif">From early curiosity to board readiness.</h2>
-                    <p class="section-desc">Our academic journey is designed to support students at every critical stage. Starting with a nurturing Pre-Primary section, we guide students all the way through Class 10 Board examinations with meticulous care.</p>
-                    <p class="section-desc" style="margin-bottom: 30px;">With an exceptional student-to-teacher ratio driven by our 13 dedicated educators, every child receives the personalized attention required to build a strong intellect.</p>
-                    
-                    <a href="#contact" class="btn btn-outline" style="border-radius: 50px;">Enroll Today <i class="fa-solid fa-arrow-right" style="margin-left: 5px;"></i></a>
+                    <h2>From early curiosity<br>to board readiness.</h2>
+                    <p>Our academic journey is designed to support students at every critical stage. Starting with a nurturing Pre-Primary section, we guide students all the way through Class 10 Board examinations.</p>
+                    <p>With an exceptional student-to-teacher ratio driven by our dedicated educators, every child receives the attention required to build a strong foundational intellect.</p>
                 </div>
-                
-                <div class="img-premium-wrapper reveal delay-1">
-                    <div class="img-premium-inner">
-                        <!-- Using the explicitly requested Students photo (mc2.png) -->
-                        <img src="https://raw.githubusercontent.com/pruthiharshit/sample/main/mc2.png" alt="Vikas High School Students and Academic Excellence">
+                <div class="img-3d-wrapper reveal delay-1">
+                    <div class="img-3d-inner">
+                        <!-- User's provided students image -->
+                        <img src="https://raw.githubusercontent.com/pruthiharshit/sample/main/mc2.png" alt="Students Academic Excellence">
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- BENTO FACILITIES SECTION -->
-    <section id="facilities" class="section-padding facilities">
-        <div class="container">
-            <div class="text-center reveal" style="margin-bottom: 60px;">
-                <span class="eyebrow">Infrastructure</span>
-                <h2 class="section-title heading-serif">Designed for discovery.</h2>
-                <p class="section-desc" style="margin: 0 auto;">Everything a student needs to excel, housed within a secure, modern urban campus tailored for comprehensive growth.</p>
-            </div>
-            
-            <div class="bento-grid">
-                <div class="bento-card reveal">
-                    <i class="fa-solid fa-book-open bento-icon"></i>
-                    <h3 class="heading-serif">Extensive Library</h3>
-                    <p>Access to over 600 books curated to expand horizons beyond standard textbooks, fostering a lifelong habit of reading.</p>
-                </div>
-                <div class="bento-card reveal delay-1">
-                    <i class="fa-solid fa-laptop-code bento-icon"></i>
-                    <h3 class="heading-serif">Digital Resources</h3>
-                    <p>Equipped with essential computer systems ensuring fundamental digital literacy required for the modern world.</p>
-                </div>
-                <div class="bento-card reveal delay-2">
-                    <i class="fa-solid fa-shield-halved bento-icon"></i>
-                    <h3 class="heading-serif">Secure Campus</h3>
-                    <p>A safe, well-maintained urban facility with continuous electricity, clean tap drinking water, and solid infrastructure.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT / MAP SECTION -->
-    <section id="contact" class="section-padding contact-section">
+    <!-- CONTACT / MAP -->
+    <section id="contact" class="section-spacer contact-section">
         <div class="container">
             <div class="contact-box reveal">
                 <div class="contact-info">
-                    <span class="eyebrow" style="background: rgba(255,255,255,0.1); color: var(--accent-light);">Admissions Open</span>
-                    <h2 class="heading-serif">Take the next step.</h2>
-                    <p>We welcome you to visit our campus or contact our administration for admissions and general inquiries for the upcoming session.</p>
+                    <span class="eyebrow" style="background: rgba(255,255,255,0.1); color: var(--accent-light);">Get in touch</span>
+                    <h2>Visit Vikas.</h2>
+                    <p>Admissions are open for the upcoming academic year. Contact our administration to secure your child's future.</p>
                     
-                    <div class="c-item" style="margin-top: 40px;">
+                    <div class="c-item" style="margin-top: 30px;">
                         <i class="fa-solid fa-location-dot"></i>
                         <div>
                             <h4>Campus Location</h4>
-                            <p>Agrasain Colony, Sirsa<br>Haryana 125055, India<br>Plus Code: G2HQ+8F4</p>
+                            <p>Agrasain Colony, Sirsa<br>Haryana 125055, India</p>
                         </div>
                     </div>
                     
                     <div class="c-item">
                         <i class="fa-solid fa-phone"></i>
                         <div>
-                            <h4>Contact Office</h4>
+                            <h4>Admissions & Enquiries</h4>
                             <p>094161 86814</p>
                         </div>
                     </div>
-                    
-                    <div class="c-item">
-                        <i class="fa-solid fa-clock"></i>
-                        <div>
-                            <h4>School Type</h4>
-                            <p>Co-educational • Private Unaided</p>
-                        </div>
-                    </div>
 
-                    <a href="tel:09416186814" class="btn btn-primary" style="margin-top: 10px; align-self: flex-start; background: var(--text-inverse); color: var(--primary-dark) !important;">
+                    <a href="tel:09416186814" class="btn btn-primary" style="margin-top: 20px; align-self: flex-start;">
                         Call Administration
                     </a>
                 </div>
-                
                 <div class="map-wrapper">
-                    <!-- Standard Google Maps Iframe pointing to Sirsa location -->
+                    <!-- Standard Google Maps Iframe -->
                     <iframe 
                         src="https://maps.google.com/maps?q=Vikas%20High%20School,%20Agrasain%20Colony,%20Sirsa,%20Haryana%20125055&t=&z=15&ie=UTF8&iwloc=&output=embed" 
                         allowfullscreen="" 
@@ -1019,22 +764,14 @@
     <footer>
         <div class="container">
             <a href="#" class="footer-logo">
-                <div class="logo-icon" style="width: 35px; height: 35px; font-size: 1rem;"><i class="fa-solid fa-graduation-cap" style="color: white;"></i></div>
-                Vikas High School
+                <i class="fa-solid fa-graduation-cap"></i> Vikas High School
             </a>
-            
-            <p class="footer-desc">Empowering minds and shaping the future in Sirsa since 1992. Experience a co-educational environment designed for ultimate growth from Class 1 to 10.</p>
-            
             <div class="footer-links">
-                <a href="#about">About Us</a>
+                <a href="#about">About</a>
                 <a href="#academics">Academics</a>
-                <a href="#facilities">Facilities</a>
                 <a href="#contact">Contact</a>
             </div>
-            
-            <p class="copyright">
-                &copy; <script>document.write(new Date().getFullYear())</script> Vikas High School, Sirsa. All Rights Reserved. A private, unaided institution.
-            </p>
+            <p class="copyright">&copy; <script>document.write(new Date().getFullYear())</script> Vikas High School, Sirsa. All Rights Reserved.</p>
         </div>
     </footer>
 
@@ -1042,16 +779,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             
-            // --- Sticky Navbar Effect ---
-            const navbar = document.getElementById('navbar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 20) {
-                    navbar.classList.add('scrolled');
-                } else {
-                    navbar.classList.remove('scrolled');
-                }
-            });
-
             // --- Mobile Menu Toggle ---
             const menuBtn = document.getElementById('menuBtn');
             const navLinks = document.getElementById('navLinks');
@@ -1076,7 +803,43 @@
                 });
             });
 
-            // --- Scroll Reveal Animations (Intersection Observer) ---
+            // --- 3D Hover Effect for Hero Image (Vanilla JS) ---
+            // Only apply on non-touch devices for better performance
+            if (window.matchMedia("(hover: hover)").matches) {
+                const card = document.getElementById('hero3D');
+                
+                card.addEventListener('mousemove', (e) => {
+                    // Pause floating animation during hover interaction
+                    card.classList.remove('floating');
+                    
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    // Calculate rotation (max 8 degrees for elegant feel)
+                    const rotateX = ((y - centerY) / centerY) * -8;
+                    const rotateY = ((x - centerX) / centerX) * 8;
+                    
+                    card.style.transform = `perspective(2000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    // Reset transform smoothly
+                    card.style.transition = 'transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
+                    card.style.transform = `perspective(2000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)`;
+                    
+                    // Resume floating animation after reset
+                    setTimeout(() => {
+                        card.style.transition = 'transform 0.1s ease-out';
+                        card.classList.add('floating');
+                    }, 500);
+                });
+            }
+
+            // --- Scroll Reveal Animation ---
             const revealElements = document.querySelectorAll('.reveal');
             
             const revealOptions = {
@@ -1088,7 +851,7 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
-                        observer.unobserve(entry.target); // Run once per element
+                        observer.unobserve(entry.target); // Run once
                     }
                 });
             }, revealOptions);
@@ -1097,7 +860,7 @@
                 revealOnScroll.observe(el);
             });
             
-            // Trigger elements already in view on load
+            // Trigger immediately for elements initially in view
             setTimeout(() => {
                 revealElements.forEach(el => {
                     const rect = el.getBoundingClientRect();
@@ -1106,7 +869,6 @@
                     }
                 });
             }, 100);
-            
         });
     </script>
 </body>
