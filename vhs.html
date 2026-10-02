@@ -16,63 +16,87 @@
 
     <style>
         body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
-        .hero-overlay { background: linear-gradient(to right, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.6)); }
+        .hero-overlay { background: linear-gradient(to right, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.7)); }
         .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
-        .gradient-text { background: linear-gradient(to right, #3b82f6, #1d4ed8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased">
+<body class="bg-slate-50 text-slate-800 antialiased overflow-x-hidden">
 
     <!-- Navigation -->
     <nav class="bg-white shadow-md fixed w-full z-50 top-0">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
                 <div class="flex items-center gap-3">
-                    <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center text-2xl font-bold shadow-lg">
+                    <div class="w-10 h-10 md:w-12 md:h-12 bg-blue-600 text-white rounded-full flex items-center justify-center text-xl md:text-2xl font-bold shadow-lg">
                         V
                     </div>
                     <div>
-                        <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Vikas High School</h1>
-                        <p class="text-xs text-blue-600 font-semibold uppercase tracking-wider">Sirsa, Haryana</p>
+                        <h1 class="text-xl md:text-2xl font-bold text-slate-900 tracking-tight">Vikas High School</h1>
+                        <p class="text-[10px] md:text-xs text-blue-600 font-semibold uppercase tracking-wider">Sirsa, Haryana</p>
                     </div>
                 </div>
-                <div class="hidden md:flex space-x-8">
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex space-x-8">
                     <a href="#home" class="text-slate-600 hover:text-blue-600 font-medium transition">Home</a>
                     <a href="#about" class="text-slate-600 hover:text-blue-600 font-medium transition">About</a>
                     <a href="#academics" class="text-slate-600 hover:text-blue-600 font-medium transition">Academics</a>
+                    <a href="#facilities" class="text-slate-600 hover:text-blue-600 font-medium transition">Facilities</a>
                     <a href="#contact" class="text-slate-600 hover:text-blue-600 font-medium transition">Contact</a>
                 </div>
-                <div class="hidden md:flex">
+                
+                <div class="hidden lg:flex">
                     <a href="#contact" class="bg-blue-600 text-white px-6 py-2 rounded-full font-medium hover:bg-blue-700 transition shadow-lg shadow-blue-200">Admissions Open</a>
                 </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-blue-600 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-slate-100 absolute w-full shadow-xl">
+            <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
+                <a href="#home" class="mobile-link block px-3 py-3 text-slate-700 font-medium hover:bg-slate-50 hover:text-blue-600 rounded-md">Home</a>
+                <a href="#about" class="mobile-link block px-3 py-3 text-slate-700 font-medium hover:bg-slate-50 hover:text-blue-600 rounded-md">About</a>
+                <a href="#academics" class="mobile-link block px-3 py-3 text-slate-700 font-medium hover:bg-slate-50 hover:text-blue-600 rounded-md">Academics</a>
+                <a href="#facilities" class="mobile-link block px-3 py-3 text-slate-700 font-medium hover:bg-slate-50 hover:text-blue-600 rounded-md">Facilities</a>
+                <a href="#contact" class="mobile-link block px-3 py-3 text-slate-700 font-medium hover:bg-slate-50 hover:text-blue-600 rounded-md">Contact</a>
+                <a href="#contact" class="block w-full text-center mt-4 bg-blue-600 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 transition shadow-md">Admissions Open</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header id="home" class="relative pt-20 h-[90vh] flex items-center">
+    <header id="home" class="relative pt-20 min-h-[100vh] lg:min-h-[90vh] flex items-center pb-24 md:pb-32">
         <!-- School Photo Background -->
         <div class="absolute inset-0 z-0">
             <img src="https://raw.githubusercontent.com/pruthiharshit/sample/main/hVhs.png" alt="Vikas High School Campus" class="w-full h-full object-cover object-center" onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2070&auto=format&fit=crop';">
             <div class="absolute inset-0 hero-overlay"></div>
         </div>
         
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-10 md:mt-0">
             <div class="max-w-3xl">
-                <span class="inline-block py-1 px-3 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 text-sm font-semibold tracking-wider mb-4 backdrop-blur-sm">
+                <span class="inline-block py-1 px-3 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-200 text-xs md:text-sm font-semibold tracking-wider mb-4 md:mb-6 backdrop-blur-sm">
                     PRIVATE UNAIDED • CO-EDUCATIONAL
                 </span>
-                <h2 class="text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
+                <h2 class="text-4xl sm:text-5xl md:text-7xl font-bold text-white leading-tight mb-4 md:mb-6">
                     Empowering the <br><span class="text-blue-400">Leaders</span> of Tomorrow.
                 </h2>
-                <p class="text-lg md:text-xl text-slate-300 mb-8 font-light leading-relaxed">
+                <p class="text-base sm:text-lg md:text-xl text-slate-300 mb-8 md:mb-10 font-light leading-relaxed">
                     A premier English-medium high school in Sirsa committed to academic excellence, holistic development, and shaping brilliant minds up to the 10th grade.
                 </p>
-                <div class="flex gap-4">
-                    <a href="#about" class="bg-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-500 transition shadow-lg shadow-blue-500/30">
+                <!-- Fixed Button Overlap by using flex-col on mobile and flex-row on larger screens -->
+                <div class="flex flex-col sm:flex-row gap-4 sm:gap-6">
+                    <a href="#about" class="text-center bg-blue-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-500 transition shadow-lg shadow-blue-500/30">
                         Discover Our School
                     </a>
-                    <a href="#contact" class="bg-white/10 text-white px-8 py-4 rounded-full font-semibold border border-white/20 hover:bg-white/20 transition backdrop-blur-sm">
+                    <a href="#contact" class="text-center bg-white/10 text-white px-8 py-4 rounded-full font-semibold border border-white/20 hover:bg-white/20 transition backdrop-blur-sm">
                         Contact Us
                     </a>
                 </div>
@@ -81,27 +105,35 @@
     </header>
 
     <!-- Key Highlights / Badges -->
-    <section class="py-12 bg-white relative z-20 -mt-10 mx-4 md:mx-16 rounded-2xl shadow-xl">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <section class="bg-transparent relative z-20 -mt-16 md:-mt-20 mx-4 sm:mx-8 md:mx-16 mb-16">
+        <div class="max-w-7xl mx-auto">
+            <div class="bg-white rounded-2xl shadow-xl p-4 sm:p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 text-center divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
                 <div class="p-4">
-                    <i class="fa-solid fa-language text-4xl text-blue-600 mb-3"></i>
+                    <div class="w-14 h-14 mx-auto bg-blue-50 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-language text-2xl text-blue-600"></i>
+                    </div>
                     <h3 class="font-bold text-slate-800">English Medium</h3>
                     <p class="text-sm text-slate-500 mt-1">Global standard curriculum</p>
                 </div>
-                <div class="p-4 border-l border-slate-100">
-                    <i class="fa-solid fa-award text-4xl text-blue-600 mb-3"></i>
+                <div class="p-4">
+                    <div class="w-14 h-14 mx-auto bg-blue-50 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-award text-2xl text-blue-600"></i>
+                    </div>
                     <h3 class="font-bold text-slate-800">HBSE Affiliated</h3>
                     <p class="text-sm text-slate-500 mt-1">Recognized excellence</p>
                 </div>
-                <div class="p-4 border-l border-slate-100">
-                    <i class="fa-solid fa-chalkboard-user text-4xl text-blue-600 mb-3"></i>
+                <div class="p-4">
+                    <div class="w-14 h-14 mx-auto bg-blue-50 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-chalkboard-user text-2xl text-blue-600"></i>
+                    </div>
                     <h3 class="font-bold text-slate-800">Expert Faculty</h3>
                     <p class="text-sm text-slate-500 mt-1">Highly qualified teachers</p>
                 </div>
-                <div class="p-4 border-l border-slate-100">
-                    <i class="fa-solid fa-graduation-cap text-4xl text-blue-600 mb-3"></i>
-                    <h3 class="font-bold text-slate-800">10th Grade High School</h3>
+                <div class="p-4">
+                    <div class="w-14 h-14 mx-auto bg-blue-50 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa-solid fa-graduation-cap text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-800">10th Grade Focus</h3>
                     <p class="text-sm text-slate-500 mt-1">Comprehensive foundations</p>
                 </div>
             </div>
@@ -109,51 +141,51 @@
     </section>
 
     <!-- About Section with Student Photo -->
-    <section id="about" class="py-24 bg-slate-50">
+    <section id="about" class="py-16 md:py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                 <!-- Text Content -->
-                <div>
+                <div class="order-2 lg:order-1">
                     <h4 class="text-blue-600 font-semibold tracking-wider uppercase mb-2">About Us</h4>
-                    <h2 class="text-4xl font-bold text-slate-900 mb-6 leading-tight">Shaping brilliant futures through quality education.</h2>
-                    <p class="text-slate-600 mb-6 text-lg leading-relaxed">
-                        Vikas High School is a reputed higher secondary institution nestled in the heart of Agrasain Colony, Sirsa. As a private, unaided, and co-educational school, we focus on providing an inclusive environment where every child can thrive.
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight">Shaping brilliant futures through quality education.</h2>
+                    <p class="text-slate-600 mb-6 text-base md:text-lg leading-relaxed">
+                        Vikas High School is a reputed higher secondary institution nestled in the heart of Agrasain Colony, Sirsa. As a private, unaided, and co-educational school, we focus on providing an inclusive and supportive environment where every child feels valued.
                     </p>
                     <ul class="space-y-4 mb-8">
-                        <li class="flex items-center text-slate-700">
-                            <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mr-4">
-                                <i class="fa-solid fa-check"></i>
+                        <li class="flex items-start text-slate-700">
+                            <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex flex-shrink-0 items-center justify-center mr-4 mt-1">
+                                <i class="fa-solid fa-check text-sm"></i>
                             </span>
-                            Strict adherence to the <strong>HBSE board</strong> guidelines.
+                            <span>Strict adherence to the <strong>HBSE board</strong> guidelines, preparing students for board exams with confidence.</span>
                         </li>
-                        <li class="flex items-center text-slate-700">
-                            <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mr-4">
-                                <i class="fa-solid fa-check"></i>
+                        <li class="flex items-start text-slate-700">
+                            <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex flex-shrink-0 items-center justify-center mr-4 mt-1">
+                                <i class="fa-solid fa-check text-sm"></i>
                             </span>
-                            A modern, <strong>English-medium</strong> approach up to 10th grade.
+                            <span>A modern, <strong>English-medium</strong> approach that bridges local values with global opportunities.</span>
                         </li>
-                        <li class="flex items-center text-slate-700">
-                            <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mr-4">
-                                <i class="fa-solid fa-check"></i>
+                        <li class="flex items-start text-slate-700">
+                            <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex flex-shrink-0 items-center justify-center mr-4 mt-1">
+                                <i class="fa-solid fa-check text-sm"></i>
                             </span>
-                            Guided by a team of <strong>highly qualified teachers</strong>.
+                            <span>Mentored by a dedicated team of <strong>highly qualified teachers</strong> who are passionate about student success.</span>
                         </li>
                     </ul>
                 </div>
                 
                 <!-- Student Image -->
-                <div class="relative">
-                    <div class="absolute inset-0 bg-blue-600 rounded-2xl transform translate-x-4 translate-y-4 opacity-20"></div>
+                <div class="relative order-1 lg:order-2 px-4 sm:px-8 lg:px-0">
+                    <div class="absolute inset-0 bg-blue-600 rounded-2xl transform translate-x-4 translate-y-4 opacity-20 hidden sm:block"></div>
                     <img src="https://raw.githubusercontent.com/pruthiharshit/sample/main/mc2.png" alt="Vikas High School Student" class="relative z-10 rounded-2xl shadow-2xl w-full object-cover border-4 border-white" onerror="this.src='https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=2070&auto=format&fit=crop';">
                     
-                    <!-- Floating badge -->
-                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl z-20 flex items-center gap-4">
-                        <div class="bg-green-100 p-3 rounded-full text-green-600">
-                            <i class="fa-solid fa-chart-line text-xl"></i>
+                    <!-- Replaced 100% Board Result with Holistic Growth -->
+                    <div class="absolute -bottom-6 sm:-bottom-8 -left-2 sm:-left-6 bg-white p-3 sm:p-4 rounded-xl shadow-xl z-20 flex items-center gap-3 sm:gap-4 border border-slate-100">
+                        <div class="bg-purple-100 p-2 sm:p-3 rounded-full text-purple-600">
+                            <i class="fa-solid fa-seedling text-lg sm:text-xl"></i>
                         </div>
                         <div>
-                            <p class="text-sm text-slate-500 font-medium">Board Results</p>
-                            <p class="text-xl font-bold text-slate-900">100% Pass Rate</p>
+                            <p class="text-xs sm:text-sm text-slate-500 font-medium">Our Focus</p>
+                            <p class="text-base sm:text-xl font-bold text-slate-900">Holistic Growth</p>
                         </div>
                     </div>
                 </div>
@@ -161,34 +193,149 @@
         </div>
     </section>
 
+    <!-- Principal's Message Section -->
+    <section class="py-16 md:py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-blue-50 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+                <i class="fa-solid fa-quote-left absolute text-blue-200 text-8xl -top-4 -left-4 opacity-50"></i>
+                <div class="relative z-10 md:flex gap-10 items-center">
+                    <div class="md:w-2/3 mb-8 md:mb-0">
+                        <h3 class="text-2xl md:text-3xl font-bold text-slate-900 mb-4">A Vision for Excellence</h3>
+                        <p class="text-slate-700 text-lg leading-relaxed italic mb-6">
+                            "At Vikas High School, we believe education is not just about textbooks, but about building character, curiosity, and capability. Our goal is to provide a nurturing co-educational space where every student from their early years up to the 10th grade can explore their potential and grow into responsible, intelligent citizens."
+                        </p>
+                        <h4 class="font-bold text-blue-700 text-lg">School Administration</h4>
+                        <p class="text-slate-500">Vikas High School, Sirsa</p>
+                    </div>
+                    <div class="md:w-1/3 flex justify-center">
+                        <div class="w-48 h-48 md:w-64 md:h-64 rounded-full border-8 border-white shadow-xl overflow-hidden bg-slate-200">
+                            <!-- Placeholder for Principal or Generic School Element -->
+                            <img src="https://images.unsplash.com/photo-1571260899304-42507011ec6a?q=80&w=2070&auto=format&fit=crop" alt="Education Vision" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Academics & Curriculum -->
+    <section id="academics" class="py-16 md:py-24 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h4 class="text-blue-400 font-semibold tracking-wider uppercase mb-2">Academics</h4>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Structured for Success</h2>
+                <p class="text-slate-300 text-lg">Our academic framework is meticulously designed around the HBSE syllabus, delivered via an English-medium curriculum that ensures conceptual clarity up to the critical 10th grade.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-blue-500 transition duration-300">
+                    <div class="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-lg flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Core Subjects</h3>
+                    <p class="text-slate-400">Intensive focus on Mathematics, Science, and Languages to build a robust foundation for higher secondary education.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-blue-500 transition duration-300">
+                    <div class="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-lg flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-flask"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Practical Learning</h3>
+                    <p class="text-slate-400">Moving beyond rote memorization, we encourage experiential learning through projects and hands-on activities.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-blue-500 transition duration-300">
+                    <div class="w-12 h-12 bg-blue-500/20 text-blue-400 rounded-lg flex items-center justify-center text-2xl mb-6">
+                        <i class="fa-solid fa-user-group"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Co-Educational Focus</h3>
+                    <p class="text-slate-400">Fostering mutual respect, teamwork, and healthy competition among students in a diverse classroom setting.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section id="facilities" class="py-16 md:py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div class="max-w-2xl">
+                    <h4 class="text-blue-600 font-semibold tracking-wider uppercase mb-2">Campus & Infrastructure</h4>
+                    <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Modern Facilities for Modern Learners</h2>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Facility 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition">
+                    <img src="https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=2086&auto=format&fit=crop" alt="Library" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg text-slate-900 mb-2">Spacious Library</h3>
+                        <p class="text-sm text-slate-600">A quiet zone stocked with reference books, literature, and HBSE study materials.</p>
+                    </div>
+                </div>
+                <!-- Facility 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=2070&auto=format&fit=crop" alt="Science Labs" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg text-slate-900 mb-2">Science Labs</h3>
+                        <p class="text-sm text-slate-600">Equipped labs for practical experiments to enhance scientific curiosity.</p>
+                    </div>
+                </div>
+                <!-- Facility 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition">
+                    <img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=2038&auto=format&fit=crop" alt="Sports" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg text-slate-900 mb-2">Sports Ground</h3>
+                        <p class="text-sm text-slate-600">Encouraging physical fitness through daily sports and recreational activities.</p>
+                    </div>
+                </div>
+                <!-- Facility 4 -->
+                <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=2132&auto=format&fit=crop" alt="Classrooms" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg text-slate-900 mb-2">Smart Classrooms</h3>
+                        <p class="text-sm text-slate-600">Well-ventilated classrooms designed to facilitate interactive learning.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Call to Action / Info -->
-    <section class="py-20 bg-blue-900 text-white relative overflow-hidden">
+    <section class="py-16 md:py-20 bg-blue-900 text-white relative overflow-hidden">
         <!-- decorative background -->
         <div class="absolute top-0 right-0 w-96 h-96 bg-blue-600 rounded-full blur-3xl opacity-30 transform translate-x-1/2 -translate-y-1/2"></div>
         <div class="absolute bottom-0 left-0 w-96 h-96 bg-blue-400 rounded-full blur-3xl opacity-20 transform -translate-x-1/2 translate-y-1/2"></div>
         
         <div class="relative z-10 max-w-5xl mx-auto px-4 text-center">
             <h2 class="text-3xl md:text-5xl font-bold mb-6">Ready to join our community?</h2>
-            <p class="text-blue-100 text-lg mb-10 max-w-2xl mx-auto">Enroll your child at Vikas High School today and lay the foundation for a successful, well-rounded academic journey.</p>
-            <a href="#contact" class="inline-block bg-yellow-400 text-blue-900 px-10 py-4 rounded-full font-bold text-lg hover:bg-yellow-300 transition shadow-lg shadow-yellow-400/20">
+            <p class="text-blue-100 text-base md:text-lg mb-10 max-w-2xl mx-auto">Enroll your child at Vikas High School today and lay the foundation for a successful, well-rounded academic journey.</p>
+            <a href="#contact" class="inline-block bg-yellow-400 text-blue-900 px-8 py-3 md:px-10 md:py-4 rounded-full font-bold text-base md:text-lg hover:bg-yellow-300 transition shadow-lg shadow-yellow-400/20">
                 Contact Admissions Office
             </a>
         </div>
     </section>
 
     <!-- Footer / Contact Section -->
-    <footer id="contact" class="bg-slate-900 text-slate-300 pt-20 pb-10 border-t border-slate-800">
+    <footer id="contact" class="bg-slate-950 text-slate-300 pt-16 md:pt-20 pb-10 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
                 <!-- Branding -->
-                <div>
+                <div class="lg:col-span-2">
                     <div class="flex items-center gap-3 mb-6">
                         <div class="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center text-xl font-bold">V</div>
                         <h2 class="text-2xl font-bold text-white">Vikas High School</h2>
                     </div>
-                    <p class="text-slate-400 leading-relaxed mb-6">
-                        A higher secondary school dedicated to nurturing young minds through excellent private unaided, English-medium education.
+                    <p class="text-slate-400 leading-relaxed mb-6 max-w-md">
+                        A higher secondary school dedicated to nurturing young minds through excellent private unaided, English-medium education in Sirsa.
                     </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition text-white"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition text-white"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-blue-600 transition text-white"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
                 </div>
 
                 <!-- Quick Links -->
@@ -197,8 +344,8 @@
                     <ul class="space-y-3">
                         <li><a href="#home" class="hover:text-blue-400 transition"><i class="fa-solid fa-angle-right mr-2 text-blue-500"></i>Home</a></li>
                         <li><a href="#about" class="hover:text-blue-400 transition"><i class="fa-solid fa-angle-right mr-2 text-blue-500"></i>About Us</a></li>
-                        <li><a href="#academics" class="hover:text-blue-400 transition"><i class="fa-solid fa-angle-right mr-2 text-blue-500"></i>Academics (10th Grade)</a></li>
-                        <li><a href="#contact" class="hover:text-blue-400 transition"><i class="fa-solid fa-angle-right mr-2 text-blue-500"></i>Contact Support</a></li>
+                        <li><a href="#academics" class="hover:text-blue-400 transition"><i class="fa-solid fa-angle-right mr-2 text-blue-500"></i>Academics</a></li>
+                        <li><a href="#facilities" class="hover:text-blue-400 transition"><i class="fa-solid fa-angle-right mr-2 text-blue-500"></i>Facilities</a></li>
                     </ul>
                 </div>
 
@@ -207,7 +354,7 @@
                     <h3 class="text-lg font-bold text-white mb-6 uppercase tracking-wider">Contact Us</h3>
                     <ul class="space-y-4">
                         <li class="flex items-start">
-                            <i class="fa-solid fa-location-dot mt-1.5 mr-4 text-blue-500 text-xl"></i>
+                            <i class="fa-solid fa-location-dot mt-1.5 mr-4 text-blue-500 text-xl w-5 text-center"></i>
                             <span>
                                 <strong>Campus Address:</strong><br>
                                 G2HQ+8F4, Agrasain Colony,<br>
@@ -215,8 +362,12 @@
                             </span>
                         </li>
                         <li class="flex items-center">
-                            <i class="fa-solid fa-phone mr-4 text-blue-500 text-xl"></i>
+                            <i class="fa-solid fa-phone mr-4 text-blue-500 text-xl w-5 text-center"></i>
                             <span class="text-lg font-medium text-white">094161 86814</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa-solid fa-envelope mr-4 text-blue-500 text-xl w-5 text-center"></i>
+                            <span class="text-base text-slate-300">info@vikashighschool.edu</span>
                         </li>
                     </ul>
                 </div>
@@ -224,11 +375,29 @@
         </div>
         
         <!-- Copyright -->
-        <div class="border-t border-slate-800 pt-8 text-center text-slate-500 text-sm">
+        <div class="border-t border-slate-800 pt-8 text-center text-slate-500 text-sm px-4">
             <p>&copy; 2026 Vikas High School, Sirsa. All rights reserved.</p>
             <p class="mt-2">Affiliated with Haryana Board of School Education (HBSE).</p>
         </div>
     </footer>
 
+    <!-- Mobile Menu JavaScript Toggle -->
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        // Toggle menu on hamburger click
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
 </body>
 </html>
