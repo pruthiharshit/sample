@@ -3,32 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OHM | Cine Garden & Shopping Complex</title>
+    <title>OHM | Spatial Experience</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Outfit (Modern Sans) & Playfair Display (Premium Serif) -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Plus Jakarta Sans for that ultra-modern Apple/iOS vibe -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Tailwind Config for Custom Colors -->
+    <!-- Tailwind Configuration -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Outfit', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
                     },
-                    colors: {
-                        premium: {
-                            black: '#0a0a0a',
-                            dark: '#141414',
-                            gold: '#D4AF37',
-                            goldHover: '#F3E5AB'
+                    animation: {
+                        'blob': 'blob 10s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(50px, -50px) scale(1.2)' },
+                            '66%': { transform: 'translate(-40px, 20px) scale(0.8)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
                         }
                     }
                 }
@@ -38,367 +45,319 @@
 
     <style>
         body { 
-            background-color: #0a0a0a; 
+            background-color: #05050a; 
             color: #ffffff; 
             overflow-x: hidden; 
         }
-        
-        /* Glassmorphism Panel */
-        .glass-panel {
-            background: rgba(20, 20, 20, 0.6);
+
+        /* --- THE LIQUID GLASS EFFECT (iOS 27 / visionOS style) --- */
+        .liquid-glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            /* Inner top highlight to simulate glass edge */
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 
+                        0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .liquid-glass-btn {
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
         }
 
-        /* Hero Image Overlays */
-        .hero-vignette {
-            background: radial-gradient(circle at center, transparent 0%, #0a0a0a 100%);
-        }
-        .hero-gradient-bottom {
-            background: linear-gradient(to top, #0a0a0a 0%, rgba(10, 10, 10, 0.8) 20%, transparent 100%);
-        }
-        .hero-gradient-side {
-            background: linear-gradient(to right, #0a0a0a 0%, rgba(10, 10, 10, 0.6) 50%, transparent 100%);
+        .liquid-glass-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 
+                        0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
-        /* Hover Zoom Effect for Movie Cards */
-        .img-hover-zoom {
-            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        /* --- TRUE 3D SPATIAL CSS --- */
+        /* Required on the parent of the 3D floating items */
+        .spatial-card {
+            transform-style: preserve-3d;
+            perspective: 1000px;
         }
-        .card-container:hover .img-hover-zoom {
-            transform: scale(1.1);
+        
+        /* The elements inside that pop out */
+        .pop-out {
+            transform: translateZ(60px); /* Pushes element out of the glass */
+        }
+        .pop-out-image {
+            transform: translateZ(40px);
+        }
+        .pop-out-text {
+            transform: translateZ(80px); /* Text floats highest */
+            text-shadow: 0 10px 20px rgba(0,0,0,0.5);
         }
 
-        /* Hide scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0a0a0a; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.4); }
+        .hide-scroll::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body class="antialiased selection:bg-premium-gold selection:text-black">
+<body class="antialiased selection:bg-cyan-400 selection:text-black">
 
-    <!-- Fixed Navigation -->
-    <nav class="fixed w-full z-50 top-0 bg-[#0a0a0a]/80 backdrop-blur-lg border-b border-white/5 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo -->
-                <a href="#" class="flex items-center gap-2">
-                    <h1 class="text-3xl font-serif font-bold tracking-widest text-white">OHM<span class="text-premium-gold">.</span></h1>
+    <!-- FIXED FLUID MESH BACKGROUND (Stays behind everything) -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden bg-[#05050a]">
+        <div class="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] bg-fuchsia-600 rounded-full mix-blend-screen filter blur-[150px] opacity-40 animate-blob"></div>
+        <div class="absolute top-[20%] right-[-10%] w-[40vw] h-[40vw] bg-cyan-500 rounded-full mix-blend-screen filter blur-[130px] opacity-40 animate-blob" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-[-20%] left-[20%] w-[60vw] h-[60vw] bg-indigo-600 rounded-full mix-blend-screen filter blur-[160px] opacity-30 animate-blob" style="animation-delay: 4s;"></div>
+    </div>
+
+    <!-- Capsule Navigation (Dynamic Island Style) -->
+    <nav class="fixed top-6 left-1/2 transform -translate-x-1/2 w-11/12 max-w-5xl z-50">
+        <div class="liquid-glass rounded-full px-6 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="text-xl font-extrabold tracking-tight text-white flex items-center gap-2">
+                <i class="fa-solid fa-infinity text-cyan-400"></i> OHM
+            </a>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#discover" class="text-sm font-semibold text-white/70 hover:text-white transition">Experience</a>
+                <a href="#cinema" class="text-sm font-semibold text-white/70 hover:text-white transition">Cinema</a>
+                <a href="#complex" class="text-sm font-semibold text-white/70 hover:text-white transition">Retail & Dine</a>
+            </div>
+
+            <!-- Action Button -->
+            <div>
+                <a href="#cinema" class="liquid-glass-btn px-5 py-2 rounded-full text-xs font-bold text-white tracking-wide uppercase">
+                    Book Tickets
                 </a>
-
-                <!-- Desktop Menu -->
-                <div class="hidden lg:flex items-center space-x-8">
-                    <a href="#home" class="text-sm font-medium text-gray-300 hover:text-premium-gold transition uppercase tracking-widest">Home</a>
-                    <a href="#cinema" class="text-sm font-medium text-gray-300 hover:text-premium-gold transition uppercase tracking-widest">Cinema</a>
-                    <a href="#explore" class="text-sm font-medium text-gray-300 hover:text-premium-gold transition uppercase tracking-widest">Dine & Shop</a>
-                    <a href="#cinema" class="bg-premium-gold text-black px-6 py-2.5 rounded font-bold hover:bg-white transition shadow-lg uppercase tracking-wider text-sm">
-                        Book Tickets
-                    </a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <div class="lg:hidden text-white text-2xl cursor-pointer">
-                    <i class="fa-solid fa-bars"></i>
-                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section (Properly padded to avoid navbar overlap) -->
-    <header id="home" class="relative min-h-screen flex items-center pt-20 pb-24 overflow-hidden">
-        
-        <!-- Background Image Provided by User -->
-        <div class="absolute inset-0 z-0">
-            <img src="https://raw.githubusercontent.com/pruthiharshit/sample/main/ohm.png" alt="OHM Cine Garden" class="w-full h-full object-cover">
-            <!-- Gradients to ensure text is ALWAYS readable regardless of screen size -->
-            <div class="absolute inset-0 bg-black/40"></div>
-            <div class="absolute inset-0 hero-vignette opacity-80"></div>
-            <div class="absolute inset-0 hero-gradient-bottom"></div>
-            <div class="absolute inset-0 hero-gradient-side"></div>
-        </div>
-
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-10 md:mt-0">
-            <div class="max-w-3xl">
-                <!-- Badges -->
-                <div class="flex flex-wrap items-center gap-3 mb-6">
-                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded bg-white/10 border border-white/20 backdrop-blur-sm text-xs font-bold tracking-widest uppercase text-premium-gold">
-                        <i class="fa-solid fa-calendar-check"></i> Est. 2009
-                    </span>
-                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded bg-white/10 border border-white/20 backdrop-blur-sm text-xs font-bold tracking-widest uppercase text-white">
-                        <i class="fa-solid fa-star text-yellow-500"></i> 4.2 On Google Maps
-                    </span>
+    <!-- Hero Section -->
+    <header class="relative min-h-screen flex items-center pt-28 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden">
+        <div class="grid lg:grid-cols-2 gap-12 items-center w-full">
+            
+            <!-- Hero Text -->
+            <div class="z-10 order-2 lg:order-1">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full liquid-glass mb-6">
+                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                    <span class="text-xs font-bold tracking-widest text-white/80 uppercase">Established 2009</span>
                 </div>
                 
-                <!-- Responsive Heading (Fixed Overlap Issue) -->
-                <h2 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-bold text-white leading-tight mb-6">
-                    Redefining <br>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-premium-gold to-yellow-200">Entertainment.</span>
-                </h2>
+                <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.1] tracking-tight mb-6">
+                    Step Into The <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-fuchsia-400 to-indigo-400">Next Dimension.</span>
+                </h1>
                 
-                <p class="text-lg md:text-xl text-gray-300 mb-10 font-light leading-relaxed max-w-2xl">
-                    Sirsa's premier multi-dimensional complex. Experience world-class 2D/3D cinema, luxury shopping, and an exquisite multi-cuisine eatery all under one roof.
+                <p class="text-lg text-white/70 mb-8 max-w-lg leading-relaxed font-medium">
+                    Sirsa's premier spatial entertainment hub. Immerse yourself in 2D/3D cinema, luxury retail, and global gastronomy inside a state-of-the-art complex.
                 </p>
                 
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#cinema" class="text-center bg-premium-gold text-black px-8 py-4 rounded font-bold hover:bg-white transition duration-300 uppercase tracking-widest text-sm shadow-[0_0_20px_rgba(212,175,55,0.3)]">
-                        <i class="fa-solid fa-ticket mr-2"></i> Now Showing
-                    </a>
-                    <a href="#explore" class="text-center bg-white/10 text-white px-8 py-4 rounded font-bold border border-white/20 hover:bg-white/20 backdrop-blur-sm transition duration-300 uppercase tracking-widest text-sm">
-                        Explore Complex
-                    </a>
+                <div class="flex flex-wrap items-center gap-4">
+                    <div class="flex items-center gap-1 text-yellow-400 text-lg">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke text-yellow-400/50"></i>
+                    </div>
+                    <span class="text-white/80 font-semibold text-sm border-l border-white/20 pl-4">4.2 Google Rating</span>
                 </div>
             </div>
+
+            <!-- 3D Spatial Image Card (The provided OHM Image) -->
+            <div class="z-10 order-1 lg:order-2 flex justify-center animate-float">
+                <!-- VanillaTilt applied here -->
+                <div class="spatial-card liquid-glass w-full max-w-md aspect-[4/5] rounded-[2rem] p-4 cursor-grab active:cursor-grabbing" data-tilt data-tilt-glare="true" data-tilt-max-glare="0.4" data-tilt-max="10" data-tilt-speed="400">
+                    
+                    <!-- Inner Image Container -->
+                    <div class="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl pop-out-image border border-white/10">
+                        <img src="https://raw.githubusercontent.com/pruthiharshit/sample/main/ohm.png" alt="OHM Complex" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                        
+                        <!-- Floating Text Inside the Card -->
+                        <div class="absolute bottom-6 left-6 right-6 pop-out-text">
+                            <h3 class="text-2xl font-bold text-white mb-1">OHM Complex</h3>
+                            <p class="text-sm text-cyan-300 font-medium"><i class="fa-solid fa-location-dot mr-1"></i> NH 9, Sirsa, Haryana</p>
+                        </div>
+                    </div>
+
+                    <!-- Floating decorative UI elements -->
+                    <div class="absolute -top-4 -right-4 liquid-glass w-16 h-16 rounded-full flex items-center justify-center pop-out shadow-xl">
+                        <i class="fa-solid fa-ticket text-2xl text-fuchsia-400"></i>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </header>
 
-    <!-- Floating Features Bar -->
-    <section class="relative z-20 -mt-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
-        <div class="glass-panel rounded-xl p-6 md:p-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-x divide-white/10">
-                <div class="p-2">
-                    <i class="fa-solid fa-glasses text-3xl text-premium-gold mb-3"></i>
-                    <h3 class="text-lg font-bold text-white mb-1">2D / 3D Movies</h3>
-                    <p class="text-xs uppercase tracking-widest text-gray-400">Immersive Cinema</p>
-                </div>
-                <div class="p-2">
-                    <i class="fa-solid fa-utensils text-3xl text-premium-gold mb-3"></i>
-                    <h3 class="text-lg font-bold text-white mb-1">Multi-Cuisine</h3>
-                    <p class="text-xs uppercase tracking-widest text-gray-400">Premium Eatery</p>
-                </div>
-                <div class="p-2">
-                    <i class="fa-solid fa-bag-shopping text-3xl text-premium-gold mb-3"></i>
-                    <h3 class="text-lg font-bold text-white mb-1">Shopping Centre</h3>
-                    <p class="text-xs uppercase tracking-widest text-gray-400">Retail Therapy</p>
-                </div>
-                <div class="p-2">
-                    <i class="fa-solid fa-map-location-dot text-3xl text-premium-gold mb-3"></i>
-                    <h3 class="text-lg font-bold text-white mb-1">NH 9, Sirsa</h3>
-                    <p class="text-xs uppercase tracking-widest text-gray-400">Prime Location</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Cinema Section (Now Showing) -->
-    <section id="cinema" class="py-16 bg-premium-black relative border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
-                <div>
-                    <h4 class="text-premium-gold font-bold tracking-[0.2em] uppercase text-sm mb-2">Cine Garden</h4>
-                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-white">Currently Showing</h2>
-                </div>
-                <a href="#" class="text-gray-400 hover:text-premium-gold uppercase tracking-widest text-sm border-b border-premium-gold/30 pb-1 transition">View Full Schedule</a>
-            </div>
-
-            <!-- Movie Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                
-                <!-- Poster 1 -->
-                <div class="card-container relative rounded-lg overflow-hidden cursor-pointer group bg-premium-dark border border-white/5">
-                    <div class="aspect-[2/3] overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1534809027769-b00d750a6bac?q=80&w=1974&auto=format&fit=crop" alt="Movie" class="w-full h-full object-cover img-hover-zoom">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                        <div class="absolute top-3 right-3 bg-premium-gold text-black text-xs font-bold px-2 py-1 rounded shadow-lg uppercase tracking-wider z-10">3D</div>
-                        
-                        <!-- Overlay Button -->
-                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 z-20 bg-black/40 backdrop-blur-sm">
-                            <button class="bg-white text-black px-6 py-2 rounded font-bold uppercase tracking-widest text-sm hover:bg-premium-gold transition shadow-xl">Get Tickets</button>
-                        </div>
-                    </div>
-                    <div class="p-5 relative z-10 bg-premium-dark">
-                        <h3 class="text-xl font-serif font-bold text-white truncate">The Great Adventure</h3>
-                        <p class="text-sm text-gray-400 mt-1">Action, Sci-Fi • 2h 15m</p>
-                    </div>
-                </div>
-
-                <!-- Poster 2 -->
-                <div class="card-container relative rounded-lg overflow-hidden cursor-pointer group bg-premium-dark border border-white/5">
-                    <div class="aspect-[2/3] overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1974&auto=format&fit=crop" alt="Movie" class="w-full h-full object-cover img-hover-zoom">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                        <div class="absolute top-3 right-3 bg-white text-black text-xs font-bold px-2 py-1 rounded shadow-lg uppercase tracking-wider z-10">2D</div>
-                        
-                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 z-20 bg-black/40 backdrop-blur-sm">
-                            <button class="bg-white text-black px-6 py-2 rounded font-bold uppercase tracking-widest text-sm hover:bg-premium-gold transition shadow-xl">Get Tickets</button>
-                        </div>
-                    </div>
-                    <div class="p-5 relative z-10 bg-premium-dark">
-                        <h3 class="text-xl font-serif font-bold text-white truncate">Midnight Echoes</h3>
-                        <p class="text-sm text-gray-400 mt-1">Drama, Thriller • 1h 50m</p>
-                    </div>
-                </div>
-
-                <!-- Poster 3 -->
-                <div class="card-container relative rounded-lg overflow-hidden cursor-pointer group bg-premium-dark border border-white/5">
-                    <div class="aspect-[2/3] overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1968&auto=format&fit=crop" alt="Movie" class="w-full h-full object-cover img-hover-zoom">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                        <div class="absolute top-3 right-3 bg-premium-gold text-black text-xs font-bold px-2 py-1 rounded shadow-lg uppercase tracking-wider z-10">3D</div>
-                        
-                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 z-20 bg-black/40 backdrop-blur-sm">
-                            <button class="bg-white text-black px-6 py-2 rounded font-bold uppercase tracking-widest text-sm hover:bg-premium-gold transition shadow-xl">Get Tickets</button>
-                        </div>
-                    </div>
-                    <div class="p-5 relative z-10 bg-premium-dark">
-                        <h3 class="text-xl font-serif font-bold text-white truncate">Starlight Journey</h3>
-                        <p class="text-sm text-gray-400 mt-1">Fantasy, Family • 2h 05m</p>
-                    </div>
-                </div>
-
-                <!-- Poster 4 -->
-                <div class="card-container relative rounded-lg overflow-hidden cursor-pointer group bg-premium-dark border border-white/5 hidden lg:block">
-                    <div class="aspect-[2/3] overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925&auto=format&fit=crop" alt="Movie" class="w-full h-full object-cover img-hover-zoom grayscale group-hover:grayscale-0">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                        <div class="absolute top-3 right-3 bg-white text-black text-xs font-bold px-2 py-1 rounded shadow-lg uppercase tracking-wider z-10">2D</div>
-                        
-                        <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300 z-20 bg-black/40 backdrop-blur-sm">
-                            <button class="bg-white text-black px-6 py-2 rounded font-bold uppercase tracking-widest text-sm hover:bg-premium-gold transition shadow-xl">Get Tickets</button>
-                        </div>
-                    </div>
-                    <div class="p-5 relative z-10 bg-premium-dark">
-                        <h3 class="text-xl font-serif font-bold text-white truncate">The Last Horizon</h3>
-                        <p class="text-sm text-gray-400 mt-1">Historical, Drama • 2h 30m</p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Shopping & Dining Section -->
-    <section id="explore" class="py-24 bg-premium-dark relative border-t border-white/5 overflow-hidden">
+    <!-- Liquid Features Grid -->
+    <section id="discover" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <h2 class="text-3xl font-bold mb-10 pl-2 border-l-4 border-cyan-400">The Experience</h2>
         
-        <!-- Abstract Gold Glow -->
-        <div class="absolute top-1/2 left-0 w-96 h-96 bg-premium-gold rounded-full filter blur-[150px] opacity-10 transform -translate-y-1/2 -translate-x-1/2"></div>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-16 items-center">
-                
-                <!-- Text Content -->
-                <div>
-                    <h4 class="text-premium-gold font-bold tracking-[0.2em] uppercase text-sm mb-4">Retail & Culinary</h4>
-                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-6 leading-tight">Elevate Your Senses.</h2>
-                    <p class="text-gray-400 text-lg mb-10 font-light leading-relaxed">
-                        OHM Cine Garden is more than just a typical cinema. We host an exclusive eatery providing a luxurious dining experience featuring mouth-watering Indian, Chinese, and Continental fare. Coupled with our diverse shopping centre, it's a complete lifestyle destination.
-                    </p>
-                    
-                    <div class="space-y-6">
-                        <!-- Dining Feature -->
-                        <div class="flex items-start gap-5 p-5 bg-premium-black rounded-lg border border-white/5 hover:border-premium-gold/30 transition duration-300 shadow-lg group">
-                            <div class="w-14 h-14 rounded bg-premium-gold/10 flex items-center justify-center flex-shrink-0 text-premium-gold text-2xl group-hover:bg-premium-gold group-hover:text-black transition duration-300">
-                                <i class="fa-solid fa-bell-concierge"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-white mb-1">Multi-Cuisine Eatery</h3>
-                                <p class="text-sm text-gray-400 leading-relaxed">Authentic Indian, spicy Chinese, and exquisite Continental dishes crafted by master chefs.</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Shopping Feature -->
-                        <div class="flex items-start gap-5 p-5 bg-premium-black rounded-lg border border-white/5 hover:border-premium-gold/30 transition duration-300 shadow-lg group">
-                            <div class="w-14 h-14 rounded bg-premium-gold/10 flex items-center justify-center flex-shrink-0 text-premium-gold text-2xl group-hover:bg-premium-gold group-hover:text-black transition duration-300">
-                                <i class="fa-solid fa-store"></i>
-                            </div>
-                            <div>
-                                <h3 class="text-xl font-bold text-white mb-1">Shopping Complex</h3>
-                                <p class="text-sm text-gray-400 leading-relaxed">Explore premium brands, fashion boutiques, and lifestyle stores in a modern retail environment.</p>
-                            </div>
-                        </div>
-                    </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <!-- Feature 1: Cinema -->
+            <div class="spatial-card liquid-glass rounded-[2rem] p-8" data-tilt data-tilt-max="5" data-tilt-glare="true" data-tilt-max-glare="0.2">
+                <div class="w-14 h-14 rounded-full bg-cyan-500/20 flex items-center justify-center mb-6 border border-cyan-400/30 pop-out">
+                    <i class="fa-solid fa-vr-cardboard text-2xl text-cyan-400"></i>
                 </div>
-                
-                <!-- Images Layout -->
-                <div class="relative h-[500px] md:h-[600px] w-full rounded-2xl overflow-hidden group">
-                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1974&auto=format&fit=crop" alt="Premium Dining" class="absolute inset-0 w-full h-full object-cover transition duration-700 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
-                    
-                    <div class="absolute bottom-8 left-8 right-8">
-                        <div class="glass-panel p-6 rounded-xl border border-white/20">
-                            <h3 class="text-2xl font-serif font-bold text-white mb-2">Dine in Style</h3>
-                            <p class="text-sm text-gray-300">A perfect ambiance to relax before or after your movie.</p>
-                        </div>
-                    </div>
-                </div>
-
+                <h3 class="text-xl font-bold mb-2 pop-out-image text-white">Immersive Cinema</h3>
+                <p class="text-white/60 text-sm pop-out-image leading-relaxed">Experience blockbusters in crystal-clear 2D and breathtaking 3D with spatial audio systems.</p>
             </div>
+
+            <!-- Feature 2: Dining -->
+            <div class="spatial-card liquid-glass rounded-[2rem] p-8" data-tilt data-tilt-max="5" data-tilt-glare="true" data-tilt-max-glare="0.2">
+                <div class="w-14 h-14 rounded-full bg-fuchsia-500/20 flex items-center justify-center mb-6 border border-fuchsia-400/30 pop-out">
+                    <i class="fa-solid fa-utensils text-2xl text-fuchsia-400"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2 pop-out-image text-white">Global Gastronomy</h3>
+                <p class="text-white/60 text-sm pop-out-image leading-relaxed">A multi-cuisine sanctuary offering authentic Indian, spicy Chinese, and rich Continental delicacies.</p>
+            </div>
+
+            <!-- Feature 3: Shopping -->
+            <div class="spatial-card liquid-glass rounded-[2rem] p-8" data-tilt data-tilt-max="5" data-tilt-glare="true" data-tilt-max-glare="0.2">
+                <div class="w-14 h-14 rounded-full bg-indigo-500/20 flex items-center justify-center mb-6 border border-indigo-400/30 pop-out">
+                    <i class="fa-solid fa-bag-shopping text-2xl text-indigo-400"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2 pop-out-image text-white">Premium Retail</h3>
+                <p class="text-white/60 text-sm pop-out-image leading-relaxed">Shop your favorite brands and discover new trends in our beautifully curated shopping complex.</p>
+            </div>
+
         </div>
     </section>
 
-    <!-- Footer Section -->
-    <footer id="contact" class="bg-[#050505] pt-20 pb-10 border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+    <!-- 3D Cinema Carousel (Now Showing) -->
+    <section id="cinema" class="py-20 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+            <h2 class="text-3xl font-bold pl-2 border-l-4 border-fuchsia-400">Now Showing</h2>
+        </div>
+
+        <!-- Horizontal Scroll Area -->
+        <div class="flex overflow-x-auto hide-scroll snap-x snap-mandatory gap-8 px-4 sm:px-6 lg:px-8 pb-16 pt-4">
+            
+            <!-- Movie 1 -->
+            <div class="min-w-[280px] md:min-w-[320px] snap-center shrink-0 spatial-card" data-tilt data-tilt-max="10" data-tilt-glare="true" data-tilt-max-glare="0.5" data-tilt-scale="1.05">
+                <div class="liquid-glass rounded-[2rem] p-4 h-[450px] relative flex flex-col justify-end group cursor-pointer border-t border-l border-white/30">
+                    <img src="https://images.unsplash.com/photo-1534809027769-b00d750a6bac?q=80&w=1974&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover rounded-[1.5rem] opacity-70 group-hover:opacity-100 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent rounded-[1.5rem]"></div>
+                    
+                    <div class="absolute top-6 right-6 pop-out">
+                        <span class="liquid-glass-btn px-3 py-1 rounded-full text-xs font-bold text-white">3D IMAX</span>
+                    </div>
+
+                    <div class="relative z-10 pop-out-text p-2">
+                        <h3 class="text-2xl font-bold text-white leading-tight">Quantum Shift</h3>
+                        <p class="text-sm text-cyan-300 font-medium mb-4">Sci-Fi • Action</p>
+                        <button class="w-full liquid-glass-btn py-3 rounded-xl text-sm font-bold shadow-lg">Get Tickets</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Movie 2 -->
+            <div class="min-w-[280px] md:min-w-[320px] snap-center shrink-0 spatial-card" data-tilt data-tilt-max="10" data-tilt-glare="true" data-tilt-max-glare="0.5" data-tilt-scale="1.05">
+                <div class="liquid-glass rounded-[2rem] p-4 h-[450px] relative flex flex-col justify-end group cursor-pointer border-t border-l border-white/30">
+                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1974&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover rounded-[1.5rem] opacity-70 group-hover:opacity-100 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent rounded-[1.5rem]"></div>
+                    
+                    <div class="absolute top-6 right-6 pop-out">
+                        <span class="liquid-glass-btn px-3 py-1 rounded-full text-xs font-bold text-white">2D</span>
+                    </div>
+
+                    <div class="relative z-10 pop-out-text p-2">
+                        <h3 class="text-2xl font-bold text-white leading-tight">Midnight Echo</h3>
+                        <p class="text-sm text-fuchsia-300 font-medium mb-4">Thriller • Drama</p>
+                        <button class="w-full liquid-glass-btn py-3 rounded-xl text-sm font-bold shadow-lg">Get Tickets</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Movie 3 -->
+            <div class="min-w-[280px] md:min-w-[320px] snap-center shrink-0 spatial-card" data-tilt data-tilt-max="10" data-tilt-glare="true" data-tilt-max-glare="0.5" data-tilt-scale="1.05">
+                <div class="liquid-glass rounded-[2rem] p-4 h-[450px] relative flex flex-col justify-end group cursor-pointer border-t border-l border-white/30">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1968&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover rounded-[1.5rem] opacity-70 group-hover:opacity-100 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent rounded-[1.5rem]"></div>
+                    
+                    <div class="absolute top-6 right-6 pop-out">
+                        <span class="liquid-glass-btn px-3 py-1 rounded-full text-xs font-bold text-white">3D</span>
+                    </div>
+
+                    <div class="relative z-10 pop-out-text p-2">
+                        <h3 class="text-2xl font-bold text-white leading-tight">Starlight</h3>
+                        <p class="text-sm text-indigo-300 font-medium mb-4">Fantasy • Family</p>
+                        <button class="w-full liquid-glass-btn py-3 rounded-xl text-sm font-bold shadow-lg">Get Tickets</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spacer -->
+            <div class="min-w-[20px] md:min-w-[40px] shrink-0"></div>
+        </div>
+    </section>
+
+    <!-- Liquid Glass Footer -->
+    <footer class="relative z-10 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="liquid-glass rounded-[2rem] p-8 md:p-12 border-t border-l border-white/30">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
                 
                 <!-- Brand -->
-                <div class="lg:col-span-1">
-                    <h2 class="text-3xl font-serif font-bold tracking-widest text-white mb-6">OHM<span class="text-premium-gold">.</span></h2>
-                    <p class="text-gray-400 text-sm mb-6 font-light leading-relaxed">
-                        Sirsa's ultimate destination for 2D/3D cinema, luxury shopping, and extraordinary culinary experiences.
-                    </p>
-                    <div class="flex gap-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-premium-gold hover:text-black hover:border-premium-gold transition duration-300">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-premium-gold hover:text-black hover:border-premium-gold transition duration-300">
-                            <i class="fa-brands fa-facebook-f"></i>
-                        </a>
+                <div>
+                    <h2 class="text-3xl font-extrabold text-white mb-4"><i class="fa-solid fa-infinity text-cyan-400 mr-2"></i>OHM.</h2>
+                    <p class="text-white/60 text-sm font-medium mb-6">Redefining entertainment, retail, and dining through spatial design and immersive experiences.</p>
+                    <div class="flex gap-3">
+                        <a href="#" class="liquid-glass-btn w-10 h-10 rounded-full flex items-center justify-center text-white"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="liquid-glass-btn w-10 h-10 rounded-full flex items-center justify-center text-white"><i class="fa-brands fa-x-twitter"></i></a>
                     </div>
                 </div>
 
-                <!-- Information -->
+                <!-- Quick Links -->
                 <div>
-                    <h3 class="text-sm font-bold uppercase tracking-[0.2em] text-premium-gold mb-6">Explore</h3>
-                    <ul class="space-y-3 text-sm text-gray-400 font-light">
-                        <li><a href="#" class="hover:text-white transition">About Complex</a></li>
-                        <li><a href="#cinema" class="hover:text-white transition">Showtimes & Tickets</a></li>
-                        <li><a href="#explore" class="hover:text-white transition">Dine-in Menu</a></li>
-                        <li><a href="#explore" class="hover:text-white transition">Store Directory</a></li>
+                    <h3 class="text-white font-bold mb-4">Explore</h3>
+                    <ul class="space-y-3 text-sm text-white/60 font-medium">
+                        <li><a href="#" class="hover:text-cyan-400 transition">Box Office</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition">Restaurant Menu</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition">Store Directory</a></li>
+                        <li><a href="#" class="hover:text-cyan-400 transition">About Complex</a></li>
                     </ul>
                 </div>
 
-                <!-- Contact Details -->
-                <div class="lg:col-span-2">
-                    <h3 class="text-sm font-bold uppercase tracking-[0.2em] text-premium-gold mb-6">Visit Us</h3>
-                    <div class="grid sm:grid-cols-2 gap-8">
-                        <ul class="space-y-4 text-sm text-gray-400 font-light">
-                            <li class="flex items-start gap-3">
-                                <i class="fa-solid fa-location-dot mt-1 text-premium-gold"></i>
-                                <span>
-                                    Sirsa - Fatehabad Road, NH 9,<br>
-                                    Sirsa, Haryana 125060
-                                </span>
-                            </li>
-                            <li class="mt-2">
-                                <a href="#" class="inline-flex items-center gap-2 text-premium-gold hover:text-white transition border-b border-premium-gold/30 pb-0.5">
-                                    <i class="fa-solid fa-map"></i> Open in Google Maps
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="bg-premium-dark p-6 rounded border border-white/5">
-                            <p class="text-xs uppercase tracking-widest text-gray-500 mb-2">Box Office & Inquiries</p>
-                            <a href="tel:09254333333" class="text-2xl font-serif font-bold text-white hover:text-premium-gold transition block">
-                                <i class="fa-solid fa-phone text-sm text-premium-gold mr-2"></i> 092543 33333
-                            </a>
-                        </div>
+                <!-- Location -->
+                <div>
+                    <h3 class="text-white font-bold mb-4">Location</h3>
+                    <div class="flex items-start gap-3 text-sm text-white/60 font-medium mb-4">
+                        <i class="fa-solid fa-location-dot text-fuchsia-400 mt-1"></i>
+                        <p>Sirsa - Fatehabad Road, NH 9,<br>Sirsa, Haryana 125060</p>
+                    </div>
+                    <div class="flex items-center gap-3 text-sm text-white/60 font-medium">
+                        <i class="fa-solid fa-phone text-indigo-400"></i>
+                        <a href="tel:09254333333" class="hover:text-white transition">092543 33333</a>
                     </div>
                 </div>
 
             </div>
 
-            <!-- Copyright -->
-            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 uppercase tracking-widest font-medium">
-                <p>&copy; 2026 OHM Cine Garden & Shopping Complex.</p>
-                <div class="flex gap-6">
-                    <a href="#" class="hover:text-gray-300 transition">Privacy Policy</a>
-                    <a href="#" class="hover:text-gray-300 transition">Terms of Service</a>
+            <div class="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/40 font-semibold">
+                <p>&copy; 2026 OHM Complex. Spatial Web.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-white transition">Privacy</a>
+                    <a href="#" class="hover:text-white transition">Terms</a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Vanilla Tilt JS for True 3D Hover Interactions -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    
+    <script>
+        // Ensure tilt is active on all elements with data-tilt
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+            max: 10,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.3,
+        });
+    </script>
 </body>
 </html>
