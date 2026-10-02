@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OHM Cine Garden & Shopping Complex | Sirsa</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Outfit (Modern Sans) & Playfair Display (Premium Serif) -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind Config for Custom Colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        premium: {
+                            black: '#0a0a0a',
+                            dark: '#141414',
+                            gold: '#D4AF37',
+                            goldHover: '#F3E5AB',
+                            glass: 'rgba(255, 255, 255, 0.05)'
+                        }
+                    },
+                    boxShadow: {
+                        'neon-gold': '0 0 20px rgba(212, 175, 55, 0.3)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #0a0a0a; color: #ffffff; overflow-x: hidden; }
+        
+        /* Glassmorphism utilities */
+        .glass-nav {
+            background: rgba(10, 10, 10, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Hero Image Gradient Overlay */
+        .hero-gradient {
+            background: linear-gradient(to top, #0a0a0a 0%, rgba(10, 10, 10, 0.5) 50%, rgba(10, 10, 10, 0.8) 100%);
+        }
+        .hero-side-gradient {
+            background: linear-gradient(to right, #0a0a0a 0%, rgba(10, 10, 10, 0.4) 50%, transparent 100%);
+        }
+
+        /* 3D Text Effect */
+        .text-3d {
+            text-shadow: 0 1px 0 #ccc,
+                         0 2px 0 #c9c9c9,
+                         0 3px 0 #bbb,
+                         0 4px 0 #b9b9b9,
+                         0 5px 0 #aaa,
+                         0 6px 1px rgba(0,0,0,.1),
+                         0 0 5px rgba(0,0,0,.1),
+                         0 1px 3px rgba(0,0,0,.3),
+                         0 3px 5px rgba(0,0,0,.2),
+                         0 5px 10px rgba(0,0,0,.25),
+                         0 10px 10px rgba(0,0,0,.2),
+                         0 20px 20px rgba(0,0,0,.15);
+        }
+        
+        /* Glowing Text */
+        .glow-text {
+            color: #D4AF37;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Hide scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
+    </style>
+</head>
+<body class="antialiased selection:bg-premium-gold selection:text-black">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 glass-nav top-0 py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <h1 class="text-3xl font-serif font-bold tracking-widest text-white">OHM<span class="text-premium-gold">.</span></h1>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex space-x-10 items-center">
+                    <a href="#home" class="text-sm font-medium text-gray-300 hover:text-premium-gold transition uppercase tracking-widest">Experience</a>
+                    <a href="#cinema" class="text-sm font-medium text-gray-300 hover:text-premium-gold transition uppercase tracking-widest">Cinema</a>
+                    <a href="#dine-shop" class="text-sm font-medium text-gray-300 hover:text-premium-gold transition uppercase tracking-widest">Dine & Shop</a>
+                    <a href="#contact" class="text-sm font-medium text-gray-300 hover:text-premium-gold transition uppercase tracking-widest">Location</a>
+                    <a href="#cinema" class="bg-premium-gold text-black px-6 py-2.5 rounded-sm font-bold hover:bg-premium-goldHover transition shadow-neon-gold uppercase tracking-wider text-sm">
+                        Book Tickets
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="lg:hidden">
+                    <button class="text-white focus:outline-none text-2xl">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- User Provided OHM Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://raw.githubusercontent.com/pruthiharshit/sample/main/ohm.png" alt="OHM Cine Garden" class="w-full h-full object-cover scale-105 animate-[pulse_10s_ease-in-out_infinite] opacity-60">
+            <div class="absolute inset-0 hero-gradient z-10"></div>
+            <div class="absolute inset-0 hero-side-gradient z-10"></div>
+        </div>
+
+        <div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center mt-20">
+            <div class="inline-flex items-center gap-3 px-4 py-1.5 rounded-full glass-card border border-premium-gold/30 mb-8 mx-auto">
+                <i class="fa-solid fa-star text-premium-gold text-sm"></i>
+                <span class="text-sm font-medium tracking-widest uppercase">4.2 Rating on Google Maps</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white leading-tight mb-6 text-3d tracking-tight">
+                Beyond <span class="glow-text italic">Entertainment</span>.
+            </h1>
+            
+            <p class="text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto font-light mb-10">
+                Sirsa's premier destination since 2009. Experience world-class 2D/3D cinema, premium shopping, and exquisite global cuisine all under one roof.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="#cinema" class="bg-premium-gold text-black px-10 py-4 rounded-sm font-bold text-lg hover:bg-white transition duration-300 shadow-neon-gold uppercase tracking-widest">
+                    <i class="fa-solid fa-film mr-2"></i> Now Showing
+                </a>
+                <a href="#dine-shop" class="glass-card text-white px-10 py-4 rounded-sm font-bold text-lg hover:bg-white/10 border border-white/20 transition duration-300 uppercase tracking-widest">
+                    Explore Complex
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
+            <a href="#features" class="text-gray-400 hover:text-premium-gold transition">
+                <i class="fa-solid fa-arrow-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Floating Stats Bar (3D Tilt effect) -->
+    <section id="features" class="relative z-30 -mt-16 max-w-6xl mx-auto px-4">
+        <!-- 'data-tilt' adds the 3D hover effect via vanilla-tilt.js -->
+        <div class="glass-card rounded-xl p-8 shadow-2xl" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare="true" data-tilt-max-glare="0.2">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-white/10">
+                <div>
+                    <h3 class="text-3xl font-serif text-premium-gold mb-1">2009</h3>
+                    <p class="text-xs uppercase tracking-widest text-gray-400">Established</p>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-serif text-premium-gold mb-1">2D / 3D</h3>
+                    <p class="text-xs uppercase tracking-widest text-gray-400">Immersive Cinema</p>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-serif text-premium-gold mb-1">Multi</h3>
+                    <p class="text-xs uppercase tracking-widest text-gray-400">Cuisine Eatery</p>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-serif text-premium-gold mb-1"><i class="fa-solid fa-bag-shopping"></i></h3>
+                    <p class="text-xs uppercase tracking-widest text-gray-400">Shopping Centre</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cinema Section (3D Movie Posters) -->
+    <section id="cinema" class="py-24 bg-premium-black relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h4 class="text-premium-gold font-bold tracking-[0.2em] uppercase text-sm mb-2">Cine Garden</h4>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-white">Currently Showing</h2>
+                </div>
+                <a href="#" class="hidden md:inline-block text-gray-400 hover:text-premium-gold uppercase tracking-widest text-sm border-b border-premium-gold/30 pb-1 transition">View All Movies</a>
+            </div>
+
+            <!-- 3D Poster Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+                
+                <!-- Poster 1 -->
+                <div class="relative group cursor-pointer" data-tilt data-tilt-scale="1.05" data-tilt-glare="true" data-tilt-max-glare="0.5">
+                    <div class="rounded-lg overflow-hidden shadow-2xl relative aspect-[2/3]">
+                        <!-- Stock Movie Poster Image -->
+                        <img src="https://images.unsplash.com/photo-1534809027769-b00d750a6bac?q=80&w=1974&auto=format&fit=crop" alt="Action Movie" class="w-full h-full object-cover transition duration-500 group-hover:scale-110 group-hover:opacity-40">
+                        
+                        <!-- 3D Overlay Elements -->
+                        <div class="absolute top-4 right-4 bg-premium-gold text-black text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wider transform translate-z-[50px]">3D</div>
+                        
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-100 flex flex-col justify-end p-6 transition duration-300">
+                            <h3 class="text-2xl font-serif font-bold text-white mb-2 transform translate-z-[40px]">The Great Adventure</h3>
+                            <p class="text-sm text-gray-300 mb-4 transform translate-z-[30px]">Action, Sci-Fi • 2h 15m</p>
+                            <button class="w-full bg-white/10 backdrop-blur-md border border-white/20 text-white py-3 rounded-sm font-bold uppercase tracking-widest hover:bg-premium-gold hover:text-black transition transform translate-z-[60px]">
+                                Book Ticket
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Poster 2 -->
+                <div class="relative group cursor-pointer" data-tilt data-tilt-scale="1.05" data-tilt-glare="true" data-tilt-max-glare="0.5">
+                    <div class="rounded-lg overflow-hidden shadow-2xl relative aspect-[2/3]">
+                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1974&auto=format&fit=crop" alt="Drama Movie" class="w-full h-full object-cover transition duration-500 group-hover:scale-110 group-hover:opacity-40">
+                        <div class="absolute top-4 right-4 bg-white text-black text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wider transform translate-z-[50px]">2D</div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-100 flex flex-col justify-end p-6">
+                            <h3 class="text-2xl font-serif font-bold text-white mb-2 transform translate-z-[40px]">Midnight Echoes</h3>
+                            <p class="text-sm text-gray-300 mb-4 transform translate-z-[30px]">Drama, Thriller • 1h 50m</p>
+                            <button class="w-full bg-white/10 backdrop-blur-md border border-white/20 text-white py-3 rounded-sm font-bold uppercase tracking-widest hover:bg-premium-gold hover:text-black transition transform translate-z-[60px]">
+                                Book Ticket
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Poster 3 -->
+                <div class="relative group cursor-pointer hidden lg:block" data-tilt data-tilt-scale="1.05" data-tilt-glare="true" data-tilt-max-glare="0.5">
+                    <div class="rounded-lg overflow-hidden shadow-2xl relative aspect-[2/3]">
+                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1968&auto=format&fit=crop" alt="Fantasy Movie" class="w-full h-full object-cover transition duration-500 group-hover:scale-110 group-hover:opacity-40">
+                        <div class="absolute top-4 right-4 bg-premium-gold text-black text-xs font-bold px-3 py-1 rounded-sm uppercase tracking-wider transform translate-z-[50px]">3D / IMAX</div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-100 flex flex-col justify-end p-6">
+                            <h3 class="text-2xl font-serif font-bold text-white mb-2 transform translate-z-[40px]">Starlight Journey</h3>
+                            <p class="text-sm text-gray-300 mb-4 transform translate-z-[30px]">Fantasy, Family • 2h 05m</p>
+                            <button class="w-full bg-white/10 backdrop-blur-md border border-white/20 text-white py-3 rounded-sm font-bold uppercase tracking-widest hover:bg-premium-gold hover:text-black transition transform translate-z-[60px]">
+                                Book Ticket
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Shopping & Dining Section -->
+    <section id="dine-shop" class="py-24 bg-premium-dark relative border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                
+                <!-- Text Content -->
+                <div>
+                    <h4 class="text-premium-gold font-bold tracking-[0.2em] uppercase text-sm mb-4">Retail & Culinary</h4>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-6 leading-tight">Elevate Your Senses.</h2>
+                    <p class="text-gray-400 text-lg mb-8 font-light leading-relaxed">
+                        OHM Cine Garden & Shopping Complex is not just a typical cinema offering current movies. We host an exclusive eatery providing a luxurious dining experience featuring mouth-watering Indian, Chinese, and Continental fare. Coupled with our diverse shopping centre, it's a complete lifestyle destination.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <!-- Dining Feature -->
+                        <div class="flex items-start gap-4 p-4 glass-card rounded-lg transition hover:border-premium-gold/50">
+                            <div class="w-12 h-12 rounded-full bg-premium-gold/10 flex items-center justify-center flex-shrink-0 text-premium-gold text-xl">
+                                <i class="fa-solid fa-utensils"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-1">Multi-Cuisine Eatery</h3>
+                                <p class="text-sm text-gray-400">Authentic Indian, spicy Chinese, and exquisite Continental fare crafted by master chefs.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Shopping Feature -->
+                        <div class="flex items-start gap-4 p-4 glass-card rounded-lg transition hover:border-premium-gold/50">
+                            <div class="w-12 h-12 rounded-full bg-premium-gold/10 flex items-center justify-center flex-shrink-0 text-premium-gold text-xl">
+                                <i class="fa-solid fa-store"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-white mb-1">Shopping Complex</h3>
+                                <p class="text-sm text-gray-400">Explore premium brands, fashion boutiques, and lifestyle stores in a state-of-the-art retail environment.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image Grid (3D Composition) -->
+                <div class="relative h-[600px] hidden md:block">
+                    <!-- Dining Image -->
+                    <div class="absolute top-0 right-0 w-3/4 h-2/3 rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] z-10 border border-white/10" data-tilt data-tilt-max="3">
+                        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1974&auto=format&fit=crop" alt="Premium Dining" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <div class="absolute bottom-4 left-4 glass-card px-4 py-2 rounded text-sm font-bold tracking-widest uppercase">Gourmet Dining</div>
+                    </div>
+                    <!-- Shopping Image -->
+                    <div class="absolute bottom-0 left-0 w-2/3 h-1/2 rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] z-20 border border-white/10" data-tilt data-tilt-max="5">
+                        <img src="https://images.unsplash.com/photo-1519567281799-9730f3531b78?q=80&w=2069&auto=format&fit=crop" alt="Premium Shopping" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/20"></div>
+                        <div class="absolute bottom-4 left-4 glass-card px-4 py-2 rounded text-sm font-bold tracking-widest uppercase">Retail Avenue</div>
+                    </div>
+                    
+                    <!-- Decorative Gold Element -->
+                    <div class="absolute top-1/2 left-1/2 w-32 h-32 border border-premium-gold rounded-full transform -translate-x-1/2 -translate-y-1/2 z-0 opacity-50 animate-[spin_10s_linear_infinite]"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact Section -->
+    <footer id="contact" class="bg-premium-black pt-20 pb-10 relative overflow-hidden">
+        <!-- Abstract Background Glow -->
+        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-premium-gold/50 to-transparent"></div>
+        <div class="absolute -top-[200px] left-1/2 transform -translate-x-1/2 w-[800px] h-[400px] bg-premium-gold rounded-full blur-[150px] opacity-10 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-16 mb-16">
+                
+                <!-- Brand -->
+                <div class="col-span-1">
+                    <h2 class="text-4xl font-serif font-bold tracking-widest text-white mb-6">OHM<span class="text-premium-gold">.</span></h2>
+                    <p class="text-gray-400 mb-6 font-light">
+                        Sirsa's ultimate destination for 2D/3D cinema, luxury shopping, and extraordinary culinary experiences.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-premium-gold hover:text-black transition">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-premium-gold hover:text-black transition">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-premium-gold hover:text-black transition">
+                            <i class="fa-brands fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Information -->
+                <div>
+                    <h3 class="text-sm font-bold uppercase tracking-[0.2em] text-premium-gold mb-6">Information</h3>
+                    <ul class="space-y-4 text-gray-400 font-light">
+                        <li><a href="#" class="hover:text-white transition">About Complex</a></li>
+                        <li><a href="#" class="hover:text-white transition">Showtimes & Tickets</a></li>
+                        <li><a href="#" class="hover:text-white transition">Dine-in Menu</a></li>
+                        <li><a href="#" class="hover:text-white transition">Store Directory</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact & Location (Based on Image Data) -->
+                <div>
+                    <h3 class="text-sm font-bold uppercase tracking-[0.2em] text-premium-gold mb-6">Visit Us</h3>
+                    <ul class="space-y-4 text-gray-400 font-light">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-location-dot mt-1 text-premium-gold"></i>
+                            <span>
+                                Sirsa - Fatehabad Road, NH 9,<br>
+                                Sirsa, Haryana 125060
+                            </span>
+                        </li>
+                        <li class="flex items-center gap-3 mt-4">
+                            <i class="fa-solid fa-phone text-premium-gold"></i>
+                            <span class="text-white text-xl font-serif">092543 33333</span>
+                        </li>
+                        <li class="mt-4">
+                            <a href="#" class="inline-flex items-center gap-2 text-sm text-premium-gold hover:text-white transition border-b border-premium-gold/30 pb-1">
+                                <i class="fa-solid fa-map"></i> View on Google Maps (G4HJ+RX)
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Copyright -->
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 uppercase tracking-widest">
+                <p>&copy; 2026 OHM Cine Garden & Shopping Complex. All Rights Reserved.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-gray-300">Privacy Policy</a>
+                    <a href="#" class="hover:text-gray-300">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Vanilla Tilt JS for 3D Hover Effects -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    
+    <!-- Custom Scripts -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-2xl');
+                nav.style.background = 'rgba(10, 10, 10, 0.9)';
+            } else {
+                nav.classList.remove('shadow-2xl');
+                nav.style.background = 'rgba(10, 10, 10, 0.7)';
+            }
+        });
+
+        // Initialize VanillaTilt for specific elements (as a backup if data-tilt attribute fails)
+        VanillaTilt.init(document.querySelectorAll(".glass-card, .group"), {
+            max: 5,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.2,
+        });
+    </script>
+</body>
+</html>
