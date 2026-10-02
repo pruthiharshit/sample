@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OHM | Cine Garden & Shopping Complex</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Oswald (Cinematic/Display) & Manrope (Modern Body) -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['Oswald', 'sans-serif'],
+                        body: ['Manrope', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            black: '#050505',
+                            red: '#E50914', // Cinematic Netflix-style red
+                            gray: '#1a1a1a',
+                            light: '#f5f5f5'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { 
+            background-color: #050505; 
+            color: #f5f5f5; 
+            overflow-x: hidden;
+            cursor: none; /* Custom cursor */
+        }
+
+        /* Custom Cursor */
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #E50914;
+            position: fixed;
+            top: 0; left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            pointer-events: none;
+            transition: width 0.2s, height 0.2s;
+        }
+        .cursor-outline {
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(229, 9, 20, 0.5);
+            position: fixed;
+            top: 0; left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9998;
+            pointer-events: none;
+            transition: 0.1s ease-out;
+        }
+
+        /* Hover states for cursor */
+        a:hover ~ .cursor-dot, button:hover ~ .cursor-dot {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(229, 9, 20, 0.2);
+            border: 1px solid #E50914;
+        }
+
+        /* Image Blend Modes */
+        .blend-image {
+            mix-blend-mode: luminosity;
+            opacity: 0.6;
+            transition: all 0.5s ease;
+        }
+        .group:hover .blend-image {
+            mix-blend-mode: normal;
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        /* Text Stroke for Brutalist look */
+        .text-stroke {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        .text-stroke:hover {
+            color: #f5f5f5;
+            -webkit-text-stroke: 1px #f5f5f5;
+        }
+
+        /* Infinite Marquee */
+        .marquee-container {
+            width: 100vw;
+            overflow: hidden;
+            white-space: nowrap;
+            background: #E50914;
+            padding: 12px 0;
+            border-top: 1px solid #fff;
+            border-bottom: 1px solid #fff;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Scroll Reveal Utility */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hide scrollbar for a cleaner look */
+        ::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="font-body selection:bg-brand-red selection:text-white">
+
+    <!-- Custom Cursor Elements -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 mix-blend-difference px-6 py-6 flex justify-between items-center pointer-events-none">
+        <div class="font-display text-3xl font-bold tracking-tighter text-white pointer-events-auto">
+            OHM<span class="text-brand-red">.</span>
+        </div>
+        <div class="pointer-events-auto">
+            <button class="text-white hover:text-brand-red transition duration-300 focus:outline-none">
+                <i class="fa-solid fa-bars-staggered text-3xl"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen w-full flex flex-col justify-end pb-20 px-6 md:px-16 overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0 bg-brand-black">
+            <img src="https://raw.githubusercontent.com/pruthiharshit/sample/main/ohm.png" alt="OHM Cinema" class="w-full h-full object-cover opacity-50 scale-105 animate-[pulse_10s_ease-in-out_infinite]">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/40 to-transparent"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 max-w-7xl mx-auto w-full reveal active">
+            <div class="flex items-center gap-4 mb-6">
+                <span class="bg-brand-red text-white font-bold px-3 py-1 text-sm tracking-widest uppercase">Est 2009</span>
+                <span class="border border-white/30 text-white px-3 py-1 text-sm tracking-widest uppercase flex items-center gap-2">
+                    <i class="fa-solid fa-star text-brand-red text-xs"></i> 4.2 On Google Maps
+                </span>
+            </div>
+            <h1 class="font-display text-7xl md:text-[9rem] lg:text-[11rem] leading-[0.85] font-bold text-white uppercase tracking-tighter mb-6">
+                Redefining <br>
+                <span class="text-stroke">The Screen</span>
+            </h1>
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 border-t border-white/20 pt-8 mt-12">
+                <p class="max-w-md text-lg font-light text-gray-400">
+                    A multi-dimensional complex offering premium 2D/3D cinema, luxury shopping, and a multi-cuisine eatery.
+                </p>
+                <a href="#explore" class="inline-flex items-center justify-center w-32 h-32 rounded-full border border-white/30 hover:bg-white hover:text-black transition duration-500 uppercase text-xs font-bold tracking-widest group">
+                    <span class="group-hover:scale-110 transition duration-300">Explore <br> Complex</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Infinite Marquee -->
+    <div class="marquee-container z-20 relative">
+        <div class="marquee-content font-display text-4xl uppercase tracking-widest font-bold text-black">
+            CINEMA GARDEN • SHOPPING COMPLEX • MULTI-CUISINE EATERY • 2D / 3D MOVIES • CINEMA GARDEN • SHOPPING COMPLEX • MULTI-CUISINE EATERY • 2D / 3D MOVIES • 
+        </div>
+    </div>
+
+    <!-- The Experience Grid -->
+    <section id="explore" class="py-32 px-6 md:px-16 max-w-[100rem] mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <div class="lg:col-span-5 reveal">
+                <h2 class="font-display text-5xl md:text-7xl font-bold uppercase leading-none mb-8">
+                    Taste. <br>Shop. <br><span class="text-brand-red">Watch.</span>
+                </h2>
+                <p class="text-gray-400 text-lg mb-10 font-light max-w-md">
+                    From the moment you step onto the Sirsa-Fatehabad road campus, you enter a curated lifestyle environment. Enjoy our authentic Indian, Chinese, and Continental menus before catching the latest blockbuster.
+                </p>
+                
+                <ul class="space-y-6 font-display text-2xl uppercase tracking-wide">
+                    <li class="flex justify-between border-b border-white/10 pb-4 hover:text-brand-red transition">
+                        <span>01. Immersive Cinema</span>
+                        <i class="fa-solid fa-arrow-right -rotate-45 text-brand-red"></i>
+                    </li>
+                    <li class="flex justify-between border-b border-white/10 pb-4 hover:text-brand-red transition">
+                        <span>02. Gourmet Eatery</span>
+                        <i class="fa-solid fa-arrow-right -rotate-45 text-brand-red"></i>
+                    </li>
+                    <li class="flex justify-between border-b border-white/10 pb-4 hover:text-brand-red transition">
+                        <span>03. Retail Complex</span>
+                        <i class="fa-solid fa-arrow-right -rotate-45 text-brand-red"></i>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="lg:col-span-7 grid grid-cols-2 gap-4 h-[600px] reveal delay-200">
+                <div class="w-full h-full overflow-hidden group rounded-sm">
+                    <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?q=80&w=1974&auto=format&fit=crop" alt="Photography" class="w-full h-full object-cover blend-image">
+                </div>
+                <div class="w-full h-full flex flex-col gap-4">
+                    <div class="w-full h-1/2 overflow-hidden group rounded-sm bg-brand-gray flex items-center justify-center p-8 text-center relative">
+                        <div class="absolute inset-0 bg-brand-red opacity-0 group-hover:opacity-10 transition duration-500"></div>
+                        <h3 class="font-display text-4xl uppercase font-bold text-stroke group-hover:text-white transition duration-300 z-10">Dine in Style</h3>
+                    </div>
+                    <div class="w-full h-1/2 overflow-hidden group rounded-sm relative">
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1950&auto=format&fit=crop" alt="Shopping" class="w-full h-full object-cover blend-image">
+                        <div class="absolute bottom-4 left-4 bg-black/80 px-4 py-2 font-display uppercase tracking-widest text-sm">Retail Center</div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Now Showing (Cinematic Poster Section) -->
+    <section class="py-32 bg-brand-gray relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+        
+        <div class="px-6 md:px-16 mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8 reveal">
+            <h2 class="font-display text-6xl md:text-8xl font-bold uppercase tracking-tighter">
+                Now <br> <span class="text-brand-red">Showing</span>
+            </h2>
+            <button class="px-8 py-4 bg-transparent border border-white uppercase font-bold tracking-widest hover:bg-white hover:text-black transition duration-300 text-sm">
+                Full Schedule
+            </button>
+        </div>
+
+        <!-- Poster Scroll Container -->
+        <div class="flex gap-8 px-6 md:px-16 overflow-x-auto pb-12 snap-x snap-mandatory hide-scroll">
+            
+            <!-- Thriller / Survival Vibe Poster 1 -->
+            <div class="min-w-[300px] md:min-w-[400px] aspect-[2/3] relative group snap-center cursor-pointer reveal">
+                <div class="absolute inset-0 bg-brand-red opacity-0 group-hover:opacity-60 mix-blend-multiply transition duration-500 z-10"></div>
+                <img src="https://images.unsplash.com/photo-1626544827763-d516dce335e4?q=80&w=2067&auto=format&fit=crop" alt="Suspense Movie" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                <div class="absolute top-4 right-4 z-20 bg-black text-white font-bold px-2 py-1 text-xs uppercase tracking-widest border border-white/20">3D</div>
+                
+                <div class="absolute bottom-0 left-0 w-full p-8 z-20 transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-500">
+                    <h3 class="font-display text-4xl uppercase font-bold text-white mb-2 leading-none">The Isolation</h3>
+                    <p class="text-xs uppercase tracking-widest text-gray-300 mb-6">Thriller • Survival • 2h 10m</p>
+                    <button class="w-full py-3 bg-brand-red text-white uppercase font-bold tracking-widest text-sm hover:bg-white hover:text-brand-red transition">Get Tickets</button>
+                </div>
+            </div>
+
+            <!-- Action Poster 2 -->
+            <div class="min-w-[300px] md:min-w-[400px] aspect-[2/3] relative group snap-center cursor-pointer reveal delay-100">
+                <div class="absolute inset-0 bg-brand-red opacity-0 group-hover:opacity-60 mix-blend-multiply transition duration-500 z-10"></div>
+                <img src="https://images.unsplash.com/photo-1533552755457-5b451000f5ab?q=80&w=1965&auto=format&fit=crop" alt="Action Movie" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                <div class="absolute top-4 right-4 z-20 bg-black text-white font-bold px-2 py-1 text-xs uppercase tracking-widest border border-white/20">2D</div>
+                
+                <div class="absolute bottom-0 left-0 w-full p-8 z-20 transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-500">
+                    <h3 class="font-display text-4xl uppercase font-bold text-white mb-2 leading-none">Night Protocol</h3>
+                    <p class="text-xs uppercase tracking-widest text-gray-300 mb-6">Action • Suspense • 1h 55m</p>
+                    <button class="w-full py-3 bg-brand-red text-white uppercase font-bold tracking-widest text-sm hover:bg-white hover:text-brand-red transition">Get Tickets</button>
+                </div>
+            </div>
+
+            <!-- Horror/Sci-Fi Poster 3 -->
+            <div class="min-w-[300px] md:min-w-[400px] aspect-[2/3] relative group snap-center cursor-pointer reveal delay-200">
+                <div class="absolute inset-0 bg-brand-red opacity-0 group-hover:opacity-60 mix-blend-multiply transition duration-500 z-10"></div>
+                <img src="https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=1974&auto=format&fit=crop" alt="Sci Fi Movie" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700">
+                <div class="absolute top-4 right-4 z-20 bg-black text-white font-bold px-2 py-1 text-xs uppercase tracking-widest border border-white/20">3D / ATMOS</div>
+                
+                <div class="absolute bottom-0 left-0 w-full p-8 z-20 transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition duration-500">
+                    <h3 class="font-display text-4xl uppercase font-bold text-white mb-2 leading-none">Sector 9</h3>
+                    <p class="text-xs uppercase tracking-widest text-gray-300 mb-6">Sci-Fi • Horror • 2h 25m</p>
+                    <button class="w-full py-3 bg-brand-red text-white uppercase font-bold tracking-widest text-sm hover:bg-white hover:text-brand-red transition">Get Tickets</button>
+                </div>
+            </div>
+
+            <!-- Padding element for scroll area -->
+            <div class="min-w-[20px]"></div>
+        </div>
+    </section>
+
+    <!-- Massive Brutalist Footer -->
+    <footer class="pt-32 pb-12 px-6 md:px-16 bg-brand-black border-t border-white/10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-24 reveal">
+            
+            <div class="lg:col-span-2">
+                <h3 class="font-display text-xl uppercase tracking-[0.3em] text-gray-500 mb-6">Visit Us</h3>
+                <p class="text-3xl font-light text-white leading-tight mb-8 max-w-sm hover:text-brand-red transition duration-300 cursor-pointer">
+                    Sirsa - Fatehabad Road, NH 9,<br> Sirsa, Haryana 125060
+                </p>
+                <div class="flex items-center gap-4">
+                    <a href="#" class="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center hover:bg-brand-red hover:border-brand-red transition duration-300"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="w-12 h-12 rounded-full border border-white/30 flex items-center justify-center hover:bg-brand-red hover:border-brand-red transition duration-300"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="font-display text-xl uppercase tracking-[0.3em] text-gray-500 mb-6">Contact</h3>
+                <ul class="space-y-4 text-lg">
+                    <li><a href="tel:09254333333" class="hover:text-brand-red transition block">092543 33333</a></li>
+                    <li><a href="#" class="hover:text-brand-red transition block">bookings@ohmsirsa.com</a></li>
+                    <li><a href="#" class="hover:text-brand-red transition block">info@ohmsirsa.com</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="font-display text-xl uppercase tracking-[0.3em] text-gray-500 mb-6">Links</h3>
+                <ul class="space-y-4 text-lg">
+                    <li><a href="#" class="hover:text-brand-red transition block">Now Showing</a></li>
+                    <li><a href="#" class="hover:text-brand-red transition block">Dining Menu</a></li>
+                    <li><a href="#" class="hover:text-brand-red transition block">Shopping Directory</a></li>
+                </ul>
+            </div>
+            
+        </div>
+
+        <div class="w-full overflow-hidden flex justify-center border-b border-white/10 pb-8 mb-8 reveal">
+            <!-- Massive Footer Typography -->
+            <h1 class="font-display text-[15vw] leading-[0.7] font-bold text-stroke select-none">
+                OHM.SIRSA
+            </h1>
+        </div>
+
+        <div class="flex flex-col md:flex-row justify-between items-center text-xs uppercase tracking-widest text-gray-600 font-bold reveal">
+            <p>&copy; 2026 OHM Cine Garden & Shopping Complex.</p>
+            <div class="flex gap-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white transition">Privacy</a>
+                <a href="#" class="hover:text-white transition">Terms</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts for Scroll Reveal and Custom Cursor -->
+    <script>
+        // Custom Cursor Logic
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+
+        window.addEventListener('mousemove', function(e) {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            // Add a slight delay to the outline for a smooth trailing effect
+            cursorOutline.animate({
+                left: `${posX}px`,
+                topHere is a completely different, **ultra-modern alternative design**. 
+
+To make this version stand out, I moved away from the classic gold/dark luxury theme and used a highly trending **Neo-Minimalist "Bento Box" UI** paired with an **immersive Cyber-Cinematic aesthetic**. 
+
+**Key trending elements included:**
+1.  **Bento Grid Layout:** (Made popular by Apple) for organizing the features (Dining, Shopping, 2009, Rating) in a clean, highly aesthetic way.
+2.  **Infinite Marquee Scroll:** A continuous scrolling text band that adds dynamic movement.
+3.  **Vibrant Gradient Accents:** Using modern deep violets and neon cyans against a pitch-black canvas.
+4.  **Bold Typography:** Utilizing 'Space Grotesk' for a high-end, contemporary tech/design agency feel.
+5.  **Horizontal Snap Scrolling:** For the movie posters, giving a native app-like experience on both mobile and desktop.
+
+Save this as your `index.html` file to see the alternative vibe:
+
+```html
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OHM Sirsa | Modern Entertainment</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
+    
+    <!-- Google Fonts: Space Grotesk (Trendy/Modern) & Inter (Clean body text) -->
+    <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap)" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="[https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css](https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css)">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        base: '#030303',
+                        surface: '#111111',
+                        surfaceHover: '#1a1a1a',
+                        accent1: '#8B5CF6', /* Violet */
+                        accent2: '#06B6D4', /* Cyan */
+                    },
+                    animation: {
+                        'marquee': 'marquee 20s linear infinite',
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        },
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #030303; color: #f3f4f6; overflow-x: hidden; }
+        
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(to right, #8B5CF6, #06B6D4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Bento Box Cards */
+        .bento-card {
+            background: #111111;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .bento-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        
+        /* Hide Scrollbar for Horizontal Scroller */
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Custom Button */
+        .btn-modern {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .btn-modern::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; w: 100%; h: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+        .btn-modern:hover::before { left: 100%; }
+    </style>
+</head>
+<body class="antialiased selection:bg-accent1 selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 top-0 backdrop-blur-xl bg-base/80 border-b border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Modern Logo -->
+                <a href="#" class="font-display font-bold text-3xl tracking-tighter text-white">
+                    OHM<span class="text-gradient">.</span>
+                </a>
+
+                <!-- Desktop Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#discover" class="font-display text-sm font-medium text-gray-400 hover:text-white transition">Discover</a>
+                    <a href="#cinema" class="font-display text-sm font-medium text-gray-400 hover:text-white transition">2D/3D Cinema</a>
+                    <a href="#dine-shop" class="font-display text-sm font-medium text-gray-400 hover:text-white transition">Dine & Shop</a>
+                    <a href="#contact" class="px-6 py-2.5 rounded-full bg-white text-black font-display font-bold text-sm hover:bg-gray-200 transition btn-modern">
+                        Plan Visit
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Icon -->
+                <div class="md:hidden text-white text-2xl cursor-pointer">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-screen flex flex-col justify-center overflow-hidden">
+        
+        <!-- Abstract Background Effects -->
+        <div class="absolute top-0 -left-4 w-72 h-72 bg-accent1 rounded-full mix-blend-multiply filter blur-[128px] opacity-40 animate-blob"></div>
+        <div class="absolute top-0 -right-4 w-72 h-72 bg-accent2 rounded-full mix-blend-multiply filter blur-[128px] opacity-40 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-8 left-20 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-40 animate-blob animation-delay-4000"></div>
+
+        <!-- OHM Image inside a sleek modern container -->
+        <div class="absolute inset-0 z-0 flex justify-center items-center opacity-30 mask-image">
+            <img src="[https://raw.githubusercontent.com/pruthiharshit/sample/main/ohm.png](https://raw.githubusercontent.com/pruthiharshit/sample/main/ohm.png)" alt="OHM Sirsa" class="w-full h-full object-cover">
+            <!-- Gradient to blend edges -->
+            <div class="absolute inset-0 bg-gradient-to-t from-base via-base/80 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-base via-transparent to-transparent"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full mt-10">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6">
+                <span class="w-2 h-2 rounded-full bg-accent2 animate-pulse"></span>
+                <span class="text-xs font-display font-medium tracking-wide text-gray-300 uppercase">Est. 2009 • Sirsa, Haryana</span>
+            </div>
+            
+            <h1 class="text-6xl md:text-8xl lg:text-[140px] font-display font-bold leading-[0.9] tracking-tighter mb-6 text-white">
+                REDEFINE <br>
+                <span class="text-transparent bg-clip-text text-gradient">ENTERTAINMENT.</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-gray-400 max-w-2xl font-light mb-10 border-l-2 border-accent1 pl-4">
+                The ultimate lifestyle destination featuring a state-of-the-art cinema complex, premium shopping avenues, and exquisite global dining.
+            </p>
+            
+            <a href="#cinema" class="inline-flex items-center justify-center w-16 h-16 rounded-full border border-white/20 hover:bg-white hover:text-black transition duration-300 text-2xl group">
+                <i class="fa-solid fa-arrow-down transform group-hover:translate-y-1 transition"></i>
+            </a>
+        </div>
+
+        <!-- Infinite Marquee Scroll -->
+        <div class="absolute bottom-10 w-full overflow-hidden whitespace-nowrap border-y border-white/5 py-4 bg-base/50 backdrop-blur-sm z-20">
+            <div class="inline-block animate-marquee font-display font-bold text-2xl md:text-4xl uppercase tracking-widest text-white/40">
+                • 2D/3D CINEMA • PREMIUM SHOPPING • MULTI-CUISINE EATERY • 4.2 GOOGLE RATING • GOURMET DINING • CURRENT MOVIES 
+                • 2D/3D CINEMA • PREMIUM SHOPPING • MULTI-CUISINE EATERY • 4.2 GOOGLE RATING • GOURMET DINING • CURRENT MOVIES 
+            </div>
+        </div>
+    </header>
+
+    <!-- Bento Grid Section (Discover) -->
+    <section id="discover" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="mb-12 md:flex justify-between items-end">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold tracking-tight">The OHM <span class="text-gray-500">Experience</span></h2>
+                </div>
+                <p class="text-gray-400 max-w-sm mt-4 md:mt-0">Everything you need for a perfect day out, meticulously designed under one roof.</p>
+            </div>
+
+            <!-- CSS Grid Bento Box -->
+            <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[600px]">
+                
+                <!-- Box 1: Dining (Spans 2 cols, 1 row) -->
+                <div class="bento-card md:col-span-2 p-8 group">
+                    <img src="[https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop](https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop)" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition duration-500" alt="Restaurant">
+                    <div class="absolute inset-0 bg-gradient-to-t from-base to-transparent"></div>
+                    <div class="relative z-10 h-full flex flex-col justify-end">
+                        <div class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center mb-4 text-accent2 text-xl">
+                            <i class="fa-solid fa-bell-concierge"></i>
+                        </div>
+                        <h3 class="text-2xl font-display font-bold mb-2">Exquisite Eatery</h3>
+                        <p class="text-gray-400 text-sm max-w-sm">Indulge in authentic Indian, Chinese, and Continental culinary masterpieces.</p>
+                    </div>
+                </div>
+
+                <!-- Box 2: Rating (Spans 1 col, 1 row) -->
+                <div class="bento-card bg-gradient-to-br from-surface to-surfaceHover p-8 flex flex-col justify-center items-center text-center">
+                    <div class="text-yellow-400 text-3xl mb-2 flex gap-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                    </div>
+                    <h3 class="text-5xl font-display font-bold text-white mb-1">4.2</h3>
+                    <p class="text-gray-400 text-sm font-medium uppercase tracking-widest">Google Maps Rating</p>
+                </div>
+
+                <!-- Box 3: Established (Spans 1 col, 1 row) -->
+                <div class="bento-card p-8 flex flex-col justify-center items-center text-center group">
+                    <div class="absolute inset-0 bg-accent1 opacity-0 group-hover:opacity-10 transition duration-300"></div>
+                    <i class="fa-regular fa-clock text-4xl text-gray-600 mb-4 group-hover:text-accent1 transition"></i>
+                    <h3 class="text-4xl font-display font-bold text-white mb-1">2009</h3>
+                    <p class="text-gray-400 text-sm font-medium uppercase tracking-widest">Year Established</p>
+                </div>
+
+                <!-- Box 4: Shopping (Spans 2 cols, 1 row) -->
+                <div class="bento-card md:col-span-2 p-8 group">
+                    <div class="absolute inset-0 bg-gradient-to-r from-base to-transparent z-10"></div>
+                    <img src="[https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1974&auto=format&fit=crop](https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1974&auto=format&fit=crop)" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition duration-700" alt="Shopping Center">
+                    <div class="relative z-20 h-full flex flex-col justify-center w-2/3">
+                        <h3 class="text-3xl font-display font-bold mb-3">Premium Shopping Centre</h3>
+                        <p class="text-gray-300 text-sm mb-6">Discover latest trends and top brands in our beautifully designed retail complex.</p>
+                        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-accent2 hover:text-white transition">
+                            Explore Directory <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Box 5: 3D Cinema Feature (Spans 2 cols, 1 row) -->
+                <div class="bento-card md:col-span-2 p-8 overflow-hidden">
+                    <div class="absolute -right-10 -bottom-10 text-[180px] text-white/5 font-display font-bold leading-none select-none">3D</div>
+                    <div class="relative z-10 h-full flex flex-col justify-center">
+                        <h3 class="text-2xl font-display font-bold mb-2">Immersive 2D & 3D Cinema</h3>
+                        <p class="text-gray-400 text-sm max-w-sm mb-4">State-of-the-art projection and surround sound for the ultimate movie experience.</p>
+                        <div class="flex gap-2">
+                            <span class="px-3 py-1 bg-white/10 rounded text-xs font-bold tracking-wider">DOLBY</span>
+                            <span class="px-3 py-1 bg-white/10 rounded text-xs font-bold tracking-wider">4K</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Cinema Snap-Scroll Section -->
+    <section id="cinema" class="py-24 border-y border-white/5 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+            <div class="flex justify-between items-center">
+                <h2 class="text-4xl md:text-5xl font-display font-bold tracking-tight">Now <span class="text-transparent bg-clip-text text-gradient">Showing.</span></h2>
+                
+                <div class="hidden md:flex gap-4">
+                    <button class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Horizontal Scroller -->
+        <div class="flex overflow-x-auto hide-scroll snap-x snap-mandatory gap-6 px-4 sm:px-6 lg:px-8 pb-10">
+            
+            <!-- Movie Card 1 -->
+            <div class="min-w-[300px] md:min-w-[400px] snap-center shrink-0 group">
+                <div class="relative aspect-[3/4] rounded-2xl overflow-hidden mb-4">
+                    <img src="[https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop](https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop)" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Movie">
+                    <div class="absolute inset-0 bg-gradient-to-t from-base via-base/20 to-transparent opacity-80 group-hover:opacity-100 transition duration-300"></div>
+                    
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-accent1 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-md">3D</span>
+                    </div>
+
+                    <div class="absolute bottom-0 p-6 w-full translate-y-4 group-hover:translate-y-0 transition duration-300">
+                        <button class="w-full py-3 bg-white text-black font-display font-bold rounded-lg mb-2 opacity-0 group-hover:opacity-100 transition duration-300">Get Tickets</button>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-display font-bold">Neon Genesis</h3>
+                <p class="text-gray-500 text-sm mt-1">Action, Sci-Fi • English</p>
+            </div>
+
+            <!-- Movie Card 2 -->
+            <div class="min-w-[300px] md:min-w-[400px] snap-center shrink-0 group">
+                <div class="relative aspect-[3/4] rounded-2xl overflow-hidden mb-4">
+                    <img src="[https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925&auto=format&fit=crop](https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925&auto=format&fit=crop)" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Movie">
+                    <div class="absolute inset-0 bg-gradient-to-t from-base via-base/20 to-transparent opacity-80 group-hover:opacity-100 transition duration-300"></div>
+                    
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-white/20 backdrop-blur-md border border-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">2D</span>
+                    </div>
+
+                    <div class="absolute bottom-0 p-6 w-full translate-y-4 group-hover:translate-y-0 transition duration-300">
+                        <button class="w-full py-3 bg-white text-black font-display font-bold rounded-lg mb-2 opacity-0 group-hover:opacity-100 transition duration-300">Get Tickets</button>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-display font-bold">The Last Horizon</h3>
+                <p class="text-gray-500 text-sm mt-1">Drama, Adventure • Hindi</p>
+            </div>
+
+            <!-- Movie Card 3 -->
+            <div class="min-w-[300px] md:min-w-[400px] snap-center shrink-0 group">
+                <div class="relative aspect-[3/4] rounded-2xl overflow-hidden mb-4">
+                    <img src="[https://images.unsplash.com/photo-1510827220565-c6a08627b036?q=80&w=2070&auto=format&fit=crop](https://images.unsplash.com/photo-1510827220565-c6a08627b036?q=80&w=2070&auto=format&fit=crop)" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Movie">
+                    <div class="absolute inset-0 bg-gradient-to-t from-base via-base/20 to-transparent opacity-80 group-hover:opacity-100 transition duration-300"></div>
+                    
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-accent1 text-white text-xs font-bold px-3 py-1 rounded-full backdrop-blur-md">3D</span>
+                    </div>
+
+                    <div class="absolute bottom-0 p-6 w-full translate-y-4 group-hover:translate-y-0 transition duration-300">
+                        <button class="w-full py-3 bg-white text-black font-display font-bold rounded-lg mb-2 opacity-0 group-hover:opacity-100 transition duration-300">Get Tickets</button>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-display font-bold">Velocity</h3>
+                <p class="text-gray-500 text-sm mt-1">Thriller, Action • English</p>
+            </div>
+            
+             <!-- Fake Empty space for scroll padding -->
+             <div class="min-w-[20px] md:min-w-[40px] shrink-0"></div>
+        </div>
+    </section>
+
+    <!-- Footer / Location -->
+    <footer id="contact" class="bg-surface relative overflow-hidden pt-24 pb-12">
+        <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-accent1 rounded-full mix-blend-screen filter blur-[200px] opacity-10"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Massive Footer Text -->
+            <h2 class="text-[12vw] font-display font-bold leading-none tracking-tighter text-white/5 select-none mb-10">
+                VISIT US
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-16 mb-16 border-b border-white/5 pb-16">
+                <!-- Location Info -->
+                <div>
+                    <h3 class="text-2xl font-display font-bold mb-6">OHM Cine Garden & Shopping Complex</h3>
+                    <div class="flex items-start gap-4 mb-6">
+                        <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 text-accent2">
+                            <i class="fa-solid fa-map-pin"></i>
+                        </div>
+                        <div>
+                            <p class="text-gray-300 text-lg">Sirsa - Fatehabad Road, NH 9</p>
+                            <p class="text-gray-500">Sirsa, Haryana 125060</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 text-accent1">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <a href="tel:09254333333" class="text-3xl font-display font-bold hover:text-accent1 transition">092543 33333</a>
+                    </div>
+                    
+                    <button class="px-8 py-4 bg-white text-black rounded-lg font-display font-bold flex items-center gap-3 hover:bg-gray-200 transition">
+                        Get Directions <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+                
+                <!-- Quick Links & Socials -->
+                <div class="grid grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-white font-display font-bold mb-4 uppercase tracking-widest text-sm">Explore</h4>
+                        <ul class="space-y-3">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Showtimes</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Dining Menu</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Store Directory</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">About Complex</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-white font-display font-bold mb-4 uppercase tracking-widest text-sm">Connect</h4>
+                        <div class="flex flex-col space-y-3">
+                            <a href="#" class="text-gray-400 hover:text-accent2 transition flex items-center gap-2">
+                                <i class="fa-brands fa-instagram"></i> Instagram
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-accent2 transition flex items-center gap-2">
+                                <i class="fa-brands fa-facebook-f"></i> Facebook
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-accent2 transition flex items-center gap-2">
+                                <i class="fa-brands fa-x-twitter"></i> Twitter
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-600 font-medium">
+                <p>&copy; 2026 OHM Cine Garden & Shopping Complex.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="hover:text-gray-300">Privacy Policy</a>
+                    <a href="#" class="hover:text-gray-300">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
