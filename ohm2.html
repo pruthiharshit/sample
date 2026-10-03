@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OHM SIRSA | Movies. Moments. Together.</title>
+    <title>OHM Sirsa | Movies. Moments. Together.</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Inter for UI, Playfair Display for Elegant Headings -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
     
-    <!-- FontAwesome -->
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Custom Theme Configuration -->
+    <!-- Tailwind Configuration for Specific Image Matching -->
     <script>
         tailwind.config = {
             theme: {
@@ -24,12 +24,13 @@
                         serif: ['Playfair Display', 'serif'],
                     },
                     colors: {
-                        ohm: {
-                            bg: '#0a0a0a',
-                            gold: '#ceab71',
-                            goldHover: '#e5c083',
-                            gray: '#1a1a1a',
-                            lightGray: '#b3b3b3'
+                        brand: {
+                            bg: '#050505',
+                            card: '#0f0f0f',
+                            gold: '#d9b47e', /* Matched exactly to the image button */
+                            goldHover: '#ebd0a3',
+                            gray: '#a3a3a3',
+                            lightBorder: 'rgba(255,255,255,0.08)'
                         }
                     }
                 }
@@ -38,148 +39,159 @@
     </script>
 
     <style>
-        body { background-color: #0a0a0a; color: #ffffff; }
+        body { background-color: #050505; color: #ffffff; overflow-x: hidden; }
         
-        /* Hero Gradient for Text Legibility */
-        .hero-gradient {
-            background: linear-gradient(90deg, #0a0a0a 20%, rgba(10,10,10,0.8) 40%, transparent 100%),
-                        linear-gradient(0deg, #0a0a0a 0%, transparent 20%);
+        /* Cinematic Hero Gradient */
+        .hero-vignette {
+            background: linear-gradient(90deg, #050505 0%, rgba(5,5,5,0.85) 35%, transparent 100%),
+                        linear-gradient(0deg, #050505 0%, transparent 20%);
         }
 
-        /* Movie Card Hover Effects */
-        .movie-card img { transition: transform 0.5s ease; }
-        .movie-card:hover img { transform: scale(1.05); }
-        
-        /* Custom Scrollbar for Carousel */
+        /* Sub-page section gradients */
+        .section-fade {
+            background: linear-gradient(180deg, #050505 0%, #0a0a0a 100%);
+        }
+
+        /* Image hover zooms */
+        .zoom-hover { transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+        .group:hover .zoom-hover { transform: scale(1.05); }
+
+        /* Hide Scrollbar for Horizontal Scrollers */
         .hide-scroll::-webkit-scrollbar { display: none; }
         .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Thin outline icons matching the reference */
+        .icon-outline {
+            -webkit-text-stroke: 1px #d9b47e;
+            color: transparent;
+        }
     </style>
 </head>
-<body class="antialiased selection:bg-ohm-gold selection:text-black">
+<body class="antialiased selection:bg-brand-gold selection:text-black">
 
-    <!-- Navigation -->
-    <nav class="absolute w-full z-50 top-0 pt-6 pb-4 px-6 md:px-12 flex justify-between items-center bg-gradient-to-b from-black/80 to-transparent">
+    <!-- Navigation (Replicated from image) -->
+    <nav class="absolute w-full z-50 top-0 pt-8 pb-4 px-6 md:px-16 flex justify-between items-center">
         
         <!-- Logo -->
-        <div class="flex flex-col items-center">
-            <h1 class="text-3xl font-serif text-ohm-gold tracking-widest leading-none">OHM</h1>
-            <span class="text-[0.65rem] tracking-[0.4em] text-white mt-1 uppercase">Sirsa</span>
-        </div>
+        <a href="#" class="text-3xl font-serif text-white tracking-wide">
+            OHM.
+        </a>
 
         <!-- Center Links -->
         <div class="hidden lg:flex items-center space-x-10">
-            <a href="#" class="text-sm text-white font-medium border-b-2 border-ohm-gold pb-1">Home</a>
-            <a href="#movies" class="text-sm text-ohm-lightGray hover:text-white transition">Movies</a>
-            <a href="#" class="text-sm text-ohm-lightGray hover:text-white transition">Showtimes</a>
-            <a href="#" class="text-sm text-ohm-lightGray hover:text-white transition">Offers</a>
-            <a href="#" class="text-sm text-ohm-lightGray hover:text-white transition">Food & Beverages</a>
-            <a href="#gaming" class="text-sm text-ohm-lightGray hover:text-white transition">Gaming Zone</a>
+            <a href="#" class="text-sm text-white font-medium border-b border-brand-gold pb-1">Home</a>
+            <a href="#movies" class="text-sm text-brand-gray hover:text-white transition duration-300">Movies</a>
+            <a href="#movies" class="text-sm text-brand-gray hover:text-white transition duration-300">Showtimes</a>
+            <a href="#experience" class="text-sm text-brand-gray hover:text-white transition duration-300">Offers</a>
+            <a href="#dining" class="text-sm text-brand-gray hover:text-white transition duration-300">Food & Beverages</a>
+            <a href="#location" class="text-sm text-brand-gray hover:text-white transition duration-300">About</a>
         </div>
 
         <!-- Right Actions -->
         <div class="flex items-center space-x-6">
-            <button class="text-white hover:text-ohm-gold transition">
+            <button class="text-white hover:text-brand-gold transition duration-300 text-lg">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
-            <a href="#" class="hidden md:inline-block px-6 py-2 rounded-full border border-ohm-gold text-ohm-gold text-sm font-medium hover:bg-ohm-gold hover:text-black transition">
-                Book Tickets <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+            <a href="#movies" class="hidden md:inline-block px-6 py-2 rounded-full border border-white/30 text-white text-sm font-medium hover:border-brand-gold hover:text-brand-gold transition duration-300 tracking-wide">
+                Book Tickets &nbsp;&rarr;
             </a>
+            <!-- Mobile Menu Toggle -->
             <button class="lg:hidden text-white text-xl"><i class="fa-solid fa-bars"></i></button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="relative w-full h-[90vh] md:h-screen flex items-center">
-        <!-- Cinema Screen Background -->
+    <!-- Hero Section (Replicated from image) -->
+    <header class="relative w-full h-[90vh] md:h-screen flex items-center border-b border-brand-lightBorder">
+        
+        <!-- Background Image -->
         <div class="absolute inset-0 z-0">
-            <!-- Using a cinematic theater stock image -->
-            <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=2070&auto=format&fit=crop" alt="Cinema Theater" class="w-full h-full object-cover object-right">
-            <div class="absolute inset-0 hero-gradient"></div>
+            <!-- Cinematic Dune-like landscape stock image to match vibe -->
+            <img src="https://images.unsplash.com/photo-1534809027769-b00d750a6bac?q=80&w=2070&auto=format&fit=crop" alt="Cinematic Hero" class="w-full h-full object-cover object-center grayscale-[20%]">
+            <div class="absolute inset-0 hero-vignette"></div>
         </div>
 
-        <!-- Hero Content -->
-        <div class="relative z-10 w-full px-6 md:px-12 lg:px-24 mt-20">
+        <!-- Content -->
+        <div class="relative z-10 w-full px-6 md:px-16 lg:px-24 mt-16">
             <div class="max-w-2xl">
-                <p class="text-xs uppercase tracking-[0.3em] text-ohm-lightGray mb-4">Welcome To</p>
-                <h2 class="text-6xl md:text-8xl font-serif text-ohm-gold mb-4 leading-none">OHM SIRSA</h2>
-                <h3 class="text-3xl md:text-4xl font-serif text-white mb-6">Movies. Moments. <span class="italic text-ohm-gold">Together.</span></h3>
+                <p class="text-[0.65rem] uppercase tracking-[0.4em] text-brand-gray mb-6 font-medium">W E L C O M E &nbsp; T O</p>
+                <h1 class="text-6xl md:text-7xl lg:text-[5.5rem] font-serif text-white leading-none mb-3 tracking-tight">OHM SIRSA</h1>
+                <h2 class="text-3xl md:text-4xl font-serif text-white mb-8 tracking-wide">Movies. Moments. <span class="italic text-brand-gold">Together.</span></h2>
                 
-                <p class="text-ohm-lightGray text-base md:text-lg max-w-md mb-10 leading-relaxed font-light">
-                    Experience the magic of cinema at OHM Sirsa – where the biggest stories come to life on the biggest screens.
+                <p class="text-brand-gray text-base max-w-md mb-10 leading-relaxed font-light">
+                    Experience the magic of cinema at OHM Sirsa —<br> 
+                    where the biggest stories come to life on the biggest screens.
                 </p>
                 
                 <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-6">
-                    <a href="#" class="w-full sm:w-auto px-8 py-3.5 bg-ohm-gold text-black rounded-full font-medium text-sm hover:bg-ohm-goldHover transition flex justify-center items-center">
-                        Book Tickets <i class="fa-solid fa-arrow-right ml-2"></i>
+                    <a href="#movies" class="w-full sm:w-auto px-8 py-3.5 bg-brand-gold text-black rounded-full font-medium text-sm hover:bg-brand-goldHover transition duration-300 flex justify-center items-center tracking-wide">
+                        Book Tickets &nbsp;&rarr;
                     </a>
-                    <a href="#" class="w-full sm:w-auto px-8 py-3.5 border border-ohm-lightGray/50 text-white rounded-full font-medium text-sm hover:border-white transition flex justify-center items-center">
+                    <a href="#" class="w-full sm:w-auto px-8 py-3.5 border border-white/30 text-white rounded-full font-medium text-sm hover:border-white transition duration-300 flex justify-center items-center tracking-wide">
                         <i class="fa-regular fa-circle-play mr-2 text-lg"></i> Watch Video
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- Slider Controls -->
-        <div class="absolute bottom-12 right-12 z-10 hidden md:flex items-center space-x-6">
-            <span class="text-sm font-medium"><span class="text-white">01</span> <span class="text-ohm-lightGray">/ 03</span></span>
+        <!-- Slider Pagination (from image) -->
+        <div class="absolute bottom-16 right-16 z-10 hidden md:flex items-center space-x-6">
+            <span class="text-sm font-medium tracking-widest"><span class="text-white">01</span><span class="text-brand-gray">/03</span></span>
             <div class="flex space-x-3">
-                <button class="w-10 h-10 rounded-full border border-ohm-lightGray/30 flex items-center justify-center text-ohm-lightGray hover:text-white hover:border-white transition">
-                    <i class="fa-solid fa-chevron-left text-xs"></i>
+                <button class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-brand-gray hover:text-white hover:border-white transition">
+                    <i class="fa-solid fa-angle-left text-sm"></i>
                 </button>
-                <button class="w-10 h-10 rounded-full border border-ohm-lightGray/30 flex items-center justify-center text-ohm-lightGray hover:text-white hover:border-white transition">
-                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                <button class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-brand-gray hover:text-white hover:border-white transition">
+                    <i class="fa-solid fa-angle-right text-sm"></i>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Features Banner -->
-    <section class="border-y border-white/10 bg-[#0a0a0a]">
-        <div class="max-w-[1400px] mx-auto px-6 md:px-12 py-8 overflow-x-auto hide-scroll">
-            <div class="flex justify-between items-center min-w-[900px]">
+    <!-- Feature Strip (Replicated from image) -->
+    <section class="bg-[#030303] border-b border-brand-lightBorder relative z-20">
+        <div class="max-w-[1600px] mx-auto px-6 md:px-16 py-8 overflow-x-auto hide-scroll">
+            <div class="flex justify-between items-center min-w-[1000px]">
                 
-                <!-- Feature 1 -->
-                <div class="flex items-center space-x-4">
-                    <i class="fa-solid fa-tv text-3xl text-ohm-gold"></i>
+                <div class="flex items-center space-x-5">
+                    <i class="fa-solid fa-desktop text-2xl text-brand-gold icon-outline"></i>
                     <div>
-                        <h4 class="text-white font-medium text-sm">Premium Screens</h4>
-                        <p class="text-xs text-ohm-lightGray mt-1">Crystal Clear Visuals</p>
+                        <h4 class="text-white font-medium text-sm tracking-wide">Premium Screens</h4>
+                        <p class="text-xs text-brand-gray mt-0.5">Crystal Clear Visuals</p>
                     </div>
                 </div>
 
-                <!-- Feature 2 -->
-                <div class="flex items-center space-x-4">
-                    <i class="fa-solid fa-volume-high text-3xl text-ohm-gold"></i>
+                <div class="flex items-center space-x-5">
+                    <!-- Adjusted icon to match the image's semi-circle look as closely as possible using FA -->
+                    <i class="fa-solid fa-volume-low text-2xl text-brand-gold icon-outline"></i>
                     <div>
-                        <h4 class="text-white font-medium text-sm">Dolby Atmos</h4>
-                        <p class="text-xs text-ohm-lightGray mt-1">Immersive Sound</p>
+                        <h4 class="text-white font-medium text-sm tracking-wide">Dolby Atmos</h4>
+                        <p class="text-xs text-brand-gray mt-0.5">Immersive Sound</p>
                     </div>
                 </div>
 
-                <!-- Feature 3 -->
-                <div class="flex items-center space-x-4">
-                    <i class="fa-solid fa-couch text-3xl text-ohm-gold"></i>
+                <div class="flex items-center space-x-5">
+                    <!-- Diamond icon for seating as seen in the image -->
+                    <i class="fa-regular fa-gem text-2xl text-brand-gold icon-outline"></i>
                     <div>
-                        <h4 class="text-white font-medium text-sm">Luxurious Seating</h4>
-                        <p class="text-xs text-ohm-lightGray mt-1">Unmatched Comfort</p>
+                        <h4 class="text-white font-medium text-sm tracking-wide">Luxurious Seating</h4>
+                        <p class="text-xs text-brand-gray mt-0.5">Unmatched Comfort</p>
                     </div>
                 </div>
 
-                <!-- Feature 4 -->
-                <div class="flex items-center space-x-4">
-                    <i class="fa-solid fa-popcorn text-3xl text-ohm-gold"></i>
+                <div class="flex items-center space-x-5">
+                    <!-- Abstract food icon -->
+                    <i class="fa-solid fa-martini-glass text-2xl text-brand-gold icon-outline"></i>
                     <div>
-                        <h4 class="text-white font-medium text-sm">Food & Beverages</h4>
-                        <p class="text-xs text-ohm-lightGray mt-1">Delicious Options</p>
+                        <h4 class="text-white font-medium text-sm tracking-wide">Food & Beverages</h4>
+                        <p class="text-xs text-brand-gray mt-0.5">Delicious Options</p>
                     </div>
                 </div>
 
-                <!-- Feature 5 -->
-                <div class="flex items-center space-x-4">
-                    <i class="fa-solid fa-square-parking text-3xl text-ohm-gold"></i>
+                <div class="flex items-center space-x-5">
+                    <i class="fa-regular fa-circle-p text-2xl text-brand-gold icon-outline"></i>
                     <div>
-                        <h4 class="text-white font-medium text-sm">Ample Parking</h4>
-                        <p class="text-xs text-ohm-lightGray mt-1">Hassle-Free Experience</p>
+                        <h4 class="text-white font-medium text-sm tracking-wide">Ample Parking</h4>
+                        <p class="text-xs text-brand-gray mt-0.5">Hassle-Free Experience</p>
                     </div>
                 </div>
 
@@ -187,211 +199,266 @@
         </div>
     </section>
 
-    <!-- Movies Section -->
-    <section id="movies" class="py-20 px-6 md:px-12 max-w-[1500px] mx-auto relative">
-        <div class="flex justify-between items-end mb-10">
+    <!-- NOW SHOWING (Movies Section) -->
+    <section id="movies" class="py-24 px-6 md:px-16 max-w-[1600px] mx-auto relative section-fade">
+        <div class="flex justify-between items-end mb-12">
             <div>
-                <p class="text-xs uppercase tracking-[0.2em] text-ohm-lightGray mb-2 font-medium">Now Showing</p>
+                <p class="text-[0.65rem] uppercase tracking-[0.3em] text-brand-gray mb-3 font-medium">N O W &nbsp; S H O W I N G</p>
                 <h2 class="text-4xl md:text-5xl font-serif text-white">Currently in Cinemas</h2>
             </div>
-            <a href="#" class="text-ohm-gold text-sm font-medium hover:text-ohm-goldHover transition hidden md:inline-block">
-                View All Movies <i class="fa-solid fa-arrow-right ml-1 text-xs"></i>
+            <a href="#" class="text-brand-gold text-sm font-medium hover:text-brand-goldHover transition hidden md:inline-block tracking-wide">
+                View All Movies &nbsp;&rarr;
             </a>
         </div>
 
-        <!-- Movie Carousel Container -->
-        <div class="relative group">
+        <div class="flex overflow-x-auto hide-scroll snap-x snap-mandatory gap-6 pb-8">
             
-            <!-- Left Arrow (Absolute) -->
-            <button class="absolute -left-6 md:-left-12 top-1/3 transform -translate-y-1/2 text-ohm-lightGray hover:text-white text-2xl hidden md:block">
-                <i class="fa-solid fa-angle-left"></i>
-            </button>
-
-            <div class="flex overflow-x-auto hide-scroll snap-x snap-mandatory gap-6 pb-8">
-                
-                <!-- Movie 1: Jawan -->
-                <div class="min-w-[240px] w-[240px] snap-start shrink-0 movie-card group">
-                    <div class="w-full aspect-[4/5] rounded-xl overflow-hidden bg-ohm-gray mb-4 border border-white/5 relative">
-                        <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop" alt="Jawan" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <i class="fa-regular fa-circle-play text-4xl text-white"></i>
-                        </div>
+            <!-- Movie 1 -->
+            <div class="min-w-[260px] w-[260px] snap-start shrink-0 group">
+                <div class="w-full aspect-[2/3] rounded-lg overflow-hidden bg-brand-card mb-5 relative">
+                    <img src="https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover zoom-hover">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <button class="px-6 py-2 border border-brand-gold text-brand-gold rounded-full text-sm font-medium hover:bg-brand-gold hover:text-black transition duration-300">Book Now</button>
                     </div>
-                    <h3 class="text-white font-medium text-lg">Jawan</h3>
-                    <p class="text-ohm-lightGray text-xs mt-1 mb-4">Action • 2h 49m</p>
-                    <button class="w-full py-2.5 rounded-full border border-ohm-gold text-white text-sm hover:bg-ohm-gold hover:text-black transition">
-                        Book Now
-                    </button>
                 </div>
-
-                <!-- Movie 2: Deadpool & Wolverine -->
-                <div class="min-w-[240px] w-[240px] snap-start shrink-0 movie-card group">
-                    <div class="w-full aspect-[4/5] rounded-xl overflow-hidden bg-ohm-gray mb-4 border border-white/5 relative">
-                        <img src="https://images.unsplash.com/photo-1534809027769-b00d750a6bac?q=80&w=1974&auto=format&fit=crop" alt="Deadpool & Wolverine" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <i class="fa-regular fa-circle-play text-4xl text-white"></i>
-                        </div>
-                    </div>
-                    <h3 class="text-white font-medium text-lg">Deadpool & Wolverine</h3>
-                    <p class="text-ohm-lightGray text-xs mt-1 mb-4">Action • 2h 7m</p>
-                    <button class="w-full py-2.5 rounded-full border border-ohm-gold text-white text-sm hover:bg-ohm-gold hover:text-black transition">
-                        Book Now
-                    </button>
-                </div>
-
-                <!-- Movie 3: Inside Out 2 -->
-                <div class="min-w-[240px] w-[240px] snap-start shrink-0 movie-card group">
-                    <div class="w-full aspect-[4/5] rounded-xl overflow-hidden bg-ohm-gray mb-4 border border-white/5 relative">
-                        <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925&auto=format&fit=crop" alt="Inside Out 2" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <i class="fa-regular fa-circle-play text-4xl text-white"></i>
-                        </div>
-                    </div>
-                    <h3 class="text-white font-medium text-lg">Inside Out 2</h3>
-                    <p class="text-ohm-lightGray text-xs mt-1 mb-4">Animation • 1h 36m</p>
-                    <button class="w-full py-2.5 rounded-full border border-ohm-gold text-white text-sm hover:bg-ohm-gold hover:text-black transition">
-                        Book Now
-                    </button>
-                </div>
-
-                <!-- Movie 4: Kalki 2898 AD -->
-                <div class="min-w-[240px] w-[240px] snap-start shrink-0 movie-card group">
-                    <div class="w-full aspect-[4/5] rounded-xl overflow-hidden bg-ohm-gray mb-4 border border-white/5 relative">
-                        <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1974&auto=format&fit=crop" alt="Kalki 2898 AD" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <i class="fa-regular fa-circle-play text-4xl text-white"></i>
-                        </div>
-                    </div>
-                    <h3 class="text-white font-medium text-lg">Kalki 2898 AD</h3>
-                    <p class="text-ohm-lightGray text-xs mt-1 mb-4">Sci-Fi • 3h 1m</p>
-                    <button class="w-full py-2.5 rounded-full border border-ohm-gold text-white text-sm hover:bg-ohm-gold hover:text-black transition">
-                        Book Now
-                    </button>
-                </div>
-
-                <!-- Movie 5: Stree 2 -->
-                <div class="min-w-[240px] w-[240px] snap-start shrink-0 movie-card group">
-                    <div class="w-full aspect-[4/5] rounded-xl overflow-hidden bg-ohm-gray mb-4 border border-white/5 relative">
-                        <img src="https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=1974&auto=format&fit=crop" alt="Stree 2" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <i class="fa-regular fa-circle-play text-4xl text-white"></i>
-                        </div>
-                    </div>
-                    <h3 class="text-white font-medium text-lg">Stree 2</h3>
-                    <p class="text-ohm-lightGray text-xs mt-1 mb-4">Horror • 2h 27m</p>
-                    <button class="w-full py-2.5 rounded-full border border-ohm-gold text-white text-sm hover:bg-ohm-gold hover:text-black transition">
-                        Book Now
-                    </button>
-                </div>
-
-                <!-- Movie 6: Despicable Me 4 -->
-                <div class="min-w-[240px] w-[240px] snap-start shrink-0 movie-card group">
-                    <div class="w-full aspect-[4/5] rounded-xl overflow-hidden bg-ohm-gray mb-4 border border-white/5 relative">
-                        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1968&auto=format&fit=crop" alt="Despicable Me 4" class="w-full h-full object-cover">
-                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <i class="fa-regular fa-circle-play text-4xl text-white"></i>
-                        </div>
-                    </div>
-                    <h3 class="text-white font-medium text-lg">Despicable Me 4</h3>
-                    <p class="text-ohm-lightGray text-xs mt-1 mb-4">Animation • 1h 34m</p>
-                    <button class="w-full py-2.5 rounded-full border border-ohm-gold text-white text-sm hover:bg-ohm-gold hover:text-black transition">
-                        Book Now
-                    </button>
-                </div>
-
+                <h3 class="text-white font-medium text-lg tracking-wide">Jawan</h3>
+                <p class="text-brand-gray text-xs mt-1">Action, Thriller • 2h 49m</p>
             </div>
 
-            <!-- Right Arrow (Absolute) -->
-            <button class="absolute -right-6 md:-right-12 top-1/3 transform -translate-y-1/2 text-ohm-lightGray hover:text-white text-2xl hidden md:block">
-                <i class="fa-solid fa-angle-right"></i>
-            </button>
-        </div>
-        
-        <div class="mt-4 flex justify-center md:hidden">
-            <a href="#" class="text-ohm-gold text-sm font-medium hover:text-ohm-goldHover transition">
-                View All Movies <i class="fa-solid fa-arrow-right ml-1 text-xs"></i>
-            </a>
+            <!-- Movie 2 (Personalized generic inclusion) -->
+            <div class="min-w-[260px] w-[260px] snap-start shrink-0 group">
+                <div class="w-full aspect-[2/3] rounded-lg overflow-hidden bg-brand-card mb-5 relative">
+                    <img src="https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover zoom-hover">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <button class="px-6 py-2 border border-brand-gold text-brand-gold rounded-full text-sm font-medium hover:bg-brand-gold hover:text-black transition duration-300">Book Now</button>
+                    </div>
+                </div>
+                <h3 class="text-white font-medium text-lg tracking-wide">Seoul Station: Escape</h3>
+                <p class="text-brand-gray text-xs mt-1">Korean Survival Thriller • 2h 10m</p>
+            </div>
+
+            <!-- Movie 3 -->
+            <div class="min-w-[260px] w-[260px] snap-start shrink-0 group">
+                <div class="w-full aspect-[2/3] rounded-lg overflow-hidden bg-brand-card mb-5 relative">
+                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925&auto=format&fit=crop" class="w-full h-full object-cover zoom-hover">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <button class="px-6 py-2 border border-brand-gold text-brand-gold rounded-full text-sm font-medium hover:bg-brand-gold hover:text-black transition duration-300">Book Now</button>
+                    </div>
+                </div>
+                <h3 class="text-white font-medium text-lg tracking-wide">Deadpool & Wolverine</h3>
+                <p class="text-brand-gray text-xs mt-1">Action, Comedy • 2h 7m</p>
+            </div>
+            
+            <!-- Movie 4 -->
+            <div class="min-w-[260px] w-[260px] snap-start shrink-0 group">
+                <div class="w-full aspect-[2/3] rounded-lg overflow-hidden bg-brand-card mb-5 relative">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=1968&auto=format&fit=crop" class="w-full h-full object-cover zoom-hover">
+                    <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                        <button class="px-6 py-2 border border-brand-gold text-brand-gold rounded-full text-sm font-medium hover:bg-brand-gold hover:text-black transition duration-300">Book Now</button>
+                    </div>
+                </div>
+                <h3 class="text-white font-medium text-lg tracking-wide">Inside Out 2</h3>
+                <p class="text-brand-gray text-xs mt-1">Animation, Family • 1h 36m</p>
+            </div>
+            
         </div>
     </section>
 
-    <!-- NEW: Gaming Zone Section (Matched to Reference Theme) -->
-    <section id="gaming" class="py-20 px-6 md:px-12 max-w-[1500px] mx-auto border-t border-white/10">
-        <div class="flex flex-col md:flex-row justify-between items-end mb-10 gap-4">
-            <div>
-                <p class="text-xs uppercase tracking-[0.2em] text-ohm-lightGray mb-2 font-medium">Entertainment Beyond Cinema</p>
-                <h2 class="text-4xl md:text-5xl font-serif text-white">The Gaming Zone</h2>
+    <!-- ELITE RETAIL & SHOPPING CENTER -->
+    <section id="experience" class="py-24 px-6 md:px-16 max-w-[1600px] mx-auto border-t border-brand-lightBorder">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="order-2 lg:order-1 relative rounded-2xl overflow-hidden aspect-[4/3] group">
+                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1974&auto=format&fit=crop" alt="Luxury Shopping" class="w-full h-full object-cover opacity-80 zoom-hover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
             </div>
-            <p class="text-ohm-lightGray text-sm max-w-md hidden lg:block">
-                Step out of the theater and into the action. Our premium gaming arena offers cutting-edge arcade machines, immersive VR experiences, and high-performance esports setups.
+            <div class="order-1 lg:order-2">
+                <p class="text-[0.65rem] uppercase tracking-[0.3em] text-brand-gray mb-3 font-medium">T H E &nbsp; C O M P L E X</p>
+                <h2 class="text-4xl md:text-5xl font-serif text-white mb-6">Elite Shopping Center</h2>
+                <p class="text-brand-gray text-base leading-relaxed mb-8 max-w-lg">
+                    Step out of the theater and into a world of premium retail. OHM Sirsa boasts an exclusive shopping avenue featuring high-end fashion boutiques, lifestyle brands, and daily essentials perfectly curated for a comprehensive day out.
+                </p>
+                <ul class="space-y-4 mb-10">
+                    <li class="flex items-center text-white text-sm tracking-wide">
+                        <i class="fa-solid fa-check text-brand-gold mr-4"></i> Premium National & International Brands
+                    </li>
+                    <li class="flex items-center text-white text-sm tracking-wide">
+                        <i class="fa-solid fa-check text-brand-gold mr-4"></i> Spacious, Air-Conditioned Retail Atriums
+                    </li>
+                </ul>
+                <a href="#" class="inline-block px-8 py-3 border border-white/30 rounded-full text-white text-sm font-medium hover:border-brand-gold hover:text-brand-gold transition duration-300">
+                    Explore Directory
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WELL-DINING & FRANCHISES -->
+    <section id="dining" class="py-24 px-6 md:px-16 max-w-[1600px] mx-auto bg-brand-card/30 border-y border-brand-lightBorder">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <p class="text-[0.65rem] uppercase tracking-[0.3em] text-brand-gray mb-3 font-medium">G O U R M E T</p>
+                <h2 class="text-4xl md:text-5xl font-serif text-white mb-6">World-Class Dining</h2>
+                <p class="text-brand-gray text-base leading-relaxed mb-8 max-w-lg">
+                    Satisfy your cravings at our expansive food court and well-dining restaurants. Featuring globally recognized fast-casual franchises renowned for their iconic burgers and signature spices, alongside dedicated kitchens serving premium plant-based and high-protein vegetarian delights.
+                </p>
+                <ul class="space-y-4 mb-10">
+                    <li class="flex items-center text-white text-sm tracking-wide">
+                        <i class="fa-solid fa-utensils text-brand-gold mr-4"></i> Global Fast-Casual Franchises
+                    </li>
+                    <li class="flex items-center text-white text-sm tracking-wide">
+                        <i class="fa-solid fa-leaf text-brand-gold mr-4"></i> Dedicated Gourmet Vegetarian Options
+                    </li>
+                    <li class="flex items-center text-white text-sm tracking-wide">
+                        <i class="fa-solid fa-mug-hot text-brand-gold mr-4"></i> Premium Cafes & Artisanal Desserts
+                    </li>
+                </ul>
+            </div>
+            <div class="relative rounded-2xl overflow-hidden aspect-[4/3] group">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1974&auto=format&fit=crop" alt="Premium Dining" class="w-full h-full object-cover opacity-80 zoom-hover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEXT-GEN GAMING ARENA -->
+    <section id="gaming" class="py-24 px-6 md:px-16 max-w-[1600px] mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <p class="text-[0.65rem] uppercase tracking-[0.3em] text-brand-gray mb-3 font-medium">E N T E R T A I N M E N T</p>
+            <h2 class="text-4xl md:text-5xl font-serif text-white mb-6">The Gaming Arena</h2>
+            <p class="text-brand-gray text-base leading-relaxed">
+                Elevate your entertainment in our state-of-the-art gaming zone. Whether you are pushing competitive ranks in Valorant, dominating tactical rounds in Counter-Strike 2, or surviving terrifying VR horror experiences, our arena is equipped with cutting-edge hardware for the ultimate edge.
             </p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
-            <!-- Arcade Card -->
-            <div class="relative rounded-xl overflow-hidden bg-ohm-gray border border-white/5 aspect-[4/3] group cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 group-hover:scale-105 group-hover:opacity-80 transition duration-500">
+            <div class="rounded-xl overflow-hidden relative group aspect-square bg-brand-card">
+                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition duration-500">
                 <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                <div class="absolute bottom-6 left-6 right-6">
-                    <h3 class="text-xl font-serif text-ohm-gold mb-1">Classic Arcade</h3>
-                    <p class="text-sm text-ohm-lightGray mb-4">Relive the classics with our massive selection of retro and modern arcade cabinets.</p>
-                    <a href="#" class="inline-block px-5 py-2 rounded-full border border-ohm-gold text-white text-xs hover:bg-ohm-gold hover:text-black transition">
-                        Explore Arcade
-                    </a>
+                <div class="absolute bottom-8 left-8 right-8">
+                    <h3 class="text-2xl font-serif text-brand-gold mb-2">Esports Lounge</h3>
+                    <p class="text-sm text-brand-gray">High-refresh rate monitors and premium rigs tailored for competitive tactical shooters.</p>
                 </div>
             </div>
-
-            <!-- Esports / PC Lounge Card -->
-            <div class="relative rounded-xl overflow-hidden bg-ohm-gray border border-white/5 aspect-[4/3] group cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 group-hover:scale-105 group-hover:opacity-80 transition duration-500">
+            <div class="rounded-xl overflow-hidden relative group aspect-square bg-brand-card">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071&auto=format&fit=crop" class="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition duration-500">
                 <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                <div class="absolute bottom-6 left-6 right-6">
-                    <h3 class="text-xl font-serif text-ohm-gold mb-1">Esports Arena</h3>
-                    <p class="text-sm text-ohm-lightGray mb-4">High-refresh rate monitors and premium rigs for competitive PC & console gaming.</p>
-                    <a href="#" class="inline-block px-5 py-2 rounded-full border border-ohm-gold text-white text-xs hover:bg-ohm-gold hover:text-black transition">
-                        View Rates
-                    </a>
+                <div class="absolute bottom-8 left-8 right-8">
+                    <h3 class="text-2xl font-serif text-brand-gold mb-2">Classic Arcade</h3>
+                    <p class="text-sm text-brand-gray">A massive selection of retro cabinets, racing simulators, and modern arcade classics.</p>
                 </div>
             </div>
-
-            <!-- Virtual Reality Card -->
-            <div class="relative rounded-xl overflow-hidden bg-ohm-gray border border-white/5 aspect-[4/3] group cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 group-hover:scale-105 group-hover:opacity-80 transition duration-500">
+            <div class="rounded-xl overflow-hidden relative group aspect-square bg-brand-card">
+                <img src="https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover opacity-50 group-hover:opacity-80 transition duration-500">
                 <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-                <div class="absolute bottom-6 left-6 right-6">
-                    <h3 class="text-xl font-serif text-ohm-gold mb-1">Virtual Reality</h3>
-                    <p class="text-sm text-ohm-lightGray mb-4">Fully immersive VR stations offering the latest in virtual entertainment.</p>
-                    <a href="#" class="inline-block px-5 py-2 rounded-full border border-ohm-gold text-white text-xs hover:bg-ohm-gold hover:text-black transition">
-                        Discover VR
-                    </a>
+                <div class="absolute bottom-8 left-8 right-8">
+                    <h3 class="text-2xl font-serif text-brand-gold mb-2">Virtual Reality</h3>
+                    <p class="text-sm text-brand-gray">Fully immersive VR stations offering thrilling survival games and interactive worlds.</p>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- Simple Footer -->
-    <footer class="border-t border-white/10 py-12 px-6 md:px-12 bg-[#050505]">
-        <div class="max-w-[1500px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex flex-col items-center md:items-start">
-                <h1 class="text-2xl font-serif text-ohm-gold tracking-widest leading-none">OHM</h1>
-                <span class="text-[0.55rem] tracking-[0.4em] text-white mt-1 uppercase">Sirsa</span>
-            </div>
-            
-            <div class="flex flex-wrap justify-center gap-6 text-sm text-ohm-lightGray">
-                <a href="#" class="hover:text-white transition">About Us</a>
-                <a href="#" class="hover:text-white transition">Contact</a>
-                <a href="#" class="hover:text-white transition">Privacy Policy</a>
-                <a href="#" class="hover:text-white transition">Terms & Conditions</a>
-            </div>
-            
-            <div class="flex gap-4">
-                <a href="#" class="text-ohm-lightGray hover:text-ohm-gold transition"><i class="fa-brands fa-instagram text-xl"></i></a>
-                <a href="#" class="text-ohm-lightGray hover:text-ohm-gold transition"><i class="fa-brands fa-facebook-f text-xl"></i></a>
-                <a href="#" class="text-ohm-lightGray hover:text-ohm-gold transition"><i class="fa-brands fa-twitter text-xl"></i></a>
+    <!-- ELITE LOCATION & GOOGLE MAPS -->
+    <section id="location" class="py-24 border-t border-brand-lightBorder section-fade">
+        <div class="max-w-[1600px] mx-auto px-6 md:px-16">
+            <div class="grid lg:grid-cols-3 gap-12 items-center">
+                <div class="lg:col-span-1">
+                    <p class="text-[0.65rem] uppercase tracking-[0.3em] text-brand-gray mb-3 font-medium">V I S I T &nbsp; U S</p>
+                    <h2 class="text-4xl md:text-5xl font-serif text-white mb-6">An Elite Location</h2>
+                    <p class="text-brand-gray text-base leading-relaxed mb-8">
+                        Situated perfectly on NH 9, OHM Cine Garden & Shopping Complex is Sirsa's premier landmark. Easily accessible with ample secure parking, making your visit seamless from start to finish.
+                    </p>
+                    <div class="space-y-5 mb-8">
+                        <div class="flex items-start text-white">
+                            <i class="fa-solid fa-location-dot text-brand-gold mt-1 w-6"></i>
+                            <div>
+                                <p class="font-medium tracking-wide">OHM Sirsa</p>
+                                <p class="text-sm text-brand-gray mt-1">Sirsa - Fatehabad Road, NH 9<br>Sirsa, Haryana 125060</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center text-white">
+                            <i class="fa-solid fa-phone text-brand-gold w-6"></i>
+                            <a href="tel:09254333333" class="text-sm tracking-wide hover:text-brand-gold transition">092543 33333</a>
+                        </div>
+                    </div>
+                    <a href="https://maps.google.com/?q=OHM+Cine+Garden+Sirsa" target="_blank" class="inline-block px-8 py-3 bg-brand-gold text-black rounded-full text-sm font-medium hover:bg-brand-goldHover transition duration-300">
+                        Get Directions &nbsp;&rarr;
+                    </a>
+                </div>
+                
+                <!-- Google Maps Embed Container -->
+                <div class="lg:col-span-2 h-[450px] rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative group">
+                    <div class="absolute inset-0 bg-brand-gold/10 pointer-events-none z-10 group-hover:bg-transparent transition duration-500"></div>
+                    <!-- Embed map focusing on Sirsa, styled to fit the dark theme -->
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13904.708170244463!2d75.03058865!3d29.53151835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39114f8d87ea31fb%3A0x1b1b0123565b4c10!2sOHM%20Cine%20Garden%20%26%20Shopping%20Complex!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0; filter: invert(90%) hue-rotate(180deg) contrast(100%);" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
             </div>
         </div>
-        <p class="text-center text-xs text-ohm-lightGray/50 mt-10">&copy; 2026 OHM Sirsa. All rights reserved.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#020202] pt-20 pb-10 border-t border-brand-lightBorder px-6 md:px-16">
+        <div class="max-w-[1600px] mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <!-- Brand -->
+                <div class="md:col-span-1">
+                    <h2 class="text-3xl font-serif text-white tracking-wide mb-6">OHM.</h2>
+                    <p class="text-brand-gray text-sm leading-relaxed mb-6">
+                        More than just movies. A complete lifestyle and entertainment destination in the heart of Sirsa.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:border-brand-gold hover:text-brand-gold transition duration-300"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:border-brand-gold hover:text-brand-gold transition duration-300"><i class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="text-white font-medium mb-6 tracking-wide">Quick Links</h4>
+                    <ul class="space-y-3 text-sm text-brand-gray">
+                        <li><a href="#" class="hover:text-brand-gold transition">Now Showing</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Ticket Rates</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Food & Beverages</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Gaming Arena</a></li>
+                    </ul>
+                </div>
+
+                <!-- Shopping -->
+                <div>
+                    <h4 class="text-white font-medium mb-6 tracking-wide">The Complex</h4>
+                    <ul class="space-y-3 text-sm text-brand-gray">
+                        <li><a href="#" class="hover:text-brand-gold transition">Store Directory</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Dining Franchises</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Offers & Events</a></li>
+                        <li><a href="#" class="hover:text-brand-gold transition">Parking Information</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h4 class="text-white font-medium mb-6 tracking-wide">Legal</h4>
+                    <ul class="space-y-3 text-sm text-brand-gray">
+                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-white transition">Cancellation Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Contact Support</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-brand-lightBorder pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-brand-gray font-medium tracking-wide">
+                <p>&copy; 2026 OHM Sirsa. All rights reserved.</p>
+                <p>Designed for the ultimate cinematic experience.</p>
+            </div>
+        </div>
     </footer>
 
 </body>
