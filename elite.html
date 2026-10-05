@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Cinemas | The Best Movie Experience in Hisar</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Outfit (Premium Cinematic) & Inter (Clean Text) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        cinema: {
+                            black: '#050505',
+                            dark: '#0f0f11',
+                            red: '#E50914',
+                            redHover: '#B80710',
+                            gray: '#9ca3af',
+                            border: 'rgba(255,255,255,0.1)'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #050505; color: #ffffff; overflow-x: hidden; }
+        
+        /* Smooth Gradient Overlays */
+        .hero-overlay {
+            background: linear-gradient(180deg, rgba(5,5,5,0.3) 0%, rgba(5,5,5,0.7) 60%, #050505 100%),
+                        linear-gradient(90deg, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.5) 50%, rgba(5,5,5,0.95) 100%);
+        }
+        
+        .section-fade {
+            background: linear-gradient(180deg, #050505 0%, #0f0f11 100%);
+        }
+
+        /* Hover Zoom */
+        .img-zoom { transition: transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .group:hover .img-zoom { transform: scale(1.05); }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #333; }
+        ::-webkit-scrollbar-thumb:hover { background: #E50914; }
+    </style>
+</head>
+<body class="antialiased selection:bg-cinema-red selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 bg-[#050505]/90 backdrop-blur-xl border-b border-cinema-border transition-all duration-300">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-cinema-red text-white flex items-center justify-center font-display font-bold text-xl leading-none shadow-[0_0_15px_rgba(229,9,20,0.5)]">E</div>
+                    <span class="font-display font-bold text-2xl tracking-widest text-white uppercase">Elite<span class="font-light text-cinema-gray">Cinemas</span></span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-xs font-sans font-medium text-cinema-gray hover:text-white transition uppercase tracking-[0.15em]">The Experience</a>
+                    <a href="#drive-in" class="text-xs font-sans font-medium text-cinema-gray hover:text-white transition uppercase tracking-[0.15em]">Drive-In</a>
+                    <a href="#visit" class="text-xs font-sans font-medium text-cinema-gray hover:text-white transition uppercase tracking-[0.15em]">Location</a>
+                    <a href="#booking" class="px-6 py-2.5 border border-cinema-red text-cinema-red font-display font-bold text-xs hover:bg-cinema-red hover:text-white transition duration-300 uppercase tracking-widest shadow-[0_0_15px_rgba(229,9,20,0.2)]">
+                        Book Tickets
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Icon -->
+                <div class="md:hidden text-white text-xl cursor-pointer">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative w-full flex flex-col justify-center pt-28 pb-0 md:pt-32 min-h-screen">
+        
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://raw.githubusercontent.com/pruthiharshit/sample/refs/heads/main/elite.png" alt="Elite Cinemas Hisar" class="w-full h-full object-cover grayscale-[20%]">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 w-full max-w-[1400px] mx-auto px-6 lg:px-12 text-center flex-grow flex flex-col justify-center items-center">
+            
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/20 bg-black/60 backdrop-blur-md mb-8">
+                <i class="fa-solid fa-location-dot text-cinema-red text-xs"></i>
+                <span class="text-[10px] font-sans font-bold tracking-[0.2em] text-white uppercase">Hisar, Haryana</span>
+            </div>
+            
+            <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-[6.5rem] font-display font-bold leading-[1.05] tracking-tight mb-8 text-white uppercase">
+                The Best Movie <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-500 to-white">Experience.</span>
+            </h1>
+            
+            <p class="text-base md:text-xl text-cinema-gray max-w-2xl mx-auto font-sans font-light mb-12 leading-relaxed">
+                Elite Cinemas is here to provide you with the ultimate entertainment experience in Hisar. From Bollywood blockbusters to the latest international releases.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-5 mb-16 w-full sm:w-auto">
+                <a href="#booking" class="px-8 py-4 bg-cinema-red text-white font-display font-bold text-xs tracking-[0.2em] uppercase hover:bg-cinema-redHover transition duration-300 w-full sm:w-auto text-center shadow-[0_0_20px_rgba(229,9,20,0.4)]">
+                    Book Your Seats
+                </a>
+                <a href="#about" class="px-8 py-4 border border-white/30 text-white font-display font-bold text-xs tracking-[0.2em] uppercase hover:bg-white hover:text-black transition duration-300 w-full sm:w-auto text-center">
+                    Discover More
+                </a>
+            </div>
+        </div>
+
+        <!-- Safely positioned Stats Bar in standard document flow to prevent overlaps -->
+        <div class="relative z-20 w-full bg-[#050505]/95 backdrop-blur-xl border-t border-cinema-border py-6 mt-auto">
+            <div class="max-w-[1400px] mx-auto px-6 lg:px-12 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0 md:divide-x divide-cinema-border text-center">
+                
+                <!-- Google Reviews -->
+                <div class="flex flex-col items-center justify-center">
+                    <div class="flex items-center gap-2 text-yellow-500 text-lg mb-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                        <span class="text-white font-bold font-display ml-1">3.8 / 5</span>
+                    </div>
+                    <span class="text-xs font-sans text-cinema-gray uppercase tracking-widest">Google (2,871+ Reviews)</span>
+                </div>
+
+                <!-- Justdial Reviews (New) -->
+                <div class="flex flex-col items-center justify-center">
+                    <div class="flex items-center gap-2 text-green-500 text-lg mb-1">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star text-green-500/30"></i>
+                        <span class="text-white font-bold font-display ml-1">4.1 / 5</span>
+                    </div>
+                    <span class="text-xs font-sans text-cinema-gray uppercase tracking-widest">Justdial (3,096 Ratings)</span>
+                </div>
+
+                <!-- Facebook Recommendation -->
+                <div class="flex flex-col items-center justify-center">
+                    <div class="flex items-center gap-2 text-blue-500 text-lg mb-1">
+                        <i class="fa-brands fa-facebook"></i>
+                        <span class="text-white font-bold font-display ml-1">74%</span>
+                    </div>
+                    <span class="text-xs font-sans text-cinema-gray uppercase tracking-widest">Recommend on Facebook</span>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- The Experience (Authentic Details Only) -->
+    <section id="about" class="py-24 md:py-32 section-fade relative">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                
+                <div class="relative group overflow-hidden rounded-sm border border-cinema-border shadow-2xl aspect-[4/3] bg-black order-2 lg:order-1">
+                    <div class="absolute inset-0 bg-cinema-red/10 group-hover:bg-transparent transition duration-700 z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?q=80&w=2070&auto=format&fit=crop" alt="Cinema Screen" class="w-full h-full object-cover img-zoom grayscale-[20%]">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10"></div>
+                </div>
+
+                <div class="order-1 lg:order-2">
+                    <div class="w-12 h-1 bg-cinema-red mb-6"></div>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-8 leading-tight tracking-tight">
+                        Curating The <br>Perfect Frame.
+                    </h2>
+                    
+                    <div class="space-y-6 text-cinema-gray font-sans font-light text-lg leading-relaxed mb-10">
+                        <p>
+                            At Elite Cinemas, our mission is simple: to provide the ultimate movie-watching experience in Hisar. From pristine projection to immersive acoustics, every detail is engineered for perfection.
+                        </p>
+                        <p>
+                            We pride ourselves on offering a diverse lineup. As well as the biggest Bollywood blockbusters, Elite Cinemas is widely known for showcasing the latest and greatest international movies.
+                        </p>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-8 border-t border-cinema-border pt-10">
+                        <div>
+                            <h4 class="text-white font-display font-bold text-lg mb-2">Bollywood Blockbusters</h4>
+                            <p class="text-sm text-cinema-gray font-light">Experience the drama, action, and romance of Indian cinema on the big screen.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-display font-bold text-lg mb-2">International Hits</h4>
+                            <p class="text-sm text-cinema-gray font-light">Catch the latest Hollywood releases and acclaimed global cinema.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Drive-In Cinema Feature -->
+    <section id="drive-in" class="py-24 md:py-32 bg-cinema-black border-y border-cinema-border">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <div class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                
+                <div>
+                    <div class="w-12 h-1 bg-cinema-red mb-6"></div>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-6 leading-tight tracking-tight">
+                        The Elite <br>Drive-In Cinema.
+                    </h2>
+                    <p class="text-cinema-gray font-sans font-light text-lg leading-relaxed mb-8">
+                        Watch your favorite movies under the stars. Along with our traditional indoor screens, Elite Cinemas proudly offers a premium Drive-In cinema experience. Enjoy the latest releases from the comfort and privacy of your own vehicle.
+                    </p>
+                    <ul class="space-y-4 font-sans text-sm tracking-wide text-gray-300 mb-10">
+                        <li class="flex items-center gap-4"><i class="fa-solid fa-car text-cinema-red text-lg w-6"></i> Private viewing from your vehicle</li>
+                        <li class="flex items-center gap-4"><i class="fa-solid fa-moon text-cinema-red text-lg w-6"></i> Beautiful open-air environment</li>
+                        <li class="flex items-center gap-4"><i class="fa-solid fa-ticket text-cinema-red text-lg w-6"></i> Same great blockbuster lineup</li>
+                    </ul>
+                </div>
+
+                <div class="relative group overflow-hidden rounded-sm border border-cinema-border shadow-2xl aspect-[4/3] bg-black">
+                    <img src="https://images.unsplash.com/photo-1595769816263-9b910be24d5f?q=80&w=2079&auto=format&fit=crop" alt="Drive In Cinema" class="w-full h-full object-cover img-zoom opacity-80">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Official Ticketing Partners -->
+    <section id="booking" class="py-24 bg-cinema-dark relative overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-5" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 30px 30px;"></div>
+        
+        <div class="max-w-[1000px] mx-auto px-6 text-center relative z-10">
+            <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-6 tracking-tight">Ready for the Show?</h2>
+            <p class="text-lg text-cinema-gray font-light mb-12 max-w-2xl mx-auto">
+                Secure your seats seamlessly. Elite Cinemas is officially partnered with India's leading ticketing platforms to bring you the best offers and a hassle-free booking experience.
+            </p>
+            
+            <!-- Partners Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                <!-- BookMyShow -->
+                <a href="https://in.bookmyshow.com/" target="_blank" class="flex flex-col items-center justify-center p-6 bg-cinema-black border border-cinema-border rounded-sm hover:border-red-500 hover:shadow-[0_0_20px_rgba(229,9,20,0.15)] transition duration-300 group">
+                    <i class="fa-solid fa-ticket text-3xl text-gray-500 group-hover:text-red-500 transition mb-3"></i>
+                    <span class="font-display font-bold text-sm tracking-wide text-white">BookMyShow</span>
+                </a>
+                
+                <!-- Paytm -->
+                <a href="https://paytm.com/movies" target="_blank" class="flex flex-col items-center justify-center p-6 bg-cinema-black border border-cinema-border rounded-sm hover:border-blue-400 hover:shadow-[0_0_20px_rgba(96,165,250,0.15)] transition duration-300 group">
+                    <i class="fa-brands fa-paypal text-3xl text-gray-500 group-hover:text-blue-400 transition mb-3"></i>
+                    <span class="font-display font-bold text-sm tracking-wide text-white">Paytm</span>
+                </a>
+
+                <!-- District App -->
+                <a href="#" target="_blank" class="flex flex-col items-center justify-center p-6 bg-cinema-black border border-cinema-border rounded-sm hover:border-purple-500 hover:shadow-[0_0_20px_rgba(168,85,247,0.15)] transition duration-300 group">
+                    <i class="fa-solid fa-mobile-screen text-3xl text-gray-500 group-hover:text-purple-500 transition mb-3"></i>
+                    <span class="font-display font-bold text-sm tracking-wide text-white">District App</span>
+                </a>
+
+                <!-- TicketNew -->
+                <a href="https://ticketnew.com" target="_blank" class="flex flex-col items-center justify-center p-6 bg-cinema-black border border-cinema-border rounded-sm hover:border-green-500 hover:shadow-[0_0_20px_rgba(34,197,94,0.15)] transition duration-300 group">
+                    <i class="fa-solid fa-film text-3xl text-gray-500 group-hover:text-green-500 transition mb-3"></i>
+                    <span class="font-display font-bold text-sm tracking-wide text-white">TicketNew</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Contact -->
+    <section id="visit" class="py-24 md:py-32 bg-cinema-black border-t border-cinema-border">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12">
+            <div class="grid lg:grid-cols-12 gap-16 items-start">
+                
+                <!-- Contact Details -->
+                <div class="lg:col-span-4">
+                    <div class="w-12 h-1 bg-cinema-red mb-6"></div>
+                    <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-10 tracking-tight">Visit Us</h2>
+                    
+                    <div class="space-y-10">
+                        <div class="flex items-start gap-5">
+                            <div class="text-cinema-red text-xl mt-1 w-6 text-center"><i class="fa-solid fa-map-pin"></i></div>
+                            <div>
+                                <p class="text-xs font-sans font-bold tracking-[0.2em] text-cinema-gray uppercase mb-2">Location</p>
+                                <p class="text-base text-white font-sans font-light leading-relaxed">
+                                    5P3C+PVG, Railway Rd,<br>
+                                    near Elite cinema hall,<br>
+                                    Rampura Mohalla, Mehta Nagar,<br>
+                                    Hisar, Haryana 125001
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-5">
+                            <div class="text-cinema-red text-xl mt-1 w-6 text-center"><i class="fa-solid fa-phone"></i></div>
+                            <div>
+                                <p class="text-xs font-sans font-bold tracking-[0.2em] text-cinema-gray uppercase mb-2">Box Office</p>
+                                <a href="tel:09813192777" class="text-xl font-display font-bold text-white hover:text-cinema-red transition duration-300">098131 92777</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-5">
+                            <div class="text-cinema-red text-xl mt-1 w-6 text-center"><i class="fa-brands fa-facebook-f"></i></div>
+                            <div>
+                                <p class="text-xs font-sans font-bold tracking-[0.2em] text-cinema-gray uppercase mb-2">Follow Us</p>
+                                <a href="https://facebook.com/Elitehisar/" target="_blank" class="text-base font-sans font-light text-white hover:text-cinema-red transition duration-300 underline underline-offset-4">facebook.com/Elitehisar/</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Maps Embed -->
+                <div class="lg:col-span-8 h-full min-h-[450px] rounded-sm overflow-hidden border border-cinema-border relative shadow-2xl">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13903.048598462719!2d75.7196165!3d29.1542711!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39123329ac3c9ded%3A0x774ac9f0dc825fd!2sElite%20Cinemas!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0; filter: grayscale(100%) invert(100%) contrast(100%);" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-cinema-dark border-t border-cinema-border py-12">
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12 flex flex-col md:flex-row justify-between items-center gap-6">
+            
+            <div class="flex flex-col items-center md:items-start">
+                <span class="font-display font-bold text-2xl tracking-widest text-white uppercase mb-2">Elite<span class="font-light">Cinemas</span></span>
+                <p class="text-sm font-sans font-light text-cinema-gray text-center md:text-left">The Best Movie-Watching Experience in Hisar.</p>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-6 md:gap-8 text-xs font-sans font-medium text-cinema-gray uppercase tracking-widest">
+                <a href="#about" class="hover:text-white transition">About</a>
+                <a href="#drive-in" class="hover:text-white transition">Drive-In</a>
+                <a href="#booking" class="hover:text-white transition">Tickets</a>
+                <a href="https://facebook.com/Elitehisar/" target="_blank" class="hover:text-white transition">Facebook</a>
+            </div>
+
+        </div>
+        <div class="max-w-[1400px] mx-auto px-6 lg:px-12 mt-12 pt-8 border-t border-cinema-border flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] sm:text-xs font-sans text-cinema-gray tracking-[0.15em] uppercase text-center md:text-left">
+            <p>&copy; 2026 Elite Cinemas. All Rights Reserved.</p>
+            <p>Hisar, Haryana</p>
+        </div>
+    </footer>
+
+</body>
+</html>
