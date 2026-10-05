@@ -3,53 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HR STUFF MUSIC STUDIO | Premium Music Production</title>
+    <title>HR STUFF MUSIC STUDIO | Premium Audio Production</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Space Grotesk (Modern/Edgy) & Inter (Clean) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts: Montserrat (Modern Luxury) & Inter (Clean Body) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Tailwind Config for Neon Studio Aesthetic -->
+    <!-- Tailwind Config for Premium Studio Aesthetic -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
                     },
                     colors: {
-                        studio: {
-                            bg: '#050505',
-                            card: '#111111',
-                            neonPurple: '#8b5cf6',
-                            neonBlue: '#3b82f6',
-                            accent: '#facc15' /* Yellow accent referencing the producer's style */
-                        }
-                    },
-                    animation: {
-                        'gradient-x': 'gradient-x 3s ease infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        'gradient-x': {
-                            '0%, 100%': {
-                                'background-size': '200% 200%',
-                                'background-position': 'left center'
-                            },
-                            '50%': {
-                                'background-size': '200% 200%',
-                                'background-position': 'right center'
-                            },
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-10px)' },
+                        brand: {
+                            black: '#030303',
+                            dark: '#0a0a0a',
+                            card: '#121212',
+                            gold: '#C5A059',
+                            goldHover: '#dcc082',
+                            gray: '#888888',
+                            lightBorder: 'rgba(255, 255, 255, 0.06)'
                         }
                     }
                 }
@@ -58,280 +40,227 @@
     </script>
 
     <style>
-        body { background-color: #050505; color: #ffffff; overflow-x: hidden; }
-        
-        /* Glass Navbar */
-        .glass-nav {
-            background: rgba(5, 5, 5, 0.7);
-            backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+        body { 
+            background-color: #030303; 
+            color: #ffffff; 
+            overflow-x: hidden; 
         }
 
-        /* Gradient Text Utility */
-        .text-glow {
-            background: linear-gradient(to right, #8b5cf6, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* Elegant Fade for Hero */
+        .hero-gradient {
+            background: linear-gradient(to right, #030303 0%, rgba(3,3,3,0.8) 50%, transparent 100%),
+                        linear-gradient(to bottom, transparent 70%, #030303 100%);
         }
 
-        /* Glowing Border Cards */
-        .glow-card {
-            position: relative;
-            background: #111111;
-            border-radius: 1rem;
-            z-index: 1;
-            transition: transform 0.3s ease;
+        /* Subtle Luxury Hover Transitions */
+        .premium-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .glow-card::before {
-            content: "";
-            position: absolute;
-            inset: -2px;
-            border-radius: 1.1rem;
-            background: linear-gradient(45deg, #8b5cf6, #3b82f6, #050505, #050505);
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.4s ease;
+        .premium-card:hover {
+            transform: translateY(-8px);
+            background-color: #1a1a1a;
+            border-color: rgba(197, 160, 89, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
-        .glow-card:hover { transform: translateY(-5px); }
-        .glow-card:hover::before { opacity: 1; }
+
+        /* Smooth Image Zoom */
+        .img-zoom-container { overflow: hidden; }
+        .img-zoom { transition: transform 0.9s ease; }
+        .group:hover .img-zoom { transform: scale(1.05); }
 
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #050505; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #8b5cf6; }
-
-        /* Vinyl Spin */
-        .spin-slow { animation: spin 8s linear infinite; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #030303; }
+        ::-webkit-scrollbar-thumb { background: #333; }
+        ::-webkit-scrollbar-thumb:hover { background: #C5A059; }
     </style>
 </head>
-<body class="antialiased selection:bg-studio-neonPurple selection:text-white">
+<body class="antialiased selection:bg-brand-gold selection:text-black">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 top-0 glass-nav py-4 transition-all duration-300">
+    <!-- Professional Navbar -->
+    <nav class="fixed w-full z-50 top-0 bg-[#030303]/90 backdrop-blur-md border-b border-brand-lightBorder transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="flex justify-between items-center h-12">
-                <!-- Logo -->
-                <a href="#" class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-studio-neonPurple to-studio-neonBlue flex items-center justify-center shadow-[0_0_15px_rgba(139,92,246,0.5)]">
-                        <i class="fa-solid fa-music text-white text-sm"></i>
-                    </div>
-                    <span class="font-display font-bold text-xl tracking-widest text-white">HR STUFF<span class="text-studio-neonPurple">.</span></span>
+            <div class="flex justify-between items-center h-24">
+                
+                <!-- Brand Logo -->
+                <a href="#" class="flex flex-col">
+                    <span class="font-display font-bold text-2xl tracking-[0.2em] text-white">HR STUFF<span class="text-brand-gold">.</span></span>
+                    <span class="text-[0.6rem] tracking-[0.3em] text-brand-gray uppercase mt-1">Music Studio</span>
                 </a>
 
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#about" class="text-sm font-medium text-gray-400 hover:text-white transition uppercase tracking-wider">The Studio</a>
-                    <a href="#services" class="text-sm font-medium text-gray-400 hover:text-white transition uppercase tracking-wider">Services</a>
-                    <a href="#portfolio" class="text-sm font-medium text-gray-400 hover:text-white transition uppercase tracking-wider">Releases</a>
-                    <a href="#contact" class="px-6 py-2.5 rounded-full bg-white text-black font-display font-bold text-sm hover:bg-studio-accent transition shadow-lg">
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-10">
+                    <a href="#about" class="text-xs font-display font-medium text-gray-400 hover:text-white transition uppercase tracking-[0.15em]">The Studio</a>
+                    <a href="#services" class="text-xs font-display font-medium text-gray-400 hover:text-white transition uppercase tracking-[0.15em]">Services</a>
+                    <a href="#portfolio" class="text-xs font-display font-medium text-gray-400 hover:text-white transition uppercase tracking-[0.15em]">Portfolio</a>
+                    <a href="#contact" class="px-7 py-3 border border-brand-gold text-brand-gold font-display font-medium text-xs hover:bg-brand-gold hover:text-black transition duration-300 uppercase tracking-[0.15em]">
                         Book Session
                     </a>
+                </div>
+
+                <!-- Mobile Menu Icon -->
+                <div class="md:hidden text-white text-xl">
+                    <i class="fa-solid fa-bars"></i>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <!-- Editorial Hero Section -->
+    <header class="relative min-h-screen flex items-center pt-24 border-b border-brand-lightBorder">
         
-        <!-- Abstract Studio Background Glows -->
-        <div class="absolute top-1/4 -left-32 w-96 h-96 bg-studio-neonPurple rounded-full mix-blend-screen filter blur-[150px] opacity-20 animate-pulse"></div>
-        <div class="absolute bottom-1/4 -right-32 w-96 h-96 bg-studio-neonBlue rounded-full mix-blend-screen filter blur-[150px] opacity-20 animate-pulse" style="animation-delay: 2s;"></div>
-
-        <!-- Background Image with Overlay -->
-        <div class="absolute inset-0 z-[-1]">
-            <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=2070&auto=format&fit=crop" alt="Recording Studio" class="w-full h-full object-cover opacity-30 grayscale-[50%]">
-            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#050505]/80 to-[#050505]"></div>
+        <!-- High-End Studio Background Image -->
+        <div class="absolute inset-0 z-0">
+            <!-- Using a high-quality studio microphone/recording console image -->
+            <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=2070&auto=format&fit=crop" alt="Premium Recording Studio" class="w-full h-full object-cover object-right opacity-40 grayscale-[30%]">
+            <div class="absolute inset-0 hero-gradient"></div>
         </div>
 
-        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto mt-10">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md mb-6 animate-float">
-                <i class="fa-solid fa-star text-studio-accent text-xs"></i>
-                <span class="text-xs font-medium tracking-widest text-gray-300 uppercase">5.0 Star Rated Producer</span>
-            </div>
-            
-            <h1 class="text-5xl md:text-7xl lg:text-[5.5rem] font-display font-bold leading-[1.1] tracking-tighter mb-6 text-white uppercase">
-                Shape Your <br>
-                <span class="text-glow animate-gradient-x">Sonic Identity.</span>
-            </h1>
-            
-            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-light mb-10 leading-relaxed">
-                Welcome to HR STUFF MUSIC STUDIO. High-end music production, mixing, and mastering services in the heart of Hisar, Haryana. Open 24/7 for artists who never sleep.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row justify-center gap-5">
-                <a href="#contact" class="px-8 py-4 rounded-full bg-gradient-to-r from-studio-neonPurple to-studio-neonBlue text-white font-display font-bold text-sm tracking-widest uppercase hover:shadow-[0_0_30px_rgba(139,92,246,0.6)] transition duration-300">
-                    Start a Project
-                </a>
-                <a href="#portfolio" class="px-8 py-4 rounded-full border border-white/20 text-white font-display font-bold text-sm tracking-widest uppercase hover:bg-white/10 transition duration-300 flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-play"></i> Hear Our Work
-                </a>
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-8 mt-12 md:mt-0">
+            <div class="max-w-2xl">
+                <div class="flex items-center gap-4 mb-8">
+                    <div class="h-[1px] w-12 bg-brand-gold"></div>
+                    <span class="text-xs font-display font-medium tracking-[0.3em] text-brand-gold uppercase">Hisar, Haryana</span>
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-display font-light leading-[1.1] tracking-tight mb-8 text-white">
+                    Mastering <br>
+                    <span class="font-bold text-white">The Art of Sound.</span>
+                </h1>
+                
+                <p class="text-lg text-brand-gray max-w-xl font-light mb-12 leading-relaxed">
+                    Industry-leading music production, vocal engineering, and premium mastering. We provide the acoustic perfection and technical expertise required to turn your vision into a masterpiece.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-6">
+                    <a href="#contact" class="px-8 py-4 bg-white text-black font-display font-semibold text-xs tracking-[0.2em] uppercase hover:bg-brand-gold transition duration-300 text-center">
+                        Schedule a Consultation
+                    </a>
+                    <a href="#portfolio" class="px-8 py-4 border border-white/20 text-white font-display font-medium text-xs tracking-[0.2em] uppercase hover:border-white transition duration-300 text-center flex items-center justify-center gap-3">
+                        <i class="fa-solid fa-headphones"></i> Listen to Work
+                    </a>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- About The Producer -->
-    <section id="about" class="py-24 border-t border-white/5 relative">
+    <!-- The Producer / About Section -->
+    <section id="about" class="py-32 bg-brand-dark border-b border-brand-lightBorder relative">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
-                <div class="relative">
-                    <div class="absolute inset-0 bg-gradient-to-r from-studio-neonPurple to-studio-neonBlue rounded-2xl transform rotate-3 opacity-30 blur-lg"></div>
-                    <!-- Using a high-quality studio aesthetic image -->
-                    <img src="https://images.unsplash.com/photo-1516280440502-0e27178ac769?q=80&w=1974&auto=format&fit=crop" alt="Music Producer" class="relative z-10 rounded-2xl border border-white/10 shadow-2xl w-full object-cover aspect-[4/5] grayscale hover:grayscale-0 transition duration-500">
+            <div class="grid lg:grid-cols-12 gap-16 items-center">
+                
+                <div class="lg:col-span-5 relative group img-zoom-container rounded-sm overflow-hidden border border-brand-lightBorder">
+                    <!-- Professional portrait placeholder -->
+                    <img src="https://images.unsplash.com/photo-1516280440502-0e27178ac769?q=80&w=1974&auto=format&fit=crop" alt="Rahul Hisariya - Music Producer" class="w-full h-full object-cover aspect-[3/4] img-zoom grayscale hover:grayscale-0">
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-500"></div>
+                </div>
+                
+                <div class="lg:col-span-7 lg:pl-10">
+                    <h4 class="text-xs font-display font-medium tracking-[0.3em] text-brand-gold uppercase mb-4">The Visionary</h4>
+                    <h2 class="text-3xl md:text-5xl font-display font-light mb-8 text-white leading-tight">
+                        Meet <span class="font-bold">Rahul Hisariya</span>
+                    </h2>
                     
-                    <div class="absolute -bottom-6 -left-6 bg-studio-card p-6 rounded-xl border border-white/10 shadow-xl z-20 flex items-center gap-4">
-                        <i class="fa-solid fa-compact-disc text-3xl text-studio-neonPurple spin-slow"></i>
+                    <div class="space-y-6 text-brand-gray font-light leading-relaxed text-lg mb-10">
+                        <p>
+                            As the lead music producer and founder of HR STUFF MUSIC STUDIO, Rahul Hisariya brings years of refined expertise to the console. Dedicated to sonic excellence, his approach bridges raw artistic emotion with pristine technical fidelity.
+                        </p>
+                        <p>
+                            From initial composition to the final master, our facility is equipped with industry-standard hardware and acoustically treated environments to ensure your music stands out on every platform.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-8 border-t border-brand-lightBorder pt-10">
                         <div>
-                            <p class="text-sm text-gray-400 font-medium uppercase tracking-widest">Lead Producer</p>
-                            <p class="text-xl font-display font-bold text-white">Rahul Hisariya</p>
+                            <p class="text-3xl font-display font-bold text-white mb-2">24/7</p>
+                            <p class="text-xs font-display text-brand-gray uppercase tracking-[0.1em]">Operating Hours</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-display font-bold text-white mb-2">5.0 <i class="fa-solid fa-star text-brand-gold text-xl pb-1"></i></p>
+                            <p class="text-xs font-display text-brand-gray uppercase tracking-[0.1em]">Client Satisfaction</p>
                         </div>
                     </div>
                 </div>
-                
-                <div>
-                    <h2 class="text-3xl md:text-5xl font-display font-bold mb-6 text-white leading-tight">Elevating tracks from concept to <span class="text-glow">Masterpiece.</span></h2>
-                    <p class="text-gray-400 text-lg leading-relaxed mb-6 font-light">
-                        Led by visionary music producer Rahul Hisariya, HR STUFF MUSIC STUDIO is dedicated to crafting chart-topping hits. We specialize in contemporary beats, rap arrangements, and full-scale music composition.
-                    </p>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-center gap-4 text-gray-300">
-                            <div class="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-studio-accent border border-white/10"><i class="fa-solid fa-check"></i></div>
-                            Complete Music Production & Composition
-                        </li>
-                        <li class="flex items-center gap-4 text-gray-300">
-                            <div class="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-studio-accent border border-white/10"><i class="fa-solid fa-check"></i></div>
-                            Professional Vocal Recording Setup
-                        </li>
-                        <li class="flex items-center gap-4 text-gray-300">
-                            <div class="w-8 h-8 rounded bg-white/5 flex items-center justify-center text-studio-accent border border-white/10"><i class="fa-solid fa-check"></i></div>
-                            Industry-Standard Mixing & Mastering
-                        </li>
-                    </ul>
-                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Services & Pricing (Data from Justdial Source) -->
-    <section id="services" class="py-24 bg-[#09090b] relative">
+    <!-- Premium Services & Investment -->
+    <section id="services" class="py-32 bg-brand-black border-b border-brand-lightBorder relative">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h3 class="text-studio-neonPurple font-bold tracking-[0.2em] uppercase text-sm mb-4">Investment</h3>
-                <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-6">Professional Services.</h2>
-                <p class="text-gray-400 text-lg font-light">Transparent pricing tailored for independent artists and commercial projects. Book your session today.</p>
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+                <div class="max-w-2xl">
+                    <h4 class="text-xs font-display font-medium tracking-[0.3em] text-brand-gold uppercase mb-4">Investment</h4>
+                    <h2 class="text-3xl md:text-5xl font-display font-light text-white leading-tight">
+                        Professional <span class="font-bold">Services.</span>
+                    </h2>
+                </div>
+                <p class="text-brand-gray font-light text-sm max-w-xs md:text-right">
+                    Transparent, high-value packages tailored for serious artists demanding commercial-grade quality.
+                </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 
-                <!-- Service 1 -->
-                <div class="glow-card p-8 flex flex-col h-full">
-                    <div class="w-12 h-12 rounded-full bg-studio-neonBlue/10 flex items-center justify-center text-studio-neonBlue mb-6 text-xl">
-                        <i class="fa-solid fa-sliders"></i>
+                <!-- Package 1 -->
+                <div class="premium-card bg-brand-card border border-brand-lightBorder p-10 rounded-sm flex flex-col h-full">
+                    <div class="mb-8">
+                        <i class="fa-solid fa-sliders text-2xl text-brand-gold mb-6"></i>
+                        <h3 class="text-xl font-display font-semibold text-white mb-4">Mixing & Mastering</h3>
+                        <p class="text-brand-gray text-sm font-light leading-relaxed">
+                            Essential polishing for pre-recorded tracks. We provide depth, clarity, and industry-standard loudness for streaming platforms.
+                        </p>
                     </div>
-                    <h3 class="text-xl font-display font-bold text-white mb-2">Music Production, Mixing & Mastering</h3>
-                    <p class="text-gray-400 text-sm mb-6 flex-grow">Essential package for artists bringing their own vocals and basic structures needing professional polish.</p>
-                    <div class="border-t border-white/10 pt-6 mb-6">
-                        <span class="text-3xl font-display font-bold text-white">₹10.0K</span>
-                        <span class="text-gray-500 text-sm">/ Unit</span>
-                    </div>
-                    <a href="#contact" class="w-full text-center py-3 rounded-lg border border-white/20 text-white text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition duration-300">Enquire Now</a>
-                </div>
-
-                <!-- Service 2 -->
-                <div class="glow-card p-8 flex flex-col h-full transform md:-translate-y-4 border border-studio-neonPurple/30 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-studio-neonPurple text-white text-[10px] font-bold px-3 py-1 uppercase tracking-widest rounded-bl-lg">Most Popular</div>
-                    <div class="w-12 h-12 rounded-full bg-studio-neonPurple/10 flex items-center justify-center text-studio-neonPurple mb-6 text-xl">
-                        <i class="fa-solid fa-headphones"></i>
-                    </div>
-                    <h3 class="text-xl font-display font-bold text-white mb-2">Professional Music Production Service</h3>
-                    <p class="text-gray-400 text-sm mb-6 flex-grow">Advanced production including custom beat making, deep vocal tuning, and commercial-grade engineering.</p>
-                    <div class="border-t border-white/10 pt-6 mb-6">
-                        <span class="text-3xl font-display font-bold text-white">₹22.0K</span>
-                        <span class="text-gray-500 text-sm">/ Unit</span>
-                    </div>
-                    <a href="#contact" class="w-full text-center py-3 rounded-lg bg-studio-neonPurple text-white text-sm font-bold uppercase tracking-widest hover:bg-studio-neonBlue transition duration-300 shadow-[0_0_15px_rgba(139,92,246,0.3)]">Enquire Now</a>
-                </div>
-
-                <!-- Service 3 -->
-                <div class="glow-card p-8 flex flex-col h-full">
-                    <div class="w-12 h-12 rounded-full bg-studio-accent/10 flex items-center justify-center text-studio-accent mb-6 text-xl">
-                        <i class="fa-solid fa-microphone-lines"></i>
-                    </div>
-                    <h3 class="text-xl font-display font-bold text-white mb-2">Complete Music Production Service (Full)</h3>
-                    <p class="text-gray-400 text-sm mb-6 flex-grow">From scratch to distribution-ready. Includes songwriting assistance, full instrumentation, and premium mastering.</p>
-                    <div class="border-t border-white/10 pt-6 mb-6">
-                        <span class="text-3xl font-display font-bold text-white">₹25.0K</span>
-                        <span class="text-gray-500 text-sm">/ Unit</span>
-                    </div>
-                    <a href="#contact" class="w-full text-center py-3 rounded-lg border border-white/20 text-white text-sm font-bold uppercase tracking-widest hover:bg-white hover:text-black transition duration-300">Enquire Now</a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Recent Releases (Portfolio from Album Arts) -->
-    <section id="portfolio" class="py-24 border-t border-white/5 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-                <div>
-                    <h3 class="text-studio-neonBlue font-bold tracking-[0.2em] uppercase text-sm mb-4">Portfolio</h3>
-                    <h2 class="text-4xl md:text-5xl font-display font-bold text-white">Latest Releases.</h2>
-                </div>
-                <a href="https://www.youtube.com/" target="_blank" class="text-sm font-bold text-white border-b border-studio-neonPurple pb-1 hover:text-studio-neonPurple transition">Listen on YouTube <i class="fa-solid fa-arrow-right ml-2 text-xs"></i></a>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <!-- Track 1: Baba Ki Daya Te -->
-                <div class="group relative rounded-xl overflow-hidden bg-studio-card border border-white/10 aspect-square">
-                    <img src="https://images.unsplash.com/photo-1614680376593-902f74cf0d41?q=80&w=1974&auto=format&fit=crop" alt="Album Cover" class="w-full h-full object-cover opacity-60 group-hover:scale-105 group-hover:opacity-40 transition duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
-                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                        <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white text-2xl border border-white/30 cursor-pointer hover:bg-white hover:text-black transition">
-                            <i class="fa-solid fa-play ml-1"></i>
+                    <div class="mt-auto border-t border-brand-lightBorder pt-8 flex items-end justify-between">
+                        <div>
+                            <p class="text-xs text-brand-gray uppercase tracking-[0.1em] mb-1">Starting at</p>
+                            <p class="text-3xl font-display font-bold text-white">₹10.0K</p>
                         </div>
-                    </div>
-                    <div class="absolute bottom-6 left-6 right-6">
-                        <p class="text-xs font-bold text-studio-neonPurple uppercase tracking-widest mb-1">Single</p>
-                        <h3 class="text-2xl font-display font-bold text-white mb-2">Baba Ki Daya Te</h3>
-                        <p class="text-sm text-gray-300">Singer/Lyrics: Vishu Nehra</p>
-                        <p class="text-sm text-gray-400">Rap: Rahul Hisariya | Music: HR Stuff Music</p>
+                        <a href="#contact" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-brand-gold hover:border-brand-gold hover:text-black transition">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Track 2: Aai Jaat Te Jawani -->
-                <div class="group relative rounded-xl overflow-hidden bg-studio-card border border-white/10 aspect-square">
-                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1974&auto=format&fit=crop" alt="Album Cover" class="w-full h-full object-cover opacity-60 group-hover:scale-105 group-hover:opacity-40 transition duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
-                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                        <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white text-2xl border border-white/30 cursor-pointer hover:bg-white hover:text-black transition">
-                            <i class="fa-solid fa-play ml-1"></i>
-                        </div>
+                <!-- Package 2 (Highlighted) -->
+                <div class="premium-card bg-[#111111] border border-brand-gold/40 p-10 rounded-sm flex flex-col h-full relative overflow-hidden transform lg:-translate-y-4 shadow-2xl">
+                    <div class="absolute top-0 right-0 bg-brand-gold text-black text-[9px] font-bold px-4 py-1.5 uppercase tracking-[0.2em]">Industry Standard</div>
+                    <div class="mb-8">
+                        <i class="fa-solid fa-microphone-lines text-2xl text-brand-gold mb-6"></i>
+                        <h3 class="text-xl font-display font-semibold text-white mb-4">Professional Production</h3>
+                        <p class="text-brand-gray text-sm font-light leading-relaxed">
+                            Comprehensive music production including custom beat creation, professional vocal recording, tuning, mixing, and mastering.
+                        </p>
                     </div>
-                    <div class="absolute bottom-6 left-6 right-6">
-                        <p class="text-xs font-bold text-studio-neonBlue uppercase tracking-widest mb-1">Official Video</p>
-                        <h3 class="text-2xl font-display font-bold text-white mb-2">Aai Jaat Te Jawani</h3>
-                        <p class="text-sm text-gray-300">Singer: Prince Taak | Lyrics: Guri Kaluana</p>
-                        <p class="text-sm text-gray-400">Music: Rahul Hisariya</p>
+                    <div class="mt-auto border-t border-white/10 pt-8 flex items-end justify-between">
+                        <div>
+                            <p class="text-xs text-brand-gray uppercase tracking-[0.1em] mb-1">Starting at</p>
+                            <p class="text-3xl font-display font-bold text-brand-gold">₹22.0K</p>
+                        </div>
+                        <a href="#contact" class="w-10 h-10 rounded-full bg-brand-gold flex items-center justify-center text-black hover:bg-white transition">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
 
-                <!-- Track 3: Pyar Ho Gaya -->
-                <div class="group relative rounded-xl overflow-hidden bg-studio-card border border-white/10 aspect-square">
-                    <img src="https://images.unsplash.com/photo-1493225457124-a1a2b534ffa3?q=80&w=2070&auto=format&fit=crop" alt="Album Cover" class="w-full h-full object-cover opacity-60 group-hover:scale-105 group-hover:opacity-40 transition duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
-                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-                        <div class="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white text-2xl border border-white/30 cursor-pointer hover:bg-white hover:text-black transition">
-                            <i class="fa-solid fa-play ml-1"></i>
-                        </div>
+                <!-- Package 3 -->
+                <div class="premium-card bg-brand-card border border-brand-lightBorder p-10 rounded-sm flex flex-col h-full">
+                    <div class="mb-8">
+                        <i class="fa-solid fa-music text-2xl text-brand-gold mb-6"></i>
+                        <h3 class="text-xl font-display font-semibold text-white mb-4">Complete Production</h3>
+                        <p class="text-brand-gray text-sm font-light leading-relaxed">
+                            The ultimate package. From initial concept and songwriting assistance to full instrumentation and premium radio-ready mastering.
+                        </p>
                     </div>
-                    <div class="absolute bottom-6 left-6 right-6">
-                        <p class="text-xs font-bold text-studio-accent uppercase tracking-widest mb-1">Latest Drop</p>
-                        <h3 class="text-2xl font-display font-bold text-white mb-2">Pyar Ho Gaya</h3>
-                        <p class="text-sm text-gray-300">Singer & Lyrics: Arman Hisariya</p>
-                        <p class="text-sm text-gray-400">Music: HR Stuff Music</p>
+                    <div class="mt-auto border-t border-brand-lightBorder pt-8 flex items-end justify-between">
+                        <div>
+                            <p class="text-xs text-brand-gray uppercase tracking-[0.1em] mb-1">Starting at</p>
+                            <p class="text-3xl font-display font-bold text-white">₹25.0K</p>
+                        </div>
+                        <a href="#contact" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-brand-gold hover:border-brand-gold hover:text-black transition">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
 
@@ -339,73 +268,119 @@
         </div>
     </section>
 
-    <!-- Footer / Contact Section (Data from Google Maps/FB) -->
-    <footer id="contact" class="bg-[#020202] pt-24 pb-12 border-t border-white/10 relative overflow-hidden">
-        
-        <!-- Background Grid Effect -->
-        <div class="absolute inset-0 z-0 opacity-10" style="background-image: linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px); background-size: 30px 30px;"></div>
+    <!-- Portfolio / Recent Releases -->
+    <section id="portfolio" class="py-32 bg-brand-dark border-b border-brand-lightBorder">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h4 class="text-xs font-display font-medium tracking-[0.3em] text-brand-gold uppercase mb-4">Our Work</h4>
+                <h2 class="text-3xl md:text-5xl font-display font-light text-white">
+                    Recent <span class="font-bold">Masterpieces.</span>
+                </h2>
+            </div>
 
-        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-            <div class="grid lg:grid-cols-2 gap-16 mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 
-                <!-- Contact Info -->
+                <!-- Track 1 -->
+                <div class="group cursor-pointer">
+                    <div class="w-full aspect-square img-zoom-container rounded-sm mb-6 relative border border-brand-lightBorder bg-brand-black">
+                        <img src="https://images.unsplash.com/photo-1614680376593-902f74cf0d41?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover img-zoom opacity-80 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                            <div class="w-16 h-16 rounded-full border border-white text-white flex items-center justify-center bg-black/50 backdrop-blur-sm">
+                                <i class="fa-solid fa-play ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-[10px] text-brand-gold uppercase tracking-[0.2em] font-bold mb-2">Vishu Nehra</p>
+                    <h3 class="text-xl font-display font-semibold text-white mb-1">Baba Ki Daya Te</h3>
+                    <p class="text-sm text-brand-gray font-light">Rap: Rahul Hisariya • Music: HR STUFF</p>
+                </div>
+
+                <!-- Track 2 -->
+                <div class="group cursor-pointer">
+                    <div class="w-full aspect-square img-zoom-container rounded-sm mb-6 relative border border-brand-lightBorder bg-brand-black">
+                        <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1974&auto=format&fit=crop" class="w-full h-full object-cover img-zoom opacity-80 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                            <div class="w-16 h-16 rounded-full border border-white text-white flex items-center justify-center bg-black/50 backdrop-blur-sm">
+                                <i class="fa-solid fa-play ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-[10px] text-brand-gold uppercase tracking-[0.2em] font-bold mb-2">Prince Taak</p>
+                    <h3 class="text-xl font-display font-semibold text-white mb-1">Aai Jaat Te Jawani</h3>
+                    <p class="text-sm text-brand-gray font-light">Lyrics: Guri Kaluana • Music: Rahul Hisariya</p>
+                </div>
+
+                <!-- Track 3 -->
+                <div class="group cursor-pointer">
+                    <div class="w-full aspect-square img-zoom-container rounded-sm mb-6 relative border border-brand-lightBorder bg-brand-black">
+                        <img src="https://images.unsplash.com/photo-1493225457124-a1a2b534ffa3?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover img-zoom opacity-80 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                            <div class="w-16 h-16 rounded-full border border-white text-white flex items-center justify-center bg-black/50 backdrop-blur-sm">
+                                <i class="fa-solid fa-play ml-1"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-[10px] text-brand-gold uppercase tracking-[0.2em] font-bold mb-2">Arman Hisariya</p>
+                    <h3 class="text-xl font-display font-semibold text-white mb-1">Pyar Ho Gaya</h3>
+                    <p class="text-sm text-brand-gray font-light">Singer & Lyrics: Arman • Music: HR STUFF</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Elite Contact & Location Section -->
+    <footer id="contact" class="bg-brand-black pt-32 pb-12 relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-20 mb-20">
+                
+                <!-- Contact Details -->
                 <div>
-                    <h2 class="text-5xl font-display font-bold text-white mb-8">Ready to record?<br><span class="text-gray-500">Let's talk.</span></h2>
+                    <h4 class="text-xs font-display font-medium tracking-[0.3em] text-brand-gold uppercase mb-4">Bookings</h4>
+                    <h2 class="text-4xl md:text-5xl font-display font-light text-white mb-12 leading-tight">
+                        Secure Your <br><span class="font-bold">Studio Time.</span>
+                    </h2>
                     
-                    <div class="space-y-8 mb-10">
-                        <!-- Phone -->
-                        <div class="flex items-start gap-5 group">
-                            <div class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-xl text-white group-hover:border-studio-neonPurple group-hover:text-studio-neonPurple transition duration-300">
-                                <i class="fa-solid fa-phone"></i>
-                            </div>
+                    <div class="space-y-10">
+                        <div class="flex items-start gap-6">
+                            <i class="fa-solid fa-phone text-brand-gold text-xl mt-1"></i>
                             <div>
-                                <p class="text-sm text-gray-500 uppercase tracking-widest font-bold mb-1">Call / WhatsApp</p>
-                                <a href="tel:09306849806" class="text-2xl font-display font-bold text-white hover:text-studio-neonPurple transition">093068 49806</a>
+                                <p class="text-xs font-display tracking-[0.2em] text-brand-gray uppercase mb-2">Direct Line</p>
+                                <a href="tel:09306849806" class="text-2xl font-display text-white hover:text-brand-gold transition duration-300">093068 49806</a>
                             </div>
                         </div>
 
-                        <!-- Email -->
-                        <div class="flex items-start gap-5 group">
-                            <div class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-xl text-white group-hover:border-studio-neonBlue group-hover:text-studio-neonBlue transition duration-300">
-                                <i class="fa-solid fa-envelope"></i>
-                            </div>
+                        <div class="flex items-start gap-6">
+                            <i class="fa-solid fa-envelope text-brand-gold text-xl mt-1"></i>
                             <div>
-                                <p class="text-sm text-gray-500 uppercase tracking-widest font-bold mb-1">Email Us</p>
-                                <a href="mailto:rahulsharna121@gmail.com" class="text-xl font-display font-bold text-white hover:text-studio-neonBlue transition">rahulsharna121@gmail.com</a>
+                                <p class="text-xs font-display tracking-[0.2em] text-brand-gray uppercase mb-2">Email</p>
+                                <a href="mailto:rahulsharna121@gmail.com" class="text-lg font-display text-white hover:text-brand-gold transition duration-300">rahulsharna121@gmail.com</a>
                             </div>
                         </div>
 
-                        <!-- Location -->
-                        <div class="flex items-start gap-5 group">
-                            <div class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-xl text-white group-hover:border-studio-accent group-hover:text-studio-accent transition duration-300">
-                                <i class="fa-solid fa-location-dot"></i>
-                            </div>
+                        <div class="flex items-start gap-6">
+                            <i class="fa-solid fa-location-dot text-brand-gold text-xl mt-1"></i>
                             <div>
-                                <p class="text-sm text-gray-500 uppercase tracking-widest font-bold mb-1">Studio Location</p>
-                                <p class="text-lg text-white leading-relaxed">
-                                    Sastri Sadan, 152, Kaimari Rd,<br> Laxmi Vihar, Mall Colony, Hisar,<br> Gangwa, Haryana 125001
+                                <p class="text-xs font-display tracking-[0.2em] text-brand-gray uppercase mb-2">Facility Address</p>
+                                <p class="text-base text-white font-light leading-relaxed">
+                                    Sastri Sadan, 152, Kaimari Rd,<br>
+                                    Laxmi Vihar, Mall Colony,<br>
+                                    Hisar, Gangwa, Haryana 125001
                                 </p>
-                                <p class="text-studio-accent text-sm font-bold mt-2"><i class="fa-regular fa-clock"></i> Open 24 Hours</p>
+                                <p class="text-brand-gold text-sm font-medium mt-3"><i class="fa-regular fa-clock mr-1"></i> Open 24 Hours</p>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="flex gap-4">
-                        <a href="#" class="w-12 h-12 rounded bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-studio-neonBlue hover:border-studio-neonBlue transition duration-300"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="w-12 h-12 rounded bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-studio-neonPurple hover:border-studio-neonPurple transition duration-300"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="w-12 h-12 rounded bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-studio-accent hover:border-studio-accent hover:text-black transition duration-300"><i class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
 
-                <!-- Google Maps Embed -->
-                <div class="h-full min-h-[400px] rounded-2xl overflow-hidden border border-white/10 relative group shadow-2xl">
-                    <div class="absolute inset-0 bg-studio-neonPurple/10 pointer-events-none z-10 group-hover:bg-transparent transition duration-500"></div>
-                    <!-- Styled Google Maps iframe pointing to Hisar -->
+                <!-- Styled Google Maps Embed -->
+                <div class="h-full min-h-[450px] rounded-sm overflow-hidden border border-brand-lightBorder relative group">
+                    <div class="absolute inset-0 bg-brand-gold/5 pointer-events-none z-10 group-hover:bg-transparent transition duration-700"></div>
                     <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13962.378036284687!2d75.7139634!3d29.1242085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391233aecae0a071%3A0x213851b47b2c5!2sHR%20STUFF%20MUSIC%20STUDIO!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
                         width="100%" 
                         height="100%" 
-                        style="border:0; filter: invert(90%) hue-rotate(180deg) contrast(110%);" 
+                        style="border:0; filter: grayscale(100%) invert(92%) contrast(110%);" 
                         allowfullscreen="" 
                         loading="lazy" 
                         referrerpolicy="no-referrer-when-downgrade">
@@ -414,12 +389,22 @@
 
             </div>
 
-            <!-- Copyright -->
-            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500 font-medium">
-                <p>&copy; 2026 HR STUFF MUSIC STUDIO. All rights reserved.</p>
-                <div class="flex gap-6">
-                    <p>Producer: Rahul Hisariya</p>
+            <!-- Footer Bottom -->
+            <div class="border-t border-brand-lightBorder pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex flex-col items-center md:items-start">
+                    <span class="font-display font-bold text-xl tracking-[0.2em] text-white">HR STUFF<span class="text-brand-gold">.</span></span>
+                    <span class="text-[0.55rem] tracking-[0.3em] text-brand-gray uppercase mt-1">Music Studio</span>
                 </div>
+                
+                <div class="flex gap-6">
+                    <a href="#" class="text-brand-gray hover:text-brand-gold transition text-lg"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="text-brand-gray hover:text-brand-gold transition text-lg"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="text-brand-gray hover:text-brand-gold transition text-lg"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+
+                <p class="text-xs font-display text-brand-gray tracking-[0.1em] uppercase">
+                    &copy; 2026 HR Stuff Music. All rights reserved.
+                </p>
             </div>
         </div>
     </footer>
