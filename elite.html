@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Cinemas | The Premier Entertainment Experience in Hisar</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Cinzel (Luxury Serif) & Lato (Clean Sans) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Cinzel', 'serif'],
+                    },
+                    colors: {
+                        elite: {
+                            black: '#080808',
+                            dark: '#121212',
+                            gold: '#D4AF37',
+                            goldHover: '#F3E5AB',
+                            gray: '#A0A0A0',
+                            border: 'rgba(212, 175, 55, 0.15)'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #080808; color: #ffffff; overflow-x: hidden; }
+        
+        /* Premium Glass Navigation */
+        .glass-nav {
+            background: rgba(8, 8, 8, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Hero Image Gradient Overlay */
+        .hero-gradient {
+            background: linear-gradient(to top, #080808 0%, rgba(8, 8, 8, 0.4) 50%, rgba(8, 8, 8, 0.9) 100%);
+        }
+
+        /* Luxury Text Gradient */
+        .text-gradient {
+            background: linear-gradient(to right, #D4AF37, #F3E5AB, #D4AF37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        /* Image Hover Scale */
+        .hover-scale { transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+        .group:hover .hover-scale { transform: scale(1.05); }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #080808; }
+        ::-webkit-scrollbar-thumb { background: #333; }
+        ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
+    </style>
+</head>
+<body class="antialiased selection:bg-elite-gold selection:text-black">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 glass-nav py-5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                
+                <!-- Logo -->
+                <a href="#" class="flex flex-col">
+                    <span class="font-serif font-bold text-2xl tracking-[0.3em] text-white">ELITE<span class="text-elite-gold">CINEMAS</span></span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-10">
+                    <a href="#screens" class="text-sm font-sans tracking-[0.2em] text-elite-gray hover:text-elite-gold transition uppercase">Screens</a>
+                    <a href="#shopping" class="text-sm font-sans tracking-[0.2em] text-elite-gray hover:text-elite-gold transition uppercase">Shopping</a>
+                    <a href="#dining" class="text-sm font-sans tracking-[0.2em] text-elite-gray hover:text-elite-gold transition uppercase">Dining</a>
+                    <a href="#gaming" class="text-sm font-sans tracking-[0.2em] text-elite-gray hover:text-elite-gold transition uppercase">Gaming</a>
+                    <a href="#location" class="px-6 py-2.5 border border-elite-gold text-elite-gold font-sans font-bold text-xs hover:bg-elite-gold hover:text-black transition duration-300 uppercase tracking-[0.2em]">
+                        Visit Us
+                    </a>
+                </div>
+
+                <!-- Mobile Menu -->
+                <div class="md:hidden text-white text-xl cursor-pointer">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Using Provided Building Image) -->
+    <header class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden border-b border-elite-border">
+        
+        <div class="absolute inset-0 z-0">
+            <!-- Client Provided Building Image -->
+            <img src="https://raw.githubusercontent.com/pruthiharshit/sample/refs/heads/main/elite.png" alt="Elite Cinemas Building" class="w-full h-full object-cover">
+            <!-- Overlays to ensure luxury contrast -->
+            <div class="absolute inset-0 bg-black/60"></div>
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+
+        <div class="relative z-10 text-center px-4 w-full max-w-5xl mx-auto mt-12">
+            <div class="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-elite-gold/30 bg-black/30 backdrop-blur-md mb-8">
+                <i class="fa-solid fa-star text-elite-gold text-xs"></i>
+                <span class="text-xs font-sans tracking-[0.3em] text-elite-gold uppercase">Hisar's Highest Rated Cinema</span>
+            </div>
+            
+            <h1 class="text-5xl md:text-7xl lg:text-[5.5rem] font-serif font-normal leading-[1.1] mb-6 text-white uppercase tracking-wide">
+                The Best Movie-Watching <br>
+                <span class="text-gradient font-bold italic">Experience in Hisar.</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-sans font-light mb-12 leading-relaxed">
+                Step into a world of unparalleled entertainment. From the latest Bollywood blockbusters to International hits, Elite Cinemas offers a luxurious, multi-dimensional lifestyle destination.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="#screens" class="px-10 py-4 bg-elite-gold text-black font-sans font-bold text-xs tracking-[0.2em] uppercase hover:bg-white transition duration-300 text-center">
+                    Explore The Complex
+                </a>
+                <a href="#location" class="px-10 py-4 border border-white/30 text-white font-sans font-bold text-xs tracking-[0.2em] uppercase hover:border-elite-gold hover:text-elite-gold transition duration-300 text-center flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-location-dot"></i> Get Directions
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2D / 3D Cinematic Experience -->
+    <section id="screens" class="py-32 bg-elite-black relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                
+                <div class="relative group rounded-sm overflow-hidden border border-elite-border shadow-[0_0_40px_rgba(212,175,55,0.05)]">
+                    <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=2070&auto=format&fit=crop" alt="Cinema Screens" class="w-full aspect-[4/3] object-cover hover-scale grayscale-[20%]">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 flex gap-3">
+                        <span class="px-4 py-1.5 bg-black/60 backdrop-blur-md border border-elite-gold/50 text-elite-gold text-xs font-bold tracking-[0.2em]">3D PROJECTION</span>
+                        <span class="px-4 py-1.5 bg-black/60 backdrop-blur-md border border-white/20 text-white text-xs font-bold tracking-[0.2em]">2D ULTRA HD</span>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-sans font-bold tracking-[0.3em] text-elite-gray uppercase mb-4">The Theaters</h4>
+                    <h2 class="text-4xl md:text-5xl font-serif font-normal text-white mb-8 leading-tight">
+                        Unmatched <span class="text-elite-gold italic">Visual</span> Clarity.
+                    </h2>
+                    <p class="text-gray-400 font-sans font-light text-lg leading-relaxed mb-8">
+                        Experience the magic of cinema exactly as the director intended. Our state-of-the-art theaters are equipped with cutting-edge 3D projection technology and crystal-clear 2D displays, paired with immersive surround sound to bring every frame to life.
+                    </p>
+                    <ul class="space-y-4 font-sans text-sm tracking-wide text-gray-300">
+                        <li class="flex items-center gap-4"><i class="fa-solid fa-check text-elite-gold"></i> Premium Plush Recliner Seating</li>
+                        <li class="flex items-center gap-4"><i class="fa-solid fa-check text-elite-gold"></i> Advanced Dolby Acoustic Engineering</li>
+                        <li class="flex items-center gap-4"><i class="fa-solid fa-check text-elite-gold"></i> Bollywood & International Blockbusters</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- The Lifestyle Complex (Shopping, Dining, Gaming) -->
+    <section class="py-32 bg-elite-dark border-y border-elite-border">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h4 class="text-xs font-sans font-bold tracking-[0.3em] text-elite-gray uppercase mb-4">More Than Movies</h4>
+                <h2 class="text-4xl md:text-5xl font-serif font-normal text-white leading-tight">
+                    A Complete <span class="text-elite-gold italic">Lifestyle</span> Destination.
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Elite Shopping Center -->
+                <div id="shopping" class="group relative rounded-sm overflow-hidden border border-white/5 bg-elite-black aspect-[3/4] cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1974&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover hover-scale opacity-60 group-hover:opacity-40 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                    
+                    <div class="absolute bottom-0 left-0 p-8 w-full translate-y-4 group-hover:translate-y-0 transition duration-500">
+                        <i class="fa-solid fa-bag-shopping text-3xl text-elite-gold mb-4 opacity-0 group-hover:opacity-100 transition duration-500 delay-100"></i>
+                        <h3 class="text-2xl font-serif text-white mb-3">Elite Shopping Center</h3>
+                        <p class="text-sm font-sans font-light text-gray-300 leading-relaxed opacity-0 group-hover:opacity-100 transition duration-500 delay-200">
+                            Stroll through our premium retail avenues. Discover a curated selection of lifestyle boutiques, fashion outlets, and daily convenience stores under one luxurious roof.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Next-Gen Gaming Arena -->
+                <div id="gaming" class="group relative rounded-sm overflow-hidden border border-white/5 bg-elite-black aspect-[3/4] cursor-pointer mt-0 md:mt-12">
+                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2071&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover hover-scale opacity-60 group-hover:opacity-40 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                    
+                    <div class="absolute bottom-0 left-0 p-8 w-full translate-y-4 group-hover:translate-y-0 transition duration-500">
+                        <i class="fa-solid fa-gamepad text-3xl text-elite-gold mb-4 opacity-0 group-hover:opacity-100 transition duration-500 delay-100"></i>
+                        <h3 class="text-2xl font-serif text-white mb-3">Gaming Arena</h3>
+                        <p class="text-sm font-sans font-light text-gray-300 leading-relaxed opacity-0 group-hover:opacity-100 transition duration-500 delay-200">
+                            Elevate your pre-movie entertainment. Step into our state-of-the-art gaming lounge equipped with high-performance arcade machines and immersive digital experiences.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Well Dining Location -->
+                <div id="dining" class="group relative rounded-sm overflow-hidden border border-white/5 bg-elite-black aspect-[3/4] cursor-pointer mt-0 md:mt-24">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1974&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover hover-scale opacity-60 group-hover:opacity-40 transition duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                    
+                    <div class="absolute bottom-0 left-0 p-8 w-full translate-y-4 group-hover:translate-y-0 transition duration-500">
+                        <i class="fa-solid fa-utensils text-3xl text-elite-gold mb-4 opacity-0 group-hover:opacity-100 transition duration-500 delay-100"></i>
+                        <h3 class="text-2xl font-serif text-white mb-3">Well-Dining Area</h3>
+                        <p class="text-sm font-sans font-light text-gray-300 leading-relaxed opacity-0 group-hover:opacity-100 transition duration-500 delay-200">
+                            Indulge in our expansive food court featuring globally renowned franchises. Savor iconic, craft burgers packed with bold Indian spices and premium gourmet snacks.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Elite Location & Contact Details -->
+    <section id="location" class="py-32 bg-elite-black relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                
+                <div>
+                    <h4 class="text-xs font-sans font-bold tracking-[0.3em] text-elite-gray uppercase mb-4">Visit Us</h4>
+                    <h2 class="text-4xl md:text-5xl font-serif font-normal text-white mb-10 leading-tight">
+                        An <span class="text-elite-gold italic">Elite</span> Location.
+                    </h2>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-start gap-6">
+                            <div class="w-12 h-12 rounded-full border border-elite-gold/30 flex items-center justify-center text-elite-gold bg-elite-gold/5 flex-shrink-0">
+                                <i class="fa-solid fa-map-location-dot"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-sans font-bold tracking-[0.2em] text-elite-gray uppercase mb-2">Address</p>
+                                <p class="text-lg text-white font-sans font-light leading-relaxed">
+                                    Railway Road, near Elite cinema hall,<br>
+                                    Rampura Mohalla, Mehta Nagar,<br>
+                                    Hisar, Haryana 125001
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-6">
+                            <div class="w-12 h-12 rounded-full border border-elite-gold/30 flex items-center justify-center text-elite-gold bg-elite-gold/5 flex-shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-sans font-bold tracking-[0.2em] text-elite-gray uppercase mb-2">Box Office & Enquiries</p>
+                                <a href="tel:09813192777" class="text-2xl font-serif text-white hover:text-elite-gold transition duration-300">098131 92777</a>
+                            </div>
+                        </div>
+                        
+                        <div class="pt-6">
+                            <a href="https://maps.google.com/?q=Elite+Cinemas+Railway+Road+Hisar" target="_blank" class="inline-block px-10 py-4 bg-elite-gold text-black font-sans font-bold text-xs tracking-[0.2em] uppercase hover:bg-white transition duration-300">
+                                Open in Google Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Maps Embed framed luxuriously -->
+                <div class="h-[500px] rounded-sm overflow-hidden border border-elite-border relative group shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                    <div class="absolute inset-0 bg-elite-gold/10 pointer-events-none z-10 group-hover:bg-transparent transition duration-700"></div>
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13903.048598462719!2d75.7196165!3d29.1542711!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39123329ac3c9ded%3A0x774ac9f0dc825fd!2sElite%20Cinemas!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0; filter: grayscale(80%) invert(90%) contrast(120%);" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#050505] pt-20 pb-10 border-t border-elite-border relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                
+                <!-- Brand -->
+                <div class="lg:col-span-2">
+                    <span class="font-serif font-bold text-2xl tracking-[0.3em] text-white block mb-6">ELITE<span class="text-elite-gold">CINEMAS</span></span>
+                    <p class="text-elite-gray font-sans font-light text-sm leading-relaxed max-w-sm mb-8">
+                        The ultimate movie-watching experience in Hisar. Discover luxury seating, premium dining, and the latest blockbusters all in one prestigious location.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://facebook.com/Elitehisar/" target="_blank" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:border-elite-gold hover:text-elite-gold transition duration-300">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white hover:border-elite-gold hover:text-elite-gold transition duration-300">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="text-white font-sans font-bold uppercase tracking-[0.2em] text-sm mb-6">Experience</h4>
+                    <ul class="space-y-4 text-sm font-sans font-light text-elite-gray">
+                        <li><a href="#screens" class="hover:text-elite-gold transition">2D & 3D Screens</a></li>
+                        <li><a href="#shopping" class="hover:text-elite-gold transition">Shopping Center</a></li>
+                        <li><a href="#dining" class="hover:text-elite-gold transition">Gourmet Dining</a></li>
+                        <li><a href="#gaming" class="hover:text-elite-gold transition">Gaming Arena</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-white font-sans font-bold uppercase tracking-[0.2em] text-sm mb-6">Information</h4>
+                    <ul class="space-y-4 text-sm font-sans font-light text-elite-gray">
+                        <li><a href="#" class="hover:text-white transition">Ticket Pricing</a></li>
+                        <li><a href="#" class="hover:text-white transition">Corporate Events</a></li>
+                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-sans text-elite-gray tracking-[0.1em] uppercase">
+                <p>&copy; 2026 Elite Cinemas Hisar. All rights reserved.</p>
+                <p>Designed for Luxury Entertainment.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
