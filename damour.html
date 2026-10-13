@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,10 +17,11 @@
             theme: {
                 extend: {
                     colors: {
-                        charcoal: '#1a1917',
-                        charcoalLight: '#1f1e1c',
-                        gold: '#cfa972',
-                        light: '#e6e6e6'
+                        charcoal: '#121110',      /* Deep Warm Charcoal */
+                        charcoalLight: '#1a1917', /* Slightly Lighter Charcoal */
+                        gold: '#cfa972',          /* Muted Luxury Gold */
+                        light: '#f5f5f5',         /* Soft White */
+                        muted: '#a3a3a3'          /* Muted Text */
                     },
                     fontFamily: {
                         playfair: ['"Playfair Display"', 'serif'],
@@ -33,31 +34,29 @@
 
     <style>
         body {
-            background-color: #1a1917;
-            color: #e6e6e6;
+            background-color: #121110;
+            color: #f5f5f5;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* 
-         * Hero Gradient Overlay: 
-         * Solid dark on the left 55%, smoothly fading to transparent on the right 
-         * to expose the residence image.
-         */
-        .hero-overlay {
-            background: linear-gradient(90deg, #1a1917 0%, #1a1917 50%, rgba(26,25,23,0.9) 60%, rgba(26,25,23,0) 100%);
+        /* Smooth gradient mask for hero section */
+        .hero-gradient {
+            background: linear-gradient(to right, rgba(18, 17, 16, 0.95) 0%, rgba(18, 17, 16, 0.8) 40%, rgba(18, 17, 16, 0.2) 100%);
         }
 
-        @media (max-width: 1024px) {
-            .hero-overlay {
-                background: linear-gradient(180deg, rgba(26,25,23,0) 0%, rgba(26,25,23,0.9) 50%, #1a1917 100%);
+        @media (max-width: 768px) {
+            .hero-gradient {
+                background: linear-gradient(to bottom, rgba(18, 17, 16, 0.4) 0%, rgba(18, 17, 16, 0.95) 80%, rgba(18, 17, 16, 1) 100%);
             }
         }
 
-        /* Nav link underline hover animation */
+        /* Elegant Navigation Hover Effect */
         .nav-link {
             position: relative;
             padding-bottom: 4px;
+            color: #f5f5f5;
+            transition: color 0.3s ease;
         }
         .nav-link::after {
             content: '';
@@ -67,209 +66,214 @@
             bottom: 0;
             left: 0;
             background-color: #cfa972;
-            transition: width 0.3s ease;
+            transition: width 0.4s ease;
+        }
+        .nav-link:hover {
+            color: #cfa972;
         }
         .nav-link:hover::after {
             width: 100%;
         }
-        
-        .nav-link.active {
-            border-bottom: 1px solid #cfa972;
+
+        /* Hide scrollbar for cleaner look in galleries if needed */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
         }
-        .nav-link.active::after {
-            display: none; /* Disable hover line if active */
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Map dark mode filter */
+        .map-dark {
+            filter: grayscale(100%) invert(92%) contrast(83%);
         }
     </style>
 </head>
-<body class="font-inter">
+<body class="font-inter overflow-x-hidden">
 
-    <header class="absolute top-0 left-0 w-full z-50 px-6 lg:px-16 py-8 flex justify-between items-center">
+    <header class="fixed top-0 left-0 w-full z-50 px-6 lg:px-16 py-6 flex justify-between items-center bg-charcoal/80 backdrop-blur-md border-b border-white/5 transition-all duration-300">
         <!-- Logo -->
-        <div class="font-playfair text-gold text-3xl md:text-4xl tracking-widest uppercase">
+        <a href="#home" class="font-playfair text-gold text-2xl md:text-3xl tracking-[0.15em] uppercase">
             D'Amour
-        </div>
+        </a>
 
         <!-- Desktop Navigation -->
-        <nav class="hidden lg:flex items-center space-x-12 text-sm font-inter text-light">
-            <a href="#" class="nav-link active text-light">Home</a>
-            <a href="#" class="nav-link text-light/80 hover:text-light transition-colors">About</a>
-            <a href="#" class="nav-link text-light/80 hover:text-light transition-colors">Gallery</a>
-            <a href="#" class="nav-link text-light/80 hover:text-light transition-colors">Features</a>
-            <a href="#" class="nav-link text-light/80 hover:text-light transition-colors">Location</a>
-            <a href="#" class="nav-link text-light/80 hover:text-light transition-colors">Contact</a>
+        <nav class="hidden lg:flex items-center space-x-10 text-[13px] font-inter uppercase tracking-widest">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#gallery" class="nav-link">Gallery</a>
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#location" class="nav-link">Location</a>
+            <a href="#contact" class="nav-link">Contact</a>
         </nav>
 
         <!-- CTA Button -->
-        <a href="#" class="hidden md:inline-flex px-7 py-2.5 rounded-full border border-gold/60 text-light text-sm hover:bg-gold hover:text-charcoal transition-all duration-300">
-            Get in Touch &rarr;
+        <a href="#contact" class="hidden md:inline-flex px-8 py-3 rounded-sm border border-gold text-gold text-sm hover:bg-gold hover:text-charcoal transition-all duration-500 uppercase tracking-wider">
+            Get in Touch
         </a>
+        
+        <!-- Mobile Menu Icon (Visual Only) -->
+        <button class="lg:hidden text-gold">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+        </button>
     </header>
 
-    <section class="relative min-h-screen flex items-center w-full overflow-hidden">
-        
-        <!-- Hero Background Image & Gradient -->
-        <div class="absolute inset-0 z-0">
-            <!-- Ensure image fills background and is positioned rightwards -->
-            <img src="https://raw.githubusercontent.com/pruthiharshit/sample/refs/heads/main/gate.png" 
-                 alt="D'Amour Gate Facade" 
-                 class="absolute inset-0 w-full h-full object-cover object-right" />
-            <!-- The 55% gradient mask -->
-            <div class="hero-overlay absolute inset-0 w-full h-full"></div>
+    <section id="home" class="relative min-h-screen flex items-center w-full overflow-hidden bg-charcoal">
+        <!-- Parallax Background Image -->
+        <!-- Using gate.png as requested for the main hero -->
+        <div class="absolute inset-0 z-0 bg-[url('https://raw.githubusercontent.com/pruthiharshit/sample/refs/heads/main/gate.png')] bg-fixed bg-cover bg-center">
+            <!-- Gradient Overlay for Text Legibility -->
+            <div class="absolute inset-0 w-full h-full hero-gradient"></div>
         </div>
 
-        <!-- Hero Content (Left Aligned) -->
+        <!-- Hero Content -->
         <div class="relative z-10 w-full max-w-[1440px] mx-auto px-6 lg:px-16 pt-32 lg:pt-0">
-            <div class="max-w-xl lg:max-w-2xl">
-                
+            <div class="max-w-2xl">
                 <!-- Eyebrow Subhead -->
-                <div class="flex items-center gap-6 mb-6">
-                    <div class="w-10 h-[1px] bg-gold"></div>
-                    <span class="text-gold uppercase tracking-[0.25em] text-[11px] font-medium">A Place Called</span>
+                <div class="flex items-center gap-6 mb-6 opacity-0 animate-[fadeIn_1s_ease-out_forwards]">
+                    <div class="w-12 h-[1px] bg-gold"></div>
+                    <span class="text-gold uppercase tracking-[0.3em] text-[10px] md:text-xs font-medium">A Place Called</span>
                 </div>
                 
                 <!-- Main Title -->
-                <h1 class="font-playfair text-[4rem] md:text-[6rem] lg:text-[7.5rem] leading-[0.9] text-white tracking-tight mb-6">
+                <h1 class="font-playfair text-[4.5rem] md:text-[6rem] lg:text-[7.5rem] leading-[0.9] text-light tracking-tight mb-6 drop-shadow-lg">
                     D'AMOUR
                 </h1>
                 
                 <!-- Subtitle -->
-                <h2 class="font-playfair text-2xl md:text-3xl lg:text-[2rem] text-light mb-6 font-light leading-snug">
+                <h2 class="font-playfair text-2xl md:text-3xl lg:text-[2.2rem] text-light mb-6 font-light leading-snug">
                     Where Modern Living Meets <br class="hidden md:block">Timeless Elegance
                 </h2>
                 
                 <!-- Paragraph -->
-                <p class="text-light/70 text-sm md:text-[15px] mb-12 max-w-[420px] leading-relaxed font-light">
-                    A beautifully designed residence that reflects premium living, privacy and sophistication in the heart of Amritsar.
+                <p class="text-muted text-sm md:text-base mb-12 max-w-[480px] leading-relaxed font-light">
+                    A beautifully designed luxury residence reflecting premium living, unparalleled privacy, and architectural sophistication in the heart of Amritsar.
                 </p>
                 
                 <!-- Action Buttons -->
-                <div class="flex flex-wrap items-center gap-8">
-                    <a href="#" class="bg-gold text-charcoal px-8 py-3.5 rounded-full text-sm font-medium hover:bg-white transition-colors duration-300">
-                        Explore Gallery &rarr;
-                    </a>
-                    
-                    <a href="#" class="group flex items-center gap-4 text-light text-sm hover:text-gold transition-colors duration-300">
-                        <div class="w-10 h-10 rounded-full border border-light/50 flex items-center justify-center group-hover:border-gold transition-colors duration-300">
-                            <!-- Play Icon SVG -->
-                            <svg class="w-3 h-3 ml-0.5 fill-current" viewBox="0 0 24 24">
-                                <path d="M5 3l14 9-14 9V3z"/>
-                            </svg>
-                        </div>
-                        Watch Tour
+                <div class="flex flex-wrap items-center gap-6">
+                    <a href="#gallery" class="bg-gold text-charcoal px-9 py-4 rounded-sm text-sm font-medium uppercase tracking-widest hover:bg-white transition-colors duration-500">
+                        Explore Gallery
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- Scroll Indicator (Bottom Left) -->
+        <!-- Scroll Indicator -->
         <div class="absolute bottom-12 left-6 lg:left-16 flex flex-col items-center gap-4 z-10">
-            <div class="w-[1px] h-10 bg-light/30 relative overflow-hidden">
+            <div class="w-[1px] h-16 bg-light/20 relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-1/2 bg-gold animate-bounce"></div>
             </div>
-            <span class="text-[10px] uppercase tracking-[0.2em] text-light/50" style="writing-mode: vertical-rl; transform: rotate(180deg);">
-                Scroll Down
+            <span class="text-[10px] uppercase tracking-[0.2em] text-muted" style="writing-mode: vertical-rl; transform: rotate(180deg);">
+                Scroll
             </span>
         </div>
     </section>
 
-    <section class="bg-charcoalLight border-t border-white/5 relative z-20">
-        <div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 lg:divide-x divide-white/5 py-4">
+    <section id="features" class="bg-charcoalLight border-y border-white/5 relative z-20">
+        <div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 lg:divide-x divide-white/5 py-2">
             
             <!-- Feature 1 -->
-            <div class="flex flex-col items-center text-center px-6 py-12 lg:py-16">
-                <!-- Home Icon -->
-                <svg class="w-8 h-8 text-gold mb-5 stroke-current" fill="none" stroke-width="1" viewBox="0 0 24 24">
+            <div class="flex flex-col items-center text-center px-6 py-16 group hover:bg-white/[0.02] transition-colors duration-500">
+                <svg class="w-10 h-10 text-gold mb-6 stroke-current transform group-hover:scale-110 transition-transform duration-500" fill="none" stroke-width="1" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3 9.5L12 3l9 6.5V21h-5v-6h-8v6H3V9.5z"/>
                 </svg>
-                <h3 class="text-white font-playfair text-[1.1rem] tracking-wide mb-3">Modern Architecture</h3>
-                <p class="text-light/50 text-xs leading-relaxed max-w-[200px] font-light">A perfect blend of contemporary design and functionality.</p>
+                <h3 class="text-light font-playfair text-xl tracking-wide mb-3">Modern Architecture</h3>
+                <p class="text-muted text-sm leading-relaxed max-w-[220px] font-light">A perfect blend of contemporary design and seamless functionality.</p>
             </div>
 
             <!-- Feature 2 -->
-            <div class="flex flex-col items-center text-center px-6 py-12 lg:py-16">
-                <!-- Shield Icon -->
-                <svg class="w-8 h-8 text-gold mb-5 stroke-current" fill="none" stroke-width="1" viewBox="0 0 24 24">
+            <div class="flex flex-col items-center text-center px-6 py-16 group hover:bg-white/[0.02] transition-colors duration-500">
+                <svg class="w-10 h-10 text-gold mb-6 stroke-current transform group-hover:scale-110 transition-transform duration-500" fill="none" stroke-width="1" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                     <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/>
                 </svg>
-                <h3 class="text-white font-playfair text-[1.1rem] tracking-wide mb-3">Privacy & Security</h3>
-                <p class="text-light/50 text-xs leading-relaxed max-w-[200px] font-light">Experience complete peace of mind.</p>
+                <h3 class="text-light font-playfair text-xl tracking-wide mb-3">Privacy & Security</h3>
+                <p class="text-muted text-sm leading-relaxed max-w-[220px] font-light">Experience complete peace of mind in a secure, gated sanctuary.</p>
             </div>
 
             <!-- Feature 3 -->
-            <div class="flex flex-col items-center text-center px-6 py-12 lg:py-16">
-                <!-- Leaf Icon -->
-                <svg class="w-8 h-8 text-gold mb-5 stroke-current" fill="none" stroke-width="1" viewBox="0 0 24 24">
+            <div class="flex flex-col items-center text-center px-6 py-16 group hover:bg-white/[0.02] transition-colors duration-500">
+                <svg class="w-10 h-10 text-gold mb-6 stroke-current transform group-hover:scale-110 transition-transform duration-500" fill="none" stroke-width="1" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 2C6.48 2 2 6.48 2 12c0 5.52 4.48 10 10 10 5.52 0 10-4.48 10-10C22 6.48 17.52 2 12 2z"/>
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 22C12 22 12 12 12 12C12 12 6.5 17.5 6.5 17.5M12 12C12 12 17.5 17.5 17.5 17.5"/>
                 </svg>
-                <h3 class="text-white font-playfair text-[1.1rem] tracking-wide mb-3">Green Surroundings</h3>
-                <p class="text-light/50 text-xs leading-relaxed max-w-[200px] font-light">A calm and refreshing environment.</p>
+                <h3 class="text-light font-playfair text-xl tracking-wide mb-3">Green Surroundings</h3>
+                <p class="text-muted text-sm leading-relaxed max-w-[220px] font-light">A calm and refreshing environment beautifully integrated with nature.</p>
             </div>
 
             <!-- Feature 4 -->
-            <div class="flex flex-col items-center text-center px-6 py-12 lg:py-16">
-                <!-- Diamond Icon -->
-                <svg class="w-8 h-8 text-gold mb-5 stroke-current" fill="none" stroke-width="1" viewBox="0 0 24 24">
+            <div class="flex flex-col items-center text-center px-6 py-16 group hover:bg-white/[0.02] transition-colors duration-500">
+                <svg class="w-10 h-10 text-gold mb-6 stroke-current transform group-hover:scale-110 transition-transform duration-500" fill="none" stroke-width="1" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 3h12l4 6-10 12L2 9l4-6z"/>
                     <path stroke-linecap="round" stroke-linejoin="round" d="M2 9h20M12 21V9M7.5 9L6 3M16.5 9L18 3"/>
                 </svg>
-                <h3 class="text-white font-playfair text-[1.1rem] tracking-wide mb-3">Premium Finishes</h3>
-                <p class="text-light/50 text-xs leading-relaxed max-w-[200px] font-light">Every detail crafted with excellence.</p>
+                <h3 class="text-light font-playfair text-xl tracking-wide mb-3">Premium Finishes</h3>
+                <p class="text-muted text-sm leading-relaxed max-w-[220px] font-light">Every detail crafted with excellence and high-end materials.</p>
             </div>
 
         </div>
     </section>
 
-    <section class="bg-charcoal py-24 lg:py-32 px-6 lg:px-16">
-        <div class="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+    <section id="about" class="bg-charcoal py-24 lg:py-32 px-6 lg:px-16">
+        <div class="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
             
-            <!-- Left Text Content (40% width approx via col-span-5) -->
+            <!-- Left Text Content -->
             <div class="lg:col-span-5 flex flex-col justify-center">
-                <h4 class="text-gold text-[10px] uppercase tracking-[0.3em] font-medium mb-6">
+                <h4 class="text-gold text-[11px] uppercase tracking-[0.3em] font-medium mb-8">
                     About D'Amour
                 </h4>
                 
-                <h2 class="font-playfair text-4xl md:text-5xl lg:text-[3.5rem] leading-[1.15] text-white mb-8">
+                <h2 class="font-playfair text-4xl md:text-5xl lg:text-[4rem] leading-[1.1] text-light mb-8">
                     Crafted for<br>
-                    <span class="text-gold italic font-playfair font-light">a</span> Better Tomorrow
+                    <span class="text-gold italic font-playfair font-light text-5xl md:text-6xl lg:text-[4.5rem]">a</span> Better Tomorrow
                 </h2>
                 
-                <p class="text-light/60 text-sm lg:text-[15px] leading-relaxed mb-10 max-w-[90%] font-light">
-                    D'Amour is not just a residence, it's a statement of refined living. Designed with attention to detail, it offers a perfect balance of style, comfort and privacy in one of Amritsar's most desirable locations.
+                <p class="text-muted text-base lg:text-[17px] leading-relaxed mb-12 max-w-[95%] font-light">
+                    D'Amour is not just a residence; it is a profound statement of refined living. Designed with uncompromising attention to detail, it offers a perfect balance of aesthetic brilliance, ultimate comfort, and secluded privacy in one of Amritsar's most desirable and serene locations.
                 </p>
                 
                 <div>
-                    <a href="#" class="px-8 py-3.5 rounded-full border border-gold/60 text-light text-sm hover:bg-gold hover:text-charcoal transition-all duration-300 inline-block">
-                        Know More &rarr;
+                    <a href="#location" class="px-10 py-4 rounded-sm border border-white/20 text-light text-sm uppercase tracking-widest hover:border-gold hover:text-gold transition-all duration-300 inline-block">
+                        View Location
                     </a>
                 </div>
             </div>
 
-            <!-- Right Image Grid (60% width approx via col-span-7) -->
+            <!-- Right Image Grid (Fixed Layout) -->
             <div class="lg:col-span-7">
-                <!-- Using inline CSS for strict 1.5fr 1fr Grid proportion -->
-                <div style="display: grid; grid-template-columns: 1.5fr 1fr; grid-template-rows: 1fr 1fr; gap: 20px; min-height: 500px; height: 65vh; max-height: 700px;">
+                <!-- 
+                  Using a robust CSS Grid. 
+                  Left column: 1 tall image spanning 2 rows.
+                  Right column: 2 square-ish images stacked.
+                -->
+                <div class="grid grid-cols-2 gap-4 h-[500px] md:h-[650px] w-full">
                     
-                    <!-- Large Left Image (Spans 2 rows) -->
-                    <div style="grid-row: 1 / -1; grid-column: 1 / 2; overflow: hidden; border-radius: 2px;">
+                    <!-- Large Main Image (Entrance) -->
+                    <div class="col-span-1 row-span-2 overflow-hidden rounded-sm relative group">
                         <img src="https://raw.githubusercontent.com/pruthiharshit/sample/refs/heads/main/ent.jpg" 
                              alt="D'Amour Entrance Architecture" 
-                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" />
+                             class="w-full h-full object-cover object-center transform group-hover:scale-110 transition-transform duration-[1.5s] ease-out" />
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
                     </div>
                     
-                    <!-- Top Right Image -->
-                    <div style="grid-column: 2 / 3; grid-row: 1 / 2; overflow: hidden; border-radius: 2px;">
-                        <img src="https://raw.githubusercontent.com/pruthiharshit/sample/refs/heads/main/amour.png" 
-                             alt="D'Amour Branding Detail" 
-                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" />
-                    </div>
-                    
-                    <!-- Bottom Right Image -->
-                    <div style="grid-column: 2 / 3; grid-row: 2 / 3; overflow: hidden; border-radius: 2px;">
+                    <!-- Top Right Image (Lawn/Night) -->
+                    <div class="col-span-1 row-span-1 overflow-hidden rounded-sm relative group">
                         <img src="https://raw.githubusercontent.com/pruthiharshit/sample/refs/heads/main/lawn.jpg" 
-                             alt="D'Amour Lawns" 
-                             class="w-full h-full object-cover hover:scale-105 transition-transform duration-[2s] ease-out" />
+                             alt="D'Amour Lawns at Night" 
+                             class="w-full h-full object-cover object-center transform group-hover:scale-110 transition-transform duration-[1.5s] ease-out" />
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                    </div>
+                    
+                    <!-- Bottom Right Image (Room/Interior) -->
+                    <div class="col-span-1 row-span-1 overflow-hidden rounded-sm relative group">
+                        <img src="https://raw.githubusercontent.com/pruthiharshit/sample/refs/heads/main/room.jpg" 
+                             alt="D'Amour Interior Room" 
+                             class="w-full h-full object-cover object-center transform group-hover:scale-110 transition-transform duration-[1.5s] ease-out" />
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
                     </div>
 
                 </div>
@@ -277,6 +281,182 @@
             
         </div>
     </section>
+
+    <section id="gallery" class="bg-charcoalLight py-24 lg:py-32 px-6 lg:px-16 border-t border-white/5">
+        <div class="max-w-[1440px] mx-auto">
+            
+            <div class="text-center mb-16">
+                <h4 class="text-gold text-[11px] uppercase tracking-[0.3em] font-medium mb-4">Portfolio</h4>
+                <h2 class="font-playfair text-4xl lg:text-5xl text-light">Immersive Elegance</h2>
+            </div>
+
+            <!-- Beautiful Masonry-style Grid for all 4 images -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                
+                <!-- Gate -->
+                <div class="relative h-[300px] md:h-[400px] overflow-hidden group rounded-sm">
+                    <img src="https://raw.githubusercontent.com/pruthiharshit/sample/refs/heads/main/gate.png" alt="Gate Facade" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-charcoal/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <span class="text-gold font-playfair text-xl">The Grand Facade</span>
+                    </div>
+                </div>
+
+                <!-- Entrance -->
+                <div class="relative h-[300px] md:h-[400px] overflow-hidden group rounded-sm">
+                    <img src="https://raw.githubusercontent.com/pruthiharshit/sample/refs/heads/main/ent.jpg" alt="Entrance" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-charcoal/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <span class="text-gold font-playfair text-xl">Architectural Entrance</span>
+                    </div>
+                </div>
+
+                <!-- Lawn -->
+                <div class="relative h-[300px] md:h-[400px] overflow-hidden group rounded-sm md:col-span-1">
+                    <img src="https://raw.githubusercontent.com/pruthiharshit/sample/refs/heads/main/lawn.jpg" alt="Lawn Evening" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-charcoal/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <span class="text-gold font-playfair text-xl">Evening Lawns</span>
+                    </div>
+                </div>
+
+                <!-- Room -->
+                <div class="relative h-[300px] md:h-[400px] overflow-hidden group rounded-sm md:col-span-1">
+                    <img src="https://raw.githubusercontent.com/pruthiharshit/sample/refs/heads/main/room.jpg" alt="Luxury Room" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <div class="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-charcoal/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <span class="text-gold font-playfair text-xl">Premium Suites</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="location" class="bg-charcoal py-24 lg:py-32 px-6 lg:px-16 border-t border-white/5">
+        <div class="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            <!-- Map Side -->
+            <div class="w-full h-[400px] lg:h-[550px] bg-charcoalLight rounded-sm overflow-hidden border border-white/10 relative p-2">
+                <!-- Using an iframe embed for Amritsar location. Styled with CSS filter for dark luxury look -->
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m3!1d108665.48512133496!2d74.78912953257539!3d31.633519803875323!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391964aa569e7355%3A0x8fbd263103a38861!2sAmritsar%2C%20Punjab!5e0!3m2!1sen!2sin!4v1699999999999!5m2!1sen!2sin" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    class="map-dark rounded-sm object-cover">
+                </iframe>
+            </div>
+
+            <!-- Text Side -->
+            <div class="flex flex-col">
+                <h4 class="text-gold text-[11px] uppercase tracking-[0.3em] font-medium mb-6">
+                    Find Us
+                </h4>
+                <h2 class="font-playfair text-4xl lg:text-5xl text-light mb-8">
+                    An Oasis in the City
+                </h2>
+                
+                <p class="text-muted text-base leading-relaxed mb-10 font-light max-w-md">
+                    Situated in a prime locality, D'Amour offers the perfect escape while keeping you closely connected to the vibrant heart of the city.
+                </p>
+
+                <div class="flex flex-col gap-6">
+                    <div class="flex items-start gap-4">
+                        <svg class="w-6 h-6 text-gold mt-1 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <div>
+                            <h5 class="text-light font-medium tracking-wide mb-1">Address</h5>
+                            <p class="text-muted text-sm font-light leading-relaxed max-w-[280px]">
+                                Grand Trunk Rd, opp. Rose Garden, <br>
+                                Gumtala Sub Urban, Ranjit Avenue, <br>
+                                Amritsar, Punjab 143008
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-[#0a0a09] border-t border-gold/20 pt-20 pb-10 px-6 lg:px-16 relative overflow-hidden">
+        
+        <!-- Large Background Watermark -->
+        <div class="absolute -bottom-20 -right-20 text-[15rem] font-playfair text-white/[0.02] pointer-events-none select-none z-0">
+            D'A
+        </div>
+
+        <div class="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24 relative z-10 mb-20">
+            
+            <!-- Contact Form -->
+            <div>
+                <h3 class="font-playfair text-3xl text-light mb-8">Inquire Now</h3>
+                <form class="flex flex-col gap-8">
+                    <div class="relative">
+                        <input type="text" id="name" placeholder="Full Name" class="w-full bg-transparent border-b border-white/20 text-light py-3 focus:outline-none focus:border-gold transition-colors peer placeholder-transparent">
+                        <label for="name" class="absolute left-0 -top-3.5 text-xs text-muted font-light transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-muted/60 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-gold uppercase tracking-wider">Full Name</label>
+                    </div>
+                    <div class="relative">
+                        <input type="email" id="email" placeholder="Email Address" class="w-full bg-transparent border-b border-white/20 text-light py-3 focus:outline-none focus:border-gold transition-colors peer placeholder-transparent">
+                        <label for="email" class="absolute left-0 -top-3.5 text-xs text-muted font-light transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-muted/60 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-gold uppercase tracking-wider">Email Address</label>
+                    </div>
+                    <div class="relative">
+                        <textarea id="message" rows="3" placeholder="Your Message" class="w-full bg-transparent border-b border-white/20 text-light py-3 focus:outline-none focus:border-gold transition-colors peer placeholder-transparent resize-none"></textarea>
+                        <label for="message" class="absolute left-0 -top-3.5 text-xs text-muted font-light transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-muted/60 peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-gold uppercase tracking-wider">Your Message</label>
+                    </div>
+                    <button type="button" class="self-start px-10 py-4 bg-gold text-charcoal text-sm font-medium uppercase tracking-widest hover:bg-white transition-colors duration-300 rounded-sm mt-4">
+                        Submit Request
+                    </button>
+                </form>
+            </div>
+
+            <!-- Contact Details -->
+            <div class="flex flex-col justify-center">
+                <h3 class="font-playfair text-3xl text-light mb-8">Contact Us</h3>
+                
+                <div class="flex flex-col gap-8">
+                    <div>
+                        <p class="text-[10px] text-muted uppercase tracking-[0.2em] mb-2">Reservations</p>
+                        <a href="tel:07888585498" class="text-2xl text-gold font-playfair hover:text-white transition-colors">
+                            078885 85498
+                        </a>
+                    </div>
+                    
+                    <div>
+                        <p class="text-[10px] text-muted uppercase tracking-[0.2em] mb-2">Email</p>
+                        <a href="mailto:info@damourresidence.com" class="text-lg text-light font-light hover:text-gold transition-colors">
+                            info@damourresidence.com
+                        </a>
+                    </div>
+
+                    <div class="pt-6 border-t border-white/10">
+                        <p class="text-[10px] text-muted uppercase tracking-[0.2em] mb-4">Follow Us</p>
+                        <div class="flex gap-4">
+                            <!-- Social Icons placeholders -->
+                            <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-light hover:border-gold hover:text-gold transition-colors">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-light hover:border-gold hover:text-gold transition-colors">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bottom Copyright -->
+        <div class="max-w-[1440px] mx-auto border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-muted/60 font-light z-10 relative">
+            <p>&copy; 2026 D'Amour Residence. All Rights Reserved.</p>
+            <div class="flex gap-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-gold transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-gold transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
