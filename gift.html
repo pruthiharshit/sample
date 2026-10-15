@@ -1,0 +1,2204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donum Gallery | Your Neighbourhood Gifting Atelier · Sirsa</title>
+
+    <!-- Google Fonts: Editorial Serif + Clean Geometric Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            /* Refined Editorial Palette: Alabaster, Cashmere Stone, Deep Botanical Espresso & Terracotta-Copper */
+            --top-bar: #232925;
+            --bg-cream: #FAF7F2;
+            --bg-warm-stone: #EDE7DD;
+            --bg-sage-tint: #E6E8E1;
+            --bg-card: #FFFFFF;
+            --text-dark: #1E1B18;
+            --text-body: #5A534C;
+            --text-muted: #8C8278;
+            --accent-copper: #A86B43;
+            --accent-copper-light: #C68B59;
+            --btn-dark: #28231F;
+            --btn-dark-hover: #3D352E;
+            --border-light: #DFD8CC;
+            --border-Mid: #CFC6B8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Newsreader', Georgia, serif;
+            font-weight: 400;
+            letter-spacing: -0.02em;
+        }
+
+        .italic-accent {
+            font-style: italic;
+            color: var(--accent-copper);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.25s ease;
+        }
+
+        button, input, select, textarea {
+            font-family: inherit;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* ================= TOP ANNOUNCEMENT BAR ================= */
+        .announcement-bar {
+            background-color: var(--top-bar);
+            color: #F4EFE6;
+            text-align: center;
+            padding: 9px 16px;
+            font-size: 11px;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .announcement-bar span.dot {
+            margin: 0 10px;
+            color: var(--accent-copper-light);
+        }
+
+        /* ================= HEADER / NAVBAR ================= */
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            background-color: rgba(250, 247, 242, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-light);
+            padding: 18px 0;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .diamond-emblem {
+            width: 38px;
+            height: 38px;
+            border: 1.2px solid var(--accent-copper);
+            transform: rotate(45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-cream);
+            transition: transform 0.4s ease;
+        }
+
+        .brand-logo:hover .diamond-emblem {
+            transform: rotate(225deg);
+        }
+
+        .diamond-emblem i {
+            transform: rotate(-45deg);
+            font-size: 14px;
+            color: var(--accent-copper);
+            transition: transform 0.4s ease;
+        }
+
+        .brand-logo:hover .diamond-emblem i {
+            transform: rotate(-225deg);
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-text .main-name {
+            font-size: 17px;
+            letter-spacing: 0.2em;
+            font-weight: 500;
+            color: var(--text-dark);
+            line-height: 1.1;
+        }
+
+        .brand-text .sub-name {
+            font-size: 9px;
+            letter-spacing: 0.28em;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 34px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 13.5px;
+            color: var(--text-body);
+            font-weight: 400;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-dark);
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 17px;
+            color: var(--text-dark);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4px;
+            transition: color 0.2s ease;
+        }
+
+        .icon-btn:hover {
+            color: var(--accent-copper);
+        }
+
+        .badge-count {
+            position: absolute;
+            top: -5px;
+            right: -7px;
+            background-color: var(--accent-copper);
+            color: #fff;
+            font-size: 10px;
+            font-weight: 600;
+            width: 17px;
+            height: 17px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ================= SPLIT HERO SECTION ================= */
+        .hero-split {
+            display: grid;
+            grid-template-columns: 5fr 7fr;
+            min-height: calc(100vh - 112px);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .hero-left {
+            background-color: var(--bg-warm-stone);
+            padding: 72px 56px 72px max(32px, calc((100vw - 1280px) / 2 + 32px));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent-copper);
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .eyebrow::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background-color: var(--accent-copper);
+        }
+
+        .hero-left h1 {
+            font-size: clamp(50px, 5.5vw, 76px);
+            line-height: 1.03;
+            color: var(--text-dark);
+            margin-bottom: 26px;
+        }
+
+        .hero-left p {
+            font-size: 15.5px;
+            color: var(--text-body);
+            max-width: 420px;
+            line-height: 1.7;
+            margin-bottom: 36px;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary-dark {
+            background-color: var(--btn-dark);
+            color: #fff;
+            padding: 14px 28px;
+            font-size: 13.5px;
+            font-weight: 500;
+            border: 1px solid var(--btn-dark);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.25s ease;
+        }
+
+        .btn-primary-dark:hover {
+            background-color: var(--accent-copper);
+            border-color: var(--accent-copper);
+        }
+
+        .btn-secondary-light {
+            background-color: transparent;
+            color: var(--text-dark);
+            padding: 14px 26px;
+            font-size: 13.5px;
+            font-weight: 500;
+            border: 1px solid var(--border-Mid);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-secondary-light:hover {
+            border-color: var(--text-dark);
+            background-color: rgba(255,255,255,0.4);
+        }
+
+        .hero-trust-strip {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-Mid);
+            display: flex;
+            gap: 28px;
+            font-size: 12px;
+            color: var(--text-body);
+        }
+
+        .hero-trust-strip span i {
+            color: var(--accent-copper);
+            margin-right: 6px;
+        }
+
+        /* Hero Right Storefront Visual */
+        .hero-right {
+            position: relative;
+            background-color: #2B1B12;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .storefront-photo-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            min-height: 540px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .storefront-photo-container img.main-store-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        /* Authentic Storefront Signboard Replica Overlay (Matches Screenshot 1) */
+        .storefront-composite {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wood-fascia {
+            background: linear-gradient(135deg, #6E3B1E 0%, #8A4B29 45%, #592E16 100%);
+            padding: 36px 44px;
+            border-bottom: 8px solid #3A1D0D;
+            position: relative;
+            box-shadow: inset 0 -10px 25px rgba(0,0,0,0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+        }
+
+        .fascia-phone {
+            position: absolute;
+            top: 14px;
+            right: 28px;
+            color: #FFF;
+            font-weight: 700;
+            font-size: 15px;
+            letter-spacing: 0.04em;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .fascia-diamond {
+            width: 82px;
+            height: 82px;
+            background: #FDFBF7;
+            border: 3px solid #D4AF37;
+            transform: rotate(45deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.45);
+            flex-shrink: 0;
+        }
+
+        .fascia-diamond-inner {
+            transform: rotate(-45deg);
+            text-align: center;
+            color: #B68D40;
+            font-family: 'Newsreader', serif;
+            font-weight: 700;
+            font-size: 26px;
+            line-height: 1;
+        }
+
+        .fascia-diamond-inner small {
+            display: block;
+            font-size: 11px;
+            margin-bottom: 2px;
+        }
+
+        .fascia-title-wrap {
+            color: #FFFFFF;
+        }
+
+        .fascia-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: clamp(34px, 4vw, 56px);
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            line-height: 1.05;
+            text-shadow: 3px 4px 0px #2B1508, 0 8px 20px rgba(0,0,0,0.5);
+        }
+
+        .fascia-subtitle {
+            font-size: 14px;
+            color: #F7EFE6;
+            margin-top: 6px;
+            text-align: right;
+            font-weight: 500;
+            text-shadow: 1px 2px 3px rgba(0,0,0,0.6);
+        }
+
+        .store-window-display {
+            flex: 1;
+            position: relative;
+            background-image: url('https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1400&q=85');
+            background-size: cover;
+            background-position: center;
+            min-height: 360px;
+        }
+
+        .store-window-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(20, 14, 10, 0.75) 0%, rgba(20, 14, 10, 0.15) 60%);
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            padding: 24px 32px;
+            color: #fff;
+        }
+
+        /* ================= SHOP GIFTS SECTION (SCREENSHOT 2) ================= */
+        .shop-section {
+            padding: 76px 0 96px;
+        }
+
+        .filter-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding-bottom: 24px;
+            margin-bottom: 36px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .category-pills {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .cat-pill {
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 12.5px;
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-body);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .cat-pill:hover {
+            color: var(--text-dark);
+            background-color: var(--bg-warm-stone);
+        }
+
+        .cat-pill.active {
+            background-color: var(--btn-dark);
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .filter-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+
+        .search-box input {
+            padding: 8px 14px 8px 32px;
+            border: 1px solid var(--border-light);
+            background-color: #fff;
+            font-size: 12.5px;
+            color: var(--text-dark);
+            width: 190px;
+            outline: none;
+        }
+
+        .search-box input:focus,
+        .select-control:focus {
+            border-color: var(--accent-copper);
+        }
+
+        .select-control {
+            padding: 8px 28px 8px 12px;
+            border: 1px solid var(--border-light);
+            background-color: #fff;
+            font-size: 12.5px;
+            color: var(--text-dark);
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* Product 4-Column Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px 24px;
+        }
+
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+        }
+
+        .product-img-box {
+            position: relative;
+            aspect-ratio: 1 / 1.04;
+            background-color: var(--bg-warm-stone);
+            overflow: hidden;
+            margin-bottom: 14px;
+        }
+
+        .product-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .product-card:hover .product-img-box img {
+            transform: scale(1.05);
+        }
+
+        .wish-btn {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.92);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 13px;
+            color: var(--text-dark);
+            transition: all 0.2s ease;
+            z-index: 2;
+        }
+
+        .wish-btn:hover,
+        .wish-btn.active {
+            color: #C93B3B;
+            transform: scale(1.08);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background-color: rgba(255, 255, 255, 0.94);
+            color: var(--text-dark);
+            font-size: 9.5px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            padding: 5px 10px;
+            z-index: 2;
+        }
+
+        .product-cat-label {
+            font-size: 9.5px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+
+        .product-title {
+            font-family: 'Newsreader', serif;
+            font-size: 18px;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            line-height: 1.25;
+        }
+
+        .product-meta-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+            font-size: 13px;
+        }
+
+        .product-price {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .product-rating {
+            font-size: 11.5px;
+            color: var(--text-muted);
+        }
+
+        .product-rating i {
+            color: var(--accent-copper);
+            font-size: 10px;
+            margin-right: 2px;
+        }
+
+        .add-bag-btn {
+            width: 100%;
+            padding: 10px 14px;
+            background-color: transparent;
+            border: 1px solid var(--border-Mid);
+            color: var(--text-dark);
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.2s ease;
+            margin-top: auto;
+        }
+
+        .add-bag-btn:hover {
+            background-color: var(--btn-dark);
+            border-color: var(--btn-dark);
+            color: #fff;
+        }
+
+        /* ================= PERSONALIZATION LIVE STUDIO (SCREENSHOT 3) ================= */
+        .custom-studio-section {
+            background-color: var(--bg-warm-stone);
+            padding: 96px 0;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .studio-grid {
+            display: grid;
+            grid-template-columns: 4.5fr 7.5fr;
+            gap: 56px;
+            align-items: center;
+        }
+
+        .studio-copy .sub-eyebrow {
+            font-size: 10.5px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-copper);
+            font-weight: 600;
+            margin-bottom: 18px;
+            display: block;
+        }
+
+        .studio-copy h2 {
+            font-size: clamp(44px, 5vw, 64px);
+            line-height: 1.04;
+            margin-bottom: 24px;
+        }
+
+        .studio-copy p {
+            font-size: 14.5px;
+            color: var(--text-body);
+            max-width: 360px;
+            margin-bottom: 28px;
+            line-height: 1.7;
+        }
+
+        .studio-note {
+            font-size: 12px;
+            color: var(--text-muted);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .studio-card {
+            background-color: #FFFFFF;
+            padding: 36px;
+            box-shadow: 0 20px 50px rgba(30, 27, 24, 0.05);
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 11.5px;
+            color: var(--text-body);
+            margin-bottom: 7px;
+            font-weight: 500;
+        }
+
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: 11px 14px;
+            border: 1px solid var(--border-light);
+            background-color: #fff;
+            font-size: 13px;
+            color: var(--text-dark);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            border-color: var(--accent-copper);
+        }
+
+        .upload-dashed {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 11px 14px;
+            border: 1px dashed var(--border-Mid);
+            font-size: 12.5px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .upload-dashed:hover {
+            border-color: var(--accent-copper);
+            color: var(--text-dark);
+            background-color: var(--bg-cream);
+        }
+
+        .form-row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .studio-price-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-top: 1px solid var(--border-light);
+            margin-bottom: 14px;
+            font-size: 12.5px;
+        }
+
+        .studio-disclaimer {
+            font-size: 10.5px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            line-height: 1.5;
+        }
+
+        /* Live Preview Column */
+        .preview-pane {
+            background-color: #F4EFE6;
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 9.5px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .preview-frame-outer {
+            background-color: #FAF7F2;
+            border: 1px solid #E2D9C8;
+            padding: 26px 20px;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .preview-wooden-box {
+            width: 145px;
+            height: 145px;
+            margin: 0 auto 18px;
+            border: 9px solid #B69364;
+            background-color: #FBF9F5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.08);
+            transition: border-color 0.3s ease;
+        }
+
+        .preview-wooden-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+
+        .preview-wooden-box i {
+            font-size: 28px;
+            color: var(--accent-copper);
+            opacity: 0.75;
+        }
+
+        .preview-title-text {
+            font-family: 'Newsreader', serif;
+            font-size: 17px;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .preview-finish-tag {
+            font-size: 10.5px;
+            color: var(--text-muted);
+        }
+
+        .preview-footer-note {
+            font-family: 'Newsreader', serif;
+            font-style: italic;
+            font-size: 13.5px;
+            color: var(--text-body);
+            margin-bottom: 4px;
+        }
+
+        .preview-footer-sub {
+            font-size: 10.5px;
+            color: var(--text-muted);
+        }
+
+        /* ================= OCCASIONS LIST SECTION (SCREENSHOT 4) ================= */
+        .occasions-section {
+            padding: 96px 0;
+            background-color: var(--bg-cream);
+        }
+
+        .occasions-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .occasions-header h2 {
+            font-size: clamp(38px, 4.5vw, 56px);
+            line-height: 1.08;
+        }
+
+        .occasions-header p {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            max-width: 200px;
+            line-height: 1.5;
+        }
+
+        .occasion-list {
+            border-top: 1px solid var(--border-light);
+        }
+
+        .occasion-row {
+            border-bottom: 1px solid var(--border-light);
+            transition: background-color 0.25s ease;
+        }
+
+        .occasion-trigger {
+            width: 100%;
+            padding: 26px 12px;
+            background: none;
+            border: none;
+            display: grid;
+            grid-template-columns: 80px 1fr 40px;
+            align-items: center;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .occasion-row:hover {
+            background-color: rgba(237, 231, 221, 0.45);
+        }
+
+        .occ-num {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .occ-name {
+            font-family: 'Newsreader', serif;
+            font-size: clamp(26px, 3vw, 34px);
+            color: var(--text-dark);
+            transition: transform 0.25s ease, color 0.25s ease;
+        }
+
+        .occasion-row:hover .occ-name {
+            transform: translateX(8px);
+            color: var(--accent-copper);
+        }
+
+        .occ-arrow {
+            font-size: 15px;
+            color: var(--text-muted);
+            text-align: right;
+            transition: transform 0.25s ease;
+        }
+
+        .occasion-row.open .occ-arrow {
+            transform: rotate(90deg);
+            color: var(--accent-copper);
+        }
+
+        .occasion-drawer {
+            display: none;
+            padding: 0 12px 26px 92px;
+            color: var(--text-body);
+            font-size: 14px;
+        }
+
+        .occasion-row.open .occasion-drawer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        /* ================= GIFT FINDER SECTION (SCREENSHOT 5) ================= */
+        .gift-finder-section {
+            background-color: var(--bg-sage-tint);
+            padding: 96px 0;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .finder-grid {
+            display: grid;
+            grid-template-columns: 5fr 7fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .finder-steps {
+            margin-top: 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            font-size: 10.5px;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .finder-card {
+            background-color: #FAF7F2;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(30, 27, 24, 0.05);
+            max-width: 560px;
+            margin-left: auto;
+            width: 100%;
+        }
+
+        .finder-results {
+            margin-top: 28px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-light);
+        }
+
+        .finder-results h4 {
+            font-family: 'Newsreader', serif;
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+
+        .finder-results p.sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .finder-item-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 11px 0;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .finder-item-row:hover {
+            color: var(--accent-copper);
+        }
+
+        .finder-item-row span.price {
+            color: var(--accent-copper);
+            font-weight: 500;
+        }
+
+        /* ================= EXTRA SECTION: COLLECTOR'S & DIVINE VAULT ================= */
+        .atelier-spotlight {
+            padding: 96px 0;
+            background-color: var(--bg-cream);
+        }
+
+        .spotlight-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 44px;
+        }
+
+        .spotlight-card {
+            background-color: var(--bg-warm-stone);
+            border: 1px solid var(--border-light);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .spotlight-card img {
+            width: 100%;
+            height: 270px;
+            object-fit: cover;
+        }
+
+        .spotlight-body {
+            padding: 28px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .spotlight-body h3 {
+            font-size: 25px;
+            margin: 8px 0 10px;
+        }
+
+        .spotlight-body p {
+            font-size: 13.5px;
+            color: var(--text-body);
+            margin-bottom: 20px;
+        }
+
+        /* ================= VISIT US / SIRSA BOUTIQUE SECTION ================= */
+        .visit-section {
+            padding: 96px 0;
+            background-color: var(--bg-warm-stone);
+            border-top: 1px solid var(--border-light);
+        }
+
+        .visit-grid {
+            display: grid;
+            grid-template-columns: 5fr 7fr;
+            gap: 56px;
+            align-items: center;
+        }
+
+        .visit-details {
+            margin-top: 28px;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            font-size: 14px;
+            color: var(--text-body);
+        }
+
+        .visit-details strong {
+            color: var(--text-dark);
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            margin-bottom: 3px;
+        }
+
+        .map-frame {
+            height: 420px;
+            border: 1px solid var(--border-Mid);
+            background: #fff;
+            padding: 10px;
+        }
+
+        .map-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* ================= SLIDE-OUT SHOPPING BAG DRAWER ================= */
+        .bag-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(20, 18, 15, 0.45);
+            z-index: 1000;
+            display: none;
+        }
+
+        .bag-overlay.open {
+            display: block;
+        }
+
+        .bag-drawer {
+            position: fixed;
+            top: 0;
+            right: -420px;
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            background-color: var(--bg-cream);
+            z-index: 1001;
+            box-shadow: -10px 0 40px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .bag-drawer.open {
+            right: 0;
+        }
+
+        .bag-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .bag-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 24px;
+        }
+
+        .bag-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 14px;
+            margin-bottom: 14px;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 13.5px;
+        }
+
+        .bag-footer {
+            padding: 24px;
+            border-top: 1px solid var(--border-light);
+            background-color: var(--bg-warm-stone);
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            background-color: var(--top-bar);
+            color: #D8D0C5;
+            padding: 56px 0 40px;
+            font-size: 13px;
+        }
+
+        .footer-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 1024px) {
+            .hero-split,
+            .studio-grid,
+            .finder-grid,
+            .visit-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-left {
+                padding: 56px 32px;
+            }
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .spotlight-grid {
+                grid-template-columns: 1fr;
+            }
+            .studio-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-links {
+                display: none;
+            }
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+            .occasion-trigger {
+                grid-template-columns: 45px 1fr 30px;
+            }
+            .occasion-drawer {
+                padding-left: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="announcement-bar">
+        A LITTLE THOUGHT GOES A LONG WAY <span class="dot">&middot;</span> MAKE IT PERSONAL
+    </div>
+
+    <!-- STICKY HEADER -->
+    <header class="site-header">
+        <div class="container nav-wrapper">
+            <a href="#" class="brand-logo">
+                <div class="diamond-emblem">
+                    <i class="fa-solid fa-gift"></i>
+                </div>
+                <div class="brand-text">
+                    <span class="main-name">DONUM</span>
+                    <span class="sub-name">GALLERY</span>
+                </div>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#shop-gifts">Shop gifts</a></li>
+                <li><a href="#custom-studio">Personalize</a></li>
+                <li><a href="#gift-finder">Gift finder</a></li>
+                <li><a href="#our-story">Our story</a></li>
+                <li><a href="#visit-us">Visit us</a></li>
+            </ul>
+
+            <div class="nav-icons">
+                <button class="icon-btn" onclick="document.getElementById('gift-search').focus()" title="Search gifts">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <button class="icon-btn" onclick="toggleBag()" title="Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="badge-count" id="wish-count" style="display: none;">0</span>
+                </button>
+                <button class="icon-btn" onclick="toggleBag()" title="Shopping Bag">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="badge-count" id="bag-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- SPLIT HERO SECTION (SCREENSHOT 1) -->
+    <section class="hero-split">
+        <!-- Left Editorial Column -->
+        <div class="hero-left">
+            <div class="eyebrow">YOUR NEIGHBOURHOOD GIFTING ATELIER</div>
+            <h1>
+                Some gifts<br>
+                are<br>
+                <span class="italic-accent">more than</span><br>
+                gifts.
+            </h1>
+            <p>
+                Turn a name, a memory, or a shared little joke into something they'll keep close. Thoughtfully personalized, right here at Donum Gallery in Sirsa.
+            </p>
+            <div class="hero-cta-group">
+                <a href="#shop-gifts" class="btn-primary-dark">
+                    Explore gifts <span>&rarr;</span>
+                </a>
+                <a href="#custom-studio" class="btn-secondary-light">
+                    Make it personal
+                </a>
+            </div>
+
+            <div class="hero-trust-strip">
+                <span><i class="fa-solid fa-star"></i> 5.0 Google Rated</span>
+                <span><i class="fa-solid fa-wand-magic-sparkles"></i> Custom DTF & Engraving</span>
+                <span><i class="fa-solid fa-truck"></i> Sirsa Delivery</span>
+            </div>
+        </div>
+
+        <!-- Right Storefront Showcase -->
+        <div class="hero-right">
+            <div class="storefront-composite">
+                <!-- Authentic Wood Signboard Replica + Fallback to local image if present -->
+                <div class="wood-fascia">
+                    <div class="fascia-phone">M. 97186-99998</div>
+                    <div class="fascia-diamond">
+                        <div class="fascia-diamond-inner">
+                            <small><i class="fa-solid fa-ribbon"></i></small>
+                            DG
+                        </div>
+                    </div>
+                    <div class="fascia-title-wrap">
+                        <div class="fascia-title">Donum Gallery</div>
+                        <div class="fascia-subtitle">All Customized and Personalized Gift Items</div>
+                    </div>
+                </div>
+
+                <!-- Illuminated Boutique Display Window -->
+                <div class="store-window-display">
+                    <img src="donum-gallery-storefront.png" alt="Donum Gallery Storefront" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'">
+                    <div class="store-window-overlay">
+                        <div>
+                            <span style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:#E5C185;">Flagship Storefront</span>
+                            <h3 class="serif" style="font-size:22px;">Shop No. 7, New Ajay Vihar, Near Loh Pizza, Sirsa</h3>
+                        </div>
+                        <a href="#visit-us" class="btn-primary-dark" style="background:rgba(255,255,255,0.15); backdrop-filter:blur(8px); border-color:rgba(255,255,255,0.3);">
+                            Visit Boutique &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHOP GIFTS CATALOG SECTION (SCREENSHOT 2) -->
+    <section id="shop-gifts" class="shop-section">
+        <div class="container">
+            
+            <!-- Filter & Search Bar -->
+            <div class="filter-toolbar">
+                <div class="category-pills" id="category-pills">
+                    <button class="cat-pill active" onclick="filterProducts('all', this)">All gifts</button>
+                    <button class="cat-pill" onclick="filterProducts('Photo keepsakes', this)">Photo keepsakes</button>
+                    <button class="cat-pill" onclick="filterProducts('Everyday tokens', this)">Everyday tokens</button>
+                    <button class="cat-pill" onclick="filterProducts('Name & initials', this)">Name &amp; initials</button>
+                    <button class="cat-pill" onclick="filterProducts('Anime & Idols', this)">Anime &amp; Idols</button>
+                    <button class="cat-pill" onclick="filterProducts('Gift hampers', this)">Gift hampers</button>
+                </div>
+
+                <div class="filter-controls">
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="gift-search" placeholder="Search gifts" oninput="applyFilters()">
+                    </div>
+
+                    <select id="budget-filter" class="select-control" onchange="applyFilters()">
+                        <option value="all">Any budget</option>
+                        <option value="300">Under ₹300</option>
+                        <option value="600">Under ₹600</option>
+                        <option value="1000">Under ₹1000</option>
+                        <option value="2500">Luxury Collection</option>
+                    </select>
+
+                    <select id="sort-filter" class="select-control" onchange="applyFilters()">
+                        <option value="featured">Featured</option>
+                        <option value="low">Price: Low to High</option>
+                        <option value="high">Price: High to Low</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 4-Column Product Grid -->
+            <div class="product-grid" id="product-grid">
+                <!-- Populated dynamically via JS below for instant filtering/sorting -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PERSONALIZATION LIVE PREVIEW STUDIO (SCREENSHOT 3) -->
+    <section id="custom-studio" class="custom-studio-section">
+        <div class="container">
+            <div class="studio-grid">
+                
+                <!-- Left Editorial Pitch -->
+                <div class="studio-copy">
+                    <span class="sub-eyebrow">A GIFT, YOUR WAY</span>
+                    <h2>
+                        Your idea.<br>
+                        <span class="italic-accent">Your gift.</span><br>
+                        Your story.
+                    </h2>
+                    <p>
+                        Start with a favourite picture or a few words only you would know. We'll make the preview personal.
+                    </p>
+                    <div class="studio-note">
+                        <i class="fa-solid fa-wand-magic-sparkles" style="color:var(--accent-copper);"></i>
+                        <span>Simple preview, not a 3D editor</span>
+                    </div>
+                </div>
+
+                <!-- Right White Interactive Studio Card -->
+                <div class="studio-card">
+                    <!-- Left Form Inputs -->
+                    <div>
+                        <div class="form-group">
+                            <label>What should we call it?</label>
+                            <input type="text" id="studio-title-input" class="form-input" placeholder="A name, date or little phrase" oninput="updateLiveStudio()">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Add a photo (optional)</label>
+                            <label for="studio-photo-upload" class="upload-dashed">
+                                <span id="upload-filename">Choose a photo from your device</span>
+                                <span>&#8599;</span>
+                            </label>
+                            <input type="file" id="studio-photo-upload" accept="image/*" style="display:none;" onchange="handlePhotoUpload(event)">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Your note, tucked inside</label>
+                            <textarea id="studio-note-input" rows="3" class="form-textarea" placeholder="A few words from you..." oninput="updateLiveStudio()"></textarea>
+                        </div>
+
+                        <div class="form-row-2">
+                            <div>
+                                <label style="font-size:11.5px; color:var(--text-body); display:block; margin-bottom:6px;">Finish</label>
+                                <select id="studio-finish" class="form-select" onchange="updateLiveStudio()">
+                                    <option value="Warm ivory" data-color="#C8B08A">Warm ivory</option>
+                                    <option value="Walnut wood" data-color="#6E472B">Walnut wood</option>
+                                    <option value="Brushed gold" data-color="#C5A059">Brushed gold</option>
+                                    <option value="Matte espresso" data-color="#28231F">Matte espresso</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label style="font-size:11.5px; color:var(--text-body); display:block; margin-bottom:6px;">Gift wrap</label>
+                                <select id="studio-wrap" class="form-select" onchange="updateLiveStudio()">
+                                    <option value="Wrapped" data-extra="0">Wrapped</option>
+                                    <option value="Signature Box (+₹100)" data-extra="100">Signature Box (+₹100)</option>
+                                    <option value="Unwrapped" data-extra="0">Unwrapped</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="studio-price-bar">
+                            <span style="color:var(--text-body);">Personalized photo frame</span>
+                            <span><strong id="studio-price-display">₹799</strong> <small style="color:var(--text-muted);">&middot; wrap included</small></span>
+                        </div>
+
+                        <button type="button" class="btn-primary-dark" style="width:100%; justify-content:center;" onclick="addCustomStudioToBag()">
+                            Add your gift to bag <span>&rarr;</span>
+                        </button>
+
+                        <p class="studio-disclaimer">
+                            The finished piece may vary slightly from this digital preview. Crafted with care at Donum Gallery, Sirsa.
+                        </p>
+                    </div>
+
+                    <!-- Right Live Demo Preview -->
+                    <div class="preview-pane">
+                        <div>
+                            <div class="preview-header">
+                                <span>YOUR PREVIEW</span>
+                                <span>LIVE DEMO</span>
+                            </div>
+
+                            <div class="preview-frame-outer">
+                                <div class="preview-wooden-box" id="preview-frame-box">
+                                    <i class="fa-solid fa-gift" id="preview-default-icon"></i>
+                                    <img id="preview-uploaded-img" alt="Uploaded preview">
+                                </div>
+                                <div class="preview-title-text" id="preview-title-out">A moment worth keeping</div>
+                                <div class="preview-finish-tag" id="preview-finish-out">Warm ivory</div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="preview-footer-note" id="preview-note-out">Your little message will find its place here.</div>
+                            <div class="preview-footer-sub">Your photograph can go here</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOR EVERY REASON TO CELEBRATE (SCREENSHOT 4) -->
+    <section class="occasions-section">
+        <div class="container">
+            <div class="occasions-header">
+                <h2>For every <span class="italic-accent">reason to celebrate.</span></h2>
+                <p>Some milestones are big.<br>Some are just yours.</p>
+            </div>
+
+            <div class="occasion-list">
+                <!-- 01 -->
+                <div class="occasion-row" onclick="toggleOccasion(this)">
+                    <button class="occasion-trigger">
+                        <span class="occ-num">01</span>
+                        <span class="occ-name">Birthday</span>
+                        <span class="occ-arrow">&#8599;</span>
+                    </button>
+                    <div class="occasion-drawer">
+                        <span>Custom DTF graphic tees, personalized LED photo lamps, anime katanas, and ceramic mugs made just for their day.</span>
+                        <a href="#shop-gifts" class="btn-secondary-light" style="padding:8px 16px; font-size:12px;">Explore Birthday Gifts &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 02 -->
+                <div class="occasion-row" onclick="toggleOccasion(this)">
+                    <button class="occasion-trigger">
+                        <span class="occ-num">02</span>
+                        <span class="occ-name">Anniversary</span>
+                        <span class="occ-arrow">&#8599;</span>
+                    </button>
+                    <div class="occasion-drawer">
+                        <span>Engraved walnut photo frames, warm-glow couple acrylic lamps, and hand-finished memory keepsake boxes.</span>
+                        <a href="#shop-gifts" class="btn-secondary-light" style="padding:8px 16px; font-size:12px;">Explore Anniversary &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 03 -->
+                <div class="occasion-row" onclick="toggleOccasion(this)">
+                    <button class="occasion-trigger">
+                        <span class="occ-num">03</span>
+                        <span class="occ-name">Wedding</span>
+                        <span class="occ-arrow">&#8599;</span>
+                    </button>
+                    <div class="occasion-drawer">
+                        <span>20" White &amp; Golden Divine Krishana Ji idols, luxury home decor sculptures, designer lamps, and couple hampers.</span>
+                        <a href="#shop-gifts" class="btn-secondary-light" style="padding:8px 16px; font-size:12px;">Explore Wedding &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 04 -->
+                <div class="occasion-row" onclick="toggleOccasion(this)">
+                    <button class="occasion-trigger">
+                        <span class="occ-num">04</span>
+                        <span class="occ-name">New baby</span>
+                        <span class="occ-arrow">&#8599;</span>
+                    </button>
+                    <div class="occasion-drawer">
+                        <span>Custom birth-date nursery frames, soft personalized photo cushions, and keepsake memory albums.</span>
+                        <a href="#shop-gifts" class="btn-secondary-light" style="padding:8px 16px; font-size:12px;">Explore Baby Gifts &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 05 -->
+                <div class="occasion-row" onclick="toggleOccasion(this)">
+                    <button class="occasion-trigger">
+                        <span class="occ-num">05</span>
+                        <span class="occ-name">Raksha Bandhan</span>
+                        <span class="occ-arrow">&#8599;</span>
+                    </button>
+                    <div class="occasion-drawer">
+                        <span>Sibling quote mugs, custom printed anime &amp; superhero merch, engraved keychains, and festive gift boxes.</span>
+                        <a href="#shop-gifts" class="btn-secondary-light" style="padding:8px 16px; font-size:12px;">Explore Rakhi Gifts &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- 06 -->
+                <div class="occasion-row" onclick="toggleOccasion(this)">
+                    <button class="occasion-trigger">
+                        <span class="occ-num">06</span>
+                        <span class="occ-name">Diwali</span>
+                        <span class="occ-arrow">&#8599;</span>
+                    </button>
+                    <div class="occasion-drawer">
+                        <span>Sacred spiritual idols, golden decorative accents, illuminated table decor, and corporate gifting hampers.</span>
+                        <a href="#shop-gifts" class="btn-secondary-light" style="padding:8px 16px; font-size:12px;">Explore Festive Decor &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GIFT FINDER SECTION (SCREENSHOT 5) -->
+    <section id="gift-finder" class="gift-finder-section">
+        <div class="container">
+            <div class="finder-grid">
+                
+                <!-- Left Column -->
+                <div class="studio-copy">
+                    <span class="sub-eyebrow">A LITTLE HELP FROM US</span>
+                    <h2>
+                        Not sure what<br>
+                        they'd <span class="italic-accent">love?</span>
+                    </h2>
+                    <p>
+                        Tell us a little about your person. We'll find a few places to start.
+                    </p>
+
+                    <div class="finder-steps">
+                        <span>01 &middot; WHO'S IT FOR?</span>
+                        <span>02 &middot; WHAT'S THE MOMENT?</span>
+                        <span>03 &middot; WHAT FEELS RIGHT?</span>
+                    </div>
+                </div>
+
+                <!-- Right Interactive Finder Card -->
+                <div class="finder-card">
+                    <div class="form-group">
+                        <label>What's the occasion?</label>
+                        <select id="finder-occasion" class="form-select" onchange="runGiftFinder()">
+                            <option value="birthday">Birthday</option>
+                            <option value="anniversary">Anniversary</option>
+                            <option value="housewarming">Housewarming &amp; Decor</option>
+                            <option value="anime">Anime &amp; Pop-Culture Lover</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Choose a budget</label>
+                        <select id="finder-budget" class="form-select" onchange="runGiftFinder()">
+                            <option value="all">Any budget</option>
+                            <option value="400">Under ₹400</option>
+                            <option value="800">Under ₹800</option>
+                            <option value="2500">Premium (₹800+)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Who are you celebrating?</label>
+                        <select id="finder-person" class="form-select" onchange="runGiftFinder()">
+                            <option value="Someone I love">Someone I love</option>
+                            <option value="A close friend">A close friend</option>
+                            <option value="Family & elders">Family &amp; elders</option>
+                            <option value="A collector">A collector</option>
+                        </select>
+                    </div>
+
+                    <button type="button" class="btn-primary-dark" style="width:100%; justify-content:center; margin-top:6px;" onclick="runGiftFinder()">
+                        Find a few ideas <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </button>
+
+                    <!-- Dynamic Results -->
+                    <div class="finder-results">
+                        <h4 id="finder-result-heading">For their birthday...</h4>
+                        <p class="sub">A few thoughtful places to begin (click to add to bag):</p>
+                        <div id="finder-result-list">
+                            <!-- Populated by JS -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- EXTRA SECTION: SIGNATURE ATELIER HIGHLIGHTS (IDOLS, ANIME & DTF) -->
+    <section id="our-story" class="atelier-spotlight">
+        <div class="container">
+            <div style="max-width: 640px;">
+                <span class="eyebrow">BEYOND EVERYDAY KEEPSAKES</span>
+                <h2 style="font-size: clamp(34px, 4vw, 50px); line-height: 1.1;">
+                    Three signature worlds inside <span class="italic-accent">Donum Gallery.</span>
+                </h2>
+            </div>
+
+            <div class="spotlight-grid">
+                <!-- World 1 -->
+                <div class="spotlight-card">
+                    <img src="https://images.unsplash.com/photo-1609619385002-f40f1df9b7eb?auto=format&fit=crop&w=900&q=80" alt="Divine Krishana Ji Idols & Home Decor">
+                    <div class="spotlight-body">
+                        <div>
+                            <span class="product-cat-label">01 &middot; SACRED &amp; ARCHITECTURAL DECOR</span>
+                            <h3>Divine Idols &amp; Luxury Decor</h3>
+                            <p>Home to our signature 20" White &amp; Golden Krishana Ji idols (Art. DG-KRISH-0208), statement wall clocks, and warm ambient lamps.</p>
+                        </div>
+                        <button class="add-bag-btn" onclick="addToBag('Divine Krishana Ji 20&quot; Idol', 1899)">
+                            <span>Reserve Idol Inquiry (₹1,899)</span>
+                            <span>+</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- World 2 -->
+                <div class="spotlight-card">
+                    <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=900&q=80" alt="Anime Action Figures & Collectibles">
+                    <div class="spotlight-body">
+                        <div>
+                            <span class="product-cat-label">02 &middot; POP-CULTURE COLLECTOR VAULT</span>
+                            <h3>Anime Figures, Katanas &amp; Replicas</h3>
+                            <p>Featuring 42cm ABS display Anime Katanas, 72cm life-size Stormbreaker axes (440g PU), and detailed anime character statues.</p>
+                        </div>
+                        <button class="add-bag-btn" onclick="addToBag('42cm Anime Display Katana', 749)">
+                            <span>Add 42cm Katana to bag (₹749)</span>
+                            <span>+</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- World 3 -->
+                <div class="spotlight-card">
+                    <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=900&q=80" alt="Custom DTF T-Shirt & Mug Printing">
+                    <div class="spotlight-body">
+                        <div>
+                            <span class="product-cat-label">03 &middot; IN-HOUSE #DTF PRINT BAR</span>
+                            <h3>Custom Apparel &amp; Mug Printing</h3>
+                            <p>Bring any design, anime panel, or memory to life on heavy-cotton tees, magic colour-changing mugs, and custom gift sets.</p>
+                        </div>
+                        <button class="add-bag-btn" onclick="addToBag('Custom DTF Printed T-Shirt', 499)">
+                            <span>Add Custom DTF Tee to bag (₹499)</span>
+                            <span>+</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISIT OUR SIRSA BOUTIQUE + MAP -->
+    <section id="visit-us" class="visit-section">
+        <div class="container">
+            <div class="visit-grid">
+                <div>
+                    <span class="eyebrow">VISIT US IN SIRSA</span>
+                    <h2 style="font-size: clamp(36px, 4vw, 52px); line-height: 1.08;">
+                        Step inside our <span class="italic-accent">neighbourhood</span> boutique.
+                    </h2>
+                    <p style="font-size: 15px; color: var(--text-body); margin-top: 16px;">
+                        Whether you're picking up a last-minute birthday keepsake or planning custom return gifts, our doors in New Ajay Vihar are open every day.
+                    </p>
+
+                    <div class="visit-details">
+                        <div>
+                            <strong>Boutique Address</strong>
+                            Donum Gallery, Shop No. 7, New Ajay Vihar, near Loh Pizza, Sirsa, Haryana 125055 (Plus Code: G3R3+37)
+                        </div>
+                        <div>
+                            <strong>Hours &amp; Delivery</strong>
+                            Open Daily &middot; Closes at 9:00 PM &middot; Local delivery available across Sirsa
+                        </div>
+                        <div>
+                            <strong>Direct Phone &amp; WhatsApp</strong>
+                            <a href="tel:+919718699998" style="text-decoration: underline;">+91 97186 99998</a> &middot; <a href="https://www.instagram.com/donum_gallery/" target="_blank" style="text-decoration: underline;">@donum_gallery</a>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap;">
+                        <a href="https://wa.me/919718699998?text=Hi%20Donum%20Gallery!%20I%20would%20like%20to%20inquire%20about%20a%20personalized%20gift." target="_blank" class="btn-primary-dark">
+                            <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+                        </a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=29.5401752,75.0506651" target="_blank" class="btn-secondary-light">
+                            Get Directions &rarr;
+                        </a>
+                    </div>
+                </div>
+
+                <div class="map-frame">
+                    <iframe 
+                        title="Donum Gallery Sirsa Map"
+                        src="https://maps.google.com/maps?q=29.5401752,75.0506651&hl=en&z=17&output=embed" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-flex">
+                <div class="brand-logo">
+                    <div class="diamond-emblem" style="background:transparent; border-color:#C68B59;">
+                        <i class="fa-solid fa-gift" style="color:#C68B59;"></i>
+                    </div>
+                    <div class="brand-text">
+                        <span class="main-name" style="color:#FAF7F2;">DONUM</span>
+                        <span class="sub-name" style="color:#A99F94;">GALLERY &middot; SIRSA</span>
+                    </div>
+                </div>
+
+                <div style="display:flex; gap:28px; flex-wrap:wrap;">
+                    <a href="#shop-gifts">Shop gifts</a>
+                    <a href="#custom-studio">Custom Studio</a>
+                    <a href="#gift-finder">Gift finder</a>
+                    <a href="#visit-us">Visit us</a>
+                    <a href="https://www.instagram.com/donum_gallery/" target="_blank">Instagram</a>
+                </div>
+            </div>
+
+            <div style="padding-top: 28px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; color: #8C8278; font-size: 12px;">
+                <span>&copy; 2026 Donum Gallery · Shop No. 7, New Ajay Vihar, Near Loh Pizza, Sirsa (HR)</span>
+                <span>Thoughtfully personalized · +91 97186 99998</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SLIDE-OUT SHOPPING BAG DRAWER -->
+    <div class="bag-overlay" id="bag-overlay" onclick="toggleBag()"></div>
+    <aside class="bag-drawer" id="bag-drawer">
+        <div class="bag-header">
+            <h3 class="serif" style="font-size: 24px;">Your Gift Bag</h3>
+            <button class="icon-btn" onclick="toggleBag()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="bag-items" id="bag-items-container">
+            <p style="color: var(--text-muted); font-size: 13.5px;">Your bag is currently empty. Add a thoughtful keepsake to begin.</p>
+        </div>
+        <div class="bag-footer">
+            <div style="display:flex; justify-content:space-between; margin-bottom:16px; font-size:15px; font-weight:600;">
+                <span>Estimated Total</span>
+                <span id="bag-total">₹0</span>
+            </div>
+            <button class="btn-primary-dark" style="width:100%; justify-content:center;" onclick="checkoutWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> Send Order on WhatsApp &rarr;
+            </button>
+        </div>
+    </aside>
+
+    <!-- INTERACTIVE APPLICATION LOGIC -->
+    <script>
+        // 1. Product Catalog Data (Matches Screenshot 2 + Authentic Store Items)
+        const products = [
+            {
+                id: 1,
+                title: "Personalized Wooden Photo Frame",
+                category: "Photo keepsakes",
+                price: 599,
+                rating: "4.9 demo",
+                badge: "BESTSELLER",
+                occasion: ["birthday", "anniversary", "housewarming"],
+                image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=700&q=80"
+            },
+            {
+                id: 2,
+                title: "Customized Ceramic Mug",
+                category: "Everyday tokens",
+                price: 299,
+                rating: "4.9 demo",
+                badge: "MADE FOR YOU",
+                occasion: ["birthday", "anime"],
+                image: "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=700&q=80"
+            },
+            {
+                id: 3,
+                title: "Engraved Name Keychain",
+                category: "Name & initials",
+                price: 199,
+                rating: "4.9 demo",
+                badge: "UNDER ₹300",
+                occasion: ["birthday", "anime"],
+                image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=700&q=80"
+            },
+            {
+                id: 4,
+                title: "Personalized LED Photo Lamp",
+                category: "Photo keepsakes",
+                price: 899,
+                rating: "4.9 demo",
+                badge: "BESTSELLER",
+                occasion: ["birthday", "anniversary"],
+                image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=700&q=80"
+            },
+            {
+                id: 5,
+                title: "Soft Custom Photo Cushion",
+                category: "Photo keepsakes",
+                price: 499,
+                rating: "4.8 demo",
+                badge: "PERSONALIZED",
+                occasion: ["birthday", "anniversary"],
+                image: "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=700&q=80"
+            },
+            {
+                id: 6,
+                title: "Handbound Memory Scrapbook",
+                category: "Photo keepsakes",
+                price: 649,
+                rating: "4.9 demo",
+                badge: "HAND-FINISHED",
+                occasion: ["anniversary", "birthday"],
+                image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=700&q=80"
+            },
+            {
+                id: 7,
+                title: "Curated Couple Keepsake Box",
+                category: "Gift hampers",
+                price: 1199,
+                rating: "5.0 demo",
+                badge: "FOR TWO",
+                occasion: ["anniversary", "housewarming"],
+                image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=700&q=80"
+            },
+            {
+                id: 8,
+                title: "Artisanal Celebration Hamper",
+                category: "Gift hampers",
+                price: 1499,
+                rating: "4.9 demo",
+                badge: "READY TO DELIGHT",
+                occasion: ["housewarming", "anniversary"],
+                image: "https://images.unsplash.com/photo-1512909006721-3d6018887383?auto=format&fit=crop&w=700&q=80"
+            },
+            {
+                id: 9,
+                title: "Custom DTF Printed Oversized Tee",
+                category: "Name & initials",
+                price: 499,
+                rating: "5.0 demo",
+                badge: "#DTF STUDIO",
+                occasion: ["birthday", "anime"],
+                image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=700&q=80"
+            },
+            {
+                id: 10,
+                title: "42cm Anime Display Katana",
+                category: "Anime & Idols",
+                price: 749,
+                rating: "5.0 demo",
+                badge: "ANIME VAULT",
+                occasion: ["anime", "birthday"],
+                image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=700&q=80"
+            },
+            {
+                id: 11,
+                title: "72cm Stormbreaker Battle Axe Replica",
+                category: "Anime & Idols",
+                price: 1299,
+                rating: "5.0 demo",
+                badge: "1:1 REPLICA",
+                occasion: ["anime", "birthday"],
+                image: "https://images.unsplash.com/photo-1608889175123-8ee362201f81?auto=format&fit=crop&w=700&q=80"
+            },
+            {
+                id: 12,
+                title: "Divine Krishana Ji 20\" Idol (White/Gold)",
+                category: "Anime & Idols",
+                price: 1899,
+                rating: "5.0 demo",
+                badge: "DG-KRISH-0208",
+                occasion: ["housewarming", "anniversary"],
+                image: "https://images.unsplash.com/photo-1609619385002-f40f1df9b7eb?auto=format&fit=crop&w=700&q=80"
+            }
+        ];
+
+        let activeCategory = 'all';
+        let bag = [];
+        let wishCount = 0;
+
+        function renderProducts(list) {
+            const grid = document.getElementById('product-grid');
+            if (list.length === 0) {
+                grid.innerHTML = `<p style="grid-column: 1/-1; padding: 40px 0; color: var(--text-muted);">No gifts match that filter. Try adjusting your search or budget.</p>`;
+                return;
+            }
+            grid.innerHTML = list.map(item => `
+                <div class="product-card">
+                    <div class="product-img-box">
+                        <button class="wish-btn" onclick="toggleWish(this)" title="Save to wishlist">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                        <span class="product-badge">${item.badge}</span>
+                        <img src="${item.image}" alt="${item.title}" loading="lazy">
+                    </div>
+                    <div class="product-cat-label">${item.category}</div>
+                    <h3 class="product-title">${item.title}</h3>
+                    <div class="product-meta-row">
+                        <span class="product-price">₹${item.price}</span>
+                        <span class="product-rating"><i class="fa-solid fa-star"></i> ${item.rating}</span>
+                    </div>
+                    <button class="add-bag-btn" onclick="addToBag('${item.title.replace(/'/g, "\\'")}', ${item.price})">
+                        <span>Add to bag</span>
+                        <span>+</span>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function filterProducts(category, btnEl) {
+            activeCategory = category;
+            document.querySelectorAll('.cat-pill').forEach(btn => btn.classList.remove('active'));
+            if (btnEl) btnEl.classList.add('active');
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const query = document.getElementById('gift-search').value.toLowerCase().trim();
+            const maxBudget = document.getElementById('budget-filter').value;
+            const sortBy = document.getElementById('sort-filter').value;
+
+            let filtered = products.filter(p => {
+                const matchCat = activeCategory === 'all' || p.category === activeCategory;
+                const matchQuery = !query || p.title.toLowerCase().includes(query) || p.category.toLowerCase().includes(query);
+                const matchBudget = maxBudget === 'all' || p.price <= parseInt(maxBudget, 10);
+                return matchCat && matchQuery && matchBudget;
+            });
+
+            if (sortBy === 'low') filtered.sort((a, b) => a.price - b.price);
+            if (sortBy === 'high') filtered.sort((a, b) => b.price - a.price);
+
+            renderProducts(filtered);
+        }
+
+        // 2. Wishlist & Shopping Bag Logic
+        function toggleWish(btn) {
+            btn.classList.toggle('active');
+            const icon = btn.querySelector('i');
+            if (btn.classList.contains('active')) {
+                icon.classList.remove('fa-regular');
+                icon.classList.add('fa-solid');
+                wishCount++;
+            } else {
+                icon.classList.remove('fa-solid');
+                icon.classList.add('fa-regular');
+                wishCount = Math.max(0, wishCount - 1);
+            }
+            const badge = document.getElementById('wish-count');
+            badge.textContent = wishCount;
+            badge.style.display = wishCount > 0 ? 'flex' : 'none';
+        }
+
+        function addToBag(title, price, meta = '') {
+            bag.push({ title, price, meta });
+            updateBagUI();
+            const drawer = document.getElementById('bag-drawer');
+            if (!drawer.classList.contains('open')) toggleBag();
+        }
+
+        function removeFromBag(index) {
+            bag.splice(index, 1);
+            updateBagUI();
+        }
+
+        function updateBagUI() {
+            document.getElementById('bag-count').textContent = bag.length;
+            const container = document.getElementById('bag-items-container');
+            const totalEl = document.getElementById('bag-total');
+
+            if (bag.length === 0) {
+                container.innerHTML = `<p style="color: var(--text-muted); font-size: 13.5px;">Your bag is currently empty. Add a thoughtful keepsake to begin.</p>`;
+                totalEl.textContent = '₹0';
+                return;
+            }
+
+            let sum = 0;
+            container.innerHTML = bag.map((item, idx) => {
+                sum += item.price;
+                return `
+                    <div class="bag-item">
+                        <div>
+                            <strong style="display:block; color:var(--text-dark);">${item.title}</strong>
+                            ${item.meta ? `<small style="color:var(--text-muted); display:block;">${item.meta}</small>` : ''}
+                            <span style="color:var(--accent-copper); font-weight:600;">₹${item.price}</span>
+                        </div>
+                        <button class="icon-btn" onclick="removeFromBag(${idx})" title="Remove"><i class="fa-solid fa-trash-can" style="font-size:13px;"></i></button>
+                    </div>
+                `;
+            }).join('');
+            totalEl.textContent = `₹${sum}`;
+        }
+
+        function toggleBag() {
+            document.getElementById('bag-overlay').classList.toggle('open');
+            document.getElementById('bag-drawer').classList.toggle('open');
+        }
+
+        function checkoutWhatsApp() {
+            if (bag.length === 0) {
+                alert('Please add at least one gift to your bag first.');
+                return;
+            }
+            let sum = 0;
+            const lines = bag.map((item, i) => {
+                sum += item.price;
+                return `${i + 1}. ${item.title} ${item.meta ? `(${item.meta})` : ''} - ₹${item.price}`;
+            }).join('\n');
+
+            const text = `Hi Donum Gallery! I'd like to order the following gifts from your website:\n\n${lines}\n\nEstimated Total: ₹${sum}\n\nPlease confirm availability!`;
+            window.open(`https://wa.me/919718699998?text=${encodeURIComponent(text)}`, '_blank');
+        }
+
+        // 3. Live Preview Studio Logic (Screenshot 3)
+        function updateLiveStudio() {
+            const titleVal = document.getElementById('studio-title-input').value.trim();
+            const noteVal = document.getElementById('studio-note-input').value.trim();
+            const finishSelect = document.getElementById('studio-finish');
+            const wrapSelect = document.getElementById('studio-wrap');
+
+            const finishName = finishSelect.value;
+            const borderColor = finishSelect.options[finishSelect.selectedIndex].dataset.color;
+            const extraWrap = parseInt(wrapSelect.options[wrapSelect.selectedIndex].dataset.extra || '0', 10);
+
+            document.getElementById('preview-title-out').textContent = titleVal || 'A moment worth keeping';
+            document.getElementById('preview-note-out').textContent = noteVal || 'Your little message will find its place here.';
+            document.getElementById('preview-finish-out').textContent = finishName;
+            document.getElementById('preview-frame-box').style.borderColor = borderColor;
+            document.getElementById('studio-price-display').textContent = `₹${799 + extraWrap}`;
+        }
+
+        function handlePhotoUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            document.getElementById('upload-filename').textContent = file.name;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.getElementById('preview-uploaded-img');
+                img.src = e.target.result;
+                img.style.display = 'block';
+                document.getElementById('preview-default-icon').style.display = 'none';
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function addCustomStudioToBag() {
+            const titleVal = document.getElementById('studio-title-input').value.trim() || 'A moment worth keeping';
+            const finishName = document.getElementById('studio-finish').value;
+            const wrapSelect = document.getElementById('studio-wrap');
+            const extraWrap = parseInt(wrapSelect.options[wrapSelect.selectedIndex].dataset.extra || '0', 10);
+            const total = 799 + extraWrap;
+
+            addToBag('Personalized Photo Frame', total, `${finishName} · "${titleVal}"`);
+        }
+
+        // 4. Occasions Accordion Logic (Screenshot 4)
+        function toggleOccasion(rowEl) {
+            rowEl.classList.toggle('open');
+        }
+
+        // 5. Smart Gift Finder Logic (Screenshot 5)
+        function runGiftFinder() {
+            const occ = document.getElementById('finder-occasion').value;
+            const budget = document.getElementById('finder-budget').value;
+            const occLabels = {
+                birthday: "For their birthday...",
+                anniversary: "For your anniversary...",
+                housewarming: "For a warm new home...",
+                anime: "For the collector..."
+            };
+
+            document.getElementById('finder-result-heading').textContent = occLabels[occ] || "For their special moment...";
+
+            let matches = products.filter(p => {
+                const matchOcc = p.occasion.includes(occ);
+                const matchBudget = budget === 'all' || p.price <= parseInt(budget, 10);
+                return matchOcc && matchBudget;
+            }).slice(0, 3);
+
+            if (matches.length === 0) matches = products.slice(0, 3);
+
+            document.getElementById('finder-result-list').innerHTML = matches.map(m => `
+                <div class="finder-item-row" onclick="addToBag('${m.title.replace(/'/g, "\\'")}', ${m.price})">
+                    <span>${m.title}</span>
+                    <span class="price">₹${m.price} +</span>
+                </div>
+            `).join('');
+        }
+
+        // Initialize Page
+        renderProducts(products);
+        runGiftFinder();
+    </script>
+</body>
+</html>
