@@ -1,917 +1,861 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donum Gallery | Luxury Home Decor, Anime Collectibles & Custom Gifting Studio</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
+    <title>Donum Gallery | Luxury Home Decor & Custom Gifts</title>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        obsidian: '#090807',
-                        espresso: '#12100E',
-                        walnut: '#1C1815',
-                        gold: {
-                            light: '#F3E5AB',
-                            DEFAULT: '#D4AF37',
-                            muted: '#C5A059',
-                            dark: '#997A2C'
-                        },
-                        alabaster: '#F7F4EF'
-                    },
-                    fontFamily: {
-                        serif: ['"Cormorant Garamond"', 'serif'],
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        mono: ['"Space Mono"', 'monospace']
-                    }
-                }
-            }
-        }
-    </script>
-
     <style>
         :root {
-            --gold-gradient: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #997A2C 100%);
+            --bg-dark: #14110f;
+            --bg-darker: #0e0c0a;
+            --bg-card: #1c1815;
+            --gold: #c8a97e;
+            --gold-hover: #dfc298;
+            --text-main: #f5f2eb;
+            --text-muted: #9e968e;
+            --border-subtle: rgba(200, 169, 126, 0.18);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: #090807;
-            color: #F7F4EF;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* Subtle Luxury Noise & Ambient Glow */
-        .bg-luxury-mesh {
-            background-image: 
-                radial-gradient(circle at 15% 15%, rgba(212, 175, 55, 0.08) 0%, transparent 45%),
-                radial-gradient(circle at 85% 80%, rgba(197, 160, 89, 0.06) 0%, transparent 50%);
+        h1, h2, h3, h4, .serif {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
         }
 
-        /* Metallic Gold Text Shimmer */
-        .text-gold-gradient {
-            background: linear-gradient(to right, #F3E5AB, #D4AF37, #FFF3B0, #C5A059);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine 6s linear infinite;
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
         }
 
-        @keyframes shine {
-            to { background-position: 200% center; }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
         }
 
-        /* Gold Border Glow */
-        .gold-card {
-            background: linear-gradient(180deg, rgba(28, 24, 21, 0.75) 0%, rgba(18, 16, 14, 0.9) 100%);
-            border: 1px solid rgba(212, 175, 55, 0.18);
-            backdrop-filter: blur(16px);
-            transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        /* ================= NAVBAR ================= */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 22px 0;
+            background: linear-gradient(to bottom, rgba(14, 12, 10, 0.9), rgba(14, 12, 10, 0.65));
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .gold-card:hover {
-            border-color: rgba(212, 175, 55, 0.55);
-            transform: translateY(-6px);
-            box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.85), 0 0 25px -5px rgba(212, 175, 55, 0.15);
-        }
-
-        /* Infinite Marquee */
-        .marquee-track {
+        .nav-inner {
             display: flex;
-            width: max-content;
-            animation: marquee 32s linear infinite;
-        }
-        .marquee-track:hover {
-            animation-play-state: paused;
-        }
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            align-items: center;
+            justify-content: space-between;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #090807; }
-        ::-webkit-scrollbar-thumb { background: #2A241E; border-radius: 4px; border: 1px solid rgba(212,175,55,0.2); }
-        ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            letter-spacing: 3px;
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
 
-        /* Diamond Emblem Rotation Effect */
-        .dg-diamond {
-            transform: rotate(45deg);
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
         }
-        .group:hover .dg-diamond {
-            transform: rotate(225deg);
+
+        .nav-links a {
+            font-size: 14px;
+            color: var(--text-main);
+            opacity: 0.85;
+            position: relative;
+            padding-bottom: 6px;
         }
-        .dg-diamond-inner {
-            transform: rotate(-45deg);
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            opacity: 1;
+            color: var(--gold);
         }
-        .group:hover .dg-diamond-inner {
-            transform: rotate(-225deg);
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1.5px;
+            background-color: var(--gold);
+        }
+
+        .btn-outline-pill {
+            padding: 10px 24px;
+            border: 1px solid var(--gold);
+            border-radius: 50px;
+            font-size: 13px;
+            color: var(--text-main);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(200, 169, 126, 0.08);
+        }
+
+        .btn-outline-pill:hover {
+            background: var(--gold);
+            color: var(--bg-darker);
+            font-weight: 500;
+        }
+
+        /* ================= HERO SECTION ================= */
+        .hero {
+            position: relative;
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            padding-top: 90px;
+            /* Replace the URL below with your uploaded storefront image URL if desired */
+            background-image: 
+                linear-gradient(90deg, #0e0c0a 0%, rgba(14, 12, 10, 0.92) 38%, rgba(14, 12, 10, 0.35) 100%),
+                url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2000&q=85');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 620px;
+            padding: 60px 0;
+        }
+
+        .overline {
+            display: inline-block;
+            font-size: 11px;
+            letter-spacing: 3.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .overline::before {
+            content: '';
+            display: block;
+            width: 36px;
+            height: 1px;
+            background: var(--gold);
+            margin-bottom: 14px;
+        }
+
+        .hero h1 {
+            font-size: clamp(52px, 7vw, 84px);
+            line-height: 1.02;
+            letter-spacing: 2px;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(22px, 3vw, 30px);
+            color: #e6dfd5;
+            line-height: 1.3;
+            margin-bottom: 18px;
+        }
+
+        .hero-desc {
+            font-size: 15px;
+            color: var(--text-muted);
+            max-width: 480px;
+            margin-bottom: 36px;
+            font-weight: 300;
+        }
+
+        .hero-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-gold-pill {
+            padding: 14px 30px;
+            background-color: var(--gold);
+            color: var(--bg-darker);
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-gold-pill:hover {
+            background-color: var(--gold-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-watch {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            color: var(--text-main);
+        }
+
+        .btn-watch-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-watch:hover .btn-watch-icon {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .scroll-down {
+            margin-top: 56px;
+            padding-left: 14px;
+            border-left: 1px solid rgba(255, 255, 255, 0.25);
+            font-size: 10px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        /* ================= 4-PILLAR FEATURE STRIP ================= */
+        .features-strip {
+            background-color: var(--bg-darker);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 48px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 10px 28px;
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .feature-item:last-child {
+            border-right: none;
+        }
+
+        .feature-icon {
+            font-size: 24px;
+            color: var(--gold);
+            margin-bottom: 14px;
+        }
+
+        .feature-item h3 {
+            font-size: 20px;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        .feature-item p {
+            font-size: 12.5px;
+            color: var(--text-muted);
+            max-width: 210px;
+            margin: 0 auto;
+        }
+
+        /* ================= ABOUT BENTO SECTION ================= */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 4fr 8fr;
+            gap: 56px;
+            align-items: center;
+        }
+
+        .section-title {
+            font-size: clamp(36px, 4.5vw, 52px);
+            line-height: 1.12;
+            margin-bottom: 24px;
+            color: var(--text-main);
+        }
+
+        .section-title span {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .about-text p {
+            font-size: 15px;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            font-weight: 300;
+            line-height: 1.75;
+        }
+
+        .bento-gallery {
+            display: grid;
+            grid-template-columns: 1.35fr 1fr;
+            grid-template-rows: 220px 220px;
+            gap: 18px;
+        }
+
+        .bento-item {
+            position: relative;
+            border-radius: 6px;
+            overflow: hidden;
+            background: var(--bg-card);
+        }
+
+        .bento-item.large {
+            grid-row: 1 / 3;
+        }
+
+        .bento-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .bento-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* ================= COLLECTIONS SECTION ================= */
+        .collections-section {
+            background-color: var(--bg-darker);
+            padding: 100px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 52px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .collection-card {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .collection-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-6px);
+        }
+
+        .collection-img {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .collection-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .collection-card:hover .collection-img img {
+            transform: scale(1.07);
+        }
+
+        .collection-body {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .collection-tag {
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .collection-body h3 {
+            font-size: 24px;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+
+        .collection-body p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .collection-link {
+            font-size: 12px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ================= LOCATION & CONTACT ================= */
+        .location-grid {
+            display: grid;
+            grid-template-columns: 6fr 5fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .map-wrapper {
+            height: 440px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-card);
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%);
+        }
+
+        .info-list {
+            margin-top: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .info-icon {
+            color: var(--gold);
+            font-size: 18px;
+            margin-top: 4px;
+        }
+
+        .info-item h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .info-item p {
+            font-size: 14px;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            background-color: var(--bg-darker);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 40px 0;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-links a {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+        }
+
+        .social-links a:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            .feature-item:nth-child(2) {
+                border-right: none;
+            }
+            .about-grid,
+            .location-grid {
+                grid-template-columns: 1fr;
+            }
+            .collections-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 680px) {
+            .nav-links {
+                display: none;
+            }
+            .features-grid,
+            .collections-grid,
+            .bento-gallery {
+                grid-template-columns: 1fr;
+            }
+            .bento-gallery {
+                grid-template-rows: auto;
+            }
+            .bento-item {
+                height: 240px;
+            }
+            .feature-item {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+                padding-bottom: 24px;
+            }
         }
     </style>
 </head>
-<body class="bg-luxury-mesh selection:bg-gold selection:text-obsidian">
+<body>
 
-    <!-- TOP ANNOUNCEMENT BAR -->
-    <div class="bg-walnut/90 border-b border-gold/15 text-xs py-2.5 px-4">
-        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-            <div class="flex items-center gap-3 text-alabaster/80">
-                <span class="inline-flex items-center gap-1.5 text-gold font-medium">
-                    <i class="fa-solid fa-star text-[10px]"></i> 5.0 Google Rated Boutique
-                </span>
-                <span class="hidden sm:inline text-white/20">|</span>
-                <span class="hidden sm:inline">All Customized & Personalized Gift Items · Home Decor · Anime Figures</span>
-            </div>
-            <div class="flex items-center gap-4 ml-auto sm:ml-0">
-                <span class="inline-flex items-center gap-1.5 text-emerald-400">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                    Open Today · Closes 9:00 PM
-                </span>
-                <span class="text-white/20">|</span>
-                <a href="tel:+919718699998" class="hover:text-gold transition-colors font-mono">+91 97186 99998</a>
-            </div>
-        </div>
-    </div>
+    <!-- NAVBAR -->
+    <header>
+        <div class="container nav-inner">
+            <a href="#" class="logo">DONUM GALLERY</a>
 
-    <!-- STICKY NAVIGATION -->
-    <header id="navbar" class="sticky top-0 z-50 transition-all duration-300 bg-obsidian/80 backdrop-blur-xl border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <!-- Brand Logo (DG Diamond Emblem) -->
-            <a href="#" class="flex items-center gap-4 group">
-                <div class="w-11 h-11 rounded-sm bg-gradient-to-br from-gold-light via-gold to-gold-dark p-[1.5px] dg-diamond shadow-lg shadow-gold/10">
-                    <div class="w-full h-full bg-obsidian flex items-center justify-center">
-                        <span class="dg-diamond-inner font-serif font-bold text-lg tracking-tighter text-gold">DG</span>
-                    </div>
-                </div>
-                <div>
-                    <span class="block font-serif text-2xl sm:text-3xl font-semibold tracking-wider text-alabaster">DONUM <span class="text-gold font-normal">GALLERY</span></span>
-                    <span class="block text-[10px] uppercase tracking-[0.28em] text-alabaster/50 -mt-1">Home Decor & Gifts · Sirsa</span>
-                </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#collections">Collections</a></li>
+                <li><a href="#location">Location</a></li>
+                <li><a href="#location">Contact</a></li>
+            </ul>
+
+            <a href="https://wa.me/919718699998" target="_blank" class="btn-outline-pill">
+                Get in Touch <span>&rarr;</span>
             </a>
-
-            <!-- Desktop Links -->
-            <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-alabaster/80">
-                <a href="#collections" class="hover:text-gold transition-colors">Collections</a>
-                <a href="#catalog" class="hover:text-gold transition-colors">Signature Vault</a>
-                <a href="#custom-studio" class="hover:text-gold transition-colors">DTF & Print Studio</a>
-                <a href="#storefront" class="hover:text-gold transition-colors">Flagship Store</a>
-            </nav>
-
-            <!-- Action CTA -->
-            <div class="flex items-center gap-3">
-                <a href="https://www.instagram.com/donum_gallery/" target="_blank" rel="noopener" class="w-10 h-10 rounded-full border border-gold/25 flex items-center justify-center text-gold hover:bg-gold hover:text-obsidian transition-all" title="Follow @donum_gallery on Instagram">
-                    <i class="fa-brands fa-instagram text-lg"></i>
-                </a>
-                <a href="https://wa.me/919718699998?text=Hi%20Donum%20Gallery!%20I%20would%20like%20to%20inquire%20about%20your%20gifts%20and%20decor%20collection." target="_blank" rel="noopener" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-muted text-obsidian font-semibold text-xs sm:text-sm tracking-wide hover:brightness-110 transition-all shadow-lg shadow-gold/15 flex items-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-base"></i>
-                    <span>Order on WhatsApp</span>
-                </a>
-            </div>
         </div>
     </header>
 
     <!-- HERO SECTION -->
-    <section class="relative pt-10 pb-20 lg:pt-16 lg:pb-28 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
-                
-                <!-- Left Column: Editorial Copy -->
-                <div class="lg:col-span-7 space-y-8">
-                    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-walnut border border-gold/30 text-gold text-xs uppercase tracking-[0.2em]">
-                        <span class="w-1.5 h-1.5 rounded-full bg-gold"></span>
-                        Sirsa's Premier Gifting & Collectibles Destination
-                    </div>
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="overline">A PLACE CALLED</span>
+                <h1>DONUM GALLERY</h1>
+                <p class="hero-subtitle">Where Thoughtful Gifting Meets Timeless Elegance</p>
+                <p class="hero-desc">
+                    A curated boutique in the heart of Sirsa offering luxury home decor, divine idols, anime action figures, and bespoke custom-printed keepsakes.
+                </p>
 
-                    <h1 class="font-serif text-5xl sm:text-6xl lg:text-7xl leading-[1.06] font-normal text-alabaster">
-                        Where <span class="italic text-gold-gradient font-semibold">Artistry</span> Meets Personal Expression.
-                    </h1>
-
-                    <p class="text-base sm:text-lg text-alabaster/70 max-w-2xl leading-relaxed font-light">
-                        From sacred <strong class="text-alabaster font-medium">Divine Idols & Luxury Home Decor</strong> to <strong class="text-alabaster font-medium">1:1 Anime Action Figures & Katanas</strong>, alongside Sirsa's most advanced <strong class="text-alabaster font-medium">Custom DTF Apparel & Personalized Gift Printing Studio</strong>.
-                    </p>
-
-                    <!-- CTA Buttons -->
-                    <div class="flex flex-wrap items-center gap-4 pt-2">
-                        <a href="#catalog" class="px-8 py-4 rounded-full bg-gold text-obsidian font-semibold text-sm tracking-wider uppercase hover:bg-gold-light transition-all shadow-xl shadow-gold/20 flex items-center gap-3">
-                            <span>Explore Featured Vault</span>
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                        <a href="#custom-studio" class="px-7 py-4 rounded-full border border-gold/40 text-alabaster hover:border-gold hover:bg-gold/10 transition-all text-sm tracking-wider uppercase flex items-center gap-2.5">
-                            <i class="fa-solid fa-wand-magic-sparkles text-gold"></i>
-                            <span>Custom Print Studio</span>
-                        </a>
-                    </div>
-
-                    <!-- Trust Metrics Bar -->
-                    <div class="grid grid-cols-3 gap-6 pt-8 border-t border-white/10 max-w-xl">
-                        <div>
-                            <div class="font-serif text-3xl sm:text-4xl font-semibold text-gold flex items-center gap-1.5">
-                                5.0 <i class="fa-solid fa-star text-lg"></i>
-                            </div>
-                            <p class="text-xs text-alabaster/55 mt-1 uppercase tracking-wider">Google Rating</p>
-                        </div>
-                        <div>
-                            <div class="font-serif text-3xl sm:text-4xl font-semibold text-alabaster">850+</div>
-                            <p class="text-xs text-alabaster/55 mt-1 uppercase tracking-wider">IG Community</p>
-                        </div>
-                        <div>
-                            <div class="font-serif text-3xl sm:text-4xl font-semibold text-gold">100%</div>
-                            <p class="text-xs text-alabaster/55 mt-1 uppercase tracking-wider">Custom DTF & Gifts</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right Column: Multi-Layered Showcase Composition -->
-                <div class="lg:col-span-5 relative">
-                    <div class="relative mx-auto max-w-md lg:max-w-none">
-                        <!-- Ambient Gold Halo -->
-                        <div class="absolute -inset-4 bg-gradient-to-tr from-gold/20 via-transparent to-gold/10 rounded-3xl blur-2xl -z-10"></div>
-
-                        <!-- Main Showcase Card -->
-                        <div class="gold-card rounded-3xl p-4 sm:p-5 relative overflow-hidden">
-                            <!-- Top Storefront Signboard Recreation Banner -->
-                            <div class="rounded-2xl bg-gradient-to-r from-[#3A2212] via-[#523018] to-[#3A2212] p-4 mb-4 border border-gold/30 shadow-inner relative overflow-hidden">
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 bg-alabaster rotate-45 flex items-center justify-center border-2 border-gold shadow-md ml-2">
-                                            <span class="-rotate-45 font-serif font-bold text-obsidian text-sm">DG</span>
-                                        </div>
-                                        <div class="pl-2">
-                                            <h3 class="font-sans font-bold text-xl tracking-wide text-white drop-shadow">Donum Gallery</h3>
-                                            <p class="text-[11px] text-gold-light/90">All Customized and Personalized Gift Items</p>
-                                        </div>
-                                    </div>
-                                    <span class="hidden sm:inline-block font-mono text-[11px] text-white/90 bg-black/30 px-2.5 py-1 rounded">M. 97186-99998</span>
-                                </div>
-                            </div>
-
-                            <!-- Featured Split Visual Grid -->
-                            <div class="grid grid-cols-12 gap-3">
-                                <!-- Divine Idol Card -->
-                                <div class="col-span-7 relative rounded-2xl overflow-hidden group aspect-[4/5] bg-espresso border border-white/10">
-                                    <img src="https://images.unsplash.com/photo-1609619385002-f40f1df9b7eb?auto=format&fit=crop&w=900&q=85" alt="Divine Krishna Ji Idol & Home Decor" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/20 to-transparent"></div>
-                                    <div class="absolute bottom-3 left-3 right-3">
-                                        <span class="text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded bg-gold text-obsidian font-bold">DG-KRISH-0208</span>
-                                        <h4 class="font-serif text-xl text-white mt-1">Divine Krishana Ji Idol</h4>
-                                        <p class="text-xs text-alabaster/70">20" White & Golden Finish</p>
-                                    </div>
-                                </div>
-
-                                <!-- Right Stacked Cards (Anime & Custom Printing) -->
-                                <div class="col-span-5 flex flex-col gap-3">
-                                    <div class="relative rounded-2xl overflow-hidden group flex-1 bg-espresso border border-white/10 min-h-[140px]">
-                                        <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80" alt="Anime Katana & Collectibles" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian/95 via-obsidian/30 to-transparent"></div>
-                                        <div class="absolute bottom-2.5 left-2.5 right-2.5">
-                                            <span class="text-[9px] font-mono uppercase text-gold">Anime Vault</span>
-                                            <h5 class="font-serif text-sm text-white leading-tight">42cm Katana & Figures</h5>
-                                        </div>
-                                    </div>
-
-                                    <div class="relative rounded-2xl overflow-hidden group flex-1 bg-espresso border border-white/10 min-h-[140px]">
-                                        <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" alt="Custom DTF T-Shirt & Mug Printing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                        <div class="absolute inset-0 bg-gradient-to-t from-obsidian/95 via-obsidian/30 to-transparent"></div>
-                                        <div class="absolute bottom-2.5 left-2.5 right-2.5">
-                                            <span class="text-[9px] font-mono uppercase text-gold">#DTF Studio</span>
-                                            <h5 class="font-serif text-sm text-white leading-tight">Custom Tees & Mug Print</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Bottom Location Strip -->
-                            <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs text-alabaster/75">
-                                <span class="flex items-center gap-2">
-                                    <i class="fa-solid fa-location-dot text-gold"></i>
-                                    Shop No. 7, New Ajay Vihar, Near Loh Pizza, Sirsa
-                                </span>
-                                <span class="text-emerald-400 font-medium flex items-center gap-1">
-                                    <i class="fa-solid fa-truck-fast"></i> Delivery
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- INFINITE LUXURY MARQUEE -->
-    <div class="py-4 bg-walnut border-y border-gold/20 overflow-hidden">
-        <div class="marquee-track flex items-center gap-10 text-xs sm:text-sm uppercase tracking-[0.25em] text-alabaster/80 font-medium">
-            <span><i class="fa-solid fa-gem text-gold mr-3"></i>Luxury Home Decor</span>
-            <span><i class="fa-solid fa-om text-gold mr-3"></i>Divine Spiritual Idols</span>
-            <span><i class="fa-solid fa-fire-flame-curved text-gold mr-3"></i>Anime Action Figures</span>
-            <span><i class="fa-solid fa-khanda text-gold mr-3"></i>42cm Anime Katanas & Replicas</span>
-            <span><i class="fa-solid fa-shirt text-gold mr-3"></i>Customised T-Shirt DTF Printing</span>
-            <span><i class="fa-solid fa-mug-hot text-gold mr-3"></i>Personalized Mug & Gift Printing</span>
-            <!-- Duplicate for seamless loop -->
-            <span><i class="fa-solid fa-gem text-gold mr-3"></i>Luxury Home Decor</span>
-            <span><i class="fa-solid fa-om text-gold mr-3"></i>Divine Spiritual Idols</span>
-            <span><i class="fa-solid fa-fire-flame-curved text-gold mr-3"></i>Anime Action Figures</span>
-            <span><i class="fa-solid fa-khanda text-gold mr-3"></i>42cm Anime Katanas & Replicas</span>
-            <span><i class="fa-solid fa-shirt text-gold mr-3"></i>Customised T-Shirt DTF Printing</span>
-            <span><i class="fa-solid fa-mug-hot text-gold mr-3"></i>Personalized Mug & Gift Printing</span>
-        </div>
-    </div>
-
-    <!-- THE FOUR PILLARS (BENTO GRID) -->
-    <section id="collections" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
-            <div>
-                <span class="text-xs font-mono uppercase tracking-[0.25em] text-gold block mb-3">Curated Departments</span>
-                <h2 class="font-serif text-4xl sm:text-5xl text-alabaster">Four Worlds of <span class="italic text-gold">Gifting Excellence</span></h2>
-            </div>
-            <p class="text-sm text-alabaster/60 max-w-md">
-                Whether you are elevating your living space, searching for rare pop-culture collectibles, or designing custom-printed merchandise, Donum Gallery brings every vision to life.
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-            <!-- Pillar 1: Home Decor & Divine Idols (7 cols) -->
-            <div class="md:col-span-7 gold-card rounded-3xl p-8 sm:p-10 relative overflow-hidden group min-h-[340px] flex flex-col justify-between">
-                <div class="absolute right-0 top-0 w-2/3 h-full opacity-25 group-hover:opacity-35 transition-opacity pointer-events-none">
-                    <img src="https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=1000&q=80" alt="Luxury Home Decor" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-r from-espresso via-espresso/80 to-transparent"></div>
-                </div>
-                <div class="relative z-10">
-                    <span class="px-3 py-1 rounded-full bg-gold/15 border border-gold/30 text-gold text-xs font-mono">01 / HOME DECOR & SPIRITUAL</span>
-                    <h3 class="font-serif text-3xl sm:text-4xl text-alabaster mt-5 max-w-md">Divine Idols & Statement Home Decor</h3>
-                    <p class="text-sm text-alabaster/70 mt-3 max-w-md leading-relaxed">
-                        Exquisite White & Golden Krishna Ji idols, artisanal lamps, wall clocks, and luxury showpieces crafted with fine detailing to bring harmony and grandeur to your home.
-                    </p>
-                </div>
-                <div class="relative z-10 pt-6 flex items-center gap-4">
-                    <a href="#catalog" onclick="filterCatalog('decor')" class="text-xs uppercase tracking-widest text-gold font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
-                        Explore Decor Collection <i class="fa-solid fa-arrow-right"></i>
+                <div class="hero-actions">
+                    <a href="#collections" class="btn-gold-pill">
+                        Explore Collection <span>&rarr;</span>
+                    </a>
+                    <a href="https://www.instagram.com/donum_gallery/" target="_blank" class="btn-watch">
+                        <span class="btn-watch-icon"><i class="fa-brands fa-instagram"></i></span>
+                        <span>View Instagram</span>
                     </a>
                 </div>
-            </div>
 
-            <!-- Pillar 2: Anime Action Figures & Replicas (5 cols) -->
-            <div class="md:col-span-5 gold-card rounded-3xl p-8 sm:p-10 relative overflow-hidden group min-h-[340px] flex flex-col justify-between">
-                <div class="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity pointer-events-none">
-                    <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80" alt="Anime Action Figures" class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-espresso via-espresso/80 to-transparent"></div>
-                </div>
-                <div class="relative z-10">
-                    <span class="px-3 py-1 rounded-full bg-gold/15 border border-gold/30 text-gold text-xs font-mono">02 / POP-CULTURE VAULT</span>
-                    <h3 class="font-serif text-3xl text-alabaster mt-5">Anime Action Figures, Katanas & Replicas</h3>
-                    <p class="text-sm text-alabaster/70 mt-3 leading-relaxed">
-                        Premium 72cm Stormbreaker replicas, 42cm ABS Anime Katanas, and high-detail anime statues for serious collectors.
-                    </p>
-                </div>
-                <div class="relative z-10 pt-6">
-                    <a href="#catalog" onclick="filterCatalog('anime')" class="text-xs uppercase tracking-widest text-gold font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
-                        Enter Anime Vault <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Pillar 3: Custom DTF & T-Shirt Printing (5 cols) -->
-            <div class="md:col-span-5 gold-card rounded-3xl p-8 sm:p-10 relative overflow-hidden group min-h-[300px] flex flex-col justify-between">
-                <div class="relative z-10">
-                    <span class="px-3 py-1 rounded-full bg-gold/15 border border-gold/30 text-gold text-xs font-mono">03 / #DTF APPAREL LAB</span>
-                    <h3 class="font-serif text-3xl text-alabaster mt-5">Customised T-Shirt & DTF Printing</h3>
-                    <p class="text-sm text-alabaster/70 mt-3 leading-relaxed">
-                        Ultra-vibrant Direct-to-Film (DTF) custom printing on premium cotton & oversized tees. Bring your own artwork, anime graphics, or brand logo.
-                    </p>
-                </div>
-                <div class="relative z-10 pt-6">
-                    <a href="#custom-studio" class="text-xs uppercase tracking-widest text-gold font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
-                        Customize Apparel <i class="fa-solid fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Pillar 4: Mug Print & Personalized Gifts (7 cols) -->
-            <div class="md:col-span-7 gold-card rounded-3xl p-8 sm:p-10 relative overflow-hidden group min-h-[300px] flex flex-col justify-between">
-                <div class="relative z-10">
-                    <span class="px-3 py-1 rounded-full bg-gold/15 border border-gold/30 text-gold text-xs font-mono">04 / BESPOKE GIFT STUDIO</span>
-                    <h3 class="font-serif text-3xl sm:text-4xl text-alabaster mt-5">Mug Print, Photo Frames & Gift Printing</h3>
-                    <p class="text-sm text-alabaster/70 mt-3 max-w-xl leading-relaxed">
-                        Turn cherished memories into timeless keepsakes. Custom coffee & magic mugs, LED acrylic frames, cushions, keychains, and curated birthday or anniversary hampers.
-                    </p>
-                </div>
-                <div class="relative z-10 pt-6 flex flex-wrap gap-3">
-                    <span class="px-3 py-1 rounded-lg bg-white/5 text-xs text-alabaster/80">Ceramic & Magic Mugs</span>
-                    <span class="px-3 py-1 rounded-lg bg-white/5 text-xs text-alabaster/80">LED Photo Frames</span>
-                    <span class="px-3 py-1 rounded-lg bg-white/5 text-xs text-alabaster/80">Corporate Gifting</span>
+                <div class="scroll-down">
+                    SCROLL DOWN
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SIGNATURE PRODUCT CATALOG (WITH REAL INSTAGRAM SPECS) -->
-    <section id="catalog" class="py-24 bg-espresso/60 border-y border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+    <!-- 4-ICON LUXURY STRIP -->
+    <section class="features-strip">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-archway"></i></div>
+                    <h3>Luxury Home Decor</h3>
+                    <p>Divine spiritual idols, designer lamps, and statement wall pieces.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-khanda"></i></div>
+                    <h3>Anime Action Figures</h3>
+                    <p>Collectible statues, 42cm katanas, and life-size superhero replicas.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-solid fa-shirt"></i></div>
+                    <h3>Custom DTF Printing</h3>
+                    <p>High-definition customized T-shirts and vibrant apparel printing.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fa-regular fa-gem"></i></div>
+                    <h3>Personalized Gifts</h3>
+                    <p>Custom mug printing, photo frames, and curated gift hampers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION (TEXT LEFT + 3-IMAGE BENTO GRID RIGHT) -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <span class="overline">ABOUT DONUM GALLERY</span>
+                    <h2 class="section-title">Crafted for <span>Every</span> Special Moment</h2>
+                    <p>
+                        Donum Gallery is more than a gift shop—it is a destination for refined living and personal expression. From white-and-gold divine Krishna Ji idols to precision anime collectibles and custom DTF printing, every item is selected with attention to detail in one of Sirsa's most welcoming boutiques.
+                    </p>
+                    <a href="https://wa.me/919718699998" target="_blank" class="btn-outline-pill">
+                        Know More <span>&rarr;</span>
+                    </a>
+                </div>
+
+                <div class="bento-gallery">
+                    <div class="bento-item large">
+                        <img src="https://images.unsplash.com/photo-1609619385002-f40f1df9b7eb?auto=format&fit=crop&w=1000&q=85" alt="Divine Idols & Luxury Decor">
+                    </div>
+                    <div class="bento-item">
+                        <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80" alt="Anime Collectibles & Katanas">
+                    </div>
+                    <div class="bento-item">
+                        <img src="https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80" alt="Home Decor & Lamps">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CURATED COLLECTIONS -->
+    <section id="collections" class="collections-section">
+        <div class="container">
+            <div class="section-header">
                 <div>
-                    <span class="text-xs font-mono uppercase tracking-[0.25em] text-gold block mb-3">From @donum_gallery Feed</span>
-                    <h2 class="font-serif text-4xl sm:text-5xl text-alabaster">Signature <span class="italic text-gold">Showpieces</span></h2>
+                    <span class="overline">OUR OFFERINGS</span>
+                    <h2 class="section-title" style="margin-bottom: 0;">Signature <span>Collections</span></h2>
                 </div>
-
-                <!-- Filter Tabs -->
-                <div class="flex flex-wrap gap-2" id="catalog-filters">
-                    <button onclick="filterCatalog('all')" data-filter="all" class="filter-btn active px-5 py-2 rounded-full text-xs uppercase tracking-wider font-semibold bg-gold text-obsidian transition-all">All Items</button>
-                    <button onclick="filterCatalog('decor')" data-filter="decor" class="filter-btn px-5 py-2 rounded-full text-xs uppercase tracking-wider font-semibold border border-gold/30 text-alabaster/80 hover:border-gold transition-all">Home Decor & Idols</button>
-                    <button onclick="filterCatalog('anime')" data-filter="anime" class="filter-btn px-5 py-2 rounded-full text-xs uppercase tracking-wider font-semibold border border-gold/30 text-alabaster/80 hover:border-gold transition-all">Anime & Weapons</button>
-                    <button onclick="filterCatalog('custom')" data-filter="custom" class="filter-btn px-5 py-2 rounded-full text-xs uppercase tracking-wider font-semibold border border-gold/30 text-alabaster/80 hover:border-gold transition-all">Custom Print</button>
-                </div>
+                <a href="https://www.instagram.com/donum_gallery/" target="_blank" class="btn-outline-pill">
+                    See Full Catalog <span>&rarr;</span>
+                </a>
             </div>
 
-            <!-- Product Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid">
-                
-                <!-- Product 1: Krishana Ji Idol -->
-                <div class="product-card gold-card rounded-3xl overflow-hidden flex flex-col justify-between" data-category="decor">
-                    <div>
-                        <div class="relative h-72 overflow-hidden bg-walnut">
-                            <img src="https://images.unsplash.com/photo-1609619385002-f40f1df9b7eb?auto=format&fit=crop&w=800&q=85" alt="Divine Krishana Ji Idol" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-obsidian/85 backdrop-blur-md border border-gold/40 text-gold font-mono text-[11px]">
-                                Art No: DG-KRISH-0208
-                            </span>
-                            <span class="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-gold text-obsidian font-bold text-[10px] uppercase tracking-wider">
-                                Bestseller
-                            </span>
-                        </div>
-                        <div class="p-6">
-                            <div class="text-xs font-mono text-gold/80 uppercase">Divine Home Decor</div>
-                            <h3 class="font-serif text-2xl text-alabaster mt-1">Exquisite Krishana Ji Idol</h3>
-                            <p class="text-xs text-alabaster/65 mt-2 leading-relaxed">
-                                A divine symbol of love, peace, and harmony. Beautifully crafted with fine detailing and a premium finish for your home or sacred gifting.
-                            </p>
-                            <!-- Authentic Specs Table -->
-                            <div class="mt-4 pt-4 border-t border-white/10 grid grid-cols-2 gap-2 text-xs font-mono">
-                                <div class="bg-obsidian/50 p-2 rounded border border-white/5">
-                                    <span class="text-alabaster/40 block text-[10px]">COLOR / FINISH</span>
-                                    <span class="text-gold-light">White / Golden</span>
-                                </div>
-                                <div class="bg-obsidian/50 p-2 rounded border border-white/5">
-                                    <span class="text-alabaster/40 block text-[10px]">HEIGHT / SIZE</span>
-                                    <span class="text-gold-light">20 Inches (20")</span>
-                                </div>
-                            </div>
-                        </div>
+            <div class="collections-grid">
+                <!-- Card 1 -->
+                <div class="collection-card">
+                    <div class="collection-img">
+                        <img src="https://images.unsplash.com/photo-1609619385002-f40f1df9b7eb?auto=format&fit=crop&w=800&q=80" alt="Divine Idols & Home Decor">
                     </div>
-                    <div class="px-6 pb-6">
-                        <a href="https://wa.me/919718699998?text=Hi%20Donum%20Gallery!%20I%20want%20to%20inquire%20about%20the%20Krishana%20Ji%20Idol%20(Article%20No:%20DG-KRISH-0208,%2020%20inch%20White/Golden)." target="_blank" rel="noopener" class="w-full py-3 rounded-xl bg-gold/15 hover:bg-gold text-gold hover:text-obsidian border border-gold/40 font-semibold text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2">
-                            <i class="fa-brands fa-whatsapp text-base"></i> Inquire Price & Availability
+                    <div class="collection-body">
+                        <div>
+                            <span class="collection-tag">01 / Home Decor</span>
+                            <h3>Divine Idols & Artifacts</h3>
+                            <p>20" White & Golden Krishna Ji idols, designer table lamps, and luxury wall clocks.</p>
+                        </div>
+                        <a href="https://wa.me/919718699998?text=Hi%20Donum%20Gallery,%20I%20want%20to%20inquire%20about%20Home%20Decor%20and%20Divine%20Idols." target="_blank" class="collection-link">
+                            Inquire Now <span>&rarr;</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- Product 2: 72cm Stormbreaker Replica -->
-                <div class="product-card gold-card rounded-3xl overflow-hidden flex flex-col justify-between" data-category="anime">
-                    <div>
-                        <div class="relative h-72 overflow-hidden bg-walnut">
-                            <img src="https://images.unsplash.com/photo-1608889175123-8ee362201f81?auto=format&fit=crop&w=800&q=85" alt="72cm Stormbreaker Replica" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-obsidian/85 backdrop-blur-md border border-gold/40 text-gold font-mono text-[11px]">
-                                72 CM LIFE-SIZE
-                            </span>
-                        </div>
-                        <div class="p-6">
-                            <div class="text-xs font-mono text-gold/80 uppercase">Marvel & Anime Vault</div>
-                            <h3 class="font-serif text-2xl text-alabaster mt-1">Stormbreaker Battle Axe Replica</h3>
-                            <p class="text-xs text-alabaster/65 mt-2 leading-relaxed">
-                                High-density collector's replica featuring realistic metallic texture and detailed root-style handle grip. Durable and lightweight for wall mounting or cosplay.
-                            </p>
-                            <!-- Authentic Specs Table -->
-                            <div class="mt-4 pt-4 border-t border-white/10 grid grid-cols-3 gap-2 text-xs font-mono">
-                                <div class="bg-obsidian/50 p-2 rounded border border-white/5">
-                                    <span class="text-alabaster/40 block text-[10px]">LENGTH</span>
-                                    <span class="text-gold-light">72 cm</span>
-                                </div>
-                                <div class="bg-obsidian/50 p-2 rounded border border-white/5">
-                                    <span class="text-alabaster/40 block text-[10px]">WEIGHT</span>
-                                    <span class="text-gold-light">440 g</span>
-                                </div>
-                                <div class="bg-obsidian/50 p-2 rounded border border-white/5">
-                                    <span class="text-alabaster/40 block text-[10px]">MATERIAL</span>
-                                    <span class="text-gold-light">High-Grade PU</span>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Card 2 -->
+                <div class="collection-card">
+                    <div class="collection-img">
+                        <img src="https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80" alt="Anime Action Figures">
                     </div>
-                    <div class="px-6 pb-6">
-                        <a href="https://wa.me/919718699998?text=Hi%20Donum%20Gallery!%20I%20want%20to%20inquire%20about%20the%2072cm%20Stormbreaker%20Replica%20(440g%20PU)." target="_blank" rel="noopener" class="w-full py-3 rounded-xl bg-gold/15 hover:bg-gold text-gold hover:text-obsidian border border-gold/40 font-semibold text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2">
-                            <i class="fa-brands fa-whatsapp text-base"></i> Inquire Price & Availability
+                    <div class="collection-body">
+                        <div>
+                            <span class="collection-tag">02 / Collectibles</span>
+                            <h3>Anime Figures & Katanas</h3>
+                            <p>Premium anime action figures, 42cm display katanas, and 72cm Stormbreaker replicas.</p>
+                        </div>
+                        <a href="https://wa.me/919718699998?text=Hi%20Donum%20Gallery,%20I%20want%20to%20inquire%20about%20Anime%20Action%20Figures%20and%20Katanas." target="_blank" class="collection-link">
+                            Inquire Now <span>&rarr;</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- Product 3: 42cm Anime Katana -->
-                <div class="product-card gold-card rounded-3xl overflow-hidden flex flex-col justify-between" data-category="anime">
-                    <div>
-                        <div class="relative h-72 overflow-hidden bg-walnut">
-                            <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=85" alt="42cm Anime Katana" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-obsidian/85 backdrop-blur-md border border-gold/40 text-gold font-mono text-[11px]">
-                                ANIME COLLECTIBLE
-                            </span>
-                        </div>
-                        <div class="p-6">
-                            <div class="text-xs font-mono text-gold/80 uppercase">Anime Action Figures & Props</div>
-                            <h3 class="font-serif text-2xl text-alabaster mt-1">42cm Anime Display Katana</h3>
-                            <p class="text-xs text-alabaster/65 mt-2 leading-relaxed">
-                                Precision-molded anime katana sword with intricate hilt guard and scabbard. Ideal for desk display, gaming setups, and anime lovers.
-                            </p>
-                            <!-- Authentic Specs Table -->
-                            <div class="mt-4 pt-4 border-t border-white/10 grid grid-cols-3 gap-2 text-xs font-mono">
-                                <div class="bg-obsidian/50 p-2 rounded border border-white/5">
-                                    <span class="text-alabaster/40 block text-[10px]">DIMENSIONS</span>
-                                    <span class="text-gold-light">42×28×13 cm</span>
-                                </div>
-                                <div class="bg-obsidian/50 p-2 rounded border border-white/5">
-                                    <span class="text-alabaster/40 block text-[10px]">MATERIAL</span>
-                                    <span class="text-gold-light">ABS Plastic</span>
-                                </div>
-                                <div class="bg-obsidian/50 p-2 rounded border border-white/5">
-                                    <span class="text-alabaster/40 block text-[10px]">PACKAGING</span>
-                                    <span class="text-gold-light">Collector Box</span>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Card 3 -->
+                <div class="collection-card">
+                    <div class="collection-img">
+                        <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80" alt="Custom T-Shirt Printing">
                     </div>
-                    <div class="px-6 pb-6">
-                        <a href="https://wa.me/919718699998?text=Hi%20Donum%20Gallery!%20I%20want%20to%20inquire%20about%20the%2042cm%20Anime%20Katana%20Collectible." target="_blank" rel="noopener" class="w-full py-3 rounded-xl bg-gold/15 hover:bg-gold text-gold hover:text-obsidian border border-gold/40 font-semibold text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2">
-                            <i class="fa-brands fa-whatsapp text-base"></i> Inquire Price & Availability
+                    <div class="collection-body">
+                        <div>
+                            <span class="collection-tag">03 / #DTF Studio</span>
+                            <h3>Custom T-Shirt Printing</h3>
+                            <p>Vibrant Direct-to-Film (DTF) custom graphic printing on premium quality T-shirts.</p>
+                        </div>
+                        <a href="https://wa.me/919718699998?text=Hi%20Donum%20Gallery,%20I%20want%20to%20order%20a%20Custom%20Printed%20T-Shirt." target="_blank" class="collection-link">
+                            Inquire Now <span>&rarr;</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- Product 4: Custom DTF Printed Oversized Tees -->
-                <div class="product-card gold-card rounded-3xl overflow-hidden flex flex-col justify-between" data-category="custom">
-                    <div>
-                        <div class="relative h-72 overflow-hidden bg-walnut">
-                            <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=800&q=85" alt="Custom DTF T-Shirt Printing" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-obsidian/85 backdrop-blur-md border border-gold/40 text-gold font-mono text-[11px]">
-                                #DTF CUSTOM PRINT
-                            </span>
-                        </div>
-                        <div class="p-6">
-                            <div class="text-xs font-mono text-gold/80 uppercase">Custom Apparel Studio</div>
-                            <h3 class="font-serif text-2xl text-alabaster mt-1">Bespoke DTF Printed T-Shirts</h3>
-                            <p class="text-xs text-alabaster/65 mt-2 leading-relaxed">
-                                High-definition, crack-resistant Direct-To-Film printing on heavy GSM cotton tees. Print custom anime art, couple designs, or team branding.
-                            </p>
-                            <div class="mt-4 pt-4 border-t border-white/10 grid grid-cols-2 gap-2 text-xs font-mono">
-                                <div class="bg-obsidian/50 p-2 rounded border border-white/5">
-                                    <span class="text-alabaster/40 block text-[10px]">TECHNIQUE</span>
-                                    <span class="text-gold-light">Full-Color HD DTF</span>
-                                </div>
-                                <div class="bg-obsidian/50 p-2 rounded border border-white/5">
-                                    <span class="text-alabaster/40 block text-[10px]">MOQ</span>
-                                    <span class="text-gold-light">Single & Bulk Orders</span>
-                                </div>
-                            </div>
-                        </div>
+                <!-- Card 4 -->
+                <div class="collection-card">
+                    <div class="collection-img">
+                        <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=800&q=80" alt="Mug & Gift Printing">
                     </div>
-                    <div class="px-6 pb-6">
-                        <a href="#custom-studio" class="w-full py-3 rounded-xl bg-gold/15 hover:bg-gold text-gold hover:text-obsidian border border-gold/40 font-semibold text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-sliders"></i> Design in Studio Below
+                    <div class="collection-body">
+                        <div>
+                            <span class="collection-tag">04 / Bespoke Gifts</span>
+                            <h3>Mug & Gift Printing</h3>
+                            <p>Personalized ceramic mugs, magic mugs, LED photo frames, and custom gift sets.</p>
+                        </div>
+                        <a href="https://wa.me/919718699998?text=Hi%20Donum%20Gallery,%20I%20want%20to%20order%20a%20Customized%20Mug%20or%20Personalized%20Gift." target="_blank" class="collection-link">
+                            Inquire Now <span>&rarr;</span>
                         </a>
                     </div>
                 </div>
-
-                <!-- Product 5: Personalized Mug & Photo Gifts -->
-                <div class="product-card gold-card rounded-3xl overflow-hidden flex flex-col justify-between" data-category="custom">
-                    <div>
-                        <div class="relative h-72 overflow-hidden bg-walnut">
-                            <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=800&q=85" alt="Personalized Mug Printing" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-obsidian/85 backdrop-blur-md border border-gold/40 text-gold font-mono text-[11px]">
-                                SAME-DAY GIFTING
-                            </span>
-                        </div>
-                        <div class="p-6">
-                            <div class="text-xs font-mono text-gold/80 uppercase">Personalized Keepsakes</div>
-                            <h3 class="font-serif text-2xl text-alabaster mt-1">Custom Mug & Sublimation Prints</h3>
-                            <p class="text-xs text-alabaster/65 mt-2 leading-relaxed">
-                                Glossy ceramic mugs, heat-sensitive magic mugs, metallic Sippers, and custom photo plaques printed with fade-proof vibrancy.
-                            </p>
-                            <div class="mt-4 pt-4 border-t border-white/10 grid grid-cols-2 gap-2 text-xs font-mono">
-                                <div class="bg-obsidian/50 p-2 rounded border border-white/5">
-                                    <span class="text-alabaster/40 block text-[10px]">OPTIONS</span>
-                                    <span class="text-gold-light">White / Magic / Gold</span>
-                                </div>
-                                <div class="bg-obsidian/50 p-2 rounded border border-white/5">
-                                    <span class="text-alabaster/40 block text-[10px]">CUSTOMIZATION</span>
-                                    <span class="text-gold-light">Photos, Names & Quotes</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="px-6 pb-6">
-                        <a href="https://wa.me/919718699998?text=Hi%20Donum%20Gallery!%20I%20would%20like%20to%20order%20a%20Customized%20Mug%20/%20Photo%20Gift." target="_blank" rel="noopener" class="w-full py-3 rounded-xl bg-gold/15 hover:bg-gold text-gold hover:text-obsidian border border-gold/40 font-semibold text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2">
-                            <i class="fa-brands fa-whatsapp text-base"></i> Order Custom Mug
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Product 6: Luxury Table Lamps & Clocks -->
-                <div class="product-card gold-card rounded-3xl overflow-hidden flex flex-col justify-between" data-category="decor">
-                    <div>
-                        <div class="relative h-72 overflow-hidden bg-walnut">
-                            <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=85" alt="Luxury Lamps & Clocks" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
-                            <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-obsidian/85 backdrop-blur-md border border-gold/40 text-gold font-mono text-[11px]">
-                                IN-STORE EXCLUSIVE
-                            </span>
-                        </div>
-                        <div class="p-6">
-                            <div class="text-xs font-mono text-gold/80 uppercase">Architectural Accents</div>
-                            <h3 class="font-serif text-2xl text-alabaster mt-1">Designer Lamps, Clocks & Sculptures</h3>
-                            <p class="text-xs text-alabaster/65 mt-2 leading-relaxed">
-                                Handpicked table lamps, vintage-modern gears wall clocks, Buddha fountains, and metallic artifacts displayed across our illuminated boutique shelves.
-                            </p>
-                            <div class="mt-4 pt-4 border-t border-white/10 grid grid-cols-2 gap-2 text-xs font-mono">
-                                <div class="bg-obsidian/50 p-2 rounded border border-white/5">
-                                    <span class="text-alabaster/40 block text-[10px]">IDEAL FOR</span>
-                                    <span class="text-gold-light">Housewarming & Weddings</span>
-                                </div>
-                                <div class="bg-obsidian/50 p-2 rounded border border-white/5">
-                                    <span class="text-alabaster/40 block text-[10px]">DELIVERY</span>
-                                    <span class="text-gold-light">Available in Sirsa</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="px-6 pb-6">
-                        <a href="https://wa.me/919718699998?text=Hi%20Donum%20Gallery!%20I%20want%20to%20explore%20your%20Home%20Decor%20Lamps%20and%20Wall%20Clocks." target="_blank" rel="noopener" class="w-full py-3 rounded-xl bg-gold/15 hover:bg-gold text-gold hover:text-obsidian border border-gold/40 font-semibold text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2">
-                            <i class="fa-brands fa-whatsapp text-base"></i> Request Video Catalogue
-                        </a>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
 
-    <!-- INTERACTIVE CUSTOM GIFT & DTF STUDIO CONFIGURATOR -->
-    <section id="custom-studio" class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="gold-card rounded-3xl p-8 sm:p-12 lg:p-16 border border-gold/30 relative overflow-hidden">
-            <div class="grid lg:grid-cols-12 gap-12 items-center">
-                
-                <!-- Left Form Controls -->
-                <div class="lg:col-span-7 space-y-6">
-                    <div>
-                        <span class="text-xs font-mono uppercase tracking-[0.25em] text-gold block mb-2">Interactive Personalization Lab</span>
-                        <h2 class="font-serif text-3xl sm:text-5xl text-alabaster">Build Your Custom <span class="italic text-gold">Masterpiece</span></h2>
-                        <p class="text-sm text-alabaster/65 mt-2">
-                            Configure your personalized gift or DTF print below and send the exact specification directly to our production desk on WhatsApp.
-                        </p>
-                    </div>
-
-                    <!-- Step 1: Select Item -->
-                    <div>
-                        <label class="block text-xs font-mono uppercase tracking-wider text-gold mb-3">1. Select Product Canvas</label>
-                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3" id="canvas-options">
-                            <button type="button" onclick="setCustomItem('Custom DTF T-Shirt', 'fa-shirt')" class="custom-item-btn active p-3.5 rounded-2xl border border-gold bg-gold/15 text-left transition-all">
-                                <i class="fa-solid fa-shirt text-gold text-lg mb-1.5 block"></i>
-                                <span class="text-xs font-semibold block text-alabaster">DTF T-Shirt</span>
-                                <span class="text-[10px] text-alabaster/55">Front / Back Print</span>
-                            </button>
-                            <button type="button" onclick="setCustomItem('Personalized Mug', 'fa-mug-hot')" class="custom-item-btn p-3.5 rounded-2xl border border-white/10 bg-obsidian/50 hover:border-gold/40 text-left transition-all">
-                                <i class="fa-solid fa-mug-hot text-gold text-lg mb-1.5 block"></i>
-                                <span class="text-xs font-semibold block text-alabaster">Custom Mug</span>
-                                <span class="text-[10px] text-alabaster/55">Ceramic / Magic</span>
-                            </button>
-                            <button type="button" onclick="setCustomItem('LED Acrylic Photo Frame', 'fa-image')" class="custom-item-btn p-3.5 rounded-2xl border border-white/10 bg-obsidian/50 hover:border-gold/40 text-left transition-all">
-                                <i class="fa-solid fa-image text-gold text-lg mb-1.5 block"></i>
-                                <span class="text-xs font-semibold block text-alabaster">LED Frame</span>
-                                <span class="text-[10px] text-alabaster/55">Engraved / Glow</span>
-                            </button>
-                            <button type="button" onclick="setCustomItem('Luxury Gift Hamper', 'fa-gift')" class="custom-item-btn p-3.5 rounded-2xl border border-white/10 bg-obsidian/50 hover:border-gold/40 text-left transition-all">
-                                <i class="fa-solid fa-gift text-gold text-lg mb-1.5 block"></i>
-                                <span class="text-xs font-semibold block text-alabaster">Gift Box</span>
-                                <span class="text-[10px] text-alabaster/55">Curated Combo</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Step 2: Custom Text & Theme -->
-                    <div class="grid sm:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-xs font-mono uppercase tracking-wider text-alabaster/70 mb-2">2. Name / Text to Print</label>
-                            <input type="text" id="custom-text-input" oninput="updatePreview()" placeholder="e.g., Happy Anniversary / Goku Gear 5" class="w-full px-4 py-3 rounded-xl bg-obsidian border border-white/15 focus:border-gold focus:outline-none text-sm text-alabaster">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-mono uppercase tracking-wider text-alabaster/70 mb-2">3. Style / Finish Preference</label>
-                            <select id="custom-style-input" onchange="updatePreview()" class="w-full px-4 py-3 rounded-xl bg-obsidian border border-white/15 focus:border-gold focus:outline-none text-sm text-alabaster">
-                                <option value="Full-Color HD DTF Print">Full-Color HD DTF Print</option>
-                                <option value="Metallic Gold & Black Luxury">Metallic Gold & Black Luxury</option>
-                                <option value="Anime / Manga Custom Graphic">Anime / Manga Custom Graphic</option>
-                                <option value="Photo Collage + Custom Quote">Photo Collage + Custom Quote</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <!-- Step 3: Launch WhatsApp Order -->
-                    <div class="pt-2">
-                        <button type="button" onclick="sendCustomWhatsApp()" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-gold-light via-gold to-gold-muted text-obsidian font-bold text-xs sm:text-sm uppercase tracking-wider hover:brightness-110 transition-all shadow-xl shadow-gold/20 flex items-center justify-center gap-3">
-                            <i class="fa-brands fa-whatsapp text-lg"></i>
-                            <span>Send Custom Brief to Donum Gallery</span>
-                        </button>
-                    </div>
+    <!-- LOCATION & CONTACT SECTION -->
+    <section id="location" class="section-padding">
+        <div class="container">
+            <div class="location-grid">
+                <div class="map-wrapper">
+                    <iframe 
+                        title="Donum Gallery Sirsa Map"
+                        src="https://maps.google.com/maps?q=29.5401752,75.0506651&hl=en&z=17&output=embed" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
 
-                <!-- Right Live Visual Preview Card -->
-                <div class="lg:col-span-5">
-                    <div class="rounded-3xl bg-obsidian border border-gold/40 p-8 text-center relative shadow-2xl">
-                        <span class="text-[10px] font-mono uppercase tracking-[0.25em] text-gold/70 block mb-4">Live Specification Ticket</span>
-                        
-                        <div class="w-20 h-20 rounded-2xl bg-gold/10 border border-gold/30 flex items-center justify-center mx-auto mb-5 text-gold text-3xl">
-                            <i id="preview-icon" class="fa-solid fa-shirt"></i>
-                        </div>
+                <div>
+                    <span class="overline">FIND US</span>
+                    <h2 class="section-title">Visit Our <span>Boutique</span></h2>
+                    <p style="font-size: 15px; color: var(--text-muted); font-weight: 300;">
+                        Located in New Ajay Vihar, Donum Gallery welcomes you to explore our curated shelves in person or order custom gifts directly via WhatsApp with local delivery available.
+                    </p>
 
-                        <h4 id="preview-item-title" class="font-serif text-3xl text-alabaster">Custom DTF T-Shirt</h4>
-                        <p id="preview-style-badge" class="text-xs font-mono text-gold mt-1">Full-Color HD DTF Print</p>
-
-                        <div class="my-6 p-4 rounded-2xl bg-walnut/80 border border-white/10 min-h-[80px] flex flex-col items-center justify-center">
-                            <span class="text-[10px] uppercase tracking-widest text-alabaster/40 mb-1">Custom Imprint Preview</span>
-                            <p id="preview-custom-text" class="font-serif italic text-xl text-gold-light">"Your Custom Text or Artwork Here"</p>
-                        </div>
-
-                        <div class="flex items-center justify-between text-[11px] font-mono text-alabaster/50 pt-4 border-t border-white/10">
-                            <span>STUDIO: DONUM GALLERY SIRSA</span>
-                            <span>DIRECT WA: 97186-99998</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- FLAGSHIP STOREFRONT & GOOGLE MAP SECTION -->
-    <section id="storefront" class="py-24 bg-espresso border-t border-white/5">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid lg:grid-cols-12 gap-12 items-stretch">
-                
-                <!-- Store Information Card -->
-                <div class="lg:col-span-5 flex flex-col justify-between space-y-8">
-                    <div>
-                        <span class="text-xs font-mono uppercase tracking-[0.25em] text-gold block mb-3">Visit Our Boutique in Sirsa</span>
-                        <h2 class="font-serif text-4xl sm:text-5xl text-alabaster">Experience the <span class="italic text-gold">Gallery</span> in Person</h2>
-                        <p class="text-sm text-alabaster/65 mt-4 leading-relaxed">
-                            Step inside our warm wood-and-glass flagship storefront in New Ajay Vihar to explore hundreds of illuminated display shelves featuring luxury idols, collectibles, and live customization samples.
-                        </p>
-                    </div>
-
-                    <!-- Contact Details List -->
-                    <div class="space-y-5">
-                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-walnut/60 border border-white/5">
-                            <div class="w-10 h-10 rounded-xl bg-gold/15 border border-gold/30 flex items-center justify-center text-gold shrink-0 mt-0.5">
-                                <i class="fa-solid fa-location-dot"></i>
-                            </div>
+                    <div class="info-list">
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
                             <div>
-                                <h4 class="text-xs font-mono uppercase tracking-wider text-gold">Store Address</h4>
-                                <p class="text-sm text-alabaster mt-1">Donum Gallery, Shop No. 7, New Ajay Vihar, near Loh Pizza, Sirsa, Haryana 125055</p>
-                                <p class="text-xs font-mono text-alabaster/50 mt-1">Plus Code: G3R3+37 Sirsa, Haryana</p>
+                                <h4>Address</h4>
+                                <p>Shop No. 7, New Ajay Vihar, near Loh Pizza,<br>Sirsa, Haryana 125055</p>
                             </div>
                         </div>
 
-                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-walnut/60 border border-white/5">
-                            <div class="w-10 h-10 rounded-xl bg-gold/15 border border-gold/30 flex items-center justify-center text-gold shrink-0 mt-0.5">
-                                <i class="fa-solid fa-phone-volume"></i>
-                            </div>
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
                             <div>
-                                <h4 class="text-xs font-mono uppercase tracking-wider text-gold">Direct Contact & Hours</h4>
-                                <p class="text-sm text-alabaster mt-1 font-mono">+91 97186 99998 / 097186 99998</p>
-                                <p class="text-xs text-emerald-400 mt-1">Open Daily · Closes 9:00 PM (Delivery Available)</p>
+                                <h4>Phone & WhatsApp</h4>
+                                <p>+91 97186 99998</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon"><i class="fa-regular fa-clock"></i></div>
+                            <div>
+                                <h4>Opening Hours</h4>
+                                <p>Open Daily &middot; Closes at 9:00 PM (5.0 &#9733; Google Rated)</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Direct Map & Social Buttons -->
-                    <div class="flex flex-wrap gap-3 pt-2">
-                        <a href="https://www.google.com/maps/search/?api=1&query=29.5401752,75.0506651" target="_blank" rel="noopener" class="px-6 py-3.5 rounded-full bg-gold text-obsidian font-semibold text-xs uppercase tracking-wider hover:bg-gold-light transition-all flex items-center gap-2">
-                            <i class="fa-solid fa-diamond-turn-right"></i> Get Directions
+                    <div style="margin-top: 36px; display: flex; gap: 16px; flex-wrap: wrap;">
+                        <a href="https://wa.me/919718699998" target="_blank" class="btn-gold-pill">
+                            <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
                         </a>
-                        <a href="https://www.instagram.com/donum_gallery/" target="_blank" rel="noopener" class="px-6 py-3.5 rounded-full border border-gold/30 text-alabaster hover:border-gold text-xs uppercase tracking-wider transition-all flex items-center gap-2">
-                            <i class="fa-brands fa-instagram text-gold"></i> @donum_gallery
+                        <a href="https://www.google.com/maps/search/?api=1&query=29.5401752,75.0506651" target="_blank" class="btn-outline-pill">
+                            Get Directions <span>&rarr;</span>
                         </a>
                     </div>
                 </div>
-
-                <!-- Working Google Maps Embed -->
-                <div class="lg:col-span-7">
-                    <div class="gold-card rounded-3xl p-3 h-full min-h-[420px] flex flex-col">
-                        <div class="relative w-full h-full flex-1 rounded-2xl overflow-hidden bg-obsidian">
-                            <iframe 
-                                title="Donum Gallery Sirsa Location Map"
-                                src="https://maps.google.com/maps?q=29.5401752,75.0506651&hl=en&z=17&output=embed" 
-                                class="w-full h-full min-h-[400px] border-0"
-                                style="filter: invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%);"
-                                allowfullscreen="" 
-                                loading="lazy" 
-                                referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-obsidian border-t border-gold/20 py-14">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-sm bg-gold rotate-45 flex items-center justify-center">
-                    <span class="-rotate-45 font-serif font-bold text-obsidian text-xs">DG</span>
-                </div>
-                <span class="font-serif text-xl tracking-wider text-alabaster">DONUM GALLERY</span>
-            </div>
-            <p class="text-xs text-alabaster/50 text-center">
-                © 2026 Donum Gallery · Shop No. 7, New Ajay Vihar, Near Loh Pizza, Sirsa (HR) · +91-9718699998
-            </p>
-            <div class="flex items-center gap-4 text-sm">
-                <a href="https://www.instagram.com/donum_gallery/" target="_blank" rel="noopener" class="text-alabaster/60 hover:text-gold transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://wa.me/919718699998" target="_blank" rel="noopener" class="text-alabaster/60 hover:text-gold transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
-                <a href="tel:+919718699998" class="text-alabaster/60 hover:text-gold transition-colors"><i class="fa-solid fa-phone"></i></a>
+    <footer>
+        <div class="container footer-inner">
+            <div class="logo" style="font-size: 20px;">DONUM GALLERY</div>
+            <p>&copy; 2026 Donum Gallery, Sirsa. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/donum_gallery/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/919718699998" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="tel:+919718699998" title="Call Us"><i class="fa-solid fa-phone"></i></a>
             </div>
         </div>
     </footer>
 
-    <!-- INTERACTIVE SCRIPTS -->
-    <script>
-        // 1. Product Catalog Filtering
-        function filterCatalog(category) {
-            const cards = document.querySelectorAll('.product-card');
-            const buttons = document.querySelectorAll('.filter-btn');
-
-            buttons.forEach(btn => {
-                if (btn.dataset.filter === category) {
-                    btn.classList.add('bg-gold', 'text-obsidian');
-                    btn.classList.remove('border', 'border-gold/30', 'text-alabaster/80');
-                } else {
-                    btn.classList.remove('bg-gold', 'text-obsidian');
-                    btn.classList.add('border', 'border-gold/30', 'text-alabaster/80');
-                }
-            });
-
-            cards.forEach(card => {
-                if (category === 'all' || card.dataset.category === category) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        // 2. Interactive Customizer State
-        let selectedItemName = 'Custom DTF T-Shirt';
-
-        function setCustomItem(itemName, iconClass) {
-            selectedItemName = itemName;
-            document.getElementById('preview-item-title').textContent = itemName;
-            document.getElementById('preview-icon').className = `fa-solid ${iconClass}`;
-
-            const buttons = document.querySelectorAll('.custom-item-btn');
-            buttons.forEach(btn => {
-                if (btn.innerText.includes(itemName.split(' ')[1])) {
-                    btn.classList.add('border-gold', 'bg-gold/15');
-                    btn.classList.remove('border-white/10', 'bg-obsidian/50');
-                } else {
-                    btn.classList.remove('border-gold', 'bg-gold/15');
-                    btn.classList.add('border-white/10', 'bg-obsidian/50');
-                }
-            });
-        }
-
-        function updatePreview() {
-            const textInput = document.getElementById('custom-text-input').value.trim();
-            const styleInput = document.getElementById('custom-style-input').value;
-
-            document.getElementById('preview-custom-text').textContent = textInput ? `"${textInput}"` : '"Your Custom Text or Artwork Here"';
-            document.getElementById('preview-style-badge').textContent = styleInput;
-        }
-
-        function sendCustomWhatsApp() {
-            const textInput = document.getElementById('custom-text-input').value.trim() || 'Custom Artwork / Photo';
-            const styleInput = document.getElementById('custom-style-input').value;
-
-            const message = `Hi Donum Gallery! I would like to place a custom order:\n\n• Product: ${selectedItemName}\n• Style/Finish: ${styleInput}\n• Custom Text/Idea: ${textInput}\n\nPlease share the price and process!`;
-            const encodedUrl = `https://wa.me/919718699998?text=${encodeURIComponent(message)}`;
-            window.open(encodedUrl, '_blank');
-        }
-    </script>
 </body>
 </html>
