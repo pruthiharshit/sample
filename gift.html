@@ -12,6 +12,9 @@
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Supabase Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <style>
         :root {
@@ -1739,8 +1742,37 @@
 
     <!-- APPLICATION LOGIC -->
     <script>
-        // 1. Product Catalog Data (Empty array ready for your real listings)
-        const products = [];
+        // 1. Product Catalog Data & Supabase Connection
+        let products = [];
+
+        // Initialize Supabase (REPLACE THESE KEYS)
+        const { createClient } = supabase;
+        const supabaseUrl = 'YOUR_SUPABASE_PROJECT_URL';
+        const supabaseKey = 'YOUR_SUPABASE_ANON_KEY';
+        const _supabase = createClient(supabaseUrl, supabaseKey);
+
+        // Fetch products from the database
+        async function loadProductsFromSupabase() {
+            const { data, error } = await _supabase
+                .from('products')
+                .select('*');
+                
+            if (error) {
+                console.error("Error fetching gifts:", error);
+                // Even if it fails, render the empty placeholder
+                renderProducts([]);
+                return;
+            }
+            
+            products = data || [];
+            
+            // Initialize the UI with the fetched data
+            renderProducts(products);
+            runGiftFinder();
+        }
+
+        // Start the fetch when the page loads
+        loadProductsFromSupabase();
 
         let activeCategory = 'all';
         let bag = [];
@@ -1963,10 +1995,6 @@
                 </div>
             `).join('');
         }
-
-        // Initialize Page
-        renderProducts(products);
-        runGiftFinder();
     </script>
 </body>
 </html>
