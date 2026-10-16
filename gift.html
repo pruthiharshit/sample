@@ -342,24 +342,6 @@
             flex-direction: column;
         }
 
-        .storefront-photo-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            min-height: 540px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .storefront-photo-container img.main-store-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            display: block;
-        }
-
-        /* Authentic Storefront Signboard Replica Overlay (Matches Screenshot 1) */
         .storefront-composite {
             width: 100%;
             height: 100%;
@@ -461,7 +443,7 @@
             color: #fff;
         }
 
-        /* ================= SHOP GIFTS SECTION (SCREENSHOT 2) ================= */
+        /* ================= SHOP GIFTS SECTION ================= */
         .shop-section {
             padding: 76px 0 96px;
         }
@@ -551,7 +533,7 @@
             outline: none;
         }
 
-        /* Product 4-Column Grid */
+        /* Product Grid */
         .product-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -683,7 +665,34 @@
             color: #fff;
         }
 
-        /* ================= PERSONALIZATION LIVE STUDIO (SCREENSHOT 3) ================= */
+        /* Empty State */
+        .catalog-empty-placeholder {
+            grid-column: 1 / -1;
+            padding: 80px 24px;
+            text-align: center;
+            border: 1px dashed var(--border-Mid);
+            background-color: #FAF7F2;
+        }
+
+        .catalog-empty-placeholder i {
+            font-size: 32px;
+            color: var(--accent-copper);
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        .catalog-empty-placeholder h3 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .catalog-empty-placeholder p {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* ================= PERSONALIZATION LIVE STUDIO ================= */
         .custom-studio-section {
             background-color: var(--bg-warm-stone);
             padding: 96px 0;
@@ -891,7 +900,7 @@
             color: var(--text-muted);
         }
 
-        /* ================= OCCASIONS LIST SECTION (SCREENSHOT 4) ================= */
+        /* ================= OCCASIONS LIST SECTION ================= */
         .occasions-section {
             padding: 96px 0;
             background-color: var(--bg-cream);
@@ -988,7 +997,7 @@
             gap: 16px;
         }
 
-        /* ================= GIFT FINDER SECTION (SCREENSHOT 5) ================= */
+        /* ================= GIFT FINDER SECTION ================= */
         .gift-finder-section {
             background-color: var(--bg-sage-tint);
             padding: 96px 0;
@@ -1058,52 +1067,6 @@
         .finder-item-row span.price {
             color: var(--accent-copper);
             font-weight: 500;
-        }
-
-        /* ================= EXTRA SECTION: COLLECTOR'S & DIVINE VAULT ================= */
-        .atelier-spotlight {
-            padding: 96px 0;
-            background-color: var(--bg-cream);
-        }
-
-        .spotlight-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
-            margin-top: 44px;
-        }
-
-        .spotlight-card {
-            background-color: var(--bg-warm-stone);
-            border: 1px solid var(--border-light);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .spotlight-card img {
-            width: 100%;
-            height: 270px;
-            object-fit: cover;
-        }
-
-        .spotlight-body {
-            padding: 28px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .spotlight-body h3 {
-            font-size: 25px;
-            margin: 8px 0 10px;
-        }
-
-        .spotlight-body p {
-            font-size: 13.5px;
-            color: var(--text-body);
-            margin-bottom: 20px;
         }
 
         /* ================= VISIT US / SIRSA BOUTIQUE SECTION ================= */
@@ -1245,9 +1208,6 @@
             .product-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .spotlight-grid {
-                grid-template-columns: 1fr;
-            }
             .studio-card {
                 grid-template-columns: 1fr;
             }
@@ -1293,7 +1253,6 @@
                 <li><a href="#shop-gifts">Shop gifts</a></li>
                 <li><a href="#custom-studio">Personalize</a></li>
                 <li><a href="#gift-finder">Gift finder</a></li>
-                <li><a href="#our-story">Our story</a></li>
                 <li><a href="#visit-us">Visit us</a></li>
             </ul>
 
@@ -1313,9 +1272,8 @@
         </div>
     </header>
 
-    <!-- SPLIT HERO SECTION (SCREENSHOT 1) -->
+    <!-- SPLIT HERO SECTION -->
     <section class="hero-split">
-        <!-- Left Editorial Column -->
         <div class="hero-left">
             <div class="eyebrow">YOUR NEIGHBOURHOOD GIFTING ATELIER</div>
             <h1>
@@ -1343,10 +1301,8 @@
             </div>
         </div>
 
-        <!-- Right Storefront Showcase -->
         <div class="hero-right">
             <div class="storefront-composite">
-                <!-- Authentic Wood Signboard Replica + Fallback to local image if present -->
                 <div class="wood-fascia">
                     <div class="fascia-phone">M. 97186-99998</div>
                     <div class="fascia-diamond">
@@ -1361,7 +1317,6 @@
                     </div>
                 </div>
 
-                <!-- Illuminated Boutique Display Window -->
                 <div class="store-window-display">
                     <img src="donum-gallery-storefront.png" alt="Donum Gallery Storefront" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'">
                     <div class="store-window-overlay">
@@ -1378,11 +1333,10 @@
         </div>
     </section>
 
-    <!-- SHOP GIFTS CATALOG SECTION (SCREENSHOT 2) -->
+    <!-- SHOP GIFTS CATALOG SECTION -->
     <section id="shop-gifts" class="shop-section">
         <div class="container">
             
-            <!-- Filter & Search Bar -->
             <div class="filter-toolbar">
                 <div class="category-pills" id="category-pills">
                     <button class="cat-pill active" onclick="filterProducts('all', this)">All gifts</button>
@@ -1415,20 +1369,19 @@
                 </div>
             </div>
 
-            <!-- 4-Column Product Grid -->
+            <!-- Product Grid (Populated dynamically via JS) -->
             <div class="product-grid" id="product-grid">
-                <!-- Populated dynamically via JS below for instant filtering/sorting -->
+                <!-- Rendered dynamically -->
             </div>
 
         </div>
     </section>
 
-    <!-- PERSONALIZATION LIVE PREVIEW STUDIO (SCREENSHOT 3) -->
+    <!-- PERSONALIZATION LIVE PREVIEW STUDIO -->
     <section id="custom-studio" class="custom-studio-section">
         <div class="container">
             <div class="studio-grid">
                 
-                <!-- Left Editorial Pitch -->
                 <div class="studio-copy">
                     <span class="sub-eyebrow">A GIFT, YOUR WAY</span>
                     <h2>
@@ -1445,9 +1398,7 @@
                     </div>
                 </div>
 
-                <!-- Right White Interactive Studio Card -->
                 <div class="studio-card">
-                    <!-- Left Form Inputs -->
                     <div>
                         <div class="form-group">
                             <label>What should we call it?</label>
@@ -1502,7 +1453,6 @@
                         </p>
                     </div>
 
-                    <!-- Right Live Demo Preview -->
                     <div class="preview-pane">
                         <div>
                             <div class="preview-header">
@@ -1531,7 +1481,7 @@
         </div>
     </section>
 
-    <!-- FOR EVERY REASON TO CELEBRATE (SCREENSHOT 4) -->
+    <!-- OCCASIONS SECTION -->
     <section class="occasions-section">
         <div class="container">
             <div class="occasions-header">
@@ -1540,7 +1490,6 @@
             </div>
 
             <div class="occasion-list">
-                <!-- 01 -->
                 <div class="occasion-row" onclick="toggleOccasion(this)">
                     <button class="occasion-trigger">
                         <span class="occ-num">01</span>
@@ -1553,7 +1502,6 @@
                     </div>
                 </div>
 
-                <!-- 02 -->
                 <div class="occasion-row" onclick="toggleOccasion(this)">
                     <button class="occasion-trigger">
                         <span class="occ-num">02</span>
@@ -1566,7 +1514,6 @@
                     </div>
                 </div>
 
-                <!-- 03 -->
                 <div class="occasion-row" onclick="toggleOccasion(this)">
                     <button class="occasion-trigger">
                         <span class="occ-num">03</span>
@@ -1574,12 +1521,11 @@
                         <span class="occ-arrow">&#8599;</span>
                     </button>
                     <div class="occasion-drawer">
-                        <span>20" White &amp; Golden Divine Krishana Ji idols, luxury home decor sculptures, designer lamps, and couple hampers.</span>
+                        <span>Divine idols, luxury home decor sculptures, designer lamps, and bespoke couple hampers.</span>
                         <a href="#shop-gifts" class="btn-secondary-light" style="padding:8px 16px; font-size:12px;">Explore Wedding &rarr;</a>
                     </div>
                 </div>
 
-                <!-- 04 -->
                 <div class="occasion-row" onclick="toggleOccasion(this)">
                     <button class="occasion-trigger">
                         <span class="occ-num">04</span>
@@ -1592,7 +1538,6 @@
                     </div>
                 </div>
 
-                <!-- 05 -->
                 <div class="occasion-row" onclick="toggleOccasion(this)">
                     <button class="occasion-trigger">
                         <span class="occ-num">05</span>
@@ -1605,7 +1550,6 @@
                     </div>
                 </div>
 
-                <!-- 06 -->
                 <div class="occasion-row" onclick="toggleOccasion(this)">
                     <button class="occasion-trigger">
                         <span class="occ-num">06</span>
@@ -1621,12 +1565,11 @@
         </div>
     </section>
 
-    <!-- GIFT FINDER SECTION (SCREENSHOT 5) -->
+    <!-- GIFT FINDER SECTION -->
     <section id="gift-finder" class="gift-finder-section">
         <div class="container">
             <div class="finder-grid">
                 
-                <!-- Left Column -->
                 <div class="studio-copy">
                     <span class="sub-eyebrow">A LITTLE HELP FROM US</span>
                     <h2>
@@ -1644,7 +1587,6 @@
                     </div>
                 </div>
 
-                <!-- Right Interactive Finder Card -->
                 <div class="finder-card">
                     <div class="form-group">
                         <label>What's the occasion?</label>
@@ -1680,78 +1622,15 @@
                         Find a few ideas <i class="fa-solid fa-wand-magic-sparkles"></i>
                     </button>
 
-                    <!-- Dynamic Results -->
                     <div class="finder-results">
                         <h4 id="finder-result-heading">For their birthday...</h4>
-                        <p class="sub">A few thoughtful places to begin (click to add to bag):</p>
+                        <p class="sub">A few thoughtful places to begin:</p>
                         <div id="finder-result-list">
-                            <!-- Populated by JS -->
+                            <!-- Populated dynamically -->
                         </div>
                     </div>
                 </div>
 
-            </div>
-        </div>
-    </section>
-
-    <!-- EXTRA SECTION: SIGNATURE ATELIER HIGHLIGHTS (IDOLS, ANIME & DTF) -->
-    <section id="our-story" class="atelier-spotlight">
-        <div class="container">
-            <div style="max-width: 640px;">
-                <span class="eyebrow">BEYOND EVERYDAY KEEPSAKES</span>
-                <h2 style="font-size: clamp(34px, 4vw, 50px); line-height: 1.1;">
-                    Three signature worlds inside <span class="italic-accent">Donum Gallery.</span>
-                </h2>
-            </div>
-
-            <div class="spotlight-grid">
-                <!-- World 1 -->
-                <div class="spotlight-card">
-                    <img src="https://vedanshcraft.com/cdn/shop/files/VB00549-1_result.webp?v=1785415367" alt="Divine Krishana Ji Idols & Home Decor">
-                    <div class="spotlight-body">
-                        <div>
-                            <span class="product-cat-label">01 &middot; SACRED &amp; ARCHITECTURAL DECOR</span>
-                            <h3>Divine Idols &amp; Luxury Decor</h3>
-                            <p>Home to our signature 20" White &amp; Golden Krishana Ji idols (Art. DG-KRISH-0208), statement wall clocks, and warm ambient lamps.</p>
-                        </div>
-                        <button class="add-bag-btn" onclick="addToBag('Divine Krishana Ji 20&quot; Idol', 1899)">
-                            <span>Reserve Idol Inquiry (₹1,899)</span>
-                            <span>+</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- World 2 -->
-                <div class="spotlight-card">
-                    <img src="https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=900&q=80" alt="Anime Action Figures & Collectibles">
-                    <div class="spotlight-body">
-                        <div>
-                            <span class="product-cat-label">02 &middot; POP-CULTURE COLLECTOR VAULT</span>
-                            <h3>Anime Figures, Katanas &amp; Replicas</h3>
-                            <p>Featuring 42cm ABS display Anime Katanas, 72cm life-size Stormbreaker axes (440g PU), and detailed anime character statues.</p>
-                        </div>
-                        <button class="add-bag-btn" onclick="addToBag('42cm Anime Display Katana', 749)">
-                            <span>Add 42cm Katana to bag (₹749)</span>
-                            <span>+</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- World 3 -->
-                <div class="spotlight-card">
-                    <img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=800&q=80" alt="Custom DTF T-Shirt & Mug Printing">
-                    <div class="spotlight-body">
-                        <div>
-                            <span class="product-cat-label">03 &middot; IN-HOUSE #DTF PRINT BAR</span>
-                            <h3>Custom Apparel &amp; Mug Printing</h3>
-                            <p>Bring any design, anime panel, or memory to life on heavy-cotton tees, magic colour-changing mugs, and custom gift sets.</p>
-                        </div>
-                        <button class="add-bag-btn" onclick="addToBag('Custom DTF Printed T-Shirt', 499)">
-                            <span>Add Custom DTF Tee to bag (₹499)</span>
-                            <span>+</span>
-                        </button>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1858,131 +1737,10 @@
         </div>
     </aside>
 
-    <!-- INTERACTIVE APPLICATION LOGIC -->
+    <!-- APPLICATION LOGIC -->
     <script>
-        // 1. Product Catalog Data (Matches Screenshot 2 + Authentic Store Items)
-        const products = [
-            {
-                id: 1,
-                title: "Personalized Wooden Photo Frame",
-                category: "Photo keepsakes",
-                price: 599,
-                rating: "4.9 demo",
-                badge: "BESTSELLER",
-                occasion: ["birthday", "anniversary", "housewarming"],
-                image: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=700&q=80"
-            },
-            {
-                id: 2,
-                title: "Customized Ceramic Mug",
-                category: "Everyday tokens",
-                price: 299,
-                rating: "4.9 demo",
-                badge: "MADE FOR YOU",
-                occasion: ["birthday", "anime"],
-                image: "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=700&q=80"
-            },
-            {
-                id: 3,
-                title: "Engraved Name Keychain",
-                category: "Name & initials",
-                price: 199,
-                rating: "4.9 demo",
-                badge: "UNDER ₹300",
-                occasion: ["birthday", "anime"],
-                image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=700&q=80"
-            },
-            {
-                id: 4,
-                title: "Personalized LED Photo Lamp",
-                category: "Photo keepsakes",
-                price: 899,
-                rating: "4.9 demo",
-                badge: "BESTSELLER",
-                occasion: ["birthday", "anniversary"],
-                image: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=700&q=80"
-            },
-            {
-                id: 5,
-                title: "Soft Custom Photo Cushion",
-                category: "Photo keepsakes",
-                price: 499,
-                rating: "4.8 demo",
-                badge: "PERSONALIZED",
-                occasion: ["birthday", "anniversary"],
-                image: "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=700&q=80"
-            },
-            {
-                id: 6,
-                title: "Handbound Memory Scrapbook",
-                category: "Photo keepsakes",
-                price: 649,
-                rating: "4.9 demo",
-                badge: "HAND-FINISHED",
-                occasion: ["anniversary", "birthday"],
-                image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=700&q=80"
-            },
-            {
-                id: 7,
-                title: "Curated Couple Keepsake Box",
-                category: "Gift hampers",
-                price: 1199,
-                rating: "5.0 demo",
-                badge: "FOR TWO",
-                occasion: ["anniversary", "housewarming"],
-                image: "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=700&q=80"
-            },
-            {
-                id: 8,
-                title: "Artisanal Celebration Hamper",
-                category: "Gift hampers",
-                price: 1499,
-                rating: "4.9 demo",
-                badge: "READY TO DELIGHT",
-                occasion: ["housewarming", "anniversary"],
-                image: "https://images.unsplash.com/photo-1512909006721-3d6018887383?auto=format&fit=crop&w=700&q=80"
-            },
-            {
-                id: 9,
-                title: "Custom DTF Printed Oversized Tee",
-                category: "Name & initials",
-                price: 499,
-                rating: "5.0 demo",
-                badge: "#DTF STUDIO",
-                occasion: ["birthday", "anime"],
-                image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=700&q=80"
-            },
-            {
-                id: 10,
-                title: "42cm Anime Display Katana",
-                category: "Anime & Idols",
-                price: 749,
-                rating: "5.0 demo",
-                badge: "ANIME VAULT",
-                occasion: ["anime", "birthday"],
-                image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=700&q=80"
-            },
-            {
-                id: 11,
-                title: "72cm Stormbreaker Battle Axe Replica",
-                category: "Anime & Idols",
-                price: 1299,
-                rating: "5.0 demo",
-                badge: "1:1 REPLICA",
-                occasion: ["anime", "birthday"],
-                image: "https://images.unsplash.com/photo-1608889175123-8ee362201f81?auto=format&fit=crop&w=700&q=80"
-            },
-            {
-                id: 12,
-                title: "Divine Krishana Ji 20\" Idol (White/Gold)",
-                category: "Anime & Idols",
-                price: 1899,
-                rating: "5.0 demo",
-                badge: "DG-KRISH-0208",
-                occasion: ["housewarming", "anniversary"],
-                image: "https://images.unsplash.com/photo-1609619385002-f40f1df9b7eb?auto=format&fit=crop&w=700&q=80"
-            }
-        ];
+        // 1. Product Catalog Data (Empty array ready for your real listings)
+        const products = [];
 
         let activeCategory = 'all';
         let bag = [];
@@ -1990,8 +1748,14 @@
 
         function renderProducts(list) {
             const grid = document.getElementById('product-grid');
-            if (list.length === 0) {
-                grid.innerHTML = `<p style="grid-column: 1/-1; padding: 40px 0; color: var(--text-muted);">No gifts match that filter. Try adjusting your search or budget.</p>`;
+            if (!list || list.length === 0) {
+                grid.innerHTML = `
+                    <div class="catalog-empty-placeholder">
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                        <h3 class="serif">Products Coming Soon</h3>
+                        <p>We are currently updating our curated catalogue. Check back soon or visit our boutique in New Ajay Vihar.</p>
+                    </div>
+                `;
                 return;
             }
             grid.innerHTML = list.map(item => `
@@ -2000,14 +1764,14 @@
                         <button class="wish-btn" onclick="toggleWish(this)" title="Save to wishlist">
                             <i class="fa-regular fa-heart"></i>
                         </button>
-                        <span class="product-badge">${item.badge}</span>
+                        ${item.badge ? `<span class="product-badge">${item.badge}</span>` : ''}
                         <img src="${item.image}" alt="${item.title}" loading="lazy">
                     </div>
                     <div class="product-cat-label">${item.category}</div>
                     <h3 class="product-title">${item.title}</h3>
                     <div class="product-meta-row">
                         <span class="product-price">₹${item.price}</span>
-                        <span class="product-rating"><i class="fa-solid fa-star"></i> ${item.rating}</span>
+                        ${item.rating ? `<span class="product-rating"><i class="fa-solid fa-star"></i> ${item.rating}</span>` : ''}
                     </div>
                     <button class="add-bag-btn" onclick="addToBag('${item.title.replace(/'/g, "\\'")}', ${item.price})">
                         <span>Add to bag</span>
@@ -2031,7 +1795,7 @@
 
             let filtered = products.filter(p => {
                 const matchCat = activeCategory === 'all' || p.category === activeCategory;
-                const matchQuery = !query || p.title.toLowerCase().includes(query) || p.category.toLowerCase().includes(query);
+                const matchQuery = !query || p.title.toLowerCase().includes(query) || (p.category && p.category.toLowerCase().includes(query));
                 const matchBudget = maxBudget === 'all' || p.price <= parseInt(maxBudget, 10);
                 return matchCat && matchQuery && matchBudget;
             });
@@ -2120,7 +1884,7 @@
             window.open(`https://wa.me/919718699998?text=${encodeURIComponent(text)}`, '_blank');
         }
 
-        // 3. Live Preview Studio Logic (Screenshot 3)
+        // 3. Live Preview Studio Logic
         function updateLiveStudio() {
             const titleVal = document.getElementById('studio-title-input').value.trim();
             const noteVal = document.getElementById('studio-note-input').value.trim();
@@ -2162,12 +1926,12 @@
             addToBag('Personalized Photo Frame', total, `${finishName} · "${titleVal}"`);
         }
 
-        // 4. Occasions Accordion Logic (Screenshot 4)
+        // 4. Occasions Accordion Logic
         function toggleOccasion(rowEl) {
             rowEl.classList.toggle('open');
         }
 
-        // 5. Smart Gift Finder Logic (Screenshot 5)
+        // 5. Smart Gift Finder Logic
         function runGiftFinder() {
             const occ = document.getElementById('finder-occasion').value;
             const budget = document.getElementById('finder-budget').value;
@@ -2181,14 +1945,18 @@
             document.getElementById('finder-result-heading').textContent = occLabels[occ] || "For their special moment...";
 
             let matches = products.filter(p => {
-                const matchOcc = p.occasion.includes(occ);
+                const matchOcc = p.occasion && p.occasion.includes(occ);
                 const matchBudget = budget === 'all' || p.price <= parseInt(budget, 10);
                 return matchOcc && matchBudget;
             }).slice(0, 3);
 
-            if (matches.length === 0) matches = products.slice(0, 3);
+            const resultList = document.getElementById('finder-result-list');
+            if (matches.length === 0) {
+                resultList.innerHTML = `<p style="font-size:12.5px; color:var(--text-muted); padding:10px 0;">New gifting ideas will appear here once items are listed.</p>`;
+                return;
+            }
 
-            document.getElementById('finder-result-list').innerHTML = matches.map(m => `
+            resultList.innerHTML = matches.map(m => `
                 <div class="finder-item-row" onclick="addToBag('${m.title.replace(/'/g, "\\'")}', ${m.price})">
                     <span>${m.title}</span>
                     <span class="price">₹${m.price} +</span>
