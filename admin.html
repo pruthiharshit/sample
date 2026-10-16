@@ -9,16 +9,22 @@
         .admin-card { max-width: 500px; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
         input, select { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #DFD8CC; border-radius: 4px; }
         input[type="file"] { padding: 8px; background: #f9f9f9; }
-        button { background: #28231F; color: #fff; padding: 12px 20px; border: none; cursor: pointer; width: 100%; border-radius: 4px; font-weight: bold; }
+        button { background: #28231F; color: #fff; padding: 12px 20px; border: none; cursor: pointer; width: 100%; border-radius: 4px; font-weight: bold; transition: 0.2s; }
         button:disabled { background: #8C8278; cursor: not-allowed; }
-        #uploadingText { display: none; color: #A86B43; font-size: 14px; margin-bottom: 15px; text-align: center; font-weight: 500; }
+        
+        /* New Status Box Styling */
+        #statusBox { display: none; padding: 12px; margin-top: 15px; border-radius: 4px; font-size: 14px; font-weight: 500; text-align: center; }
+        .error { background-color: #FDE8E8; color: #C81E1E; border: 1px solid #F9B4B4; }
+        .success { background-color: #DEF7EC; color: #03543F; border: 1px solid #84E1BC; }
+        .info { background-color: #E1EFFE; color: #1E429F; border: 1px solid #A4CAFE; }
     </style>
 </head>
 <body>
 
     <div class="admin-card">
         <h2>Add New Gift</h2>
-        <form id="uploadForm">
+        <!-- Added onsubmit="return false" so the page NEVER refreshes natively -->
+        <form id="uploadForm" onsubmit="return false;">
             <input type="text" id="title" placeholder="Gift Title (e.g., Personalized Photo Frame)" required>
             
             <select id="category">
@@ -31,65 +37,91 @@
             
             <input type="number" id="price" placeholder="Price (₹)" required>
             
-            <!-- Replaced URL text input with a File input -->
             <label style="font-size: 13px; color: #5A534C; margin-bottom: 4px; display: block;">Upload Product Image</label>
             <input type="file" id="imageFile" accept="image/*" required>
             
             <input type="text" id="badge" placeholder="Badge text (e.g., BESTSELLER) - Optional">
             
-            <p id="uploadingText">Uploading image & saving gift... please wait.</p>
-            <button type="submit" id="submitBtn">Upload to Storefront</button>
+            <button type="button" id="submitBtn" onclick="handleUpload()">Upload to Storefront</button>
         </form>
-        <p id="statusMessage" style="color: green; margin-top: 15px; display: none; text-align: center;">Gift added successfully!</p>
+        
+        <!-- Status Box to show errors, uploading state, or success -->
+        <div id="statusBox"></div>
     </div>
 
     <script>
-        // Initialize Supabase (REPLACE THESE WITH YOUR ACTUAL KEYS)
-        const { createClient } = supabase;
+        // 1. Put your credentials here
         const supabaseUrl = 'https://zohetsasezssdcuzercw.supabase.co';
         const supabaseKey = 'sb_publishable_bbR0yUT9X40LrmcoQfUFow_2vS7qVdO';
-        const _supabase = createClient(supabaseUrl, supabaseKey);
+        
+        let _supabase;
+        
+        // We put initialization in a try-catch block so it doesn't crash the whole page if keys are missing
+        try {
+            const { createClient } = supabase;
+            _supabase = createClient(supabaseUrl, supabaseKey);
+        } catch (initError) {
+            console.error("Supabase failed to initialize:", initError);
+        }
 
-        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
+        // Helper function to show messages on screen
+        function showMessage(msg, type) {
+            const statusBox = document.getElementById('statusBox');
+            statusBox.textContent = msg;
+            statusBox.className = type; // 'error', 'success', or 'info'
+            statusBox.style.display = 'block';
+        }
+
+        // The main upload function
+        async function handleUpload() {
             const fileInput = document.getElementById('imageFile');
             const file = fileInput.files[0];
             const submitBtn = document.getElementById('submitBtn');
-            const uploadingText = document.getElementById('uploadingText');
+            const title = document.getElementById('title').value;
+            const price = document.getElementById('price').value;
 
-            if (!file) {
-                alert("Please select an image to upload.");
+            // Basic Validation
+            if (supabaseUrl === 'YOUR_SUPABASE_PROJECT_URL') {
+                showMessage("Setup Error: You need to paste your Supabase URL and Key into the code.", "error");
+                return;
+            }
+            if (!_supabase) {
+                showMessage("Setup Error: Supabase could not connect. Check your URL format.", "error");
+                return;
+            }
+            if (!title || !price || !file) {
+                showMessage("Please fill in the title, price, and select an image.", "error");
                 return;
             }
 
-            // Disable button and show loading text
+            // Disable button & show loading state
             submitBtn.disabled = true;
-            uploadingText.style.display = 'block';
+            submitBtn.textContent = "Uploading...";
+            showMessage("Uploading image & saving gift to database...", "info");
 
             try {
-                // 1. Generate a unique name for the image so it doesn't overwrite existing ones
+                // Step 1: Upload the image to Storage Bucket
                 const fileExt = file.name.split('.').pop();
                 const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
-                const filePath = `${fileName}`;
-
-                // 2. Upload the file to Supabase Storage bucket named 'product-images'
+                
                 const { data: uploadData, error: uploadError } = await _supabase
                     .storage
                     .from('product-images')
-                    .upload(filePath, file);
+                    .upload(fileName, file);
 
-                if (uploadError) throw uploadError;
+                if (uploadError) {
+                    throw new Error("Storage Error: " + uploadError.message + " (Did you create the 'product-images' bucket and make it public?)");
+                }
 
-                // 3. Get the public URL for the image we just uploaded
+                // Step 2: Get Public URL of the uploaded image
                 const { data: publicUrlData } = _supabase
                     .storage
                     .from('product-images')
-                    .getPublicUrl(filePath);
+                    .getPublicUrl(fileName);
 
                 const finalImageUrl = publicUrlData.publicUrl;
 
-                // 4. Save the product details to your database, using the generated image URL
+                // Step 3: Save text details + Image URL to Database Table
                 const newGift = {
                     title: document.getElementById('title').value,
                     category: document.getElementById('category').value,
@@ -102,22 +134,28 @@
                     .from('products')
                     .insert([newGift]);
 
-                if (dbError) throw dbError;
+                if (dbError) {
+                    throw new Error("Database Error: " + dbError.message + " (Does your 'products' table exist with the correct columns?)");
+                }
 
-                // Success! Reset form and show success message
-                document.getElementById('statusMessage').style.display = 'block';
+                // Success!
+                showMessage("Success! Gift added to your storefront.", "success");
                 document.getElementById('uploadForm').reset();
-                setTimeout(() => document.getElementById('statusMessage').style.display = 'none', 3000);
+                
+                // Hide success message after 4 seconds
+                setTimeout(() => {
+                    document.getElementById('statusBox').style.display = 'none';
+                }, 4000);
 
             } catch (error) {
                 console.error(error);
-                alert("Error: " + error.message);
+                showMessage(error.message, "error");
             } finally {
-                // Turn the button back on and hide loading text
+                // Restore button
                 submitBtn.disabled = false;
-                uploadingText.style.display = 'none';
+                submitBtn.textContent = "Upload to Storefront";
             }
-        });
+        }
     </script>
 </body>
 </html>
