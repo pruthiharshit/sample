@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Donum Gallery - Admin Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; padding: 40px; background: #FAF7F2; }
+        .admin-card { max-width: 500px; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        input, select { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #DFD8CC; }
+        button { background: #28231F; color: #fff; padding: 12px 20px; border: none; cursor: pointer; width: 100%; }
+    </style>
+</head>
+<body>
+
+    <div class="admin-card">
+        <h2>Add New Gift</h2>
+        <form id="uploadForm">
+            <input type="text" id="title" placeholder="Gift Title (e.g., Personalized Photo Frame)" required>
+            
+            <select id="category">
+                <option value="Photo keepsakes">Photo keepsakes</option>
+                <option value="Everyday tokens">Everyday tokens</option>
+                <option value="Name & initials">Name & initials</option>
+                <option value="Anime & Idols">Anime & Idols</option>
+                <option value="Gift hampers">Gift hampers</option>
+            </select>
+            
+            <input type="number" id="price" placeholder="Price (₹)" required>
+            <input type="text" id="image" placeholder="Image URL (e.g., https://link-to-image.jpg)" required>
+            <input type="text" id="badge" placeholder="Badge text (e.g., BESTSELLER) - Optional">
+            
+            <button type="submit">Upload to Storefront</button>
+        </form>
+        <p id="statusMessage" style="color: green; margin-top: 15px; display: none;">Gift added successfully!</p>
+    </div>
+
+    <script>
+        const { createClient } = supabase;
+        const supabaseUrl = 'YOUR_SUPABASE_PROJECT_URL';
+        const supabaseKey = 'YOUR_SUPABASE_ANON_KEY';
+        const _supabase = createClient(supabaseUrl, supabaseKey);
+
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const newGift = {
+                title: document.getElementById('title').value,
+                category: document.getElementById('category').value,
+                price: parseInt(document.getElementById('price').value),
+                image: document.getElementById('image').value,
+                badge: document.getElementById('badge').value || null
+            };
+
+            const { data, error } = await _supabase
+                .from('products')
+                .insert([newGift]);
+
+            if (error) {
+                alert("Error uploading: " + error.message);
+            } else {
+                document.getElementById('statusMessage').style.display = 'block';
+                document.getElementById('uploadForm').reset();
+                setTimeout(() => document.getElementById('statusMessage').style.display = 'none', 3000);
+            }
+        });
+    </script>
+</body>
+</html>
