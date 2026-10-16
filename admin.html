@@ -2,127 +2,241 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Donum Gallery - Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donum Gallery - Atelier Dashboard</title>
+    
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; padding: 40px; background: #FAF7F2; }
-        .admin-card { max-width: 500px; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        input, select { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #DFD8CC; border-radius: 4px; }
-        input[type="file"] { padding: 8px; background: #f9f9f9; }
-        button { background: #28231F; color: #fff; padding: 12px 20px; border: none; cursor: pointer; width: 100%; border-radius: 4px; font-weight: bold; transition: 0.2s; }
-        button:disabled { background: #8C8278; cursor: not-allowed; }
+        :root {
+            --bg-cream: #FAF7F2;
+            --bg-card: #FFFFFF;
+            --text-dark: #1E1B18;
+            --text-body: #5A534C;
+            --accent-copper: #A86B43;
+            --border-light: #DFD8CC;
+            --btn-dark: #28231F;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg-cream); color: var(--text-dark); padding: 32px; }
+        h1, h2, h3 { font-family: 'Newsreader', serif; font-weight: 400; }
         
-        /* New Status Box Styling */
-        #statusBox { display: none; padding: 12px; margin-top: 15px; border-radius: 4px; font-size: 14px; font-weight: 500; text-align: center; }
+        .header { margin-bottom: 32px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-light); padding-bottom: 16px; }
+        .header h1 { font-size: 32px; }
+        .header span { font-size: 13px; color: var(--text-body); font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
+
+        /* Split Layout */
+        .dashboard-grid { display: grid; grid-template-columns: 350px 1fr; gap: 40px; align-items: start; }
+
+        /* Form Styling */
+        .form-card { background: var(--bg-card); padding: 32px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid var(--border-light); position: sticky; top: 32px; }
+        .form-card h2 { font-size: 24px; margin-bottom: 24px; }
+        .form-group { margin-bottom: 16px; }
+        label { display: block; font-size: 12px; color: var(--text-body); margin-bottom: 6px; font-weight: 500; }
+        input, select { width: 100%; padding: 12px; border: 1px solid var(--border-light); border-radius: 4px; font-family: inherit; font-size: 13px; }
+        input:focus, select:focus { outline: none; border-color: var(--accent-copper); }
+        input[type="file"] { background: var(--bg-cream); padding: 9px; cursor: pointer; }
+        
+        .btn-primary { background: var(--btn-dark); color: #fff; padding: 14px; border: none; width: 100%; border-radius: 4px; font-size: 13px; font-weight: 600; cursor: pointer; transition: 0.2s; margin-top: 8px; }
+        .btn-primary:hover { background: var(--accent-copper); }
+        .btn-primary:disabled { background: #8C8278; cursor: not-allowed; }
+        
+        .btn-cancel { background: transparent; color: var(--text-body); padding: 10px; border: 1px solid var(--border-light); width: 100%; border-radius: 4px; font-size: 12px; cursor: pointer; margin-top: 8px; display: none; }
+        .btn-cancel:hover { background: #f0f0f0; color: var(--text-dark); }
+
+        /* Status Box */
+        #statusBox { display: none; padding: 12px; margin-top: 16px; border-radius: 4px; font-size: 13px; text-align: center; }
         .error { background-color: #FDE8E8; color: #C81E1E; border: 1px solid #F9B4B4; }
         .success { background-color: #DEF7EC; color: #03543F; border: 1px solid #84E1BC; }
         .info { background-color: #E1EFFE; color: #1E429F; border: 1px solid #A4CAFE; }
+
+        /* Catalog Grid Styling */
+        .catalog-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; }
+        .product-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 6px; overflow: hidden; transition: 0.2s; display: flex; flex-direction: column; }
+        .product-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.06); transform: translateY(-3px); }
+        .p-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; background: var(--bg-cream); border-bottom: 1px solid var(--border-light); }
+        .p-details { padding: 16px; flex: 1; display: flex; flex-direction: column; }
+        .p-cat { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 4px; }
+        .p-title { font-family: 'Newsreader', serif; font-size: 16px; color: var(--text-dark); margin-bottom: 8px; line-height: 1.2; }
+        .p-price { font-size: 14px; font-weight: 600; color: var(--accent-copper); margin-bottom: 16px; }
+        
+        .p-actions { display: flex; gap: 8px; margin-top: auto; }
+        .btn-act { flex: 1; padding: 8px; font-size: 11px; font-weight: 600; cursor: pointer; border-radius: 4px; border: none; display: flex; align-items: center; justify-content: center; gap: 6px; transition: 0.2s; }
+        .btn-edit { background: var(--bg-cream); color: var(--text-dark); border: 1px solid var(--border-light); }
+        .btn-edit:hover { background: var(--text-dark); color: #fff; border-color: var(--text-dark); }
+        .btn-delete { background: #FFF0F0; color: #C93B3B; border: 1px solid #FAD5D5; }
+        .btn-delete:hover { background: #C93B3B; color: #fff; }
+
+        .empty-state { grid-column: 1 / -1; text-align: center; padding: 60px; border: 1px dashed var(--border-light); color: var(--text-body); }
     </style>
 </head>
 <body>
 
-    <div class="admin-card">
-        <h2>Add New Gift</h2>
-        <!-- Added onsubmit="return false" so the page NEVER refreshes natively -->
-        <form id="uploadForm" onsubmit="return false;">
-            <input type="text" id="title" placeholder="Gift Title (e.g., Personalized Photo Frame)" required>
+    <div class="header">
+        <h1>Donum Gallery</h1>
+        <span>Atelier Dashboard</span>
+    </div>
+
+    <div class="dashboard-grid">
+        <!-- LEFT: FORM -->
+        <div class="form-card">
+            <h2 id="formTitle">Add New Gift</h2>
+            <form id="uploadForm" onsubmit="return false;">
+                <div class="form-group">
+                    <label>Gift Title</label>
+                    <input type="text" id="title" placeholder="e.g., Personalized Photo Frame" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="category">
+                        <option value="Photo keepsakes">Photo keepsakes</option>
+                        <option value="Everyday tokens">Everyday tokens</option>
+                        <option value="Name & initials">Name & initials</option>
+                        <option value="Anime & Idols">Anime & Idols</option>
+                        <option value="Gift hampers">Gift hampers</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Price (₹)</label>
+                    <input type="number" id="price" placeholder="e.g., 799" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Upload Product Image <span id="imageHint" style="font-weight:normal; color:#8C8278;"></span></label>
+                    <input type="file" id="imageFile" accept="image/*">
+                </div>
+                
+                <div class="form-group">
+                    <label>Badge Text (Optional)</label>
+                    <input type="text" id="badge" placeholder="e.g., BESTSELLER">
+                </div>
+                
+                <button type="button" id="submitBtn" class="btn-primary" onclick="handleUpload()">Upload to Storefront</button>
+                <button type="button" id="cancelBtn" class="btn-cancel" onclick="resetForm()">Cancel Editing</button>
+            </form>
             
-            <select id="category">
-                <option value="Photo keepsakes">Photo keepsakes</option>
-                <option value="Everyday tokens">Everyday tokens</option>
-                <option value="Name & initials">Name & initials</option>
-                <option value="Anime & Idols">Anime & Idols</option>
-                <option value="Gift hampers">Gift hampers</option>
-            </select>
-            
-            <input type="number" id="price" placeholder="Price (₹)" required>
-            
-            <label style="font-size: 13px; color: #5A534C; margin-bottom: 4px; display: block;">Upload Product Image</label>
-            <input type="file" id="imageFile" accept="image/*" required>
-            
-            <input type="text" id="badge" placeholder="Badge text (e.g., BESTSELLER) - Optional">
-            
-            <button type="button" id="submitBtn" onclick="handleUpload()">Upload to Storefront</button>
-        </form>
-        
-        <!-- Status Box to show errors, uploading state, or success -->
-        <div id="statusBox"></div>
+            <div id="statusBox"></div>
+        </div>
+
+        <!-- RIGHT: LIVE CATALOG -->
+        <div>
+            <h2 style="font-size: 20px; margin-bottom: 24px; border-bottom: 1px solid var(--border-light); padding-bottom: 12px;">
+                Live Catalog (<span id="catalogCount">0</span>)
+            </h2>
+            <div class="catalog-container" id="catalogGrid">
+                <div class="empty-state">Loading your catalog...</div>
+            </div>
+        </div>
     </div>
 
     <script>
-        // 1. Put your credentials here
+        // 1. ADD YOUR KEYS HERE!
         const supabaseUrl = 'https://zohetsasezssdcuzercw.supabase.co';
         const supabaseKey = 'sb_publishable_bbR0yUT9X40LrmcoQfUFow_2vS7qVdO';
         
-        let _supabase;
-        
-        // We put initialization in a try-catch block so it doesn't crash the whole page if keys are missing
-        try {
-            const { createClient } = supabase;
-            _supabase = createClient(supabaseUrl, supabaseKey);
-        } catch (initError) {
-            console.error("Supabase failed to initialize:", initError);
+        const { createClient } = supabase;
+        const _supabase = createClient(supabaseUrl, supabaseKey);
+
+        // State Variables
+        let editingId = null; 
+        let existingImageUrl = null;
+
+        // --- FETCH & DISPLAY CATALOG ---
+        async function loadCatalog() {
+            const { data, error } = await _supabase.from('products').select('*').order('id', { ascending: false });
+            
+            const grid = document.getElementById('catalogGrid');
+            const count = document.getElementById('catalogCount');
+
+            if (error) {
+                grid.innerHTML = `<div class="empty-state" style="color:red;">Error loading catalog: ${error.message}</div>`;
+                return;
+            }
+
+            if (!data || data.length === 0) {
+                grid.innerHTML = `<div class="empty-state"><i class="fa-solid fa-boxes-stacked" style="font-size:32px; margin-bottom:12px; color:var(--border-light);"></i><br>Your catalog is empty. Upload a gift to see it here!</div>`;
+                count.textContent = '0';
+                return;
+            }
+
+            count.textContent = data.length;
+            grid.innerHTML = data.map(item => {
+                // Safely encode item data to pass it to the edit function
+                const itemData = encodeURIComponent(JSON.stringify(item));
+                
+                return `
+                <div class="product-card">
+                    <img src="${item.image}" class="p-img" alt="${item.title}">
+                    <div class="p-details">
+                        <div class="p-cat">${item.category}</div>
+                        <div class="p-title">${item.title}</div>
+                        <div class="p-price">₹${item.price}</div>
+                        <div class="p-actions">
+                            <button class="btn-act btn-edit" onclick="startEdit('${itemData}')">
+                                <i class="fa-solid fa-pen-to-square"></i> Edit
+                            </button>
+                            <button class="btn-act btn-delete" onclick="deleteProduct(${item.id})">
+                                <i class="fa-solid fa-trash-can"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
         }
 
-        // Helper function to show messages on screen
-        function showMessage(msg, type) {
-            const statusBox = document.getElementById('statusBox');
-            statusBox.textContent = msg;
-            statusBox.className = type; // 'error', 'success', or 'info'
-            statusBox.style.display = 'block';
-        }
+        // Load catalog immediately on page load
+        loadCatalog();
 
-        // The main upload function
+
+        // --- UPLOAD / UPDATE LOGIC ---
         async function handleUpload() {
             const fileInput = document.getElementById('imageFile');
             const file = fileInput.files[0];
-            const submitBtn = document.getElementById('submitBtn');
             const title = document.getElementById('title').value;
             const price = document.getElementById('price').value;
+            const submitBtn = document.getElementById('submitBtn');
 
-            // Basic Validation
-            if (supabaseUrl === 'YOUR_SUPABASE_PROJECT_URL') {
-                showMessage("Setup Error: You need to paste your Supabase URL and Key into the code.", "error");
-                return;
-            }
-            if (!_supabase) {
-                showMessage("Setup Error: Supabase could not connect. Check your URL format.", "error");
-                return;
-            }
-            if (!title || !price || !file) {
-                showMessage("Please fill in the title, price, and select an image.", "error");
+            if (!title || !price) {
+                showMessage("Please fill in the title and price.", "error");
                 return;
             }
 
-            // Disable button & show loading state
+            // If we are NOT editing, an image is absolutely required
+            if (!editingId && !file) {
+                showMessage("Please select an image to upload.", "error");
+                return;
+            }
+
             submitBtn.disabled = true;
-            submitBtn.textContent = "Uploading...";
-            showMessage("Uploading image & saving gift to database...", "info");
+            submitBtn.textContent = editingId ? "Updating..." : "Uploading...";
+            showMessage("Saving changes...", "info");
 
             try {
-                // Step 1: Upload the image to Storage Bucket
-                const fileExt = file.name.split('.').pop();
-                const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
-                
-                const { data: uploadData, error: uploadError } = await _supabase
-                    .storage
-                    .from('product-images')
-                    .upload(fileName, file);
+                let finalImageUrl = existingImageUrl; // Default to existing image
 
-                if (uploadError) {
-                    throw new Error("Storage Error: " + uploadError.message + " (Did you create the 'product-images' bucket and make it public?)");
+                // If a NEW file was selected, upload it
+                if (file) {
+                    const fileExt = file.name.split('.').pop();
+                    const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
+                    
+                    const { error: uploadError } = await _supabase.storage.from('product-images').upload(fileName, file);
+                    if (uploadError) throw new Error("Storage Error: " + uploadError.message);
+
+                    const { data: publicUrlData } = _supabase.storage.from('product-images').getPublicUrl(fileName);
+                    finalImageUrl = publicUrlData.publicUrl;
                 }
 
-                // Step 2: Get Public URL of the uploaded image
-                const { data: publicUrlData } = _supabase
-                    .storage
-                    .from('product-images')
-                    .getPublicUrl(fileName);
-
-                const finalImageUrl = publicUrlData.publicUrl;
-
-                // Step 3: Save text details + Image URL to Database Table
-                const newGift = {
+                // Prepare the data to save
+                const giftData = {
                     title: document.getElementById('title').value,
                     category: document.getElementById('category').value,
                     price: parseInt(document.getElementById('price').value),
@@ -130,31 +244,92 @@
                     badge: document.getElementById('badge').value || null
                 };
 
-                const { error: dbError } = await _supabase
-                    .from('products')
-                    .insert([newGift]);
+                let dbError;
 
-                if (dbError) {
-                    throw new Error("Database Error: " + dbError.message + " (Does your 'products' table exist with the correct columns?)");
+                // If editingId exists, UPDATE the row. Otherwise, INSERT a new row.
+                if (editingId) {
+                    const { error } = await _supabase.from('products').update(giftData).eq('id', editingId);
+                    dbError = error;
+                } else {
+                    const { error } = await _supabase.from('products').insert([giftData]);
+                    dbError = error;
                 }
 
-                // Success!
-                showMessage("Success! Gift added to your storefront.", "success");
-                document.getElementById('uploadForm').reset();
-                
-                // Hide success message after 4 seconds
-                setTimeout(() => {
-                    document.getElementById('statusBox').style.display = 'none';
-                }, 4000);
+                if (dbError) throw new Error("Database Error: " + dbError.message);
+
+                showMessage(editingId ? "Gift updated successfully!" : "Gift added successfully!", "success");
+                resetForm();
+                loadCatalog(); // Refresh the grid
 
             } catch (error) {
                 console.error(error);
                 showMessage(error.message, "error");
             } finally {
-                // Restore button
                 submitBtn.disabled = false;
-                submitBtn.textContent = "Upload to Storefront";
+                submitBtn.textContent = editingId ? "Update Gift" : "Upload to Storefront";
             }
+        }
+
+
+        // --- EDIT PRODUCT ---
+        function startEdit(encodedData) {
+            const item = JSON.parse(decodeURIComponent(encodedData));
+            
+            // Populate Form
+            document.getElementById('title').value = item.title;
+            document.getElementById('category').value = item.category;
+            document.getElementById('price').value = item.price;
+            document.getElementById('badge').value = item.badge || '';
+            document.getElementById('imageFile').value = ''; // Clear file input
+            
+            // Update State
+            editingId = item.id;
+            existingImageUrl = item.image;
+            
+            // Update UI
+            document.getElementById('formTitle').textContent = "Edit Gift";
+            document.getElementById('submitBtn').textContent = "Update Gift";
+            document.getElementById('imageHint').textContent = "(Leave blank to keep current image)";
+            document.getElementById('cancelBtn').style.display = "block";
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+
+        // --- DELETE PRODUCT ---
+        async function deleteProduct(id) {
+            if (!confirm("Are you sure you want to delete this gift from the storefront?")) return;
+
+            try {
+                const { error } = await _supabase.from('products').delete().eq('id', id);
+                if (error) throw error;
+                
+                loadCatalog(); // Refresh the grid
+            } catch (err) {
+                alert("Error deleting: " + err.message);
+            }
+        }
+
+
+        // --- UTILS ---
+        function resetForm() {
+            document.getElementById('uploadForm').reset();
+            editingId = null;
+            existingImageUrl = null;
+            
+            document.getElementById('formTitle').textContent = "Add New Gift";
+            document.getElementById('submitBtn').textContent = "Upload to Storefront";
+            document.getElementById('imageHint').textContent = "";
+            document.getElementById('cancelBtn').style.display = "none";
+            
+            setTimeout(() => { document.getElementById('statusBox').style.display = 'none'; }, 3000);
+        }
+
+        function showMessage(msg, type) {
+            const box = document.getElementById('statusBox');
+            box.textContent = msg;
+            box.className = type;
+            box.style.display = 'block';
         }
     </script>
 </body>
