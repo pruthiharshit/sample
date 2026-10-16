@@ -7,8 +7,11 @@
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; padding: 40px; background: #FAF7F2; }
         .admin-card { max-width: 500px; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        input, select { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #DFD8CC; }
-        button { background: #28231F; color: #fff; padding: 12px 20px; border: none; cursor: pointer; width: 100%; }
+        input, select { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #DFD8CC; border-radius: 4px; }
+        input[type="file"] { padding: 8px; background: #f9f9f9; }
+        button { background: #28231F; color: #fff; padding: 12px 20px; border: none; cursor: pointer; width: 100%; border-radius: 4px; font-weight: bold; }
+        button:disabled { background: #8C8278; cursor: not-allowed; }
+        #uploadingText { display: none; color: #A86B43; font-size: 14px; margin-bottom: 15px; text-align: center; font-weight: 500; }
     </style>
 </head>
 <body>
@@ -27,15 +30,21 @@
             </select>
             
             <input type="number" id="price" placeholder="Price (₹)" required>
-            <input type="text" id="image" placeholder="Image URL (e.g., https://link-to-image.jpg)" required>
+            
+            <!-- Replaced URL text input with a File input -->
+            <label style="font-size: 13px; color: #5A534C; margin-bottom: 4px; display: block;">Upload Product Image</label>
+            <input type="file" id="imageFile" accept="image/*" required>
+            
             <input type="text" id="badge" placeholder="Badge text (e.g., BESTSELLER) - Optional">
             
-            <button type="submit">Upload to Storefront</button>
+            <p id="uploadingText">Uploading image & saving gift... please wait.</p>
+            <button type="submit" id="submitBtn">Upload to Storefront</button>
         </form>
-        <p id="statusMessage" style="color: green; margin-top: 15px; display: none;">Gift added successfully!</p>
+        <p id="statusMessage" style="color: green; margin-top: 15px; display: none; text-align: center;">Gift added successfully!</p>
     </div>
 
     <script>
+        // Initialize Supabase (REPLACE THESE WITH YOUR ACTUAL KEYS)
         const { createClient } = supabase;
         const supabaseUrl = 'YOUR_SUPABASE_PROJECT_URL';
         const supabaseKey = 'YOUR_SUPABASE_ANON_KEY';
@@ -44,24 +53,69 @@
         document.getElementById('uploadForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            const newGift = {
-                title: document.getElementById('title').value,
-                category: document.getElementById('category').value,
-                price: parseInt(document.getElementById('price').value),
-                image: document.getElementById('image').value,
-                badge: document.getElementById('badge').value || null
-            };
+            const fileInput = document.getElementById('imageFile');
+            const file = fileInput.files[0];
+            const submitBtn = document.getElementById('submitBtn');
+            const uploadingText = document.getElementById('uploadingText');
 
-            const { data, error } = await _supabase
-                .from('products')
-                .insert([newGift]);
+            if (!file) {
+                alert("Please select an image to upload.");
+                return;
+            }
 
-            if (error) {
-                alert("Error uploading: " + error.message);
-            } else {
+            // Disable button and show loading text
+            submitBtn.disabled = true;
+            uploadingText.style.display = 'block';
+
+            try {
+                // 1. Generate a unique name for the image so it doesn't overwrite existing ones
+                const fileExt = file.name.split('.').pop();
+                const fileName = `${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
+                const filePath = `${fileName}`;
+
+                // 2. Upload the file to Supabase Storage bucket named 'product-images'
+                const { data: uploadData, error: uploadError } = await _supabase
+                    .storage
+                    .from('product-images')
+                    .upload(filePath, file);
+
+                if (uploadError) throw uploadError;
+
+                // 3. Get the public URL for the image we just uploaded
+                const { data: publicUrlData } = _supabase
+                    .storage
+                    .from('product-images')
+                    .getPublicUrl(filePath);
+
+                const finalImageUrl = publicUrlData.publicUrl;
+
+                // 4. Save the product details to your database, using the generated image URL
+                const newGift = {
+                    title: document.getElementById('title').value,
+                    category: document.getElementById('category').value,
+                    price: parseInt(document.getElementById('price').value),
+                    image: finalImageUrl, 
+                    badge: document.getElementById('badge').value || null
+                };
+
+                const { error: dbError } = await _supabase
+                    .from('products')
+                    .insert([newGift]);
+
+                if (dbError) throw dbError;
+
+                // Success! Reset form and show success message
                 document.getElementById('statusMessage').style.display = 'block';
                 document.getElementById('uploadForm').reset();
                 setTimeout(() => document.getElementById('statusMessage').style.display = 'none', 3000);
+
+            } catch (error) {
+                console.error(error);
+                alert("Error: " + error.message);
+            } finally {
+                // Turn the button back on and hide loading text
+                submitBtn.disabled = false;
+                uploadingText.style.display = 'none';
             }
         });
     </script>
