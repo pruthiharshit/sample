@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#101614" />
+  <title>Anna South Indian Dosa — Digital Menu | Sirsa</title>
+  <meta name="description" content="Explore the official digital menu of Anna South Indian Dosa, Subhash Chowk, Sirsa, Haryana. Serving authentic South Indian delicacies since 2001." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-deep: #0f1513;
+      --bg-surface: #16201d;
+      --bg-card: #1b2824;
+      --bg-elevated: #22332e;
+      --teal-brand: #26463c;
+      --ivory: #f6f2e9;
+      --ivory-muted: #bfb9ac;
+      --ivory-dim: #88847a;
+      --gold: #cfa858;
+      --gold-soft: rgba(207, 168, 88, 0.16);
+      --gold-border: rgba(207, 168, 88, 0.32);
+      --border-subtle: rgba(246, 242, 233, 0.09);
+      --veg-green: #2e9e5b;
+      --nonveg-red: #d64545;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.35);
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-deep);
+      color: var(--ivory);
+      font-family: var(--font-sans);
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(38, 70, 60, 0.38) 0%, transparent 60%),
+        var(--bg-deep);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button, input {
+      font-family: inherit;
+    }
+
+    /* Top Brand Bar */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 18px;
+      background: rgba(15, 21, 19, 0.92);
+      border-bottom: 1px solid var(--border-subtle);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .brand-badge::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 8px var(--gold);
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .action-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: var(--bg-elevated);
+      border: 1px solid var(--gold-border);
+      color: var(--ivory);
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+
+    .action-pill:hover {
+      background: var(--teal-brand);
+    }
+
+    .action-pill svg {
+      width: 14px;
+      height: 14px;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* Hero Header */
+    .hero {
+      position: relative;
+      padding: 28px 18px 24px;
+      max-width: 1140px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    @media (min-width: 820px) {
+      .hero {
+        grid-template-columns: 1.35fr 0.65fr;
+        align-items: center;
+        padding: 44px 24px 36px;
+      }
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.1rem, 5.5vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1.08;
+      color: var(--ivory);
+      letter-spacing: -0.01em;
+    }
+
+    .hero-hindi {
+      font-size: 1rem;
+      color: var(--gold);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    .hero-desc {
+      margin-top: 12px;
+      color: var(--ivory-muted);
+      font-size: 0.94rem;
+      max-width: 600px;
+    }
+
+    .service-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .service-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 11px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      font-size: 0.76rem;
+      color: var(--ivory-muted);
+      font-weight: 500;
+    }
+
+    .service-tag svg {
+      width: 13px;
+      height: 13px;
+      color: var(--gold);
+    }
+
+    .hero-visual-card {
+      background: linear-gradient(145deg, var(--teal-brand) 0%, var(--bg-card) 100%);
+      border: 1px solid var(--gold-border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    .hero-visual-card::after {
+      content: '';
+      position: absolute;
+      right: -30px;
+      bottom: -30px;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 1px solid var(--gold-border);
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.83rem;
+      color: var(--ivory-muted);
+      margin-bottom: 10px;
+    }
+
+    .info-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-row svg {
+      width: 16px;
+      height: 16px;
+      color: var(--gold);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Sticky Search & Category Navigation */
+    .sticky-controls {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(15, 21, 19, 0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 12px 0 10px;
+    }
+
+    .controls-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+
+    .search-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+    }
+
+    .search-box svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 17px;
+      height: 17px;
+      color: var(--ivory-dim);
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 11px 38px 11px 40px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      color: var(--ivory);
+      font-size: 0.92rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--gold);
+    }
+
+    .search-clear {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--ivory-muted);
+      cursor: pointer;
+      padding: 4px;
+      display: none;
+    }
+
+    .veg-Toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 13px;
+      border-radius: var(--radius-md);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--ivory-muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .veg-Toggle.active {
+      border-color: var(--veg-green);
+      background: rgba(46, 158, 91, 0.15);
+      color: var(--ivory);
+    }
+
+    /* Category Pills */
+    .category-strip {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding-bottom: 2px;
+    }
+
+    .category-strip::-webkit-scrollbar {
+      display: none;
+    }
+
+    .cat-pill {
+      padding: 7px 15px;
+      border-radius: 999px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--ivory-muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .cat-pill.active,
+    .cat-pill:hover {
+      background: var(--gold);
+      color: #101614;
+      border-color: var(--gold);
+    }
+
+    /* Main Content Container */
+    .menu-container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 24px 18px 60px;
+    }
+
+    /* Featured / Bestsellers Section */
+    .featured-section {
+      margin-bottom: 36px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--ivory);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-subtitle {
+      font-size: 0.82rem;
+      color: var(--ivory-dim);
+      margin-top: 2px;
+    }
+
+    .category-block {
+      margin-bottom: 38px;
+      scroll-margin-top: 130px;
+    }
+
+    /* Food Grid & Cards */
+    .food-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    @media (min-width: 680px) {
+      .food-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+      }
+    }
+
+    @media (min-width: 1040px) {
+      .food-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .food-card {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 15px;
+      cursor: pointer;
+      transition: transform 0.18s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .food-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--gold-border);
+      box-shadow: var(--shadow-card);
+    }
+
+    .food-card.unavailable {
+      opacity: 0.62;
+    }
+
+    .food-info {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-badges {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+
+    /* Indian Standard Veg / Non-Veg Symbol */
+    .diet-icon {
+      width: 15px;
+      height: 15px;
+      border: 1.5px solid var(--veg-green);
+      border-radius: 3px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .diet-icon::after {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--veg-green);
+    }
+
+    .diet-icon.non-veg {
+      border-color: var(--nonveg-red);
+    }
+
+    .diet-icon.non-veg::after {
+      background: var(--nonveg-red);
+      border-radius: 1px;
+    }
+
+    .badge-bestseller {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: var(--gold-soft);
+      color: var(--gold);
+      border: 1px solid var(--gold-border);
+    }
+
+    .badge-spice {
+      font-size: 0.7rem;
+      color: var(--ivory-muted);
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+
+    .food-name {
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: var(--ivory);
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+
+    .food-price {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .food-desc {
+      font-size: 0.81rem;
+      color: var(--ivory-muted);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-top: auto;
+    }
+
+    .food-media {
+      width: 108px;
+      height: 108px;
+      border-radius: var(--radius-md);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border-subtle);
+      flex-shrink: 0;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .food-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease, opacity 0.25s ease;
+    }
+
+    .food-card:hover .food-media img {
+      transform: scale(1.04);
+    }
+
+    .placeholder-art {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      opacity: 0.45;
+      text-align: center;
+      padding: 8px;
+    }
+
+    .placeholder-art svg {
+      width: 28px;
+      height: 28px;
+      margin-bottom: 4px;
+    }
+
+    .unavailable-ribbon {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(15, 21, 19, 0.9);
+      color: #f28b82;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 4px 2px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Skeleton Loader */
+    .skeleton-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+
+    .skeleton-card {
+      height: 140px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(90deg, var(--bg-card) 25%, var(--bg-elevated) 50%, var(--bg-card) 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.5s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 48px 20px;
+      background: var(--bg-surface);
+      border: 1px dashed var(--gold-border);
+      border-radius: var(--radius-lg);
+      margin: 20px 0;
+    }
+
+    .empty-state h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--ivory);
+      margin-bottom: 8px;
+    }
+
+    .empty-state p {
+      color: var(--ivory-muted);
+      font-size: 0.9rem;
+      max-width: 420px;
+      margin: 0 auto 16px;
+    }
+
+    /* Item Detail Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.76);
+      backdrop-filter: blur(5px);
+      z-index: 100;
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    @media (min-width: 640px) {
+      .modal-backdrop {
+        align-items: center;
+        padding: 20px;
+      }
+    }
+
+    .modal-sheet {
+      background: var(--bg-card);
+      border: 1px solid var(--gold-border);
+      border-radius: 22px 22px 0 0;
+      width: 100%;
+      max-width: 480px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      animation: slideUp 0.22s ease-out;
+    }
+
+    @media (min-width: 640px) {
+      .modal-sheet {
+        border-radius: 20px;
+      }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(15, 21, 19, 0.82);
+      border: 1px solid var(--border-subtle);
+      color: var(--ivory);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .modal-image-wrap {
+      width: 100%;
+      height: 250px;
+      background: var(--bg-elevated);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .modal-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal-body {
+      padding: 22px;
+    }
+
+    .modal-title {
+      font-family: var(--font-serif);
+      font-size: 1.65rem;
+      font-weight: 700;
+      margin: 8px 0 4px;
+      color: var(--ivory);
+    }
+
+    .modal-price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .modal-desc {
+      font-size: 0.92rem;
+      color: var(--ivory-muted);
+      line-height: 1.6;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border-subtle);
+      padding: 40px 18px 32px;
+      margin-top: 40px;
+    }
+
+    .footer-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 768px) {
+      .footer-inner {
+        grid-template-columns: 1.2fr 1fr 0.8fr;
+      }
+    }
+
+    .footer-title {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      color: var(--ivory);
+      margin-bottom: 8px;
+    }
+
+    .footer-text {
+      font-size: 0.85rem;
+      color: var(--ivory-muted);
+      margin-bottom: 6px;
+    }
+
+    .footer-bottom {
+      max-width: 1140px;
+      margin: 28px auto 0;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 0.78rem;
+      color: var(--ivory-dim);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="top-bar">
+    <div class="brand-badge" id="topEstablished">SINCE 2001 · SIRSA</div>
+    <div class="top-actions">
+      <a href="tel:09813501421" class="action-pill" id="topCallLink" aria-label="Call Restaurant">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        <span id="topPhoneLabel">098135 01421</span>
+      </a>
+      <a
+        href="https://www.google.com/maps/search/?api=1&query=Anna+South+Indian+Dosa+PNB+St+Subhash+Chowk+Sirsa+Haryana+125055"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="action-pill"
+        id="topDirectionsLink"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+        </svg>
+        <span>Directions</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div>
+      <div class="hero-eyebrow" id="heroCategory">South Indian Restaurant</div>
+      <h1 class="hero-title" id="heroName">Anna South Indian Dosa</h1>
+      <div class="hero-hindi" id="heroHindi">अन्ना साउथ इंडियन डोसा</div>
+      <p class="hero-desc" id="heroDescription">
+        Authentic South Indian delicacies freshly prepared in the heart of Sirsa since 2001.
+      </p>
+      <div class="service-badges" id="heroServices"></div>
+    </div>
+
+    <div class="hero-visual-card">
+      <div class="info-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+        <span id="heroAddress">PNB St, near Geeta Bhawan, Rori Bazar, B Block, Subhash Chowk, Sirsa, Haryana 125055</span>
+      </div>
+      <div class="info-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <span id="heroHours">Closes 11:00 PM</span>
+      </div>
+      <div class="info-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        <span id="heroPhone">098135 01421</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky Search & Category Bar -->
+  <nav class="sticky-controls" aria-label="Menu Filters">
+    <div class="controls-inner">
+      <div class="search-row">
+        <div class="search-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input
+            type="search"
+            id="searchInput"
+            class="search-input"
+            placeholder="Search dosa, idli, uttapam, beverages..."
+            autocomplete="off"
+          />
+          <button type="button" id="searchClear" class="search-clear" aria-label="Clear search">✕</button>
+        </div>
+        <button type="button" id="vegFilterBtn" class="veg-Toggle" aria-pressed="false">
+          <span class="diet-icon"></span>
+          <span>Veg Only</span>
+        </button>
+      </div>
+      <div class="category-strip" id="categoryStrip"></div>
+    </div>
+  </nav>
+
+  <!-- Main Digital Menu -->
+  <main class="menu-container" id="menuContainer">
+    <div class="skeleton-grid" id="loadingSkeleton">
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </div>
+  </main>
+
+  <!-- Dish Detail Modal -->
+  <div class="modal-backdrop" id="itemModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-sheet">
+      <button type="button" class="modal-close" id="modalCloseBtn" aria-label="Close details">✕</button>
+      <div class="modal-image-wrap" id="modalImageWrap"></div>
+      <div class="modal-body">
+        <div class="card-badges" id="modalBadges"></div>
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <div class="modal-price" id="modalPrice"></div>
+        <p class="modal-desc" id="modalDesc"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <h3 class="footer-title" id="footerName">Anna South Indian Dosa</h3>
+        <p class="footer-text" id="footerDesc">
+          Authentic South Indian delicacies freshly prepared in the heart of Sirsa.
+        </p>
+      </div>
+      <div>
+        <h4 style="color: var(--gold); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;">Location & Hours</h4>
+        <p class="footer-text" id="footerAddress">PNB St, near Geeta Bhawan, Rori Bazar, B Block, Subhash Chowk, Sirsa, Haryana 125055</p>
+        <p class="footer-text" id="footerHours">Closes 11:00 PM</p>
+      </div>
+      <div>
+        <h4 style="color: var(--gold); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;">Contact</h4>
+        <p class="footer-text">Phone: <a href="tel:09813501421" id="footerPhone" style="color: var(--ivory); font-weight: 600;">098135 01421</a></p>
+        <p class="footer-text">
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Anna+South+Indian+Dosa+PNB+St+Subhash+Chowk+Sirsa+Haryana+125055"
+            target="_blank"
+            rel="noopener noreferrer"
+            id="footerMapLink"
+            style="color: var(--gold); text-decoration: underline;"
+          >Open in Google Maps →</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="currentYear"></span> <span id="copyrightName">Anna South Indian Dosa</span>. All prices in INR.</span>
+      <a href="/admin.html" style="color: var(--ivory-dim);">Owner Portal</a>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+      const state = {
+        settings: null,
+        categories: [],
+        items: [],
+        activeCategory: 'all',
+        searchQuery: '',
+        vegOnly: false
+      };
+
+      const menuContainer = document.getElementById('menuContainer');
+      const categoryStrip = document.getElementById('categoryStrip');
+      const searchInput = document.getElementById('searchInput');
+      const searchClear = document.getElementById('searchClear');
+      const vegFilterBtn = document.getElementById('vegFilterBtn');
+      const itemModal = document.getElementById('itemModal');
+
+      function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str == null ? '' : String(str);
+        return div.innerHTML;
+      }
+
+      function formatINR(paise) {
+        const rupees = (Number(paise || 0) / 100);
+        return '₹' + (Number.isInteger(rupees) ? rupees.toString() : rupees.toFixed(2));
+      }
+
+      function spiceLabel(level) {
+        const map = {
+          mild: 'Mild Spice',
+          medium: 'Medium Spice',
+          hot: 'Spicy'
+        };
+        return map[level] || '';
+      }
+
+      function getPlaceholderSvg() {
+        return `<div class="placeholder-art">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M3 17h18M5 17C5 12 8 9 12 9s7 3 7 8M12 6v3"/>
+          </svg>
+          <span style="font-size:0.65rem;letter-spacing:0.06em;text-transform:uppercase;">Anna Special</span>
+        </div>`;
+      }
+
+      function renderRestaurantSettings(settings) {
+        if (!settings) return;
+        const add = settings.additional_settings || {};
+        document.title = `${settings.restaurant_name} — Digital Menu | Sirsa`;
+
+        document.getElementById('heroName').textContent = settings.restaurant_name;
+        document.getElementById('footerName').textContent = settings.restaurant_name;
+        document.getElementById('copyrightName').textContent = settings.restaurant_name;
+        document.getElementById('heroDescription').textContent = settings.description || '';
+        document.getElementById('footerDesc').textContent = settings.description || '';
+        document.getElementById('heroAddress').textContent = settings.address || '';
+        document.getElementById('footerAddress').textContent = settings.address || '';
+        document.getElementById('heroHours').textContent = settings.opening_hours || '';
+        document.getElementById('footerHours').textContent = settings.opening_hours || '';
+
+        const cleanPhone = String(settings.phone || '098135 01421').replace(/\s+/g, '');
+        document.getElementById('topPhoneLabel').textContent = settings.phone;
+        document.getElementById('heroPhone').textContent = settings.phone;
+        document.getElementById('footerPhone').textContent = settings.phone;
+        document.getElementById('topCallLink').href = `tel:${cleanPhone}`;
+        document.getElementById('footerPhone').href = `tel:${cleanPhone}`;
+
+        const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+          settings.restaurant_name + ' ' + settings.address
+        )}`;
+        document.getElementById('topDirectionsLink').href = mapUrl;
+        document.getElementById('footerMapLink').href = mapUrl;
+
+        if (add.hindi_name) {
+          document.getElementById('heroHindi').textContent = add.hindi_name;
+        }
+        if (add.established) {
+          document.getElementById('topEstablished').textContent = `${add.established} · SIRSA`;
+        }
+        if (add.category_label) {
+          document.getElementById('heroCategory').textContent = add.category_label;
+        }
+
+        const servicesWrap = document.getElementById('heroServices');
+        servicesWrap.innerHTML = '';
+        (settings.services || []).forEach((srv) => {
+          const span = document.createElement('span');
+          span.className = 'service-tag';
+          span.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>${escapeHtml(srv)}`;
+          servicesWrap.appendChild(span);
+        });
+      }
+
+      function renderCategoryPills() {
+        categoryStrip.innerHTML = '';
+        const allBtn = document.createElement('button');
+        allBtn.type = 'button';
+        allBtn.className = 'cat-pill' + (state.activeCategory === 'all' ? ' active' : '');
+        allBtn.textContent = 'All Dishes';
+        allBtn.addEventListener('click', () => {
+          state.activeCategory = 'all';
+          renderCategoryPills();
+          renderMenu();
+          window.scrollTo({ top: document.querySelector('.sticky-controls').offsetTop - 10, behavior: 'smooth' });
+        });
+        categoryStrip.appendChild(allBtn);
+
+        state.categories.forEach((cat) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'cat-pill' + (String(state.activeCategory) === String(cat.id) ? ' active' : '');
+          btn.textContent = cat.name;
+          btn.addEventListener('click', () => {
+            state.activeCategory = String(cat.id);
+            renderCategoryPills();
+            renderMenu();
+            const target = document.getElementById(`cat-section-${cat.id}`);
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          });
+          categoryStrip.appendChild(btn);
+        });
+      }
+
+      function createFoodCardElement(item) {
+        const card = document.createElement('article');
+        card.className = 'food-card' + (item.is_available ? '' : ' unavailable');
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'button');
+        card.setAttribute('aria-label', `${item.name}, ${formatINR(item.price_paise)}`);
+
+        const spice = spiceLabel(item.spice_level);
+        const badgesHtml = `
+          <div class="card-badges">
+            <span class="diet-icon ${item.is_vegetarian ? '' : 'non-veg'}" title="${item.is_vegetarian ? 'Vegetarian' : 'Non-Vegetarian'}"></span>
+            ${item.is_featured ? '<span class="badge-bestseller">★ Bestseller</span>' : ''}
+            ${spice ? `<span class="badge-spice">${escapeHtml(spice)}</span>` : ''}
+          </div>
+        `;
+
+        const mediaContent = item.image_url
+          ? `<img src="${escapeHtml(item.image_url)}" alt="${escapeHtml(item.name)}" loading="lazy" decoding="async" />`
+          : getPlaceholderSvg();
+
+        card.innerHTML = `
+          <div class="food-info">
+            ${badgesHtml}
+            <h3 class="food-name">${escapeHtml(item.name)}</h3>
+            <div class="food-price">${formatINR(item.price_paise)}</div>
+            ${item.description ? `<p class="food-desc">${escapeHtml(item.description)}</p>` : ''}
+          </div>
+          <div class="food-media">
+            ${mediaContent}
+            ${!item.is_available ? '<div class="unavailable-ribbon">Unavailable</div>' : ''}
+          </div>
+        `;
+
+        const imgEl = card.querySelector('img');
+        if (imgEl) {
+          imgEl.addEventListener('error', () => {
+            const mediaBox = card.querySelector('.food-media');
+            const unavail = !item.is_available ? '<div class="unavailable-ribbon">Unavailable</div>' : '';
+            mediaBox.innerHTML = getPlaceholderSvg() + unavail;
+          });
+        }
+
+        card.addEventListener('click', () => openItemModal(item));
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openItemModal(item);
+          }
+        });
+
+        return card;
+      }
+
+      function renderMenu() {
+        menuContainer.innerHTML = '';
+
+        const query = state.searchQuery.trim().toLowerCase();
+        const filteredItems = state.items.filter((item) => {
+          if (state.vegOnly && !item.is_vegetarian) return false;
+          if (state.activeCategory !== 'all' && String(item.category_id) !== String(state.activeCategory)) {
+            return false;
+          }
+          if (!query) return true;
+          const inName = String(item.name || '').toLowerCase().includes(query);
+          const inDesc = String(item.description || '').toLowerCase().includes(query);
+          return inName || inDesc;
+        });
+
+        if (state.items.length === 0) {
+          menuContainer.innerHTML = `
+            <div class="empty-state">
+              <h3>Menu Updating</h3>
+              <p>Our digital menu is currently being updated with fresh dishes. Please call us or visit our counter at Subhash Chowk, Sirsa.</p>
+              <a href="tel:09813501421" class="action-pill" style="display:inline-flex;">Call 098135 01421</a>
+            </div>
+          `;
+          return;
+        }
+
+        if (filteredItems.length === 0) {
+          menuContainer.innerHTML = `
+            <div class="empty-state">
+              <h3>No Matching Dishes Found</h3>
+              <p>We couldn't find any dishes matching your current search or filter criteria.</p>
+              <button type="button" class="action-pill" id="resetFiltersBtn" style="cursor:pointer;">Show Full Menu</button>
+            </div>
+          `;
+          document.getElementById('resetFiltersBtn').addEventListener('click', () => {
+            state.searchQuery = '';
+            state.activeCategory = 'all';
+            state.vegOnly = false;
+            searchInput.value = '';
+            searchClear.style.display = 'none';
+            vegFilterBtn.classList.remove('active');
+            renderCategoryPills();
+            renderMenu();
+          });
+          return;
+        }
+
+        // Featured / Bestseller showcase when viewing All Dishes without active text search
+        if (state.activeCategory === 'all' && !query) {
+          const featured = filteredItems.filter((i) => i.is_featured && i.is_available);
+          if (featured.length > 0) {
+            const featSec = document.createElement('section');
+            featSec.className = 'featured-section';
+            featSec.innerHTML = `
+              <div class="section-header">
+                <div>
+                  <h2 class="section-title"><span style="color:var(--gold);">★</span> House Favorites</h2>
+                  <p class="section-subtitle">Most loved South Indian specialties at Anna</p>
+                </div>
+              </div>
+              <div class="food-grid"></div>
+            `;
+            const grid = featSec.querySelector('.food-grid');
+            featured.forEach((item) => grid.appendChild(createFoodCardElement(item)));
+            menuContainer.appendChild(featSec);
+          }
+        }
+
+        // Categorized Sections
+        state.categories.forEach((cat) => {
+          const catItems = filteredItems.filter((i) => Number(i.category_id) === Number(cat.id));
+          if (catItems.length === 0) return;
+
+          const sec = document.createElement('section');
+          sec.className = 'category-block';
+          sec.id = `cat-section-${cat.id}`;
+          sec.innerHTML = `
+            <div class="section-header">
+              <div>
+                <h2 class="section-title">${escapeHtml(cat.name)}</h2>
+                ${cat.description ? `<p class="section-subtitle">${escapeHtml(cat.description)}</p>` : ''}
+              </div>
+              <span style="font-size:0.78rem;color:var(--ivory-dim);">${catItems.length} ${catItems.length === 1 ? 'dish' : 'dishes'}</span>
+            </div>
+            <div class="food-grid"></div>
+          `;
+          const grid = sec.querySelector('.food-grid');
+          catItems.forEach((item) => grid.appendChild(createFoodCardElement(item)));
+          menuContainer.appendChild(sec);
+        });
+      }
+
+      function openItemModal(item) {
+        const wrap = document.getElementById('modalImageWrap');
+        if (item.image_url) {
+          wrap.innerHTML = `<img src="${escapeHtml(item.image_url)}" alt="${escapeHtml(item.name)}" />`;
+          const img = wrap.querySelector('img');
+          img.addEventListener('error', () => {
+            wrap.innerHTML = getPlaceholderSvg();
+          });
+        } else {
+          wrap.innerHTML = getPlaceholderSvg();
+        }
+
+        const spice = spiceLabel(item.spice_level);
+        document.getElementById('modalBadges').innerHTML = `
+          <span class="diet-icon ${item.is_vegetarian ? '' : 'non-veg'}"></span>
+          <span style="font-size:0.76rem;color:var(--ivory-muted);">${item.is_vegetarian ? 'Pure Vegetarian' : 'Non-Vegetarian'}</span>
+          ${item.is_featured ? '<span class="badge-bestseller">★ Bestseller</span>' : ''}
+          ${spice ? `<span class="badge-spice">${escapeHtml(spice)}</span>` : ''}
+          ${!item.is_available ? '<span class="badge-bestseller" style="color:#f28b82;border-color:#f28b82;background:rgba(242,139,130,0.12);">Currently Unavailable</span>' : ''}
+        `;
+
+        document.getElementById('modalTitle').textContent = item.name;
+        document.getElementById('modalPrice').textContent = formatINR(item.price_paise);
+        document.getElementById('modalDesc').textContent =
+          item.description || 'Freshly prepared to order at Anna South Indian Dosa.';
+
+        itemModal.classList.add('open');
+      }
+
+      function closeItemModal() {
+        itemModal.classList.remove('open');
+      }
+
+      document.getElementById('modalCloseBtn').addEventListener('click', closeItemModal);
+      itemModal.addEventListener('click', (e) => {
+        if (e.target === itemModal) closeItemModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeItemModal();
+      });
+
+      // Debounced Search
+      let searchTimer = null;
+      searchInput.addEventListener('input', (e) => {
+        const val = e.target.value || '';
+        searchClear.style.display = val ? 'block' : 'none';
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => {
+          state.searchQuery = val;
+          renderMenu();
+        }, 160);
+      });
+
+      searchClear.addEventListener('click', () => {
+        searchInput.value = '';
+        searchClear.style.display = 'none';
+        state.searchQuery = '';
+        renderMenu();
+      });
+
+      vegFilterBtn.addEventListener('click', () => {
+        state.vegOnly = !state.vegOnly;
+        vegFilterBtn.classList.toggle('active', state.vegOnly);
+        vegFilterBtn.setAttribute('aria-pressed', String(state.vegOnly));
+        renderMenu();
+      });
+
+      async function loadPublicMenu() {
+        try {
+          const res = await fetch('/api/menu', {
+            headers: { 'Accept': 'application/json' }
+          });
+          if (!res.ok) throw new Error('Failed to fetch menu');
+          const data = await res.json();
+          state.settings = data.settings;
+          state.categories = data.categories || [];
+          state.items = data.items || [];
+
+          renderRestaurantSettings(state.settings);
+          renderCategoryPills();
+          renderMenu();
+        } catch (err) {
+          menuContainer.innerHTML = `
+            <div class="empty-state">
+              <h3>Connection Interrupted</h3>
+              <p>We could not load the digital menu right now. Please check your internet connection and try again.</p>
+              <button type="button" class="action-pill" id="retryBtn" style="cursor:pointer;">Retry Loading Menu</button>
+            </div>
+          `;
+          document.getElementById('retryBtn').addEventListener('click', loadPublicMenu);
+        }
+      }
+
+      loadPublicMenu();
+    })();
+  </script>
+</body>
+</html>

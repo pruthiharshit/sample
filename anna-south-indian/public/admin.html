@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Owner Dashboard — Anna South Indian Dosa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-deep: #0e1412;
+      --bg-panel: #151f1c;
+      --bg-card: #1b2824;
+      --bg-input: #111917;
+      --ivory: #f6f2e9;
+      --ivory-muted: #b8b2a6;
+      --ivory-dim: #7f7b72;
+      --gold: #cfa858;
+      --gold-soft: rgba(207, 168, 88, 0.15);
+      --gold-border: rgba(207, 168, 88, 0.32);
+      --border: rgba(246, 242, 233, 0.1);
+      --green: #2e9e5b;
+      --red: #e05252;
+      --radius: 12px;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-deep);
+      color: var(--ivory);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      font-size: 0.92rem;
+    }
+
+    /* Toast Notification */
+    .toast-wrap {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 300;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 360px;
+    }
+
+    .toast {
+      padding: 12px 16px;
+      border-radius: 10px;
+      background: var(--bg-card);
+      border: 1px solid var(--gold);
+      color: var(--ivory);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+      font-size: 0.86rem;
+      font-weight: 500;
+    }
+
+    .toast.error {
+      border-color: var(--red);
+      color: #ffb4b4;
+    }
+
+    /* Auth Gate Screens */
+    .auth-screen {
+      min-height: 100vh;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .auth-card {
+      width: 100%;
+      max-width: 430px;
+      background: var(--bg-panel);
+      border: 1px solid var(--gold-border);
+      border-radius: 18px;
+      padding: 32px 26px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    .auth-card h1 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      color: var(--ivory);
+      margin-bottom: 6px;
+    }
+
+    .auth-card p {
+      font-size: 0.86rem;
+      color: var(--ivory-muted);
+      margin-bottom: 22px;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--ivory-muted);
+      margin-bottom: 6px;
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 11px 13px;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      color: var(--ivory);
+      outline: none;
+    }
+
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 18px;
+      border-radius: 9px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.18s ease;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: #101614;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.08);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      border-color: var(--border);
+      color: var(--ivory);
+    }
+
+    .btn-danger {
+      background: rgba(224, 82, 82, 0.15);
+      border-color: rgba(224, 82, 82, 0.4);
+      color: #ff9e9e;
+    }
+
+    .btn-sm {
+      padding: 6px 11px;
+      font-size: 0.78rem;
+    }
+
+    /* Dashboard Layout */
+    .dashboard-shell {
+      display: none;
+      min-height: 100vh;
+    }
+
+    @media (min-width: 900px) {
+      .dashboard-shell.active {
+        display: grid;
+        grid-template-columns: 250px 1fr;
+      }
+    }
+
+    . dashboard-shell.active {
+      display: block;
+    }
+
+    @media (min-width: 900px) {
+      .dashboard-shell.active {
+        display: grid;
+      }
+    }
+
+    .sidebar {
+      background: var(--bg-panel);
+      border-right: 1px solid var(--border);
+      padding: 22px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sidebar-brand {
+      padding: 0 10px 18px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 10px;
+    }
+
+    .sidebar-brand h2 {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      color: var(--gold);
+    }
+
+    .sidebar-brand span {
+      font-size: 0.76rem;
+      color: var(--ivory-dim);
+    }
+
+    .nav-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 10px;
+      background: transparent;
+      border: none;
+      color: var(--ivory-muted);
+      font-weight: 600;
+      font-size: 0.88rem;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .nav-btn.active, .nav-btn:hover {
+      background: var(--gold-soft);
+      color: var(--gold);
+    }
+
+    .main-area {
+      padding: 24px 18px 80px;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    @media (min-width: 900px) {
+      .main-area {
+        padding: 32px 36px;
+      }
+    }
+
+    .tab-pane {
+      display: none;
+    }
+
+    .tab-pane.active {
+      display: block;
+    }
+
+    .page-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 24px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-title {
+      font-family: var(--font-serif);
+      font-size: 1.9rem;
+    }
+
+    /* Overview Stat Cards */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .stat-card {
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--ivory-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-top: 4px;
+    }
+
+    /* Admin Item Rows */
+    .admin-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .admin-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+    }
+
+    .row-main {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 240px;
+      flex: 1;
+    }
+
+    .row-thumb {
+      width: 58px;
+      height: 58px;
+      border-radius: 8px;
+      background: var(--bg-card);
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+    }
+
+    .row-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    /* Toggle Switch */
+    .switch-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      color: var(--ivory-muted);
+    }
+
+    /* Modal Form & Live Preview Split */
+    .editor-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .editor-backdrop.open {
+      display: flex;
+    }
+
+    .editor-modal {
+      background: var(--bg-panel);
+      border: 1px solid var(--gold-border);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 920px;
+      max-height: 92vh;
+      overflow-y: auto;
+      padding: 24px;
+    }
+
+    .editor-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    @media (min-width: 800px) {
+      .editor-grid {
+        grid-template-columns: 1.25fr 0.75fr;
+      }
+    }
+
+    /* Dropzone */
+    .dropzone {
+      border: 2px dashed var(--gold-border);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      background: var(--bg-input);
+      cursor: pointer;
+      transition: border-color 0.2s ease;
+    }
+
+    .dropzone.dragover {
+      border-color: var(--gold);
+      background: var(--gold-soft);
+    }
+
+    .progress-bar-wrap {
+      height: 6px;
+      background: var(--bg-card);
+      border-radius: 99px;
+      overflow: hidden;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--gold);
+      transition: width 0.2s ease;
+    }
+
+    /* Customer Card Live Preview inside Editor */
+    .preview-card {
+      background: var(--bg-card);
+      border: 1px solid var(--gold-border);
+      border-radius: 14px;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .preview-media {
+      width: 96px;
+      height: 96px;
+      border-radius: 10px;
+      background: var(--bg-input);
+      overflow: hidden;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .preview-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toast-wrap" id="toastWrap"></div>
+
+  <!-- 1. First-Time Administrator Setup Screen -->
+  <section class="auth-screen" id="setupScreen">
+    <div class="auth-card">
+      <h1>First-Time Admin Setup</h1>
+      <p>Provision the owner account for Anna South Indian Dosa using your Cloudflare <code>ADMIN_SETUP_KEY</code>.</p>
+      <form id="setupForm">
+        <div class="form-group">
+          <label class="form-label">Setup Secret Key (ADMIN_SETUP_KEY)</label>
+          <input type="password" id="setupKey" class="form-input" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Owner Email Address</label>
+          <input type="email" id="setupEmail" class="form-input" placeholder="owner@example.com" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Create Strong Password (min 8 chars)</label>
+          <input type="password" id="setupPassword" class="form-input" minlength="8" required />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Create Owner Account</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- 2. Administrator Login Screen -->
+  <section class="auth-screen" id="loginScreen">
+    <div class="auth-card">
+      <h1>Anna Owner Portal</h1>
+      <p>Sign in to manage dishes, prices, photographs, categories, and restaurant settings.</p>
+      <form id="loginForm">
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" id="loginEmail" class="form-input" required autocomplete="username" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input type="password" id="loginPassword" class="form-input" required autocomplete="current-password" />
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Sign In to Dashboard</button>
+      </form>
+      <div style="margin-top:16px;text-align:center;">
+        <a href="/" style="font-size:0.82rem;color:var(--gold);">← View Public Customer Menu</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Authenticated Dashboard Shell -->
+  <div class="dashboard-shell" id="dashboardShell">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <h2>Anna South Indian</h2>
+        <span id="adminEmailLabel">Owner Dashboard</span>
+      </div>
+      <button type="button" class="nav-btn active" data-tab="overviewTab">Overview</button>
+      <button type="button" class="nav-btn" data-tab="itemsTab">Menu Dishes</button>
+      <button type="button" class="nav-btn" data-tab="categoriesTab">Categories</button>
+      <button type="button" class="nav-btn" data-tab="settingsTab">Restaurant & Security</button>
+      <a href="/" target="_blank" class="nav-btn" style="text-decoration:none;margin-top:auto;">↗ Open Live Menu</a>
+      <button type="button" class="nav-btn" id="logoutBtn" style="color:#ff9e9e;">Sign Out</button>
+    </aside>
+
+    <main class="main-area">
+      <!-- TAB 1: Overview -->
+      <section class="tab-pane active" id="overviewTab">
+        <div class="page-header">
+          <h1 class="page-title">Dashboard Overview</h1>
+          <div style="display:flex;gap:10px;">
+            <button type="button" class="btn btn-primary" id="quickAddDishBtn">+ Add New Dish</button>
+            <button type="button" class="btn btn-secondary" id="quickAddCatBtn">+ Add Category</button>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Total Dishes</div>
+            <div class="stat-value" id="statTotalItems">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Total Categories</div>
+            <div class="stat-value" id="statTotalCats">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Available Dishes</div>
+            <div class="stat-value" id="statAvailItems" style="color:var(--green);">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Unavailable</div>
+            <div class="stat-value" id="statUnavailItems" style="color:#f28b82;">0</div>
+          </div>
+        </div>
+
+        <h3 style="font-family:var(--font-serif);font-size:1.4rem;margin-bottom:12px;">Recent Modifications</h3>
+        <div class="admin-list" id="auditLogList"></div>
+      </section>
+
+      <!-- TAB 2: Menu Dishes -->
+      <section class="tab-pane" id="itemsTab">
+        <div class="page-header">
+          <h1 class="page-title">Menu Dishes</h1>
+          <button type="button" class="btn btn-primary" id="openAddItemBtn">+ Add Dish</button>
+        </div>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:18px;">
+          <input type="search" id="adminItemSearch" class="form-input" placeholder="Search dishes by name..." style="max-width:320px;" />
+          <select id="adminCatFilter" class="form-select" style="max-width:220px;">
+            <option value="all">All Categories</option>
+          </select>
+        </div>
+
+        <div class="admin-list" id="adminItemsList"></div>
+      </section>
+
+      <!-- TAB 3: Categories -->
+      <section class="tab-pane" id="categoriesTab">
+        <div class="page-header">
+          <h1 class="page-title">Menu Categories</h1>
+          <button type="button" class="btn btn-primary" id="openAddCategoryBtn">+ New Category</button>
+        </div>
+        <div class="admin-list" id="adminCategoriesList"></div>
+      </section>
+
+      <!-- TAB 4: Restaurant Info & Security -->
+      <section class="tab-pane" id="settingsTab">
+        <div class="page-header">
+          <h1 class="page-title">Restaurant Info & Security</h1>
+        </div>
+
+        <div class="editor-grid">
+          <form id="restaurantSettingsForm" class="stat-card">
+            <h3 style="font-family:var(--font-serif);font-size:1.4rem;margin-bottom:14px;">Restaurant Details</h3>
+            <div class="form-group">
+              <label class="form-label">Restaurant Name</label>
+              <input type="text" id="setRestName" class="form-input" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Hindi Name / Subtitle</label>
+              <input type="text" id="setHindiName" class="form-input" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Heritage Badge (e.g. Since 2001)</label>
+              <input type="text" id="setEstablished" class="form-input" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Short Introduction</label>
+              <textarea id="setDesc" class="form-textarea" rows="2"></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Full Address</label>
+              <textarea id="setAddress" class="form-textarea" rows="2" required></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input type="text" id="setPhone" class="form-input" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Opening Hours</label>
+              <input type="text" id="setHours" class="form-input" placeholder="e.g. Closes 11:00 PM" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Available Services (comma-separated)</label>
+              <input type="text" id="setServices" class="form-input" placeholder="Dine-in, Drive-through, Delivery" />
+            </div>
+            <button type="submit" class="btn btn-primary">Save Restaurant Information</button>
+          </form>
+
+          <form id="credentialsForm" class="stat-card">
+            <h3 style="font-family:var(--font-serif);font-size:1.4rem;margin-bottom:14px;">Change Owner Email / Password</h3>
+            <div class="form-group">
+              <label class="form-label">Owner Email Address</label>
+              <input type="email" id="credEmail" class="form-input" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Current Password (Required)</label>
+              <input type="password" id="credCurrentPass" class="form-input" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">New Password (leave blank to keep current)</label>
+              <input type="password" id="credNewPass" class="form-input" minlength="8" />
+            </div>
+            <button type="submit" class="btn btn-secondary">Update Owner Credentials</button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Add / Edit Dish Modal with Automatic WebP Compression & Live Customer Preview -->
+  <div class="editor-backdrop" id="itemEditorModal">
+    <div class="editor-modal">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
+        <h2 id="itemModalHeading" style="font-family:var(--font-serif);font-size:1.7rem;">Add Dish</h2>
+        <button type="button" class="btn btn-secondary btn-sm" id="closeItemModalBtn">✕ Close</button>
+      </div>
+
+      <div class="editor-grid">
+        <form id="itemForm">
+          <input type="hidden" id="itemId" />
+          <input type="hidden" id="itemImageKey" />
+
+          <div class="form-group">
+            <label class="form-label">Dish Name *</label>
+            <input type="text" id="itemName" class="form-input" required maxlength="120" placeholder="e.g. Masala Dosa" />
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="form-group">
+              <label class="form-label">Price in INR (₹) *</label>
+              <input type="number" id="itemPriceRupees" class="form-input" required min="0" step="1" placeholder="e.g. 90" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Category *</label>
+              <select id="itemCategory" class="form-select" required></select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Description</label>
+            <textarea id="itemDesc" class="form-textarea" rows="2" maxlength="600" placeholder="Crisp golden rice crepe stuffed with spiced potato masala..."></textarea>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+            <div class="form-group">
+              <label class="form-label">Dietary Indicator</label>
+              <select id="itemDiet" class="form-select">
+                <option value="1">Vegetarian (Green Dot)</option>
+                <option value="0">Non-Vegetarian (Red Dot)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Spice Level</label>
+              <select id="itemSpice" class="form-select">
+                <option value="none">Standard / None</option>
+                <option value="mild">Mild</option>
+                <option value="medium">Medium</option>
+                <option value="hot">Spicy / Hot</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:20px;margin:10px 0 18px;">
+            <label class="switch-label">
+              <input type="checkbox" id="itemFeatured" />
+              <span>★ Mark as Bestseller</span>
+            </label>
+            <label class="switch-label">
+              <input type="checkbox" id="itemAvailable" checked />
+              <span>Available Today</span>
+            </label>
+          </div>
+
+          <!-- Image Picker & Automatic WebP Optimizer -->
+          <div class="form-group">
+            <label class="form-label">Dish Photograph (Auto-optimizes to WebP ≤ 500 KB)</label>
+            <div class="dropzone" id="imageDropzone">
+              <input type="file" id="imageFileInput" accept="image/jpeg,image/png,image/webp" style="display:none;" />
+              <div id="dropzoneText">Click to Choose Photo or Drag & Drop JPEG / PNG / WebP</div>
+              <div class="progress-bar-wrap" id="uploadProgressWrap">
+                <div class="progress-bar-fill" id="uploadProgressFill"></div>
+              </div>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:8px;">
+              <button type="button" class="btn btn-secondary btn-sm" id="retryUploadBtn" style="display:none;">Retry Upload</button>
+              <button type="button" class="btn btn-danger btn-sm" id="removeImageBtn" style="display:none;">Remove Photo</button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" id="saveItemBtn" style="width:100%;">Save Dish to Menu</button>
+        </form>
+
+        <!-- Live Customer Card Preview -->
+        <div>
+          <div class="form-label" style="margin-bottom:10px;">Live Customer Menu Preview</div>
+          <div class="preview-card">
+            <div style="flex:1;">
+              <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
+                <span id="prevDietDot" style="width:12px;height:12px;border-radius:50%;background:var(--green);display:inline-block;"></span>
+                <span id="prevBestseller" style="display:none;font-size:0.66rem;color:var(--gold);border:1px solid var(--gold-border);padding:1px 6px;border-radius:4px;">★ Bestseller</span>
+              </div>
+              <div id="prevName" style="font-weight:600;font-size:1rem;color:var(--ivory);">Dish Name</div>
+              <div id="prevPrice" style="font-weight:700;color:var(--gold);margin:4px 0;">₹0</div>
+              <div id="prevDesc" style="font-size:0.78rem;color:var(--ivory-muted);">Description preview...</div>
+            </div>
+            <div class="preview-media" id="prevMediaBox">
+              <span style="font-size:0.7rem;color:var(--ivory-dim);">No Photo</span>
+            </div>
+          </div>
+          <p style="font-size:0.76rem;color:var(--ivory-dim);margin-top:10px;">
+            This preview shows how customers scanning your table QR code will see this item.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category Add/Edit Modal -->
+  <div class="editor-backdrop" id="categoryEditorModal">
+    <div class="editor-modal" style="max-width:460px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+        <h2 id="catModalHeading" style="font-family:var(--font-serif);font-size:1.6rem;">Add Category</h2>
+        <button type="button" class="btn btn-secondary btn-sm" id="closeCatModalBtn">✕</button>
+      </div>
+      <form id="categoryForm">
+        <input type="hidden" id="catId" />
+        <input type="hidden" id="catOrder" />
+        <div class="form-group">
+          <label class="form-label">Category Name *</label>
+          <input type="text" id="catName" class="form-input" required maxlength="80" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Short Description</label>
+          <textarea id="catDesc" class="form-textarea" rows="2" maxlength="300"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="switch-label">
+            <input type="checkbox" id="catActive" checked />
+            <span>Category Enabled on Public Menu</span>
+          </label>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Save Category</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      let csrfToken = '';
+      let categories = [];
+      let items = [];
+      let lastSelectedFile = null;
+
+      function showToast(msg, isError = false) {
+        const wrap = document.getElementById('toastWrap');
+        const el = document.createElement('div');
+        el.className = 'toast' + (isError ? ' error' : '');
+        el.textContent = msg;
+        wrap.appendChild(el);
+        setTimeout(() => el.remove(), 4000);
+      }
+
+      function escapeHtml(str) {
+        const d = document.createElement('div');
+        d.textContent = str == null ? '' : String(str);
+        return d.innerHTML;
+      }
+
+      async function apiFetch(url, options = {}) {
+        const headers = { ...(options.headers || {}) };
+        if (!(options.body instanceof FormData) && !headers['Content-Type']) {
+          headers['Content-Type'] = 'application/json';
+        }
+        if (csrfToken && ['POST', 'PUT', 'PATCH', 'DELETE'].includes((options.method || 'GET').toUpperCase())) {
+          headers['X-CSRF-Token'] = csrfToken;
+        }
+        const res = await fetch(url, {
+          ...options,
+          headers,
+          credentials: 'same-origin'
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          throw new Error(data.error || `Request failed (${res.status})`);
+        }
+        return data;
+      }
+
+      // Check Session State on Load
+      async function checkSession() {
+        try {
+          const data = await apiFetch('/api/auth/me');
+          if (data.needsSetup) {
+            document.getElementById('setupScreen').style.display = 'flex';
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('dashboardShell').classList.remove('active');
+            return;
+          }
+          if (!data.authenticated) {
+            document.getElementById('setupScreen').style.display = 'none';
+            document.getElementById('loginScreen').style.display = 'flex';
+            document.getElementById('dashboardShell').classList.remove('active');
+            return;
+          }
+
+          csrfToken = data.csrfToken;
+          document.getElementById('adminEmailLabel').textContent = data.email;
+          document.getElementById('credEmail').value = data.email;
+          document.getElementById('setupScreen').style.display = 'none';
+          document.getElementById('loginScreen').style.display = 'none';
+          document.getElementById('dashboardShell').classList.add('active');
+
+          renderOverview(data.overview, data.recentLogs);
+          await Promise.all([loadCategories(), loadItems(), loadSettings()]);
+        } catch (err) {
+          showToast(err.message, true);
+        }
+      }
+
+      function renderOverview(overview, logs) {
+        if (overview) {
+          document.getElementById('statTotalItems').textContent = overview.total_items || 0;
+          document.getElementById('statTotalCats').textContent = overview.total_categories || 0;
+          document.getElementById('statAvailItems').textContent = overview.available_items || 0;
+          document.getElementById('statUnavailItems').textContent = overview.unavailable_items || 0;
+        }
+        const list = document.getElementById('auditLogList');
+        list.innerHTML = '';
+        if (!logs || logs.length === 0) {
+          list.innerHTML = `<div class="admin-row"><span style="color:var(--ivory-dim);">No recent modifications recorded yet.</span></div>`;
+          return;
+        }
+        logs.forEach((l) => {
+          const row = document.createElement('div');
+          row.className = 'admin-row';
+          row.innerHTML = `
+            <div>
+              <strong style="color:var(--gold);">${escapeHtml(l.action)}</strong>
+              <span style="margin-left:10px;color:var(--ivory);">${escapeHtml(l.details)}</span>
+            </div>
+            <span style="font-size:0.76rem;color:var(--ivory-dim);">${escapeHtml(l.created_at)}</span>
+          `;
+          list.appendChild(row);
+        });
+      }
+
+      // Setup Form
+      document.getElementById('setupForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        try {
+          const data = await apiFetch('/api/auth/setup', {
+            method: 'POST',
+            body: JSON.stringify({
+              setupKey: document.getElementById('setupKey').value,
+              email: document.getElementById('setupEmail').value,
+              password: document.getElementById('setupPassword').value
+            })
+          });
+          csrfToken = data.csrfToken;
+          showToast('Owner account created successfully!');
+          await checkSession();
+        } catch (err) {
+          showToast(err.message, true);
+        }
+      });
+
+      // Login Form
+      document.getElementById('loginForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        try {
+          const data = await apiFetch('/api/auth/login', {
+            method: 'POST',
+            body: JSON.stringify({
+              email: document.getElementById('loginEmail').value,
+              password: document.getElementById('loginPassword').value
+            })
+          });
+          csrfToken = data.csrfToken;
+          showToast('Signed in successfully.');
+          await checkSession();
+        } catch (err) {
+          showToast(err.message, true);
+        }
+      });
+
+      // Logout
+      document.getElementById('logoutBtn').addEventListener('click', async () => {
+        try {
+          await apiFetch('/api/auth/logout', { method: 'POST' });
+          csrfToken = '';
+          await checkSession();
+        } catch (err) {
+          showToast(err.message, true);
+        }
+      });
+
+      // Sidebar Navigation
+      function switchTab(tabId) {
+        document.querySelectorAll('.nav-btn[data-tab]').forEach((b) => {
+          b.classList.toggle('active', b.dataset.tab === tabId);
+        });
+        document.querySelectorAll('.tab-pane').forEach((p) => {
+          p.classList.toggle('active', p.id === tabId);
+        });
+      }
+
+      document.querySelectorAll('.nav-btn[data-tab]').forEach((btn) => {
+        btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+      });
+
+      document.getElementById('quickAddDishBtn').addEventListener('click', () => {
+        switchTab('itemsTab');
+        openItemEditor();
+      });
+
+      document.getElementById('quickAddCatBtn').addEventListener('click', () => {
+        switchTab('categoriesTab');
+        openCategoryEditor();
+      });
+
+      // Categories CRUD
+      async function loadCategories() {
+        const data = await apiFetch('/api/categories');
+        categories = data.categories || [];
+        renderCategoriesList();
+        populateCategoryDropdowns();
+      }
+
+      function populateCategoryDropdowns() {
+        const filterSel = document.getElementById('adminCatFilter');
+        const itemSel = document.getElementById('itemCategory');
+        const currentFilter = filterSel.value;
+
+        filterSel.innerHTML = `<option value="all">All Categories</option>`;
+        itemSel.innerHTML = '';
+
+        categories.forEach((c) => {
+          const opt1 = document.createElement('option');
+          opt1.value = c.id;
+          opt1.textContent = c.name;
+          filterSel.appendChild(opt1);
+
+          const opt2 = document.createElement('option');
+          opt2.value = c.id;
+          opt2.textContent = c.name;
+          itemSel.appendChild(opt2);
+        });
+        if (currentFilter) filterSel.value = currentFilter;
+      }
+
+      function renderCategoriesList() {
+        const wrap = document.getElementById('adminCategoriesList');
+        wrap.innerHTML = '';
+        categories.forEach((cat, idx) => {
+          const row = document.createElement('div');
+          row.className = 'admin-row';
+          row.innerHTML = `
+            <div>
+              <strong style="font-size:1rem;">${escapeHtml(cat.name)}</strong>
+              <span style="font-size:0.76rem;margin-left:8px;color:${cat.is_active ? 'var(--green)' : '#f28b82'};">
+                ${cat.is_active ? '● Active' : '○ Disabled'}
+              </span>
+              <span style="font-size:0.76rem;margin-left:8px;color:var(--ivory-dim);">(${cat.item_count || 0} dishes)</span>
+              ${cat.description ? `<div style="font-size:0.8rem;color:var(--ivory-muted);margin-top:2px;">${escapeHtml(cat.description)}</div>` : ''}
+            </div>
+            <div class="row-actions">
+              <button type="button" class="btn btn-secondary btn-sm move-up" ${idx === 0 ? 'disabled' : ''}>↑</button>
+              <button type="button" class="btn btn-secondary btn-sm move-down" ${idx === categories.length - 1 ? 'disabled' : ''}>↓</button>
+              <button type="button" class="btn btn-secondary btn-sm edit-cat">Edit</button>
+              <button type="button" class="btn btn-danger btn-sm del-cat">Delete</button>
+            </div>
+          `;
+
+          row.querySelector('.move-up').addEventListener('click', () => moveCategory(idx, -1));
+          row.querySelector('.move-down').addEventListener('click', () => moveCategory(idx, 1));
+          row.querySelector('.edit-cat').addEventListener('click', () => openCategoryEditor(cat));
+          row.querySelector('.del-cat').addEventListener('click', async () => {
+            if (!confirm(`Delete category "${cat.name}"?`)) return;
+            try {
+              await apiFetch(`/api/categories?id=${cat.id}`, { method: 'DELETE' });
+              showToast('Category deleted.');
+              await loadCategories();
+              await checkSession();
+            } catch (err) {
+              showToast(err.message, true);
+            }
+          });
+          wrap.appendChild(row);
+        });
+      }
+
+      async function moveCategory(index, delta) {
+        const target = index + delta;
+        if (target < 0 || target >= categories.length) return;
+        const copy = [...categories];
+        const [moved] = copy.splice(index, 1);
+        copy.splice(target, 0, moved);
+        const orders = copy.map((c, i) => ({ id: c.id, display_order: i + 1 }));
+        try {
+          await apiFetch('/api/categories', {
+            method: 'PUT',
+            body: JSON.stringify({ orders })
+          });
+          await loadCategories();
+        } catch (err) {
+          showToast(err.message, true);
+        }
+      }
+
+      function openCategoryEditor(cat = null) {
+        document.getElementById('catModalHeading').textContent = cat ? 'Edit Category' : 'Add Category';
+        document.getElementById('catId').value = cat ? cat.id : '';
+        document.getElementById('catOrder').value = cat ? cat.display_order : categories.length + 1;
+        document.getElementById('catName').value = cat ? cat.name : '';
+        document.getElementById('catDesc').value = cat ? cat.description || '' : '';
+        document.getElementById('catActive').checked = cat ? Boolean(cat.is_active) : true;
+        document.getElementById('categoryEditorModal').classList.add('open');
+      }
+
+      document.getElementById('openAddCategoryBtn').addEventListener('click', () => openCategoryEditor());
+      document.getElementById('closeCatModalBtn').addEventListener('click', () => {
+        document.getElementById('categoryEditorModal').classList.remove('open');
+      });
+
+      document.getElementById('categoryForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const id = document.getElementById('catId').value;
+        const payload = {
+          id: id ? Number(id) : undefined,
+          name: document.getElementById('catName').value,
+          description: document.getElementById('catDesc').value,
+          display_order: Number(document.getElementById('catOrder').value || 1),
+          is_active: document.getElementById('catActive').checked ? 1 : 0
+        };
+        try {
+          await apiFetch('/api/categories', {
+            method: id ? 'PUT' : 'POST',
+            body: JSON.stringify(payload)
+          });
+          document.getElementById('categoryEditorModal').classList.remove('open');
+          showToast('Category saved.');
+          await loadCategories();
+          await checkSession();
+        } catch (err) {
+          showToast(err.message, true);
+        }
+      });
+
+      // Items CRUD & Automatic Image Optimization
+      async function loadItems() {
+        const data = await apiFetch('/api/items');
+        items = data.items || [];
+        renderItemsList();
+      }
+
+      function renderItemsList() {
+        const wrap = document.getElementById('adminItemsList');
+        wrap.innerHTML = '';
+        const q = (document.getElementById('adminItemSearch').value || '').trim().toLowerCase();
+        const catFilter = document.getElementById('adminCatFilter').value;
+
+        const filtered = items.filter((item) => {
+          if (catFilter !== 'all' && String(item.category_id) !== String(catFilter)) return false;
+          if (q && !String(item.name || '').toLowerCase().includes(q)) return false;
+          return true;
+        });
+
+        if (filtered.length === 0) {
+          wrap.innerHTML = `<div class="admin-row"><span style="color:var(--ivory-dim);">No dishes found. Click "+ Add Dish" to add items to your menu.</span></div>`;
+          return;
+        }
+
+        filtered.forEach((item) => {
+          const row = document.createElement('div');
+          row.className = 'admin-row';
+          const rupees = (Number(item.price_paise || 0) / 100).toFixed(0);
+          row.innerHTML = `
+            <div class="row-main">
+              ${item.image_url ? `<img src="${escapeHtml(item.image_url)}" class="row-thumb" alt="" />` : `<div class="row-thumb" style="display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:var(--ivory-dim);">No Photo</div>`}
+              <div>
+                <div style="font-weight:600;font-size:1rem;">
+                  ${escapeHtml(item.name)}
+                  ${item.is_featured ? '<span style="color:var(--gold);font-size:0.75rem;margin-left:6px;">★ Bestseller</span>' : ''}
+                </div>
+                <div style="font-size:0.82rem;color:var(--gold);font-weight:700;">₹${rupees} <span style="color:var(--ivory-dim);font-weight:400;">· ${escapeHtml(item.category_name || '')}</span></div>
+              </div>
+            </div>
+            <div class="row-actions">
+              <label class="switch-label">
+                <input type="checkbox" class="avail-toggle" ${item.is_available ? 'checked' : ''} />
+                <span>${item.is_available ? 'Available' : 'Unavailable'}</span>
+              </label>
+              <button type="button" class="btn btn-secondary btn-sm edit-item">Edit</button>
+              <button type="button" class="btn btn-danger btn-sm del-item">Delete</button>
+            </div>
+          `;
+
+          row.querySelector('.avail-toggle').addEventListener('change', async (e) => {
+            try {
+              await apiFetch('/api/items', {
+                method: 'PATCH',
+                body: JSON.stringify({ id: item.id, is_available: e.target.checked ? 1 : 0 })
+              });
+              showToast(`Updated availability for "${item.name}".`);
+              await loadItems();
+              await checkSession();
+            } catch (err) {
+              showToast(err.message, true);
+              e.target.checked = !e.target.checked;
+            }
+          });
+
+          row.querySelector('.edit-item').addEventListener('click', () => openItemEditor(item));
+          row.querySelector('.del-item').addEventListener('click', async () => {
+            if (!confirm(`Delete "${item.name}" and its photograph from the menu?`)) return;
+            try {
+              await apiFetch(`/api/items?id=${item.id}`, { method: 'DELETE' });
+              showToast(`Deleted "${item.name}".`);
+              await loadItems();
+              await checkSession();
+            } catch (err) {
+              showToast(err.message, true);
+            }
+          });
+
+          wrap.appendChild(row);
+        });
+      }
+
+      document.getElementById('adminItemSearch').addEventListener('input', renderItemsList);
+      document.getElementById('adminCatFilter').addEventListener('change', renderItemsList);
+
+      // Client-side Canvas Image Compression & WebP Converter (targets <= 500 KB)
+      async function optimizeImageFile(file) {
+        return new Promise((resolve, reject) => {
+          const img = new Image();
+          const objectUrl = URL.createObjectURL(file);
+          img.onload = () => {
+            URL.revokeObjectURL(objectUrl);
+            const MAX_DIM = 1100;
+            let width = img.width;
+            let height = img.height;
+            if (width > MAX_DIM || height > MAX_DIM) {
+              if (width > height) {
+                height = Math.round((height * MAX_DIM) / width);
+                width = MAX_DIM;
+              } else {
+                width = Math.round((width * MAX_DIM) / height);
+                height = MAX_DIM;
+              }
+            }
+
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, width, height);
+
+            // Try WebP first at quality 0.82; step down if > 480 KB; fallback to JPEG if WebP unsupported
+            const tryEncode = (mime, quality) => {
+              canvas.toBlob(
+                (blob) => {
+                  if (!blob) {
+                    reject(new Error('Image encoding failed.'));
+                    return;
+                  }
+                  if (mime === 'image/webp' && blob.type !== 'image/webp') {
+                    // Browser did not support WebP encoding, fallback to JPEG
+                    tryEncode('image/jpeg', 0.82);
+                    return;
+                  }
+                  if (blob.size > 490 * 1024 && quality > 0.5) {
+                    tryEncode(mime, quality - 0.12);
+                    return;
+                  }
+                  resolve(blob);
+                },
+                mime,
+                quality
+              );
+            };
+
+            tryEncode('image/webp', 0.82);
+          };
+          img.onerror = () => {
+            URL.revokeObjectURL(objectUrl);
+            reject(new Error('Could not read selected image file.'));
+          };
+          img.src = objectUrl;
+        });
+      }
+
+      async function handleImageSelection(file) {
+        if (!file) return;
+        const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+        if (!validTypes.includes(file.type)) {
+          showToast('Please select a JPEG, PNG, or WebP photograph.', true);
+          return;
+        }
+        if (file.size > 15 * 1024 * 1024) {
+          showToast('Selected file is too large (maximum 15 MB raw photo).', true);
+          return;
+        }
+
+        lastSelectedFile = file;
+        const dropText = document.getElementById('dropzoneText');
+        const progWrap = document.getElementById('uploadProgressWrap');
+        const progFill = document.getElementById('uploadProgressFill');
+        const retryBtn = document.getElementById('retryUploadBtn');
+
+        retryBtn.style.display = 'none';
+        progWrap.style.display = 'block';
+        progFill.style.width = '25%';
+        dropText.textContent = 'Optimizing & compressing photograph...';
+
+        try {
+          const optimizedBlob = await optimizeImageFile(file);
+          progFill.style.width = '60%';
+          dropText.textContent = `Uploading (${Math.round(optimizedBlob.size / 1024)} KB)...`;
+
+          const ext = optimizedBlob.type === 'image/webp' ? 'webp' : 'jpg';
+          const formData = new FormData();
+          formData.append('image', optimizedBlob, `photo.${ext}`);
+
+          const res = await apiFetch('/api/upload', {
+            method: 'POST',
+            body: formData
+          });
+
+          progFill.style.width = '100%';
+          document.getElementById('itemImageKey').value = res.image_key;
+          dropText.textContent = `✓ Photo Uploaded (${Math.round(res.size_bytes / 1024)} KB)`;
+          document.getElementById('removeImageBtn').style.display = 'inline-flex';
+          updateLivePreview();
+          showToast('Photograph optimized and uploaded!');
+        } catch (err) {
+          progFill.style.width = '0%';
+          dropText.textContent = 'Upload failed. Click Retry or choose another image.';
+          retryBtn.style.display = 'inline-flex';
+          showToast(err.message, true);
+        }
+      }
+
+      const dropzone = document.getElementById('imageDropzone');
+      const fileInput = document.getElementById('imageFileInput');
+
+      dropzone.addEventListener('click', () => fileInput.click());
+      fileInput.addEventListener('change', (e) => {
+        if (e.target.files && e.target.files[0]) {
+          handleImageSelection(e.target.files[0]);
+        }
+      });
+
+      dropzone.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        dropzone.classList.add('dragover');
+      });
+      dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+      dropzone.addEventListener('drop', (e) => {
+        e.preventDefault();
+        dropzone.classList.remove('dragover');
+        if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+          handleImageSelection(e.dataTransfer.files[0]);
+        }
+      });
+
+      document.getElementById('retryUploadBtn').addEventListener('click', () => {
+        if (lastSelectedFile) handleImageSelection(lastSelectedFile);
+      });
+
+      document.getElementById('removeImageBtn').addEventListener('click', () => {
+        document.getElementById('itemImageKey').value = '';
+        document.getElementById('dropzoneText').textContent = 'Click to Choose Photo or Drag & Drop JPEG / PNG / WebP';
+        document.getElementById('uploadProgressWrap').style.display = 'none';
+        document.getElementById('removeImageBtn').style.display = 'none';
+        updateLivePreview();
+      });
+
+      function updateLivePreview() {
+        const name = document.getElementById('itemName').value || 'Dish Name';
+        const price = document.getElementById('itemPriceRupees').value || '0';
+        const desc = document.getElementById('itemDesc').value || 'Freshly prepared at Anna South Indian Dosa.';
+        const isVeg = document.getElementById('itemDiet').value === '1';
+        const isFeat = document.getElementById('itemFeatured').checked;
+        const imgKey = document.getElementById('itemImageKey').value;
+
+        document.getElementById('prevName').textContent = name;
+        document.getElementById('prevPrice').textContent = `₹${price}`;
+        document.getElementById('prevDesc').textContent = desc;
+        document.getElementById('prevDietDot').style.background = isVeg ? 'var(--green)' : 'var(--red)';
+        document.getElementById('prevBestseller').style.display = isFeat ? 'inline-block' : 'none';
+
+        const mediaBox = document.getElementById('prevMediaBox');
+        if (imgKey) {
+          mediaBox.innerHTML = `<img src="/media/${escapeHtml(imgKey)}" alt="Preview" />`;
+        } else {
+          mediaBox.innerHTML = `<span style="font-size:0.7rem;color:var(--ivory-dim);">No Photo</span>`;
+        }
+      }
+
+      ['itemName', 'itemPriceRupees', 'itemDesc', 'itemDiet', 'itemFeatured'].forEach((id) => {
+        document.getElementById(id).addEventListener('input', updateLivePreview);
+        document.getElementById(id).addEventListener('change', updateLivePreview);
+      });
+
+      function openItemEditor(item = null) {
+        document.getElementById('itemModalHeading').textContent = item ? 'Edit Dish' : 'Add Dish';
+        document.getElementById('itemId').value = item ? item.id : '';
+        document.getElementById('itemName').value = item ? item.name : '';
+        document.getElementById('itemPriceRupees').value = item ? (item.price_paise / 100) : '';
+        document.getElementById('itemCategory').value = item ? item.category_id : (categories[0]?.id || '');
+        document.getElementById('itemDesc').value = item ? item.description || '' : '';
+        document.getElementById('itemDiet').value = item ? String(item.is_vegetarian) : '1';
+        document.getElementById('itemSpice').value = item ? item.spice_level : 'none';
+        document.getElementById('itemFeatured').checked = item ? Boolean(item.is_featured) : false;
+        document.getElementById('itemAvailable').checked = item ? Boolean(item.is_available) : true;
+        document.getElementById('itemImageKey').value = item ? item.image_key || '' : '';
+
+        document.getElementById('uploadProgressWrap').style.display = 'none';
+        document.getElementById('retryUploadBtn').style.display = 'none';
+        document.getElementById('removeImageBtn').style.display = item && item.image_key ? 'inline-flex' : 'none';
+        document.getElementById('dropzoneText').textContent =
+          item && item.image_key
+            ? 'Click or Drop to Replace Existing Photo'
+            : 'Click to Choose Photo or Drag & Drop JPEG / PNG / WebP';
+
+        updateLivePreview();
+        document.getElementById('itemEditorModal').classList.add('open');
+      }
+
+      document.getElementById('openAddItemBtn').addEventListener('click', () => openItemEditor());
+      document.getElementById('closeItemModalBtn').addEventListener('click', () => {
+        document.getElementById('itemEditorModal').classList.remove('open');
+      });
+
+      document.getElementById('itemForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const id = document.getElementById('itemId').value;
+        const rupees = parseFloat(document.getElementById('itemPriceRupees').value || '0');
+        const pricePaise = Math.round(rupees * 100);
+
+        const payload = {
+          id: id ? Number(id) : undefined,
+          name: document.getElementById('itemName').value,
+          description: document.getElementById('itemDesc').value,
+          price_paise: pricePaise,
+          category_id: Number(document.getElementById('itemCategory').value),
+          image_key: document.getElementById('itemImageKey').value,
+          is_vegetarian: Number(document.getElementById('itemDiet').value),
+          spice_level: document.getElementById('itemSpice').value,
+          is_featured: document.getElementById('itemFeatured').checked ? 1 : 0,
+          is_available: document.getElementById('itemAvailable').checked ? 1 : 0
+        };
+
+        try {
+          await apiFetch('/api/items', {
+            method: id ? 'PUT' : 'POST',
+            body: JSON.stringify(payload)
+          });
+          document.getElementById('itemEditorModal').classList.remove('open');
+          showToast('Dish saved to menu!');
+          await loadItems();
+          await loadCategories();
+          await checkSession();
+        } catch (err) {
+          showToast(err.message, true);
+        }
+      });
+
+      // Restaurant Settings & Owner Credentials
+      async function loadSettings() {
+        const data = await apiFetch('/api/settings');
+        const s = data.settings || {};
+        const add = s.additional_settings || {};
+        document.getElementById('setRestName').value = s.restaurant_name || '';
+        document.getElementById('setHindiName').value = add.hindi_name || '';
+        document.getElementById('setEstablished').value = add.established || '';
+        document.getElementById('setDesc').value = s.description || '';
+        document.getElementById('setAddress').value = s.address || '';
+        document.getElementById('setPhone').value = s.phone || '';
+        document.getElementById('setHours').value = s.opening_hours || '';
+        document.getElementById('setServices').value = (s.services || []).join(', ');
+      }
+
+      document.getElementById('restaurantSettingsForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const services = document
+          .getElementById('setServices')
+          .value.split(',')
+          .map((s) => s.trim())
+          .filter(Boolean);
+
+        try {
+          await apiFetch('/api/settings', {
+            method: 'PUT',
+            body: JSON.stringify({
+              restaurant_name: document.getElementById('setRestName').value,
+              description: document.getElementById('setDesc').value,
+              address: document.getElementById('setAddress').value,
+              phone: document.getElementById('setPhone').value,
+              opening_hours: document.getElementById('setHours').value,
+              services,
+              additional_settings: {
+                hindi_name: document.getElementById('setHindiName').value,
+                established: document.getElementById('setEstablished').value,
+                category_label: 'South Indian Restaurant'
+              }
+            })
+          });
+          showToast('Restaurant information updated!');
+          await checkSession();
+        } catch (err) {
+          showToast(err.message, true);
+        }
+      });
+
+      document.getElementById('credentialsForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        try {
+          const res = await apiFetch('/api/auth/password', {
+            method: 'PUT',
+            body: JSON.stringify({
+              newEmail: document.getElementById('credEmail').value,
+              currentPassword: document.getElementById('credCurrentPass').value,
+              newPassword: document.getElementById('credNewPass').value
+            })
+          });
+          document.getElementById('credCurrentPass').value = '';
+          document.getElementById('credNewPass').value = '';
+          showToast(res.message || 'Credentials updated!');
+          await checkSession();
+        } catch (err) {
+          showToast(err.message, true);
+        }
+      });
+
+      checkSession();
+    })();
+  </script>
+</body>
+</html>
